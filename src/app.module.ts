@@ -5,6 +5,7 @@ import databaseConfig from './config/database.config';
 import redisConfig from './config/redis.config';
 import aiConfig from './config/ai.config';
 import { DatabaseModule } from './database/database.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -16,14 +17,8 @@ import { DatabaseModule } from './database/database.module';
     }),
 
     DatabaseModule,
+    AuthModule,
 
-    // Feature Modules will be added here in next steps
-    // UsersModule,
-    // CoursesModule,
-    // SampleEssaysModule,
-    // NotebookModule,
-    // FlashcardsModule,
-    // SubmissionsModule,
   ],
   controllers: [],
   providers: [],
