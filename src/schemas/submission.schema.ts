@@ -28,7 +28,7 @@ export class AIError {
 }
 
 // Embedded AI Result Document
-@Schema({ _id: false })
+@Schema({ _id: false, suppressReservedKeysWarning: true })
 export class AIResult {
   @Prop({ type: Number, required: true, min: 0, max: 9 })
   taskResponseScore: number; // Điểm Task Response (0-9)

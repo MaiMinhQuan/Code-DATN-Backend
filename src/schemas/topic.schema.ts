@@ -27,7 +27,7 @@ export class Topic {
 export const TopicSchema = SchemaFactory.createForClass(Topic);
 
 // Indexes
-TopicSchema.index({ slug: 1 });
+// Note: slug already has unique index from @Prop({ unique: true })
 TopicSchema.index({ orderIndex: 1 });
 
 // Pre-save hook to generate slug from name
