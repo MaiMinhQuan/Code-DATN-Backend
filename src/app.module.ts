@@ -4,6 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import databaseConfig from './config/database.config';
 import redisConfig from './config/redis.config';
 import aiConfig from './config/ai.config';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
   imports: [
@@ -14,15 +15,7 @@ import aiConfig from './config/ai.config';
       envFilePath: ['.env.local', '.env'],
     }),
 
-    // MongoDB Connection
-    MongooseModule.forRootAsync({
-      inject: [ConfigService],
-      useFactory: async (configService: ConfigService) => ({
-        uri: configService.get<string>('database.uri'),
-        retryAttempts: 3,
-        retryDelay: 1000,
-      }),
-    }),
+    DatabaseModule,
 
     // Feature Modules will be added here in next steps
     // UsersModule,
