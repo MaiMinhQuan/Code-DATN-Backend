@@ -28,10 +28,14 @@ export class Course {
 
   @Prop()
   instructorName?: string;
+
+  @Prop({ default: true })
+  isActive: boolean;
 }
 
 export const CourseSchema = SchemaFactory.createForClass(Course);
 
 // Indexes
-CourseSchema.index({ topicId: 1 });
-CourseSchema.index({ isPublished: 1, orderIndex: 1 });
+CourseSchema.index({ topicId: 1, isActive: 1 });
+CourseSchema.index({ isPublished: 1, isActive: 1, orderIndex: 1 });
+CourseSchema.index({ isActive: 1 });
