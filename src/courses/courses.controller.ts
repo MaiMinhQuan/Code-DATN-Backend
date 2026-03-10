@@ -70,4 +70,6 @@ export class CoursesController {
   async remove(@Param("id") id: string) {
     return this.coursesService.remove(id);
   }
+
+  // Nháp
 }
