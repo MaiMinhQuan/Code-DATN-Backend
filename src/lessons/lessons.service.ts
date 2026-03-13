@@ -89,9 +89,10 @@ export class LessonsService {
     }
 
     // Nếu update courseId, kiểm tra course đó có tồn tại không
-    if (updateLessonDto.courseId) {
+    const dto = updateLessonDto as Partial<CreateLessonDto>;
+    if (dto.courseId) {
       const course = await this.courseModel.findOne({
-        _id: new Types.ObjectId(updateLessonDto.courseId),
+        _id: new Types.ObjectId(dto.courseId),
         isActive: true,
       });
 
@@ -169,7 +170,13 @@ export class LessonsService {
     }
 
     // Thêm vocabulary vào mảng
-    lesson.vocabularies.push(addVocabularyDto);
+    lesson.vocabularies.push({
+      word: addVocabularyDto.word,
+      pronunciation: addVocabularyDto.pronunciation,
+      definition: addVocabularyDto.definition,
+      examples: addVocabularyDto.examples ?? [],
+      translation: addVocabularyDto.translation,
+    });
     await lesson.save();
 
     return lesson;
@@ -188,7 +195,12 @@ export class LessonsService {
     }
 
     // Thêm grammar vào mảng
-    lesson.grammars.push(addGrammarDto);
+    lesson.grammars.push({
+      title: addGrammarDto.title,
+      explanation: addGrammarDto.explanation,
+      examples: addGrammarDto.examples ?? [],
+      structure: addGrammarDto.structure,
+    });
     await lesson.save();
 
     return lesson;

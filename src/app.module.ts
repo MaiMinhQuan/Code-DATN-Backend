@@ -9,6 +9,7 @@ import { UsersModule } from "./users/users.module";
 import { TopicsModule } from "./topics/topics.module";
 import { CoursesModule } from "./courses/courses.module";
 import { LessonsModule } from "./lessons/lessons.module";
+import { SampleEssaysModule } from "./sample-essays/sample-essays.module";
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { LessonsModule } from "./lessons/lessons.module";
     TopicsModule,
     CoursesModule,
     LessonsModule,
+    SampleEssaysModule,
   ],
   controllers: [],
   providers: [],

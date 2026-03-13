@@ -15,16 +15,14 @@ export class CoursesService {
   // topicId: lọc theo topic
   // isPublished: lọc theo trạng thái publish
   async findAll(topicId?: string, isPublished?: boolean): Promise<Course[]> {
-    const filter: any= {
-      isActive: true
-    };
+    const filter: any= {};
 
     // Filter theo topicId
     if (topicId) {
       if (!Types.ObjectId.isValid(topicId)) {
         throw new BadRequestException("topicId không hợp lệ");
       }
-      filter.topicId = new Types.ObjectId(topicId);
+      filter['topicId._id'] = new Types.ObjectId(topicId);
     }
 
     // Filter theo trạng thái publish
@@ -46,7 +44,7 @@ export class CoursesService {
     }
 
     const course = await this.courseModel
-                              .findOne({ _id: id, isActive: true })
+                              .findById(id)
                               .populate("topicId", "name slug description")
                               .exec();
 
@@ -107,14 +105,7 @@ export class CoursesService {
       throw new BadRequestException('courseId không hợp lệ');
     }
 
-    // Soft delete: Set isActive = false
-    const result = await this.courseModel
-                            .findByIdAndUpdate(
-                              id,
-                              { isActive: false },
-                              { new: true }
-                            )
-                            .exec();
+    const result = await this.courseModel.findByIdAndDelete(id).exec();
 
     if (!result) {
       throw new NotFoundException(`Không tìm thấy khóa học với ID: ${id}`);
