@@ -1,6 +1,18 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
 
+// Sub-schema cho Topic Info (Nested Object)
+class TopicInfo {
+  @Prop({ type: Types.ObjectId, required: true })
+  _id: Types.ObjectId;
+
+  @Prop({ required: true })
+  name: string;
+
+  @Prop({ required: true })
+  slug: string;
+}
+
 export type CourseDocument = Course & Document;
 
 @Schema({ timestamps: true })
@@ -11,8 +23,8 @@ export class Course {
   @Prop({ type: String, trim: true })
   description?: string;
 
-  @Prop({ type: Types.ObjectId, ref: 'Topic', required: true })
-  topicId: Types.ObjectId;
+  @Prop({ required: true, type: Object })
+  topicId: TopicInfo;
 
   @Prop()
   thumbnailUrl?: string;
@@ -36,6 +48,6 @@ export class Course {
 export const CourseSchema = SchemaFactory.createForClass(Course);
 
 // Indexes
-CourseSchema.index({ topicId: 1, isActive: 1 });
+CourseSchema.index({ 'topicId._id': 1, isActive: 1 });
 CourseSchema.index({ isPublished: 1, isActive: 1, orderIndex: 1 });
 CourseSchema.index({ isActive: 1 });
