@@ -12,6 +12,7 @@ import { LessonsModule } from "./lessons/lessons.module";
 import { SampleEssaysModule } from "./sample-essays/sample-essays.module";
 import { FavoriteEssaysModule } from "./favorite-essays/favorite-essays.module";
 import { NotebookModule } from "./notebook/notebook.module";
+import { FlashcardsModule } from "./flashcards/flashcards.module";
 
 @Module({
   imports: [
@@ -30,7 +31,8 @@ import { NotebookModule } from "./notebook/notebook.module";
     LessonsModule,
     SampleEssaysModule,
     FavoriteEssaysModule,
-    NotebookModule
+    NotebookModule,
+    FlashcardsModule,
   ],
   controllers: [],
   providers: [],
