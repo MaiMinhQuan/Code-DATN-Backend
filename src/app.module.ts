@@ -10,6 +10,7 @@ import { TopicsModule } from "./topics/topics.module";
 import { CoursesModule } from "./courses/courses.module";
 import { LessonsModule } from "./lessons/lessons.module";
 import { SampleEssaysModule } from "./sample-essays/sample-essays.module";
+import { FavoriteEssaysModule } from "./favorite-essays/favorite-essays.module";
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { SampleEssaysModule } from "./sample-essays/sample-essays.module";
     CoursesModule,
     LessonsModule,
     SampleEssaysModule,
+    FavoriteEssaysModule,
   ],
   controllers: [],
   providers: [],
