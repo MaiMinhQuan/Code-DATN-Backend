@@ -22,7 +22,7 @@ export class CoursesService {
       if (!Types.ObjectId.isValid(topicId)) {
         throw new BadRequestException("topicId không hợp lệ");
       }
-      filter['topicId._id'] = new Types.ObjectId(topicId);
+      filter["topicId._id"] = new Types.ObjectId(topicId);
     }
 
     // Filter theo trạng thái publish
@@ -102,7 +102,7 @@ export class CoursesService {
   // Xóa khóa học (chỉ cho admin)
   async remove(id: string): Promise<{ message: string }> {
     if (!Types.ObjectId.isValid(id)) {
-      throw new BadRequestException('courseId không hợp lệ');
+      throw new BadRequestException("courseId không hợp lệ");
     }
 
     const result = await this.courseModel.findByIdAndDelete(id).exec();
@@ -111,6 +111,6 @@ export class CoursesService {
       throw new NotFoundException(`Không tìm thấy khóa học với ID: ${id}`);
     }
 
-    return { message: 'Xóa khóa học thành công' };
+    return { message: "Xóa khóa học thành công" };
   }
 }
