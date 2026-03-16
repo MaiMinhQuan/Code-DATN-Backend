@@ -3,11 +3,11 @@ import { Type } from 'class-transformer';
 import { SubmissionStatus } from '@/common/enums';
 
 export class QuerySubmissionDto {
-  @IsMongoId()
+  @IsMongoId({ message: 'questionId phải là MongoDB ObjectId hợp lệ' })
   @IsOptional()
   questionId?: string;
 
-  @IsEnum(SubmissionStatus)
+  @IsEnum(SubmissionStatus, { message: 'status không hợp lệ' })
   @IsOptional()
   status?: SubmissionStatus;
 
