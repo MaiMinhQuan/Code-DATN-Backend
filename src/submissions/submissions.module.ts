@@ -3,13 +3,16 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { BullModule } from '@nestjs/bullmq';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
-// Schemas
-import { Submission, SubmissionSchema, ExamQuestion, ExamQuestionSchema } from '@/schemas';
-
-// AI Grading Module
+import {
+  Submission,
+  SubmissionSchema,
+  ExamQuestion,
+  ExamQuestionSchema,
+} from '@/schemas';
 import { AIGradingModule } from '@/ai-grading/ai-grading.module';
+// WebsocketModule là @Global nên không cần import,
+// SubmissionsGateway sẽ được inject tự động
 
-// Local imports
 import { SubmissionsController } from './submissions.controller';
 import { SubmissionsService } from './submissions.service';
 import { SubmissionProcessor } from './queue/submission.processor';
@@ -17,13 +20,11 @@ import { SUBMISSION_QUEUE_NAME } from './queue/submission.constants';
 
 @Module({
   imports: [
-    // MongoDB Models
     MongooseModule.forFeature([
       { name: Submission.name, schema: SubmissionSchema },
       { name: ExamQuestion.name, schema: ExamQuestionSchema },
     ]),
 
-    // BullMQ Queue Registration
     BullModule.registerQueueAsync({
       name: SUBMISSION_QUEUE_NAME,
       imports: [ConfigModule],
@@ -44,13 +45,12 @@ import { SUBMISSION_QUEUE_NAME } from './queue/submission.constants';
       inject: [ConfigService],
     }),
 
-    // AI Grading Service
     AIGradingModule,
   ],
   controllers: [SubmissionsController],
   providers: [
     SubmissionsService,
-    SubmissionProcessor, // Worker sẽ tự động chạy khi module được load
+    SubmissionProcessor,
   ],
   exports: [SubmissionsService],
 })
