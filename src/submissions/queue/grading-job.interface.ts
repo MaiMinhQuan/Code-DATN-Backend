@@ -1,5 +1,3 @@
-import { Types } from 'mongoose';
-
 // Data được đẩy vào Queue
 export interface GradingJobData {
   submissionId: string;           // MongoDB ObjectId as string
