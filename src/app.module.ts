@@ -17,6 +17,8 @@ import { ExamQuestionsModule } from "./exam-questions/exam-questions.module";
 import { AIGradingModule } from "./ai-grading/ai-grading.module";
 import { SubmissionsModule } from "./submissions/submissions.module";
 import { BullModule } from "@nestjs/bullmq";
+import { WebsocketModule } from "./websocket/websocket.module";
+
 @Module({
   imports: [
     // Config Module - Load environment variables
@@ -52,6 +54,7 @@ import { BullModule } from "@nestjs/bullmq";
     ExamQuestionsModule,
     AIGradingModule,
     SubmissionsModule,
+    WebsocketModule,
   ],
   controllers: [],
   providers: [],
