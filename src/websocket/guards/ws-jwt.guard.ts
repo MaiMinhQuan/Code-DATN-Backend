@@ -1,9 +1,12 @@
-import { CanActivate, ExecutionContext, Injectable, Logger } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
-import { WsException } from '@nestjs/websockets';
-import { Socket } from 'socket.io';
-import { ConfigService } from '@nestjs/config';
+import { CanActivate, ExecutionContext, Injectable, Logger } from "@nestjs/common";
+import { JwtService } from "@nestjs/jwt";
+import { WsException } from "@nestjs/websockets";
+import { Socket } from "socket.io";
+import { ConfigService } from "@nestjs/config";
 
+// WebSocket JWT Guard - Xác thực JWT token cho WebSocket connections
+// Trích xuất token từ query/auth/header và verify bằng JwtService
+// Gắn user info vào socket sau khi xác thực thành công
 @Injectable()
 export class WsJwtGuard implements CanActivate {
   private readonly logger = new Logger(WsJwtGuard.name);
@@ -13,17 +16,19 @@ export class WsJwtGuard implements CanActivate {
     private readonly configService: ConfigService,
   ) {}
 
+  // NestJS Guard lifecycle method - Xác thực WebSocket connection
+  // true nếu token hợp lệ, throw WsException nếu không hợp lệ
   async canActivate(context: ExecutionContext): Promise<boolean> {
     try {
       const client: Socket = context.switchToWs().getClient();
       const token = this.extractTokenFromSocket(client);
 
       if (!token) {
-        throw new WsException('Token không được cung cấp');
+        throw new WsException("Token không được cung cấp");
       }
 
       const payload = await this.jwtService.verifyAsync(token, {
-        secret: this.configService.get<string>('JWT_SECRET'),
+        secret: this.configService.get<string>("JWT_SECRET"),
       });
 
       // Gắn user info vào socket để sử dụng sau
@@ -38,17 +43,15 @@ export class WsJwtGuard implements CanActivate {
 
     } catch (error) {
       this.logger.error(`WebSocket auth failed: ${error.message}`);
-      throw new WsException('Token không hợp lệ hoặc đã hết hạn');
+      throw new WsException("Token không hợp lệ hoặc đã hết hạn");
     }
   }
 
-  /**
-   * Trích xuất token từ socket handshake
-   * Hỗ trợ nhiều cách gửi token:
-   * 1. Query param: ?token=xxx
-   * 2. Auth header: { auth: { token: 'xxx' } }
-   * 3. Bearer header: { headers: { authorization: 'Bearer xxx' } }
-   */
+  // Trích xuất token từ socket handshake
+  // Hỗ trợ nhiều cách gửi token:
+  // 1. Query param: ?token=xxx
+  // 2. Auth header: { auth: { token: "xxx" } }
+  // 3. Bearer header: { headers: { authorization: "Bearer xxx" } }
   private extractTokenFromSocket(client: Socket): string | null {
     // 1. Từ query param
     const tokenFromQuery = client.handshake.query.token as string;
@@ -64,7 +67,7 @@ export class WsJwtGuard implements CanActivate {
 
     // 3. Từ Authorization header
     const authHeader = client.handshake.headers.authorization;
-    if (authHeader && authHeader.startsWith('Bearer ')) {
+    if (authHeader && authHeader.startsWith("Bearer ")) {
       return authHeader.substring(7);
     }
 

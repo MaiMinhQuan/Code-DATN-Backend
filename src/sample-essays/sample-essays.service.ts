@@ -12,17 +12,9 @@ export class SampleEssaysService {
     @InjectModel(SampleEssay.name) private sampleEssayModel: Model<SampleEssayDocument>,
   ) {}
 
-  // ====================================
-  // 1. findAll - Lọc bài mẫu
-  // ====================================
-  // Query params: topicId (optional), targetBand (optional)
-  // Logic:
-  //   - Tạo filter object rỗng
-  //   - Nếu có topicId → thêm vào filter (validate ObjectId trước)
-  //   - Nếu có targetBand → thêm vào filter
-  //   - Mặc định chỉ lấy isPublished = true
-  //   - Sort theo favoriteCount DESC, createdAt DESC
-  //   - Populate topicId để lấy name, slug
+  // Lấy danh sách bài mẫu (chỉ published)
+  // topicId: Filter theo topic
+  // targetBand: Filter theo band điểm
   async findAll(topicId?: string, targetBand?: TargetBand): Promise<SampleEssay[]> {
     const filter: any = { isPublished: true };
 
@@ -44,15 +36,8 @@ export class SampleEssaysService {
       .exec();
   }
 
-  // ====================================
-  // 2. findOne - Chi tiết bài mẫu
-  // ====================================
-  // Logic:
-  //   - Validate ObjectId
-  //   - Tìm bài mẫu theo id
-  //   - Populate topicId
-  //   - Nếu không tìm thấy → throw NotFoundException
-  //   - Return bài mẫu (bao gồm highlightAnnotations)
+  // Lấy chi tiết bài mẫu theo ID
+  // id: ID của sample essay
   async findOne(id: string): Promise<SampleEssay> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("ID không hợp lệ");
@@ -70,13 +55,8 @@ export class SampleEssaysService {
     return essay;
   }
 
-  // ====================================
-  // 3. incrementViewCount - Tăng lượt xem
-  // ====================================
-  // Logic:
-  //   - Validate ObjectId
-  //   - Dùng findByIdAndUpdate với $inc: { viewCount: 1 }
-  //   - Return { viewCount: newValue }
+  // Tăng viewCount khi user xem bài mẫu
+  // id: ID của sample essay
   async incrementViewCount(id: string): Promise<{ viewCount: number }> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("ID không hợp lệ");
@@ -97,14 +77,8 @@ export class SampleEssaysService {
     return { viewCount: essay.viewCount };
   }
 
-  // ====================================
-  // 4. create - Tạo bài mẫu mới (Admin only)
-  // ====================================
-  // Logic:
-  //   - Kiểm tra Topic có tồn tại không (query topics collection)
-  //   - Tạo document mới từ DTO
-  //   - viewCount và favoriteCount mặc định = 0
-  //   - Save và return
+  // Tạo bài mẫu mới (Admin)
+  // createDto: Dữ liệu bài mẫu mới
   async create(createDto: CreateSampleEssayDto): Promise<SampleEssay> {
     // Kiểm tra topic tồn tại
     const topicExists = await this.sampleEssayModel.db
@@ -124,20 +98,15 @@ export class SampleEssaysService {
     return newEssay.save();
   }
 
-  // ====================================
-  // 5. update - Cập nhật bài mẫu (Admin only)
-  // ====================================
-  // Logic:
-  //   - Validate ObjectId
-  //   - Nếu update topicId → kiểm tra topic mới tồn tại
-  //   - findByIdAndUpdate với { new: true }
-  //   - Nếu không tìm thấy → throw NotFoundException
+  // Cập nhật bài mẫu (Admin)
+  // id: ID của bài mẫu cần cập nhật
+  // updateDto: Dữ liệu cập nhật
   async update(id: string, updateDto: UpdateSampleEssayDto): Promise<SampleEssay> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("ID không hợp lệ");
     }
 
-    // Nếu update topicId, kiểm tra topic mới tồn tại
+    // Kiểm tra topic mới tồn tại
     const dto = updateDto as any;
 
     if (dto.topicId) {
@@ -162,26 +131,17 @@ export class SampleEssaysService {
     return updatedEssay;
   }
 
-  // ====================================
-  // 6. remove - Xóa bài mẫu (Admin only)
-  // ====================================
-  // Logic:
-  //   - Validate ObjectId
-  //   - Soft delete: Đổi isPublished = false (khuyến nghị)
-  //   - Hoặc Hard delete: findByIdAndDelete
-  //   - Return message success
+  // Xoá bài mẫu (Admin)
+  // id: ID của bài mẫu cần xoá
   async remove(id: string): Promise<{ message: string }> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("ID không hợp lệ");
     }
 
-    // Option A: Soft delete
+    // Soft delete
     const essay = await this.sampleEssayModel
       .findByIdAndUpdate(id, { isPublished: false }, { new: true })
       .exec();
-
-    // Option B: Hard delete
-    // const essay = await this.sampleEssayModel.findByIdAndDelete(id).exec();
 
     if (!essay) {
       throw new NotFoundException("Không tìm thấy bài mẫu");

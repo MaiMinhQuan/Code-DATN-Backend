@@ -17,7 +17,9 @@ export class LessonsService {
     @InjectModel(Course.name) private courseModel: Model<CourseDocument>,
   ) {}
 
-  // Lấy danh sách lesson
+  // Lấy danh sách lessons thuộc một course
+  // courseId: Id của course
+  // targetBand: Filter theo band
   async findByCourse(courseId: string, targetBand?: TargetBand): Promise<Lesson[]> {
     if (!Types.ObjectId.isValid(courseId)) {
       throw new BadRequestException("courseId không hợp lệ");
@@ -39,7 +41,8 @@ export class LessonsService {
               .exec();
   }
 
-  // Lấy chi tiết 1 lesson
+  // Lấy chi tiết 1 lesson theo ID
+  // id: ID của lesson
   async findOne(id: string): Promise<Lesson> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("ID không hợp lệ");
@@ -58,6 +61,7 @@ export class LessonsService {
   }
 
   // Tạo lesson mới (Admin)
+  // createLessonDto: Dữ liệu lesson mới
   async create(createLessonDto: CreateLessonDto): Promise<Lesson> {
     // Kiểm tra courseId hợp lệ
     const course = await this.courseModel.findOne({
@@ -83,12 +87,14 @@ export class LessonsService {
   }
 
   // Cập nhật lesson (Admin)
+  // id: Id của lesson
+  // updateLessonDto: Dữ liệu cập nhật
   async update(id: string, updateLessonDto: UpdateLessonDto): Promise<Lesson> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("lessonId không hợp lệ");
     }
 
-    // Nếu update courseId, kiểm tra course đó có tồn tại không
+    // Kiểm tra course đó có tồn tại không
     const dto = updateLessonDto as Partial<CreateLessonDto>;
     if (dto.courseId) {
       const course = await this.courseModel.findOne({
@@ -115,6 +121,7 @@ export class LessonsService {
   }
 
   // Xóa lesson (Admin)
+  // id: Id của lesson cần xóa
   async remove(id: string): Promise<{ message: string }> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("ID không hợp lệ");
@@ -139,6 +146,8 @@ export class LessonsService {
   }
 
   // Thêm video vào lesson (Admin)
+  // lessonId: Id của lesson
+  // addVideoDto: Dữ liệu video cần thêm
   async addVideo(lessonId: string, addVideoDto: AddVideoDto): Promise<Lesson> {
     if (!Types.ObjectId.isValid(lessonId)) {
       throw new BadRequestException("lessonId không hợp lệ");
@@ -158,6 +167,8 @@ export class LessonsService {
   }
 
   // Thêm vocabulary vào lesson (Admin)
+  // lessonId: Id của lesson
+  // addVocabularyDto: Dữ liệu vocabulary cần thêm
   async addVocabulary(lessonId: string, addVocabularyDto: AddVocabularyDto): Promise<Lesson> {
     if (!Types.ObjectId.isValid(lessonId)) {
       throw new BadRequestException("lessonId không hợp lệ");
@@ -183,6 +194,8 @@ export class LessonsService {
   }
 
   // Thêm grammar vào lesson (Admin)
+  // lessonId: Id của lesson
+  // addGrammarDto: Dữ liệu grammar cần thêm
   async addGrammar(lessonId: string, addGrammarDto: AddGrammarDto): Promise<Lesson> {
     if (!Types.ObjectId.isValid(lessonId)) {
       throw new BadRequestException("lessonId không hợp lệ");
@@ -207,6 +220,8 @@ export class LessonsService {
   }
 
   // Xóa video khỏi lesson (Admin)
+  // lessonId: Id của lesson
+  // videoIndex: Chỉ số của video trong lesson cần xóa
   async removeVideo(lessonId: string, videoIndex: number): Promise<Lesson> {
     if (!Types.ObjectId.isValid(lessonId)) {
       throw new BadRequestException("lessonId không hợp lệ");
@@ -230,6 +245,8 @@ export class LessonsService {
   }
 
   // Xóa vocabulary khỏi lesson (Admin)
+  // lessonId: Id của lesson
+  // vocabIndex: Chỉ số của vocabulary trong lesson cần xóa
   async removeVocabulary(lessonId: string, vocabIndex: number): Promise<Lesson> {
     if (!Types.ObjectId.isValid(lessonId)) {
       throw new BadRequestException("lessonId không hợp lệ");
@@ -252,6 +269,8 @@ export class LessonsService {
   }
 
   // Xóa grammar khỏi lesson (Admin)
+  // lessonId: Id của lesson
+  // grammarIndex: Chỉ số của grammar trong lesson cần xóa
   async removeGrammar(lessonId: string, grammarIndex: number): Promise<Lesson> {
     if (!Types.ObjectId.isValid(lessonId)) {
       throw new BadRequestException("lessonId không hợp lệ");

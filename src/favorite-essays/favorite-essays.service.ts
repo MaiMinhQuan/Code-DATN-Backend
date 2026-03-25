@@ -12,6 +12,9 @@ export class FavoriteEssaysService {
   ) {}
 
   // Thêm bài mẫu vào danh sách yêu thích
+  // userId: ID của user
+  // essayId: ID của bài mẫu
+  // personalNote: Ghi chú cá nhân của user cho bài mẫu này (optional)
   async addFavorite(userId: string, essayId: string, personalNote?: string): Promise<FavoriteEssay> {
     if (!Types.ObjectId.isValid(essayId)) {
       throw new BadRequestException("essayId không hợp lệ");
@@ -64,6 +67,8 @@ export class FavoriteEssaysService {
   }
 
   // Xóa bài mẫu khỏi danh sách yêu thích
+  // userId: ID của user
+  // essayId: ID của bài mẫu cần xóa khỏi yêu thích
   async removeFavorite(userId: string, essayId: string): Promise<{ message: string }> {
     if (!Types.ObjectId.isValid(essayId)) {
       throw new BadRequestException("essayId không hợp lệ");
@@ -89,6 +94,7 @@ export class FavoriteEssaysService {
   }
 
   // Lấy danh sách tất cả bài mẫu yêu thích của user
+  // userId: ID của user
   async getFavorites(userId: string): Promise<FavoriteEssay[]> {
     if (!Types.ObjectId.isValid(userId)) {
       throw new BadRequestException("userId không hợp lệ");
@@ -108,7 +114,9 @@ export class FavoriteEssaysService {
       .exec();
   }
 
-  // Kiểm tra user đã thả tim bài mẫu này chưa
+  // Kiểm tra user có thích bài mẫu hay không
+  // userId: ID của user
+  // essayId: ID của bài mẫu
   async isFavorite(userId: string, essayId: string): Promise<boolean> {
     if (!Types.ObjectId.isValid(userId) || !Types.ObjectId.isValid(essayId)) {
       return false;

@@ -1,8 +1,8 @@
-import { Module, Global } from '@nestjs/common';
-import { JwtModule } from '@nestjs/jwt';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { SubmissionsGateway } from './gateways/submissions.gateway';
-import { WsJwtGuard } from './guards/ws-jwt.guard';
+import { Module, Global } from "@nestjs/common";
+import { JwtModule } from "@nestjs/jwt";
+import { ConfigModule, ConfigService } from "@nestjs/config";
+import { SubmissionsGateway } from "./gateways/submissions.gateway";
+import { WsJwtGuard } from "./guards/ws-jwt.guard";
 
 @Global() // Để các module khác có thể inject SubmissionsGateway
 @Module({
@@ -10,9 +10,9 @@ import { WsJwtGuard } from './guards/ws-jwt.guard';
     JwtModule.registerAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
-        secret: configService.get<string>('JWT_SECRET'),
+        secret: configService.get<string>("JWT_SECRET"),
         signOptions: {
-          expiresIn: '7d',
+          expiresIn: "7d",
         } ,
       }),
       inject: [ConfigService],

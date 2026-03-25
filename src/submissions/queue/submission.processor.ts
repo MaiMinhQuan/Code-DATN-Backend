@@ -1,14 +1,14 @@
-import { Processor, WorkerHost, OnWorkerEvent } from '@nestjs/bullmq';
-import { Logger } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { Job } from 'bullmq';
-import { Submission, SubmissionDocument } from '@/schemas';
-import { AIGradingService } from '@/ai-grading/ai-grading.service';
-import { SubmissionStatus } from '@/common/enums';
-import { SubmissionsGateway } from '@/websocket/gateways/submissions.gateway';  // <-- THÊM
-import { SUBMISSION_QUEUE_NAME } from './submission.constants';
-import { GradingJobData, GradingJobResult } from './grading-job.interface';
+import { Processor, WorkerHost, OnWorkerEvent } from "@nestjs/bullmq";
+import { Logger } from "@nestjs/common";
+import { InjectModel } from "@nestjs/mongoose";
+import { Model } from "mongoose";
+import { Job } from "bullmq";
+import { Submission, SubmissionDocument } from "@/schemas";
+import { AIGradingService } from "@/ai-grading/ai-grading.service";
+import { SubmissionStatus } from "@/common/enums";
+import { SubmissionsGateway } from "@/websocket/gateways/submissions.gateway";
+import { SUBMISSION_QUEUE_NAME } from "./submission.constants";
+import { GradingJobData, GradingJobResult } from "./grading-job.interface";
 
 @Processor(SUBMISSION_QUEUE_NAME)
 export class SubmissionProcessor extends WorkerHost {
@@ -18,11 +18,13 @@ export class SubmissionProcessor extends WorkerHost {
     @InjectModel(Submission.name)
     private readonly submissionModel: Model<SubmissionDocument>,
     private readonly aiGradingService: AIGradingService,
-    private readonly submissionsGateway: SubmissionsGateway,  // <-- THÊM
+    private readonly submissionsGateway: SubmissionsGateway,
   ) {
     super();
   }
 
+  // Xử lý job chấm điểm bài viết IELTS (BullMQ Worker)
+  // Flow: PROCESSING → AI Grading → COMPLETED/FAILED → Emit WebSocket
   async process(job: Job<GradingJobData>): Promise<GradingJobResult> {
     const { submissionId, userId, essayContent, questionPrompt, attemptNumber } = job.data;
 
@@ -37,7 +39,7 @@ export class SubmissionProcessor extends WorkerHost {
       this.submissionsGateway.emitSubmissionProgress(userId, {
         submissionId,
         progress: 10,
-        message: 'Đang bắt đầu chấm bài...',
+        message: "Đang bắt đầu chấm bài...",
         timestamp: new Date(),
       });
 
@@ -50,7 +52,7 @@ export class SubmissionProcessor extends WorkerHost {
       this.submissionsGateway.emitSubmissionProgress(userId, {
         submissionId,
         progress: 30,
-        message: 'Đang phân tích bài viết...',
+        message: "Đang phân tích bài viết...",
         timestamp: new Date(),
       });
 
@@ -60,7 +62,7 @@ export class SubmissionProcessor extends WorkerHost {
       this.submissionsGateway.emitSubmissionProgress(userId, {
         submissionId,
         progress: 80,
-        message: 'Đang lưu kết quả...',
+        message: "Đang lưu kết quả...",
         timestamp: new Date(),
       });
 
@@ -113,30 +115,35 @@ export class SubmissionProcessor extends WorkerHost {
     }
   }
 
+  // Cập nhật status của submission
   private async updateSubmissionStatus(submissionId: string, status: SubmissionStatus): Promise<void> {
     await this.submissionModel.findByIdAndUpdate(submissionId, { status });
   }
 
+  // Cập nhật status của submission khi thất bại
   private async updateSubmissionFailed(submissionId: string, errorMessage: string): Promise<void> {
     await this.submissionModel.findByIdAndUpdate(submissionId, {
       status: SubmissionStatus.FAILED,
-      errorMessage: errorMessage || 'Unknown error occurred during AI grading',
+      errorMessage: errorMessage || "Unknown error occurred during AI grading",
     });
   }
 
-  // ============ EVENT HANDLERS ============
+  // EVENT HANDLERS
 
-  @OnWorkerEvent('completed')
+  // BullMQ event: Được gọi khi job hoàn thành thành công
+  @OnWorkerEvent("completed")
   onCompleted(job: Job<GradingJobData>, result: GradingJobResult) {
     this.logger.log(`[Job ${job.id}] Completed - Submission: ${result.submissionId}`);
   }
 
-  @OnWorkerEvent('failed')
+  // BullMQ event: Được gọi khi job thất bại sau tất cả các lần retry
+  @OnWorkerEvent("failed")
   onFailed(job: Job<GradingJobData>, error: Error) {
     this.logger.error(`[Job ${job.id}] Failed - Error: ${error.message}`);
   }
 
-  @OnWorkerEvent('active')
+  // BullMQ event: Được gọi khi job bắt đầu được xử lý
+  @OnWorkerEvent("active")
   onActive(job: Job<GradingJobData>) {
     this.logger.log(`[Job ${job.id}] Started processing`);
 
@@ -150,12 +157,14 @@ export class SubmissionProcessor extends WorkerHost {
     });
   }
 
-  @OnWorkerEvent('progress')
+  // BullMQ event: Được gọi khi job cập nhật tiến độ
+  @OnWorkerEvent("progress")
   onProgress(job: Job<GradingJobData>, progress: number) {
     this.logger.debug(`[Job ${job.id}] Progress: ${progress}%`);
   }
 
-  @OnWorkerEvent('stalled')
+  // BullMQ event: Được gọi khi job bị stall (bị worker lấy đi nhưng không hoàn thành trong thời gian quy định)
+  @OnWorkerEvent("stalled")
   onStalled(jobId: string) {
     this.logger.warn(`[Job ${jobId}] Stalled - will be retried`);
   }

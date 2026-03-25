@@ -12,11 +12,11 @@ export class TopicsService {
   ) {}
 
   // Lấy danh sách tất cả topic
-  // Mặc định lấy topic active (isActive = true)
   // Admin có thể xem cả topics inactive bằng query ?showAll=true
   async findAll(showAll: boolean = false) {
     const filter: any = {}
 
+    // Nếu không có query showAll=true, chỉ lấy các topic active
     if (!showAll) {
       filter.isActive = true;
     }

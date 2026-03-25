@@ -1,5 +1,6 @@
 import { ErrorCategory } from "../../common/enums";
 
+// DTO cho AI Error - Lỗi được AI phát hiện trong bài viết
 export class AIErrorDto {
   startIndex: number;
   endIndex: number;

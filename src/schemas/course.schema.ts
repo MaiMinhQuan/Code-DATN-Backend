@@ -1,5 +1,5 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, Types } from 'mongoose';
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { Document, Types } from "mongoose";
 
 // Sub-schema cho Topic Info (Nested Object)
 class TopicInfo {
@@ -48,6 +48,6 @@ export class Course {
 export const CourseSchema = SchemaFactory.createForClass(Course);
 
 // Indexes
-CourseSchema.index({ 'topicId._id': 1, isActive: 1 });
+CourseSchema.index({ "topicId._id": 1, isActive: 1 });
 CourseSchema.index({ isPublished: 1, isActive: 1, orderIndex: 1 });
 CourseSchema.index({ isActive: 1 });

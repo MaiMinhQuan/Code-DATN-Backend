@@ -23,14 +23,14 @@ export class ExamQuestionsController {
   constructor(private readonly examQuestionsService: ExamQuestionsService) {}
 
   // GET /api/exam-questions
-  // Lấy danh sách đề thi (Public hoặc Student)
+  // Lấy danh sách đề thi
   @Get()
   async findAll(@Query() query: QueryExamQuestionDto) {
     return this.examQuestionsService.findAll(query);
   }
 
   // GET /api/exam-questions/random
-  // Random 1 đề cho học viên luyện tập (Student)
+  // Random 1 đề cho học viên luyện tập
   @UseGuards(JwtAuthGuard)
   @Get("random")
   async getRandomQuestion(@Query("topicId") topicId?: string) {
@@ -38,14 +38,14 @@ export class ExamQuestionsController {
   }
 
   // GET /api/exam-questions/:id
-  // Lấy chi tiết đề thi (Public hoặc Student)
+  // Lấy chi tiết đề thi
   @Get(":id")
   async findOne(@Param("id") id: string) {
     return this.examQuestionsService.findOne(id);
   }
 
   // POST /api/exam-questions
-  // Tạo đề thi mới (Admin only)
+  // Tạo đề thi mới (Admin)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Post()
@@ -54,7 +54,7 @@ export class ExamQuestionsController {
   }
 
   // PATCH /api/exam-questions/:id
-  // Cập nhật đề thi (Admin only)
+  // Cập nhật đề thi (Admin)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Patch(":id")
@@ -63,7 +63,7 @@ export class ExamQuestionsController {
   }
 
   // DELETE /api/exam-questions/:id
-  // Xóa đề thi (Admin only)
+  // Xóa đề thi (Admin)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Delete(":id")

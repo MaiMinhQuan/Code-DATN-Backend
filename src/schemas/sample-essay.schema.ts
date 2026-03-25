@@ -1,6 +1,6 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, Types } from 'mongoose';
-import { TargetBand, HighlightType } from '@/common/enums';
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { Document, Types } from "mongoose";
+import { TargetBand, HighlightType } from "@/common/enums";
 
 // Embedded Sub-document for Highlight Annotations
 @Schema({ _id: false })
@@ -29,7 +29,7 @@ export class SampleEssay {
   @Prop({ required: true, trim: true })
   title: string;
 
-  @Prop({ type: Types.ObjectId, ref: 'Topic', required: true })
+  @Prop({ type: Types.ObjectId, ref: "Topic", required: true })
   topicId: Types.ObjectId;
 
   @Prop({ required: true })

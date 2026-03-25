@@ -1,5 +1,5 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, Types } from 'mongoose';
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { Document, Types } from "mongoose";
 
 export type ExamQuestionDocument = ExamQuestion & Document;
 
@@ -8,7 +8,7 @@ export class ExamQuestion {
   @Prop({ required: true, trim: true })
   title: string;
 
-  @Prop({ type: Types.ObjectId, ref: 'Topic' })
+  @Prop({ type: Types.ObjectId, ref: "Topic" })
   topicId?: Types.ObjectId;
 
   @Prop({ required: true })

@@ -1,8 +1,6 @@
-import { Socket } from 'socket.io';
+import { Socket } from "socket.io";
 
-/**
- * Interface mở rộng Socket với thông tin user đã xác thực
- */
+// Interface mở rộng Socket với thông tin user đã xác thực
 export interface SocketWithUser extends Socket {
   user: {
     userId: string;
@@ -11,9 +9,7 @@ export interface SocketWithUser extends Socket {
   };
 }
 
-/**
- * Payload gửi khi submission status thay đổi
- */
+// Payload gửi khi submission status thay đổi
 export interface SubmissionStatusPayload {
   submissionId: string;
   status: string;
@@ -23,9 +19,7 @@ export interface SubmissionStatusPayload {
   timestamp: Date;
 }
 
-/**
- * Payload gửi khi có progress update
- */
+// Payload gửi khi có progress update
 export interface SubmissionProgressPayload {
   submissionId: string;
   progress: number;

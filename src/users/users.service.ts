@@ -11,7 +11,6 @@ export class UsersService {
     @InjectModel(User.name) private userModel: Model<User>,
   ) {}
 
-  // GET /api/users/profile
   // Lấy thông tin profile của user hiện tại
   async getProfile(userId: string) {
     const user = await this.userModel.findById(userId).exec();
@@ -30,8 +29,7 @@ export class UsersService {
     }
   }
 
-  // PATCH /api/users/profile
-  // Cập nhật fullName và avatarUrl
+  // Cập nhật profile
   async updateProfile(userId: string, updateProfileDto: UpdateProfileDto) {
     const user = await this.userModel.findById(userId).exec();
     if (!user) {
@@ -58,7 +56,6 @@ export class UsersService {
     };
   }
 
-  // GET /api/users
   // Lấy danh sách tất cả user (chỉ cho admin)
   async findAll(page: number = 1, limit: number = 20, role?: string) {
     const skip = (page - 1) * limit;
@@ -91,7 +88,6 @@ export class UsersService {
     };
   }
 
-  // GET /api/users/:id
   // Lấy thông tin chi tiết của 1 user (chỉ cho admin)
   async findOne(userId: string) {
     const user = await this.userModel.findById(userId).select("-passwordHash").exec();
@@ -101,7 +97,6 @@ export class UsersService {
     return user;
   }
 
-  // PATCH /api/users/:id
   // Cập nhật thông tin user (chỉ cho admin, admin có thể update: fullName, avatarUrl, role, isActive)
   async updateUser(userId: string, updateUserAdminDto: UpdateUserAdminDto) {
     const user = await this.userModel.findById(userId).exec();
@@ -135,7 +130,6 @@ export class UsersService {
     }
   }
 
-  // DELETE /api/users/:id
   // Xóa user (chỉ cho admin, xóa mềm)
   async removeUser(userId: string, currentUserId: string) {
     // Không cho phép tự xóa chính mình

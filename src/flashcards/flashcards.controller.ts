@@ -21,7 +21,7 @@ import { JwtAuthGuard } from "../auth/guards/jwt-auth.guard";
 export class FlashcardsController {
   constructor(private readonly flashcardsService: FlashcardsService) {}
 
-  // ==================== FLASHCARD SET ENDPOINTS ====================
+  /* FLASHCARD SET ENDPOINTS */
 
   // GET /api/flashcard-sets
   // Lấy tất cả bộ thẻ của user
@@ -81,7 +81,7 @@ export class FlashcardsController {
     return this.flashcardsService.deleteSet(id, userId);
   }
 
-  // ==================== FLASHCARD (CARD) ENDPOINTS ====================
+  /* FLASHCARD ENDPOINTS */
 
   // POST /api/flashcard-sets/:id/cards
   // Thêm card vào bộ thẻ

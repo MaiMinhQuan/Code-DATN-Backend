@@ -23,7 +23,6 @@ export class UsersController {
 
   // PATCH /api/users/profile
   // Cập nhật profile của user đang đăng nhập
-  // Body: { fullName?, avatarUrl? }
   @UseGuards(JwtAuthGuard)
   @Patch("profile")
   async updateProfile(
@@ -35,7 +34,6 @@ export class UsersController {
 
   // GET /api/users
   // Lấy danh sách tất cả user (chỉ cho admin)
-  // Query: ?page=1&limit=20&role=STUDENT
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Get()
@@ -58,7 +56,6 @@ export class UsersController {
 
   // PATCH /api/users/:id
   // Cập nhật thông tin user (chỉ cho admin)
-  // Body: { fullName?, avatarUrl?, role?, isActive? }
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Patch(":id")

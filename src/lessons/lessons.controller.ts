@@ -60,9 +60,9 @@ export class LessonsController {
   // Cập nhật lesson (admin)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
-  @Patch(':id')
+  @Patch(":id")
   async update(
-    @Param('id') id: string,
+    @Param("id") id: string,
     @Body() updateLessonDto: UpdateLessonDto,
   ) {
     return this.lessonsService.update(id, updateLessonDto);
@@ -72,18 +72,18 @@ export class LessonsController {
   // Xoá lesson (Admin)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
-  @Delete(':id')
-  async remove(@Param('id') id: string) {
+  @Delete(":id")
+  async remove(@Param("id") id: string) {
     return this.lessonsService.remove(id);
   }
 
   // POST /api/lessons/:id/videos
   // Thêm video vào lesson (Admin)
-  @Post(':id/videos')
+  @Post(":id/videos")
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   async addVideo(
-    @Param('id') id: string,
+    @Param("id") id: string,
     @Body() addVideoDto: AddVideoDto,
   ) {
     return this.lessonsService.addVideo(id, addVideoDto);
@@ -91,23 +91,23 @@ export class LessonsController {
 
   // DELETE /api/lessons/:id/videos/:index
   // Xoá video khỏi lesson (Admin)
-  @Delete(':id/videos/:index')
+  @Delete(":id/videos/:index")
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   async removeVideo(
-    @Param('id') id: string,
-    @Param('index', ParseIntPipe) index: number,
+    @Param("id") id: string,
+    @Param("index", ParseIntPipe) index: number,
   ) {
     return this.lessonsService.removeVideo(id, index);
   }
 
   // POST /api/lessons/:id/vocabularies
   // Thêm từ vựng vào lesson (Admin)
-  @Post(':id/vocabularies')
+  @Post(":id/vocabularies")
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   async addVocabulary(
-    @Param('id') id: string,
+    @Param("id") id: string,
     @Body() addVocabularyDto: AddVocabularyDto,
   ) {
     return this.lessonsService.addVocabulary(id, addVocabularyDto);
@@ -115,23 +115,23 @@ export class LessonsController {
 
   // DELETE /api/lessons/:id/vocabularies/:index
   // Xoá từ vựng khỏi lesson (Admin)
-  @Delete(':id/vocabularies/:index')
+  @Delete(":id/vocabularies/:index")
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   async removeVocabulary(
-    @Param('id') id: string,
-    @Param('index', ParseIntPipe) index: number,
+    @Param("id") id: string,
+    @Param("index", ParseIntPipe) index: number,
   ) {
     return this.lessonsService.removeVocabulary(id, index);
   }
 
   // POST /api/lessons/:id/grammars
   // Thêm ngữ pháp vào lesson (Admin)
-  @Post(':id/grammars')
+  @Post(":id/grammars")
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   async addGrammar(
-    @Param('id') id: string,
+    @Param("id") id: string,
     @Body() addGrammarDto: AddGrammarDto,
   ) {
     return this.lessonsService.addGrammar(id, addGrammarDto);
@@ -139,12 +139,12 @@ export class LessonsController {
 
   // DELETE /api/lessons/:id/grammars/:index
   // Xoá ngữ pháp khỏi lesson (Admin)
-  @Delete(':id/grammars/:index')
+  @Delete(":id/grammars/:index")
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   async removeGrammar(
-    @Param('id') id: string,
-    @Param('index', ParseIntPipe) index: number,
+    @Param("id") id: string,
+    @Param("index", ParseIntPipe) index: number,
   ) {
     return this.lessonsService.removeGrammar(id, index);
   }

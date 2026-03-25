@@ -1,6 +1,7 @@
 import { IsNumber, IsString, IsEnum, IsOptional, Min } from "class-validator";
 import { HighlightType } from "../../common/enums";
 
+// DTO cho phần highlight trong CreateSampleEssayDto và UpdateSampleEssayDto
 export class HighlightAnnotationDto {
   @IsNumber()
   @Min(0)

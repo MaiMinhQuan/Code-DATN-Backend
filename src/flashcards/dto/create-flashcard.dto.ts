@@ -1,6 +1,8 @@
 import { IsString, IsNotEmpty, IsOptional, IsDate } from "class-validator";
 import { Type } from "class-transformer";
 
+
+// DTO cho POST /api/flashcard-sets/:setId/flashcards - Thêm flashcard vào set
 export class CreateFlashcardDto {
   @IsString({ message: "Nội dung mặt trước phải là chuỗi" })
   @IsNotEmpty({ message: "Nội dung mặt trước không được để trống" })

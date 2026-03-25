@@ -12,6 +12,7 @@ export class NotebookService {
   ) {}
 
   // Lấy tất cả ghi chú của user
+  // userId: ID của user
   async findAll(userId: string): Promise<NotebookNote[]> {
     if (!Types.ObjectId.isValid(userId)) {
       throw new BadRequestException("userId không hợp lệ");
@@ -24,6 +25,8 @@ export class NotebookService {
   }
 
   // Lấy chi tiết 1 ghi chú
+  // id: ID của ghi chú
+  // userId: ID của user
   async findOne(id: string, userId: string): Promise<NotebookNote> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("id không hợp lệ");
@@ -47,6 +50,8 @@ export class NotebookService {
   }
 
   // Tạo ghi chú mới
+  // userId: ID của user
+  // createNoteDto: Dữ liệu ghi chú mới (chứa userDraftNote và title)
   async create(userId: string, createNoteDto: CreateNoteDto): Promise<NotebookNote> {
     if (!Types.ObjectId.isValid(userId)) {
       throw new BadRequestException("userId không hợp lệ");
@@ -62,6 +67,9 @@ export class NotebookService {
   }
 
   // Cập nhật ghi chú
+  // id: ID của ghi chú
+  // userId: ID của user
+  // updateNoteDto: Dữ liệu cập nhật cho ghi chú
   async update(id: string, userId: string, updateNoteDto: UpdateNoteDto): Promise<NotebookNote> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("id không hợp lệ");
@@ -89,6 +97,8 @@ export class NotebookService {
   }
 
   // Xóa ghi chú
+  // id: ID của ghi chú
+  // userId: ID của user
   async delete(id: string, userId: string): Promise<{ message: string }> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("id không hợp lệ");
