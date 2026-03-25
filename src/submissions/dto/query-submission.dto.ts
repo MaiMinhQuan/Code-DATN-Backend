@@ -1,13 +1,14 @@
-import { IsEnum, IsOptional, IsMongoId, IsNumber, Min, Max } from 'class-validator';
-import { Type } from 'class-transformer';
-import { SubmissionStatus } from '@/common/enums';
+import { IsEnum, IsOptional, IsMongoId, IsNumber, Min, Max } from "class-validator";
+import { Type } from "class-transformer";
+import { SubmissionStatus } from "@/common/enums";
 
+// DTO để truy vấn danh sách submission với các tham số lọc và phân trang
 export class QuerySubmissionDto {
-  @IsMongoId({ message: 'questionId phải là MongoDB ObjectId hợp lệ' })
+  @IsMongoId({ message: "questionId phải là MongoDB ObjectId hợp lệ" })
   @IsOptional()
   questionId?: string;
 
-  @IsEnum(SubmissionStatus, { message: 'status không hợp lệ' })
+  @IsEnum(SubmissionStatus, { message: "status không hợp lệ" })
   @IsOptional()
   status?: SubmissionStatus;
 

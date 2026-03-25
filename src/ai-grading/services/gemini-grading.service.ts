@@ -13,6 +13,7 @@ export class GeminiGradingService implements IAIGradingService {
   private genAI: GoogleGenerativeAI;
   private model: any;
 
+  // Khởi tạo Gemini service nếu có API key
   constructor(private configService: ConfigService) {
     const apiKey = this.configService.get<string>("ai.gemini.apiKey");
     if (apiKey) {
@@ -25,16 +26,22 @@ export class GeminiGradingService implements IAIGradingService {
     return "GEMINI";
   }
 
+  // Kiểm tra Gemini service có sẵn sàng không
   async isAvailable(): Promise<boolean> {
     const apiKey = this.configService.get<string>("ai.gemini.apiKey");
     return !!apiKey && !!this.model;
   }
 
+  // Chấm bài viết của học viên
+  // essayContent: Bài viết của học viên
+  // questionPrompt: Đề thi
   async gradeEssay(essayContent: string, questionPrompt: string): Promise<AIResultDto> {
+    // Kiểm tra nếu service không sẵn sàng thì trả về lỗi ngay
     if (!(await this.isAvailable())) {
       throw new Error("Gemini API is not configured");
     }
 
+    // Chấm bài với Gemini và xử lý kết quả
     try {
       const prompt = buildGradingPrompt(questionPrompt, essayContent);
       const result = await this.model.generateContent(prompt);
@@ -48,10 +55,12 @@ export class GeminiGradingService implements IAIGradingService {
     }
   }
 
+  // Xử lý phản hồi từ Gemini, trích xuất điểm số và lỗi
   private parseGeminiResponse(responseText: string, essayContent: string): AIResultDto {
     try {
       let jsonString = responseText;
 
+      // Trích xuất JSON từ response
       const jsonMatch = responseText.match(/```json\s*([\s\S]*?)\s*```/);
       if (jsonMatch) {
         jsonString = jsonMatch[1];
@@ -62,6 +71,7 @@ export class GeminiGradingService implements IAIGradingService {
         }
       }
 
+      // Làm sạch JSON string để tránh lỗi khi parse
       jsonString = this.cleanJsonString(jsonString);
       const parsed = JSON.parse(jsonString);
 
@@ -90,16 +100,18 @@ export class GeminiGradingService implements IAIGradingService {
         processedAt: new Date(),
       };
     } catch (error) {
-      this.logger.error(`Failed to parse Gemini response: ${error.message}`);
+      this.logger.error(`Thất bại khi xử lý phản hồi Gemini: ${error.message}`);
       this.logger.debug(`Response text: ${responseText}`);
+      // Dùng regex trích xuất thủ công nếu JSON parsing thất bại
       return this.extractDataWithRegex(responseText, essayContent);
     }
   }
 
+  // Làm sạch JSON string trước khi parse (xử lý format lỗi từ Gemini)
   private cleanJsonString(jsonString: string): string {
     let cleaned = jsonString;
 
-    // Fix unescaped quotes trong suggestion
+    // Loại bỏ các ký tự không mong muốn
     cleaned = cleaned.replace(/" hoặc "/g, ' hoặc ');
     cleaned = cleaned.replace(/" or "/g, ' or ');
     cleaned = cleaned.replace(/"([^"]*)" hoặc "([^"]*)"/g, '$1 hoặc $2');
@@ -119,6 +131,7 @@ export class GeminiGradingService implements IAIGradingService {
       }
     }
 
+    // Cắt chuỗi đến vị trí đóng cuối cùng nếu có
     if (lastValidIndex > 0) {
       cleaned = cleaned.substring(0, lastValidIndex);
     }
@@ -126,6 +139,7 @@ export class GeminiGradingService implements IAIGradingService {
     return cleaned;
   }
 
+  // Nếu parsing JSON thất bại, dùng regex để trích xuất dữ liệu thô từ response
   private extractDataWithRegex(responseText: string, essayContent: string): AIResultDto {
     this.logger.log("Attempting to extract data with regex...");
 
@@ -135,6 +149,7 @@ export class GeminiGradingService implements IAIGradingService {
     const grammarScore = this.extractScore(responseText, "grammarScore");
     let overallBand = this.extractScore(responseText, "overallBand");
 
+    // Tính overallBand từ 4 điểm nếu AI không trả về hoặc trả về 0
     if (overallBand === 0 && (taskResponseScore > 0 || coherenceScore > 0)) {
       overallBand = this.calculateOverallBand(taskResponseScore, coherenceScore, lexicalScore, grammarScore);
     }
@@ -160,6 +175,7 @@ export class GeminiGradingService implements IAIGradingService {
     };
   }
 
+  // Trích xuất điểm số từ response text bằng regex
   private extractScore(text: string, fieldName: string): number {
     const regex = new RegExp(`"${fieldName}"\\s*:\\s*([\\d.]+)`, "i");
     const match = text.match(regex);
@@ -169,15 +185,18 @@ export class GeminiGradingService implements IAIGradingService {
     return 0;
   }
 
+  // Trích xuất trường text từ response bằng regex
   private extractTextField(text: string, fieldName: string): string | null {
     const regex = new RegExp(`"${fieldName}"\\s*:\\s*"([^"]*(?:\\\\.[^"]*)*)"`, "i");
     const match = text.match(regex);
     if (match) {
+      // Xử lý escape characters (\n, \") trong string
       return match[1].replace(/\\n/g, "\n").replace(/\\"/g, '"');
     }
     return null;
   }
 
+  // Trích xuất danh sách lỗi từ response text bằng regex
   private extractErrorsWithRegex(text: string, essayContent: string): AIErrorDto[] {
     const errors: AIErrorDto[] = [];
     const errorsMatch = text.match(/"errors"\s*:\s*\[([\s\S]*?)\]/);
@@ -198,6 +217,7 @@ export class GeminiGradingService implements IAIGradingService {
         let startIndex = Number(errorObj.startIndex) || 0;
         let endIndex = Number(errorObj.endIndex) || 0;
 
+        // Tìm vị trí chính xác của lỗi trong bài viết bằng originalText
         if (errorObj.originalText) {
           const foundIndex = essayContent.indexOf(errorObj.originalText);
           if (foundIndex !== -1) {
@@ -206,6 +226,7 @@ export class GeminiGradingService implements IAIGradingService {
           }
         }
 
+        // Đảm bảo indices nằm trong giới hạn hợp lệ của essayContent
         startIndex = Math.max(0, Math.min(startIndex, essayContent.length));
         endIndex = Math.max(startIndex, Math.min(endIndex, essayContent.length));
 
@@ -228,19 +249,23 @@ export class GeminiGradingService implements IAIGradingService {
     return errors;
   }
 
+  // Validate và làm tròn điểm số IELTS (0-9, bước nhảy 0.5)
   private validateScore(score: any): number {
     const num = Number(score);
     if (isNaN(num) || num < 0 || num > 9) {
       return 0;
     }
+    // Làm tròn đến bội số 0.5 gần nhất (5.0, 5.5, 6.0, 6.5, ...)
     return Math.round(num * 2) / 2;
   }
 
+  // Tính điểm overallBand dựa trên 4 điểm thành phần nếu overallBand không được cung cấp
   private calculateOverallBand(tr: number, cc: number, lr: number, gra: number): number {
     const avg = (tr + cc + lr + gra) / 4;
     return Math.round(avg * 2) / 2;
   }
 
+  // Parse danh sách lỗi từ JSON đã được parse
   private parseErrors(errors: any[], essayContent: string): AIErrorDto[] {
     if (!Array.isArray(errors)) return [];
 
@@ -250,6 +275,7 @@ export class GeminiGradingService implements IAIGradingService {
         let startIndex = Number(error.startIndex) || 0;
         let endIndex = Number(error.endIndex) || 0;
 
+        // Tìm vị trí chính xác của lỗi trong bài viết bằng originalText
         if (error.originalText && typeof error.originalText === "string") {
           const foundIndex = essayContent.indexOf(error.originalText);
           if (foundIndex !== -1) {
@@ -258,6 +284,7 @@ export class GeminiGradingService implements IAIGradingService {
           }
         }
 
+        // Đảm bảo indices nằm trong giới hạn hợp lệ của essayContent
         startIndex = Math.max(0, Math.min(startIndex, essayContent.length));
         endIndex = Math.max(startIndex, Math.min(endIndex, essayContent.length));
 
@@ -271,9 +298,11 @@ export class GeminiGradingService implements IAIGradingService {
           severity: this.validateSeverity(error.severity),
         };
       })
+      // Chỉ giữ lại các lỗi có vị trí hợp lệ (startIndex < endIndex)
       .filter((error) => error.startIndex < error.endIndex);
   }
 
+  // Validate và chuẩn hóa error category
   private validateErrorCategory(category: string): ErrorCategory {
     const validCategories: ErrorCategory[] = [
       ErrorCategory.GRAMMAR,
@@ -288,18 +317,22 @@ export class GeminiGradingService implements IAIGradingService {
     if (validCategories.includes(upperCategory)) {
       return upperCategory;
     }
+    // Mặc định về GRAMMAR nếu category không hợp lệ
     return ErrorCategory.GRAMMAR;
   }
 
+  // Validate và chuẩn hóa severity level
   private validateSeverity(severity: string): "low" | "medium" | "high" {
     const validSeverities = ["low", "medium", "high"];
     const lowerSeverity = String(severity).toLowerCase();
     if (validSeverities.includes(lowerSeverity)) {
       return lowerSeverity as "low" | "medium" | "high";
     }
+    // Mặc định về medium nếu severity không hợp lệ
     return "medium";
   }
 
+  // Trả về kết quả mặc định nếu quá trình xử lý thất bại
   private getDefaultResult(): AIResultDto {
     return {
       taskResponseScore: 0,

@@ -16,6 +16,7 @@ export class AuthService {
   ) {}
 
   // Đăng ký tài khoản mới
+  // Trả về User object (không có passwordHash)
   async register(registerDto: RegisterDto) {
     const {email, password, fullName} = registerDto;
 
@@ -49,6 +50,7 @@ export class AuthService {
   }
 
   // Đăng nhập
+  // Trả về Access token và user info
   async login(loginDto: LoginDto) {
     const {email, password} = loginDto;
 
@@ -58,15 +60,18 @@ export class AuthService {
       throw new UnauthorizedException("Email không đúng");
     }
 
+    // Kiểm tra tài khoản có active không
     if (!user.isActive) {
       throw new UnauthorizedException("Tài khoản đã bị khóa");
     }
 
+    // Kiểm tra mật khẩu
     const isPasswordValid = await bcrypt.compare(password, user.passwordHash);
     if (!isPasswordValid) {
       throw new UnauthorizedException("Mật khẩu không đúng");
     }
 
+    // Cập nhật lastLoginAt
     user.lastLoginAt = new Date();
     await user.save();
 
@@ -92,6 +97,8 @@ export class AuthService {
   }
 
   // Validate user từ JWT payload
+  // Tham số: userId - User ID từ JWT payload
+  // Trả về: User object hoặc null nếu inactive
   async validateUser(userId: string) {
     const user = await this.userModel.findById(userId).exec();
     if (!user || !user.isActive) {
@@ -99,5 +106,4 @@ export class AuthService {
     }
     return user;
   }
-
 }

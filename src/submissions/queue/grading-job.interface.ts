@@ -1,16 +1,16 @@
-// Data được đẩy vào Queue
+// Data được đẩy vào Queue khi học viên nộp bài
 export interface GradingJobData {
-  submissionId: string;           // MongoDB ObjectId as string
+  submissionId: string;           // ID của submission cần chấm điểm
   userId: string;                 // Để emit WebSocket về đúng user
-  essayContent: string;           // Nội dung bài viết
+  essayContent: string;           // Bài viết cần chấm điểm
   questionPrompt: string;         // Đề bài
-  attemptNumber: number;          // Lần thử thứ mấy
+  attemptNumber: number;          // Số lần làm lại đề bài này
 }
 
-// Result trả về sau khi job hoàn thành
+// Kết quả trả về sau khi job hoàn thành
 export interface GradingJobResult {
-  submissionId: string;
-  success: boolean;
-  processedAt: Date;
-  errorMessage?: string;
+  submissionId: string;           // ID của submission đã được chấm điểm
+  success: boolean;               // Chấm điểm thành công hay thất bại
+  processedAt: Date;              // Thời điểm hoàn thành chấm điểm
+  errorMessage?: string;          // Nếu chấm điểm thất bại, thông báo lỗi
 }

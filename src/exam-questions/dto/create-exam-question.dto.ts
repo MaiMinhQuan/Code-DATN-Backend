@@ -10,6 +10,7 @@ import {
   IsArray,
 } from "class-validator";
 
+// DTO cho POST /api/exam-questions - Tạo đề thi mới
 export class CreateExamQuestionDto {
   @IsString({ message: "Tiêu đề phải là chuỗi" })
   @IsNotEmpty({ message: "Tiêu đề không được để trống" })

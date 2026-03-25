@@ -1,5 +1,6 @@
 import { IsInt, IsIn, Min } from "class-validator";
 
+// DTO cho POST /api/flashcard-sets/:setId/flashcards/:id/review - Cập nhật kết quả ôn tập flashcard
 export class UpdateReviewDto {
   // quality: 0-5 (SM-2 algorithm)
   // 0: Hoàn toàn quên

@@ -11,6 +11,7 @@ import {
 } from "class-validator";
 import { TargetBand } from "@/common/enums";
 
+// DTO cho POST /api/lessons - Tạo mới một lesson
 export class CreateLessonDto {
   @IsString({ message: "Tiêu đề phải là chuỗi ký tự" })
   @IsNotEmpty({ message: "Tiêu đề không được để trống" })

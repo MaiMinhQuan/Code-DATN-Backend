@@ -6,6 +6,7 @@ import {
   MaxLength
 } from "class-validator";
 
+// DTO cho POST /api/lessons/:lessonId/vocabularies - Thêm vocabulary vào lesson
 export class AddVocabularyDto {
   @IsString({ message: "Từ vựng phải là chuỗi ký tự" })
   @IsNotEmpty({ message: "Từ vựng không được để trống" })

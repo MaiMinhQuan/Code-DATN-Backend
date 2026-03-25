@@ -16,9 +16,10 @@ export class FlashcardsService {
     @InjectModel(Flashcard.name) private flashcardModel: Model<FlashcardDocument>,
   ) {}
 
-  // ==================== FLASHCARD SET METHODS ====================
+  /* FLASHCARD SET METHODS*/
 
   // Lấy tất cả bộ thẻ của user
+  // userId: ID của user
   async findAllSets(userId: string): Promise<FlashcardSet[]> {
     if (!Types.ObjectId.isValid(userId)) {
       throw new BadRequestException("userId không hợp lệ");
@@ -31,6 +32,8 @@ export class FlashcardsService {
   }
 
   // Lấy chi tiết bộ thẻ kèm theo các cards
+  // setId: ID của bộ thẻ
+  // userId: ID của user
   async findSetWithCards(setId: string, userId: string): Promise<{ set: FlashcardSet; cards: Flashcard[] }> {
     if (!Types.ObjectId.isValid(setId)) {
       throw new BadRequestException("setId không hợp lệ");
@@ -61,6 +64,8 @@ export class FlashcardsService {
   }
 
   // Tạo bộ thẻ mới
+  // userId: ID của user
+  // createSetDto: Dữ liệu tạo bộ thẻ mới (chứa title và description)
   async createSet(userId: string, createSetDto: CreateFlashcardSetDto): Promise<FlashcardSet> {
     if (!Types.ObjectId.isValid(userId)) {
       throw new BadRequestException("userId không hợp lệ");
@@ -76,6 +81,9 @@ export class FlashcardsService {
   }
 
   // Cập nhật bộ thẻ
+  // setId: ID của bộ thẻ
+  // userId: ID của user
+  // updateSetDto: Dữ liệu cập nhật cho bộ thẻ (chứa title và description)
   async updateSet(setId: string, userId: string, updateSetDto: UpdateFlashcardSetDto): Promise<FlashcardSet> {
     if (!Types.ObjectId.isValid(setId)) {
       throw new BadRequestException("setId không hợp lệ");
@@ -103,6 +111,8 @@ export class FlashcardsService {
   }
 
   // Xóa bộ thẻ (và tất cả cards bên trong)
+  // setId: ID của bộ thẻ
+  // userId: ID của user
   async deleteSet(setId: string, userId: string): Promise<{ message: string }> {
     if (!Types.ObjectId.isValid(setId)) {
       throw new BadRequestException("setId không hợp lệ");
@@ -128,9 +138,13 @@ export class FlashcardsService {
     return { message: "Đã xóa bộ thẻ và tất cả thẻ bên trong thành công" };
   }
 
-  // ==================== FLASHCARD (CARD) METHODS ====================
+
+  /* FLASHCARD METHODS */
 
   // Thêm card vào bộ thẻ
+  // setId: ID của bộ thẻ
+  // userId: ID của user
+  // createCardDto: Dữ liệu tạo card mới
   async addCard(setId: string, userId: string, createCardDto: CreateFlashcardDto): Promise<Flashcard> {
     if (!Types.ObjectId.isValid(setId)) {
       throw new BadRequestException("setId không hợp lệ");
@@ -163,6 +177,9 @@ export class FlashcardsService {
   }
 
   // Cập nhật card
+  // cardId: ID của card
+  // userId: ID của user
+  // updateCardDto: Dữ liệu cập nhật cho card
   async updateCard(cardId: string, userId: string, updateCardDto: UpdateFlashcardDto): Promise<Flashcard> {
     if (!Types.ObjectId.isValid(cardId)) {
       throw new BadRequestException("cardId không hợp lệ");
@@ -198,6 +215,8 @@ export class FlashcardsService {
   }
 
   // Xóa card
+  // cardId: ID của card
+  // userId: ID của user
   async deleteCard(cardId: string, userId: string): Promise<{ message: string }> {
     if (!Types.ObjectId.isValid(cardId)) {
       throw new BadRequestException("cardId không hợp lệ");
@@ -231,6 +250,9 @@ export class FlashcardsService {
   }
 
   // Cập nhật lịch ôn tập (Spaced Repetition - SM-2 Algorithm đơn giản)
+  // cardId: ID của card
+  // userId: ID của user
+  // updateReviewDto: Dữ liệu cập nhật kết quả ôn tập (chứa quality từ 0-5)
   async updateReviewSchedule(cardId: string, userId: string, updateReviewDto: UpdateReviewDto): Promise<Flashcard> {
     if (!Types.ObjectId.isValid(cardId)) {
       throw new BadRequestException("cardId không hợp lệ");
@@ -313,7 +335,8 @@ export class FlashcardsService {
     return updatedCard;
   }
 
-  // Lấy các thẻ cần ôn tập hôm nay (bonus method)
+  // Lấy các thẻ cần ôn tập hôm nay
+  // userId: ID của user
   async getCardsForReview(userId: string): Promise<Flashcard[]> {
     if (!Types.ObjectId.isValid(userId)) {
       throw new BadRequestException("userId không hợp lệ");

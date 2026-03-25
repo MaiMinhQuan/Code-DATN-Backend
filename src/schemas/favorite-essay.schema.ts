@@ -1,14 +1,14 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, Types } from 'mongoose';
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { Document, Types } from "mongoose";
 
 export type FavoriteEssayDocument = FavoriteEssay & Document;
 
 @Schema({ timestamps: true })
 export class FavoriteEssay {
-  @Prop({ type: Types.ObjectId, ref: 'User', required: true })
+  @Prop({ type: Types.ObjectId, ref: "User", required: true })
   userId: Types.ObjectId;
 
-  @Prop({ type: Types.ObjectId, ref: 'SampleEssay', required: true })
+  @Prop({ type: Types.ObjectId, ref: "SampleEssay", required: true })
   essayId: Types.ObjectId;
 
   @Prop()

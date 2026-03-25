@@ -1,5 +1,6 @@
 import { IsString, IsOptional, MinLength, MaxLength, IsUrl } from "class-validator";
 
+// DTO cho PATCH /api/users/profile - Cập nhật thông tin user
 export class UpdateProfileDto {
   @IsOptional()
   @IsString()

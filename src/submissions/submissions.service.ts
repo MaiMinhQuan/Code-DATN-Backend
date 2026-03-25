@@ -1,13 +1,13 @@
-import { Injectable, Logger, NotFoundException, BadRequestException, ForbiddenException } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { InjectQueue } from '@nestjs/bullmq';
-import { Model, Types } from 'mongoose';
-import { Queue } from 'bullmq';
-import { Submission, SubmissionDocument, ExamQuestion, ExamQuestionDocument } from '@/schemas';
-import { SubmissionStatus } from '@/common/enums';
-import { CreateSubmissionDto, UpdateSubmissionDto, QuerySubmissionDto } from './dto';
-import { SUBMISSION_QUEUE_NAME, SUBMISSION_JOB_NAMES, DEFAULT_JOB_OPTIONS } from './queue/submission.constants';
-import { GradingJobData } from './queue/grading-job.interface';
+import { Injectable, Logger, NotFoundException, BadRequestException, ForbiddenException } from "@nestjs/common";
+import { InjectModel } from "@nestjs/mongoose";
+import { InjectQueue } from "@nestjs/bullmq";
+import { Model, Types } from "mongoose";
+import { Queue } from "bullmq";
+import { Submission, SubmissionDocument, ExamQuestion, ExamQuestionDocument } from "@/schemas";
+import { SubmissionStatus } from "@/common/enums";
+import { CreateSubmissionDto, UpdateSubmissionDto, QuerySubmissionDto } from "./dto";
+import { SUBMISSION_QUEUE_NAME, SUBMISSION_JOB_NAMES, DEFAULT_JOB_OPTIONS } from "./queue/submission.constants";
+import { GradingJobData } from "./queue/grading-job.interface";
 
 @Injectable()
 export class SubmissionsService {
@@ -24,9 +24,10 @@ export class SubmissionsService {
     private readonly submissionQueue: Queue<GradingJobData>,
   ) {}
 
-  /**
-   * Tạo bài nộp mới (DRAFT)
-   */
+
+  // Tạo bài nộp mới (DRAFT)
+  // userId: id của học viên
+  // createDto: { questionId, essayContent, timeSpentSeconds }
   async create(userId: string, createDto: CreateSubmissionDto): Promise<SubmissionDocument> {
     // 1. Kiểm tra question có tồn tại không
     const question = await this.examQuestionModel.findById(createDto.questionId);
@@ -56,10 +57,10 @@ export class SubmissionsService {
     return saved;
   }
 
-  /**
-   * Nộp bài để chấm - Đẩy job vào Queue
-   * Returns HTTP 202 Accepted (async processing)
-   */
+
+  // Nộp bài để chấm - Đẩy job vào Queue
+  // submissionId: ID của bài nộp cần chấm
+  // userId: ID của học viên
   async submitForGrading(submissionId: string, userId: string): Promise<{ message: string; jobId: string }> {
     // 1. Tìm submission
     const submission = await this.submissionModel.findById(submissionId);
@@ -69,7 +70,7 @@ export class SubmissionsService {
 
     // 2. Kiểm tra quyền sở hữu
     if (submission.userId.toString() !== userId) {
-      throw new ForbiddenException('You can only submit your own submissions');
+      throw new ForbiddenException("You can only submit your own submissions");
     }
 
     // 3. Kiểm tra status - chỉ cho phép submit từ DRAFT hoặc FAILED
@@ -82,7 +83,7 @@ export class SubmissionsService {
     // 4. Lấy question prompt
     const question = await this.examQuestionModel.findById(submission.questionId);
     if (!question) {
-      throw new NotFoundException('Associated exam question not found');
+      throw new NotFoundException("Associated exam question not found");
     }
 
     // 5. Cập nhật status -> SUBMITTED
@@ -118,14 +119,15 @@ export class SubmissionsService {
     );
 
     return {
-      message: 'Submission queued for AI grading',
+      message: "Submission queued for AI grading",
       jobId: job.id as string,
     };
   }
 
-  /**
-   * Lấy danh sách bài nộp của user
-   */
+
+  // Lấy danh sách bài nộp của user
+  // userId: ID của học viên
+  // queryDto: { questionId?, status?, page?, limit? }
   async findByUser(userId: string, queryDto: QuerySubmissionDto): Promise<{
     data: SubmissionDocument[];
     total: number;
@@ -135,21 +137,21 @@ export class SubmissionsService {
   }> {
     const { questionId, status, page = 1, limit = 10 } = queryDto;
 
-    // Build filter
+    // Xây dựng filter cho query
     const filter: any = { userId: new Types.ObjectId(userId) };
     if (questionId) filter.questionId = new Types.ObjectId(questionId);
     if (status) filter.status = status;
 
-    // Count total
+    // Đếm tổng số bài nộp
     const total = await this.submissionModel.countDocuments(filter);
 
-    // Fetch with pagination
+    // Truy vấn với phân trang
     const data = await this.submissionModel
       .find(filter)
       .sort({ createdAt: -1 })
       .skip((page - 1) * limit)
       .limit(limit)
-      .populate('questionId', 'title questionPrompt')
+      .populate("questionId", "title questionPrompt")
       .exec();
 
     return {
@@ -161,13 +163,14 @@ export class SubmissionsService {
     };
   }
 
-  /**
-   * Lấy chi tiết 1 bài nộp (bao gồm aiResult nếu có)
-   */
+
+  // Lấy chi tiết 1 bài nộp (bao gồm aiResult nếu có)
+  // submissionId: ID của bài nộp
+  // userId: ID của học viên
   async findOne(submissionId: string, userId: string): Promise<SubmissionDocument> {
     const submission = await this.submissionModel
       .findById(submissionId)
-      .populate('questionId', 'title questionPrompt suggestedOutline')
+      .populate("questionId", "title questionPrompt suggestedOutline")
       .exec();
 
     if (!submission) {
@@ -176,15 +179,17 @@ export class SubmissionsService {
 
     // Kiểm tra quyền sở hữu
     if (submission.userId.toString() !== userId) {
-      throw new ForbiddenException('You can only view your own submissions');
+      throw new ForbiddenException("You can only view your own submissions");
     }
 
     return submission;
   }
 
-  /**
-   * Cập nhật bài nháp (chỉ khi status = DRAFT)
-   */
+
+  // Cập nhật bài nháp (chỉ khi status = DRAFT)
+  // submissionId: ID của bài nộp cần cập nhật
+  // userId: ID của học viên
+  // updateDto: { essayContent?, timeSpentSeconds? }
   async updateDraft(submissionId: string, userId: string, updateDto: UpdateSubmissionDto): Promise<SubmissionDocument> {
     const submission = await this.submissionModel.findById(submissionId);
 
@@ -193,23 +198,24 @@ export class SubmissionsService {
     }
 
     if (submission.userId.toString() !== userId) {
-      throw new ForbiddenException('You can only update your own submissions');
+      throw new ForbiddenException("You can only update your own submissions");
     }
 
     if (submission.status !== SubmissionStatus.DRAFT) {
-      throw new BadRequestException('Can only update submissions in DRAFT status');
+      throw new BadRequestException("Can only update submissions in DRAFT status");
     }
 
-    // Update fields
+    // Update các trường
     if (updateDto.essayContent) submission.essayContent = updateDto.essayContent;
     if (updateDto.timeSpentSeconds) submission.timeSpentSeconds = updateDto.timeSpentSeconds;
 
     return submission.save();
   }
 
-  /**
-   * Xóa bài nháp (chỉ khi status = DRAFT)
-   */
+
+  // Xóa bài nháp (chỉ khi status = DRAFT)
+  // submissionId: ID của bài nộp cần xóa
+  // userId: ID của học viên
   async deleteDraft(submissionId: string, userId: string): Promise<void> {
     const submission = await this.submissionModel.findById(submissionId);
 
@@ -218,20 +224,19 @@ export class SubmissionsService {
     }
 
     if (submission.userId.toString() !== userId) {
-      throw new ForbiddenException('You can only delete your own submissions');
+      throw new ForbiddenException("You can only delete your own submissions");
     }
 
     if (submission.status !== SubmissionStatus.DRAFT) {
-      throw new BadRequestException('Can only delete submissions in DRAFT status');
+      throw new BadRequestException("Can only delete submissions in DRAFT status");
     }
 
     await this.submissionModel.findByIdAndDelete(submissionId);
     this.logger.log(`Deleted draft submission ${submissionId}`);
   }
 
-  /**
-   * Lấy trạng thái Queue (Admin only)
-   */
+
+  // Lấy trạng thái Queue (Admin)
   async getQueueStatus(): Promise<{
     waiting: number;
     active: number;

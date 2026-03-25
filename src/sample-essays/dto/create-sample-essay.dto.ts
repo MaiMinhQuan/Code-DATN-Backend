@@ -16,6 +16,7 @@ import { Type } from "class-transformer";
 import { TargetBand } from "../../common/enums";
 import { HighlightAnnotationDto } from "./highlight-annotation.dto";
 
+// DTO cho POST /api/sample-essays - Tạo mới một sample essay
 export class CreateSampleEssayDto {
   @IsString()
   @IsNotEmpty({ message: "Tiêu đề không được để trống" })

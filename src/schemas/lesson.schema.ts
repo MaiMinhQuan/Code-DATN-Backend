@@ -1,6 +1,6 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, Types } from 'mongoose';
-import { TargetBand } from '@/common/enums';
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { Document, Types } from "mongoose";
+import { TargetBand } from "@/common/enums";
 
 // Embedded Sub-documents
 @Schema({ _id: false })
@@ -59,7 +59,7 @@ export class Lesson {
   @Prop({ required: true, trim: true })
   title: string;
 
-  @Prop({ type: Types.ObjectId, ref: 'Course', required: true })
+  @Prop({ type: Types.ObjectId, ref: "Course", required: true })
   courseId: Types.ObjectId;
 
   @Prop({ type: String, enum: TargetBand, required: true })

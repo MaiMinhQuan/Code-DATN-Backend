@@ -1,5 +1,6 @@
 import { AIErrorDto } from "./ai-error.dto";
 
+// DTO cho AI Result - Kết quả đánh giá của AI cho một bài viết
 export class AIResultDto {
   taskResponseScore: number; // 0-9
   coherenceScore: number; // 0-9

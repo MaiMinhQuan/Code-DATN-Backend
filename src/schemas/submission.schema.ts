@@ -1,6 +1,6 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, Types } from 'mongoose';
-import { SubmissionStatus, ErrorCategory } from '@/common/enums';
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { Document, Types } from "mongoose";
+import { SubmissionStatus, ErrorCategory } from "@/common/enums";
 
 // Embedded Sub-document for AI Error Detection
 @Schema({ _id: false })
@@ -23,7 +23,7 @@ export class AIError {
   @Prop({ required: true })
   explanation: string; // Giải thích lỗi (tiếng Việt)
 
-  @Prop({ default: 'medium' })
+  @Prop({ default: "medium" })
   severity?: string; // "low", "medium", "high"
 }
 
@@ -66,10 +66,10 @@ export type SubmissionDocument = Submission & Document;
 
 @Schema({ timestamps: true })
 export class Submission {
-  @Prop({ type: Types.ObjectId, ref: 'User', required: true })
+  @Prop({ type: Types.ObjectId, ref: "User", required: true })
   userId: Types.ObjectId;
 
-  @Prop({ type: Types.ObjectId, ref: 'ExamQuestion', required: true })
+  @Prop({ type: Types.ObjectId, ref: "ExamQuestion", required: true })
   questionId: Types.ObjectId;
 
   @Prop({ required: true })
@@ -106,8 +106,8 @@ SubmissionSchema.index({ status: 1 });
 SubmissionSchema.index({ userId: 1, questionId: 1, attemptNumber: 1 });
 
 // Pre-save hook to calculate word count
-SubmissionSchema.pre('save', function (next) {
-  if (this.isModified('essayContent')) {
+SubmissionSchema.pre("save", function (next) {
+  if (this.isModified("essayContent")) {
     this.wordCount = this.essayContent.trim().split(/\s+/).length;
   }
   next();

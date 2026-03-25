@@ -28,14 +28,14 @@ import { WebsocketModule } from "./websocket/websocket.module";
       envFilePath: [".env.local", ".env"],
     }),
 
-    // BullMQ Global Configuration  <-- THÊM BLOCK NÀY
+    // BullMQ Global Configuration
     BullModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
         connection: {
-          host: configService.get<string>('redis.host'),
-          port: configService.get<number>('redis.port'),
-          password: configService.get<string>('redis.password') || undefined,
+          host: configService.get<string>("redis.host"),
+          port: configService.get<number>("redis.port"),
+          password: configService.get<string>("redis.password") || undefined,
         },
       }),
       inject: [ConfigService],

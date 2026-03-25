@@ -6,20 +6,21 @@ import {
   IsNumber,
   Min,
   MinLength,
-} from 'class-validator';
+} from "class-validator";
 
+// DTO để tạo một submission mới
 export class CreateSubmissionDto {
-  @IsMongoId({ message: 'questionId phải là MongoDB ObjectId hợp lệ' })
-  @IsNotEmpty({ message: 'questionId không được để trống' })
+  @IsMongoId({ message: "questionId phải là MongoDB ObjectId hợp lệ" })
+  @IsNotEmpty({ message: "questionId không được để trống" })
   questionId: string;
 
-  @IsString({ message: 'essayContent phải là chuỗi' })
-  @IsNotEmpty({ message: 'essayContent không được để trống' })
-  @MinLength(50, { message: 'Bài viết phải có ít nhất 50 ký tự' })
+  @IsString({ message: "essayContent phải là chuỗi" })
+  @IsNotEmpty({ message: "essayContent không được để trống" })
+  @MinLength(50, { message: "Bài viết phải có ít nhất 50 ký tự" })
   essayContent: string;
 
-  @IsNumber({}, { message: 'timeSpentSeconds phải là số' })
+  @IsNumber({}, { message: "timeSpentSeconds phải là số" })
   @IsOptional()
-  @Min(0, { message: 'timeSpentSeconds phải >= 0' })
+  @Min(0, { message: "timeSpentSeconds phải >= 0" })
   timeSpentSeconds?: number;
 }

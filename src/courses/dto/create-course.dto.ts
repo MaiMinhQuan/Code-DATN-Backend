@@ -1,5 +1,6 @@
 import { IsString, IsNotEmpty, IsOptional, IsNumber, IsBoolean, IsMongoId, MaxLength, Min } from "class-validator";
 
+// DTO cho POST /api/courses - Tạo khóa học mới
 export class CreateCourseDto {
   @IsString({ message: "Tiêu đề phải là chuỗi ký tự" })
   @IsNotEmpty({ message: "Tiêu đề không được để trống" })

@@ -1,7 +1,7 @@
-import { registerAs } from '@nestjs/config';
+import { registerAs } from "@nestjs/config";
 
-export default registerAs('ai', () => ({
-  provider: process.env.AI_PROVIDER || 'GEMINI',
+export default registerAs("ai", () => ({
+  provider: process.env.AI_PROVIDER || "GEMINI",
   gemini: {
     apiKey: process.env.GEMINI_API_KEY,
   },

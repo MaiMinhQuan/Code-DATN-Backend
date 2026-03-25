@@ -12,7 +12,8 @@ export class ExamQuestionsService {
     @InjectModel(ExamQuestion.name) private examQuestionModel: Model<ExamQuestionDocument>,
   ) {}
 
-  // Lấy danh sách đề thi (có filter)
+  // Lấy danh sách đề thi
+  // query: chứa các tham số filter như topicId, difficultyLevel, isPublished, tag
   async findAll(query: QueryExamQuestionDto): Promise<ExamQuestion[]> {
     const filter: any = {};
 
@@ -48,7 +49,8 @@ export class ExamQuestionsService {
       .exec();
   }
 
-  // Lấy chi tiết đề thi (bao gồm suggestedOutline)
+  // Lấy chi tiết đề thi
+  // id: ID của đề thi
   async findOne(id: string): Promise<ExamQuestion> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("id không hợp lệ");
@@ -67,6 +69,7 @@ export class ExamQuestionsService {
   }
 
   // Random 1 đề cho học viên luyện tập
+  // topicId: ID của chủ đề (tùy chọn, nếu không có sẽ random trong tất cả đề đã publish)
   async getRandomQuestion(topicId?: string): Promise<ExamQuestion> {
     const filter: any = { isPublished: true };
 
@@ -96,7 +99,8 @@ export class ExamQuestionsService {
     return randomQuestion;
   }
 
-  // Tạo đề thi mới (Admin only)
+  // Tạo đề thi mới (Admin)
+  // createDto: chứa dữ liệu đề thi mới
   async create(createDto: CreateExamQuestionDto): Promise<ExamQuestion> {
     // Validate topicId nếu có
     if (createDto.topicId && !Types.ObjectId.isValid(createDto.topicId)) {
@@ -124,7 +128,9 @@ export class ExamQuestionsService {
       .exec();
   }
 
-  // Cập nhật đề thi (Admin only)
+  // Cập nhật đề thi (Admin)
+  // id: ID của đề thi cần cập nhật
+  // updateDto: chứa dữ liệu cần cập nhật
   async update(id: string, updateDto: UpdateExamQuestionDto): Promise<ExamQuestion> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("id không hợp lệ");
@@ -134,11 +140,11 @@ export class ExamQuestionsService {
     const updateData: any = { ...updateDto };
 
     // Kiểm tra và convert topicId nếu có
-    if ('topicId' in updateDto && updateDto['topicId']) {
-      if (!Types.ObjectId.isValid(updateDto['topicId'] as string)) {
+    if ("topicId" in updateDto && updateDto["topicId"]) {
+      if (!Types.ObjectId.isValid(updateDto["topicId"] as string)) {
         throw new BadRequestException("topicId không hợp lệ");
       }
-      updateData.topicId = new Types.ObjectId(updateDto['topicId'] as string);
+      updateData.topicId = new Types.ObjectId(updateDto["topicId"] as string);
     }
 
     const updatedQuestion = await this.examQuestionModel
@@ -153,7 +159,8 @@ export class ExamQuestionsService {
     return updatedQuestion;
   }
 
-  // Xóa đề thi (Admin only)
+  // Xóa đề thi (Admin)
+  // id: ID của đề thi cần xóa
   async delete(id: string): Promise<{ message: string }> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("id không hợp lệ");
@@ -169,6 +176,7 @@ export class ExamQuestionsService {
   }
 
   // Tăng attemptCount khi học viên bắt đầu làm bài
+  // id: ID của đề thi
   async incrementAttemptCount(id: string): Promise<void> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("id không hợp lệ");

@@ -1,6 +1,7 @@
 import { IsOptional, IsMongoId, IsInt, Min, Max, IsBoolean, IsString } from "class-validator";
 import { Transform, Type } from "class-transformer";
 
+// DTO cho GET /api/exam-questions - Truy vấn danh sách đề thi
 export class QueryExamQuestionDto {
   @IsOptional()
   @IsMongoId({ message: "topicId phải là MongoDB ObjectId hợp lệ" })

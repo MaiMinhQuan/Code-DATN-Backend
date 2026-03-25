@@ -17,7 +17,7 @@ export class FavoriteEssaysController {
   constructor(private readonly favoriteEssaysService: FavoriteEssaysService) {}
 
   // GET /api/favorite-essays
-  // Lấy danh sách bài mẫu yêu thích (Student)
+  // Lấy danh sách bài mẫu yêu thích
   @UseGuards(JwtAuthGuard)
   @Get()
   async getFavorites(@Req() req) {
@@ -26,7 +26,7 @@ export class FavoriteEssaysController {
   }
 
   // POST /api/favorite-essays
-  // Thêm bài mẫu vào yêu thích (Student)
+  // Thêm bài mẫu vào yêu thích
   @UseGuards(JwtAuthGuard)
   @Post()
   async addFavorite(@Req() req, @Body() addFavoriteDto: AddFavoriteDto) {
@@ -39,7 +39,7 @@ export class FavoriteEssaysController {
   }
 
   // DELETE /api/favorite-essays/:essayId
-  // Xóa bài mẫu khỏi yêu thích (Student)
+  // Xóa bài mẫu khỏi yêu thích
   @UseGuards(JwtAuthGuard)
   @Delete(":essayId")
   async removeFavorite(@Req() req, @Param("essayId") essayId: string) {
@@ -48,7 +48,7 @@ export class FavoriteEssaysController {
   }
 
   // GET /api/favorite-essays/check/:essayId
-  // Kiểm tra bài mẫu đã được thả tim chưa (Student)
+  // Kiểm tra bài mẫu có trong yêu thích của user hay không
   @UseGuards(JwtAuthGuard)
   @Get("check/:essayId")
   async checkFavorite(@Req() req, @Param("essayId") essayId: string) {

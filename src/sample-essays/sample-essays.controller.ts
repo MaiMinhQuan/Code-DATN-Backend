@@ -21,13 +21,8 @@ import { UserRole, TargetBand } from "../common/enums";
 export class SampleEssaysController {
   constructor(private readonly sampleEssaysService: SampleEssaysService) {}
 
-  // ====================================
-  // GET /api/sample-essays
-  // ====================================
-  // Query params:
-  //   - topicId (optional): Filter theo topic
-  //   - targetBand (optional): BAND_5_0 | BAND_6_0 | BAND_7_PLUS
-  // Public - không cần auth
+  // GET /api/sample-essays?topicId=xxx&targetBand=xxx
+  // Lấy danh sách bài mẫu, có thể filter theo topicId và targetBand
   @Get()
   async findAll(
     @Query("topicId") topicId?: string,
@@ -36,30 +31,22 @@ export class SampleEssaysController {
     return this.sampleEssaysService.findAll(topicId, targetBand);
   }
 
-  // ====================================
   // GET /api/sample-essays/:id
-  // ====================================
-  // Public - không cần auth
-  // Return chi tiết bài mẫu + highlightAnnotations
+  // Lấy chi tiết bài mẫu theo ID
   @Get(":id")
   async findOne(@Param("id") id: string) {
     return this.sampleEssaysService.findOne(id);
   }
 
-  // ====================================
   // POST /api/sample-essays/:id/view
-  // ====================================
   // Tăng viewCount khi user xem bài mẫu
-  // Public - không cần auth
   @Post(":id/view")
   async incrementViewCount(@Param("id") id: string) {
     return this.sampleEssaysService.incrementViewCount(id);
   }
 
-  // ====================================
   // POST /api/sample-essays
-  // ====================================
-  // Admin only - Tạo bài mẫu mới
+  // Tạo bài mẫu mới (Admin)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Post()
@@ -67,10 +54,8 @@ export class SampleEssaysController {
     return this.sampleEssaysService.create(createDto);
   }
 
-  // ====================================
   // PATCH /api/sample-essays/:id
-  // ====================================
-  // Admin only - Cập nhật bài mẫu
+  // Cập nhật bài mẫu (Admin)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Patch(":id")
@@ -81,10 +66,8 @@ export class SampleEssaysController {
     return this.sampleEssaysService.update(id, updateDto);
   }
 
-  // ====================================
   // DELETE /api/sample-essays/:id
-  // ====================================
-  // Admin only - Xóa (ẩn) bài mẫu
+  // Xoá bài mẫu (Admin)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Delete(":id")

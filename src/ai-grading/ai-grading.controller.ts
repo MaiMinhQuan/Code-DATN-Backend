@@ -35,7 +35,7 @@ export class AIGradingController {
   }
 
   // POST /api/ai-grading/test
-  // Test chấm bài (Admin only - để tránh spam API)
+  // Test chấm bài (Admin - để tránh spam API)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Post("test")

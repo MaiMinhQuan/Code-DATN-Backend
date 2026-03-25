@@ -1,5 +1,5 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { Document } from "mongoose";
 
 export type TopicDocument = Topic & Document;
 
@@ -31,12 +31,12 @@ export const TopicSchema = SchemaFactory.createForClass(Topic);
 TopicSchema.index({ orderIndex: 1 });
 
 // Pre-save hook to generate slug from name
-TopicSchema.pre('save', function (next) {
-  if (this.isModified('name')) {
+TopicSchema.pre("save", function (next) {
+  if (this.isModified("name")) {
     this.slug = this.name
       .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/(^-|-$)/g, '');
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)/g, "");
   }
   next();
 });

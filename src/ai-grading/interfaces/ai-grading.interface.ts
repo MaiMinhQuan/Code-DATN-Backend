@@ -2,25 +2,18 @@ import { AIResultDto } from "../dto/ai-result.dto";
 
 // Strategy Interface - Tất cả AI providers phải implement interface này
 export interface IAIGradingService {
-  /**
-   * Chấm bài viết IELTS Writing Task 2
-   * @param essayContent - Nội dung bài viết của học viên
-   * @param questionPrompt - Đề bài IELTS
-   * @returns AIResultDto - Kết quả chấm bài
-   */
+
+  // Chấm bài viết IELTS Writing Task 2
+  // essayContent: Bài viết của học viên
+  // questionPrompt: Đề thi
   gradeEssay(essayContent: string, questionPrompt: string): Promise<AIResultDto>;
 
-  /**
-   * Kiểm tra service có sẵn sàng không
-   * @returns boolean
-   */
+  // Kiểm tra service có sẵn sàng không
   isAvailable(): Promise<boolean>;
 
-  /**
-   * Tên provider
-   */
+
+  // Lấy tên provider (do đang thử nhiều model khác nhau)
   getProviderName(): string;
 }
 
-// Token để inject service
 export const AI_GRADING_SERVICE = "AI_GRADING_SERVICE";

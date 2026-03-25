@@ -14,10 +14,10 @@ export class AIGradingService {
     private configService: ConfigService,
     private geminiService: GeminiGradingService,
   ) {
-    // Chọn provider dựa trên config
     this.initializeProvider();
   }
 
+  // Khởi tạo AI provider dựa trên config (ai.provider trong .env)
   private initializeProvider(): void {
     const providerConfig = this.configService.get<string>("ai.provider") || "GEMINI";
 
@@ -32,6 +32,8 @@ export class AIGradingService {
   }
 
   // Chấm bài với provider hiện tại
+  // essayContent: Bài viết của học viên
+  // questionPrompt: Đề thi
   async gradeEssay(essayContent: string, questionPrompt: string): Promise<AIResultDto> {
     const providerName = this.currentProvider.getProviderName();
 
