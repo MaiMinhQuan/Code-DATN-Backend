@@ -86,13 +86,23 @@ export class NotebookService {
       throw new BadRequestException("userId không hợp lệ");
     }
 
+    // Build payload rõ ràng để tránh Mongoose không auto-cast collectionId từ string → ObjectId
+    const updatePayload: Record<string, unknown> = {};
+    if (updateNoteDto.userDraftNote !== undefined) updatePayload.userDraftNote = updateNoteDto.userDraftNote;
+    if (updateNoteDto.title         !== undefined) updatePayload.title         = updateNoteDto.title;
+    if (updateNoteDto.collectionId  !== undefined) {
+      updatePayload.collectionId = updateNoteDto.collectionId
+        ? new Types.ObjectId(updateNoteDto.collectionId)
+        : null;
+    }
+
     const updatedNote = await this.notebookNoteModel
       .findOneAndUpdate(
         {
           _id: new Types.ObjectId(id),
           userId: new Types.ObjectId(userId),
         },
-        { $set: updateNoteDto },
+        { $set: updatePayload },
         { new: true },
       )
       .exec();

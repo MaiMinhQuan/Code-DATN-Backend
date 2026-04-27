@@ -18,17 +18,56 @@ export class FlashcardsService {
 
   /* FLASHCARD SET METHODS*/
 
-  // Lấy tất cả bộ thẻ của user
-  // userId: ID của user
-  async findAllSets(userId: string): Promise<FlashcardSet[]> {
+  async findAllSets(userId: string): Promise<(FlashcardSet & { cardCount: number; dueCount: number })[]> {
     if (!Types.ObjectId.isValid(userId)) {
       throw new BadRequestException("userId không hợp lệ");
     }
 
-    return this.flashcardSetModel
+    const sets = await this.flashcardSetModel
       .find({ userId: new Types.ObjectId(userId) })
       .sort({ createdAt: -1 })
+      .lean()
       .exec();
+
+    if (sets.length === 0) return [];
+
+    const setIds = sets.map((s) => s._id);
+
+    const today = new Date();
+    today.setHours(23, 59, 59, 999);
+
+    const [cardCounts, dueCounts] = await Promise.all([
+      this.flashcardModel.aggregate([
+        { $match: { setId: { $in: setIds } } },
+        { $group: { _id: "$setId", count: { $sum: 1 } } },
+      ]),
+      this.flashcardModel.aggregate([
+        {
+          $match: {
+            setId: { $in: setIds },
+            $or: [
+              { nextReviewDate: { $lte: today } },
+              { nextReviewDate: null },
+              { nextReviewDate: { $exists: false } },
+            ],
+          },
+        },
+        { $group: { _id: "$setId", count: { $sum: 1 } } },
+      ]),
+    ]);
+
+    const cardCountMap = new Map<string, number>(
+      cardCounts.map((c) => [c._id.toString(), c.count]),
+    );
+    const dueCountMap = new Map<string, number>(
+      dueCounts.map((c) => [c._id.toString(), c.count]),
+    );
+
+    return sets.map((set) => ({
+      ...set,
+      cardCount: cardCountMap.get(set._id.toString()) ?? 0,
+      dueCount: dueCountMap.get(set._id.toString()) ?? 0,
+    }));
   }
 
   // Lấy chi tiết bộ thẻ kèm theo các cards
