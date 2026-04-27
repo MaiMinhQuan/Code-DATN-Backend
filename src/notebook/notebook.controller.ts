@@ -6,6 +6,7 @@ import {
   Delete,
   Body,
   Param,
+  Query,
   UseGuards,
   Req,
 } from "@nestjs/common";
@@ -18,13 +19,13 @@ import { JwtAuthGuard } from "../auth/guards/jwt-auth.guard";
 export class NotebookController {
   constructor(private readonly notebookService: NotebookService) {}
 
-  // GET /api/notebook
-  // Lấy tất cả ghi chú của user
+  // GET /api/notebook?collectionId=<id|none>
+  // Lấy tất cả ghi chú của user (có thể lọc theo bộ)
   @UseGuards(JwtAuthGuard)
   @Get()
-  async findAll(@Req() req) {
+  async findAll(@Req() req, @Query("collectionId") collectionId?: string) {
     const userId = req.user._id.toString();
-    return this.notebookService.findAll(userId);
+    return this.notebookService.findAll(userId, collectionId);
   }
 
   // GET /api/notebook/:id

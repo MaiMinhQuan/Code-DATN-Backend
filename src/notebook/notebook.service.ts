@@ -12,16 +12,21 @@ export class NotebookService {
   ) {}
 
   // Lấy tất cả ghi chú của user
-  // userId: ID của user
-  async findAll(userId: string): Promise<NotebookNote[]> {
+  // collectionId: undefined = tất cả, "none" = chưa phân loại, "<id>" = theo bộ
+  async findAll(userId: string, collectionId?: string): Promise<NotebookNote[]> {
     if (!Types.ObjectId.isValid(userId)) {
       throw new BadRequestException("userId không hợp lệ");
     }
 
-    return this.notebookNoteModel
-      .find({ userId: new Types.ObjectId(userId) })
-      .sort({ createdAt: -1 })
-      .exec();
+    const filter: Record<string, unknown> = { userId: new Types.ObjectId(userId) };
+
+    if (collectionId === "none") {
+      filter.collectionId = null;
+    } else if (collectionId && Types.ObjectId.isValid(collectionId)) {
+      filter.collectionId = new Types.ObjectId(collectionId);
+    }
+
+    return this.notebookNoteModel.find(filter).sort({ createdAt: -1 }).exec();
   }
 
   // Lấy chi tiết 1 ghi chú
@@ -58,9 +63,12 @@ export class NotebookService {
     }
 
     const newNote = new this.notebookNoteModel({
-      userId: new Types.ObjectId(userId),
+      userId:        new Types.ObjectId(userId),
       userDraftNote: createNoteDto.userDraftNote,
-      title: createNoteDto.title || undefined,
+      title:         createNoteDto.title || undefined,
+      collectionId:  createNoteDto.collectionId
+                       ? new Types.ObjectId(createNoteDto.collectionId)
+                       : null,
     });
 
     return newNote.save();

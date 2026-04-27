@@ -12,6 +12,7 @@ export * from "./favorite-essay.schema";
 
 // Module 3: Notebook & Flashcards
 export * from "./notebook-note.schema";
+export * from "./note-collection.schema";
 export * from "./flashcard-set.schema";
 export * from "./flashcard.schema";
 

@@ -1,4 +1,4 @@
-import { IsString, IsNotEmpty, IsOptional } from "class-validator";
+import { IsString, IsNotEmpty, IsOptional, IsMongoId } from "class-validator";
 
 // DTO cho POST /api/notebook - Tạo mới một ghi chú
 export class CreateNoteDto {
@@ -9,4 +9,8 @@ export class CreateNoteDto {
   @IsOptional()
   @IsString({ message: "Tiêu đề phải là chuỗi" })
   title?: string;
+
+  @IsOptional()
+  @IsMongoId({ message: "collectionId không hợp lệ" })
+  collectionId?: string;
 }
