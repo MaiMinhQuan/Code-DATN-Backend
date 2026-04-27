@@ -13,6 +13,9 @@ export class NotebookNote {
 
   @Prop()
   title?: string; // Tiêu đề tùy chọn cho ghi chú
+
+  @Prop({ type: Types.ObjectId, ref: "NoteCollection", default: null })
+  collectionId: Types.ObjectId | null
 }
 
 export const NotebookNoteSchema = SchemaFactory.createForClass(NotebookNote);

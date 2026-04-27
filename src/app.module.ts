@@ -12,6 +12,7 @@ import { LessonsModule } from "./lessons/lessons.module";
 import { SampleEssaysModule } from "./sample-essays/sample-essays.module";
 import { FavoriteEssaysModule } from "./favorite-essays/favorite-essays.module";
 import { NotebookModule } from "./notebook/notebook.module";
+import { NoteCollectionsModule } from "./note-collections/note-collections.module";
 import { FlashcardsModule } from "./flashcards/flashcards.module";
 import { ExamQuestionsModule } from "./exam-questions/exam-questions.module";
 import { AIGradingModule } from "./ai-grading/ai-grading.module";
@@ -50,6 +51,7 @@ import { WebsocketModule } from "./websocket/websocket.module";
     SampleEssaysModule,
     FavoriteEssaysModule,
     NotebookModule,
+    NoteCollectionsModule,
     FlashcardsModule,
     ExamQuestionsModule,
     AIGradingModule,
