@@ -63,6 +63,15 @@ Trả về CHÍNH XÁC theo định dạng JSON sau, KHÔNG thêm bất kỳ tex
 5. Nếu bài viết quá ngắn (< 150 từ), vẫn chấm nhưng trừ điểm Task Response
 `;
 
+
+/*
+Chèn đề bài và nội dung bài viết vào mẫu prompt chấm điểm (template).
+Input:
+- questionPrompt: Nội dung câu hỏi IELTS Task 2.
+- essayContent: Nội dung bài viết của học viên.
+Output:
+- string: Chuỗi prompt hoàn chỉnh đã được điền dữ liệu.
+*/
 export function buildGradingPrompt(questionPrompt: string, essayContent: string): string {
   return IELTS_GRADING_PROMPT
     .replace("{questionPrompt}", questionPrompt)

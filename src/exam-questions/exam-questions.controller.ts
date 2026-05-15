@@ -1,3 +1,4 @@
+// REST /exam-questions — CRUD đề, filter, lấy random để luyện tập.
 import {
   Controller,
   Get,
@@ -22,30 +23,42 @@ import { UserRole } from "../common/enums";
 export class ExamQuestionsController {
   constructor(private readonly examQuestionsService: ExamQuestionsService) {}
 
-  // GET /api/exam-questions
-  // Lấy danh sách đề thi
+  /*
+  GET /exam-questions — danh sách đề thi (filter)
+  Input:
+    - query — query params
+   */
   @Get()
   async findAll(@Query() query: QueryExamQuestionDto) {
     return this.examQuestionsService.findAll(query);
   }
 
-  // GET /api/exam-questions/random
-  // Random 1 đề cho học viên luyện tập
+  /*
+  GET /exam-questions/random — đề ngẫu nhiên (cần JWT)
+  Input:
+    - topicId — query optional
+   */
   @UseGuards(JwtAuthGuard)
   @Get("random")
   async getRandomQuestion(@Query("topicId") topicId?: string) {
     return this.examQuestionsService.getRandomQuestion(topicId);
   }
 
-  // GET /api/exam-questions/:id
-  // Lấy chi tiết đề thi
+  /*
+  GET /exam-questions/:id — chi tiết đề thi
+  Input:
+    - id — id question trên URL
+   */
   @Get(":id")
   async findOne(@Param("id") id: string) {
     return this.examQuestionsService.findOne(id);
   }
 
-  // POST /api/exam-questions
-  // Tạo đề thi mới (Admin)
+  /*
+  POST /exam-questions — tạo đề (admin)
+  Input:
+    - createDto — body request
+   */
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Post()
@@ -53,8 +66,12 @@ export class ExamQuestionsController {
     return this.examQuestionsService.create(createDto);
   }
 
-  // PATCH /api/exam-questions/:id
-  // Cập nhật đề thi (Admin)
+  /*
+  PATCH /exam-questions/:id — cập nhật đề (admin)
+  Input:
+    - id — id question trên URL
+    - updateDto — body request
+   */
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Patch(":id")
@@ -62,8 +79,11 @@ export class ExamQuestionsController {
     return this.examQuestionsService.update(id, updateDto);
   }
 
-  // DELETE /api/exam-questions/:id
-  // Xóa đề thi (Admin)
+  /*
+  DELETE /exam-questions/:id — xóa đề (admin)
+  Input:
+    - id — id question trên URL
+   */
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Delete(":id")

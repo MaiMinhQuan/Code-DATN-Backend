@@ -1,3 +1,4 @@
+// Gateway Socket.IO namespace /ws/submissions
 import {
   WebSocketGateway,
   WebSocketServer,
@@ -19,14 +20,11 @@ import {
   SubmissionProgressPayload,
 } from "../interfaces/socket-with-user.interface";
 
-// WebSocket Gateway xử lý real-time notifications cho Submissions
-// Namespace: /ws/submissions
-// Auto-join room theo userId khi connect
-// Emit events: submission_status_updated, submission_progress
+// CORS ở đây có thể bị adapter ghi đè phần origin; credentials bật cho cookie nếu cần
 @WebSocketGateway({
   namespace: WS_NAMESPACES.SUBMISSIONS,
   cors: {
-    origin: "*", // Sẽ được override bởi adapter
+    origin: "*",
     credentials: true,
   },
 })
@@ -38,23 +36,36 @@ export class SubmissionsGateway
   @WebSocketServer()
   server: Server;
 
-  // Map để track connected users
-  private connectedUsers: Map<string, Set<string>> = new Map(); // userId -> Set<socketId>
+  // userId -> tập socketId (nhiều tab / thiết bị)
+  private connectedUsers: Map<string, Set<string>> = new Map();
 
+  /*
+  Inject JwtService + ConfigService để verify token khi client kết nối
+  Input:
+    - jwtService — verify JWT handshake
+    - configService — đọc JWT_SECRET
+   */
   constructor(
     private readonly jwtService: JwtService,
     private readonly configService: ConfigService,
   ) {}
 
-  // Lifecycle: Sau khi Gateway khởi tạo
+  /*
+  Sau khi server Socket.IO khởi tạo xong
+  Input:
+    - server — instance Socket.IO Server
+   */
   afterInit(server: Server) {
     this.logger.log(`WebSocket Gateway initialized on namespace: ${WS_NAMESPACES.SUBMISSIONS}`);
   }
 
-  // Lifecycle: Khi client kết nối
+  /*
+  Client mới: xác thực JWT, gán user lên socket, join room user:<id>
+  Input:
+    - client — socket vừa kết nối
+   */
   async handleConnection(client: Socket) {
     try {
-      // 1. Xác thực token
       const user = await this.authenticateSocket(client);
 
       if (!user) {
@@ -64,17 +75,15 @@ export class SubmissionsGateway
         return;
       }
 
-      // 2. Gắn user info vào socket
+      // Gắn payload user đã verify để handler sau dùng
       (client as SocketWithUser).user = user;
 
-      // 3. Auto join room theo userId
+      // Tự join room riêng để server emit đúng chủ submission
       const userRoom = `${ROOM_PREFIX.USER}${user.userId}`;
       client.join(userRoom);
 
-      // 4. Track connected user
       this.trackUserConnection(user.userId, client.id);
 
-      // 5. Gửi confirmation
       client.emit(WS_EVENTS.CONNECTED, {
         message: "Connected successfully",
         userId: user.userId,
@@ -92,7 +101,11 @@ export class SubmissionsGateway
     }
   }
 
-  // Lifecycle: Khi client ngắt kết nối
+  /*
+  Client ngắt kết nối: bỏ track socket
+  Input:
+    - client — socket đang disconnect
+   */
   handleDisconnect(client: Socket) {
     const user = (client as SocketWithUser).user;
 
@@ -104,7 +117,12 @@ export class SubmissionsGateway
     }
   }
 
-  // Event handler: Client yêu cầu join room cụ thể
+  /*
+  Client gửi join_room: join thêm room (không cho join room user của người khác)
+  Input:
+    - client — socket đã auth
+    - data — { room: string }
+   */
   @SubscribeMessage(WS_EVENTS.JOIN_ROOM)
   handleJoinRoom(
     @ConnectedSocket() client: SocketWithUser,
@@ -112,7 +130,7 @@ export class SubmissionsGateway
   ) {
     const { room } = data;
 
-    // Validate room name (chỉ cho phép join room của chính mình)
+    // Chặn subscribe room private user:<id> của user khác
     if (room.startsWith(ROOM_PREFIX.USER)) {
       const roomUserId = room.replace(ROOM_PREFIX.USER, "");
       if (roomUserId !== client.user.userId) {
@@ -126,7 +144,12 @@ export class SubmissionsGateway
     return { success: true, room };
   }
 
-  // Event handler: Client yêu cầu rời room
+  /*
+  Client gửi leave_room: rời room (không cho rời room mặc định user:<id>)
+  Input:
+    - client — socket đã auth
+    - data — { room: string }
+   */
   @SubscribeMessage(WS_EVENTS.LEAVE_ROOM)
   handleLeaveRoom(
     @ConnectedSocket() client: SocketWithUser,
@@ -134,7 +157,7 @@ export class SubmissionsGateway
   ) {
     const { room } = data;
 
-    // Không cho phép rời room mặc định của user
+    // Giữ user trong room mặc định để luôn nhận event chấm bài
     const userRoom = `${ROOM_PREFIX.USER}${client.user.userId}`;
     if (room === userRoom) {
       return { success: false, message: "Cannot leave default user room" };
@@ -146,10 +169,12 @@ export class SubmissionsGateway
     return { success: true, room };
   }
 
-  // ============ PUBLIC METHODS FOR EMITTING EVENTS ============
-
-  // Emit event khi submission status thay đổi
-  // Được gọi từ SubmissionProcessor
+  /*
+  Emit submission_status_updated tới room của chủ bài (processor gọi)
+  Input:
+    - userId — chủ submission
+    - payload — submissionId, status, hasResult, ...
+   */
   emitSubmissionStatusUpdated(userId: string, payload: SubmissionStatusPayload): void {
     const room = `${ROOM_PREFIX.USER}${userId}`;
 
@@ -161,7 +186,12 @@ export class SubmissionsGateway
     );
   }
 
-  // Emit event khi có progress update
+  /*
+  Emit submission_progress (tiến trình chấm) tới room chủ bài
+  Input:
+    - userId — chủ submission
+    - payload — progress %, message, ...
+   */
   emitSubmissionProgress(userId: string, payload: SubmissionProgressPayload): void {
     const room = `${ROOM_PREFIX.USER}${userId}`;
 
@@ -173,18 +203,30 @@ export class SubmissionsGateway
     );
   }
 
-  // Helper: Kiểm tra user có đang online không
+  /*
+  Kiểm tra user còn ít nhất một socket đang mở
+  Input:
+    - userId — id user
+   */
   isUserOnline(userId: string): boolean {
     return this.connectedUsers.has(userId) &&
            this.connectedUsers.get(userId)!.size > 0;
   }
 
-  // Helper: Lấy số lượng connections của user
+  /*
+  Số socket đang active của một user (đa tab)
+  Input:
+    - userId — id user
+   */
   getUserConnectionCount(userId: string): number {
     return this.connectedUsers.get(userId)?.size || 0;
   }
 
-  // Helper: Lấy tổng số connections
+  /*
+  Tổng số socket đang kết nối (mọi user)
+  Input:
+    - (không có tham số)
+   */
   getTotalConnections(): number {
     let total = 0;
     this.connectedUsers.forEach(sockets => {
@@ -193,9 +235,11 @@ export class SubmissionsGateway
     return total;
   }
 
-  // ============ PRIVATE HELPER METHODS ============
-
-  // Xác thực socket từ token
+  /*
+  Đọc JWT từ handshake, verify và trả claims user (hoặc null)
+  Input:
+    - client — socket kết nối
+   */
   private async authenticateSocket(client: Socket): Promise<{
     userId: string;
     email: string;
@@ -224,17 +268,18 @@ export class SubmissionsGateway
     }
   }
 
-  // Trích xuất token từ socket handshake
+  /*
+  Lấy token từ query ?token= -> auth.token -> Authorization Bearer
+  Input:
+    - client — socket (handshake)
+   */
   private extractToken(client: Socket): string | null {
-    // 1. Query param
     const tokenFromQuery = client.handshake.query.token as string;
     if (tokenFromQuery) return tokenFromQuery;
 
-    // 2. Auth object
     const tokenFromAuth = client.handshake.auth?.token as string;
     if (tokenFromAuth) return tokenFromAuth;
 
-    // 3. Authorization header
     const authHeader = client.handshake.headers.authorization;
     if (authHeader?.startsWith("Bearer ")) {
       return authHeader.substring(7);
@@ -243,7 +288,12 @@ export class SubmissionsGateway
     return null;
   }
 
-  // Theo dõi kết nối của user
+  /*
+  Thêm socketId vào map theo userId
+  Input:
+    - userId — chủ socket
+    - socketId — id socket.io
+   */
   private trackUserConnection(userId: string, socketId: string): void {
     if (!this.connectedUsers.has(userId)) {
       this.connectedUsers.set(userId, new Set());
@@ -251,7 +301,12 @@ export class SubmissionsGateway
     this.connectedUsers.get(userId)!.add(socketId);
   }
 
-  // Ngừng theo dõi kết nối của user khi ngắt kết nối
+  /*
+  Xóa socketId khỏi map; xóa hẳn key user nếu không còn socket
+  Input:
+    - userId — chủ socket
+    - socketId — id socket cần gỡ
+   */
   private untrackUserConnection(userId: string, socketId: string): void {
     const userSockets = this.connectedUsers.get(userId);
     if (userSockets) {

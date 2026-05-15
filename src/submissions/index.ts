@@ -1,3 +1,4 @@
+// Export module submissions
 export * from "./submissions.module";
 export * from "./submissions.service";
 export * from "./submissions.controller";

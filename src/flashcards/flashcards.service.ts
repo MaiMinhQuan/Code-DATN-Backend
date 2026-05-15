@@ -1,3 +1,4 @@
+// Service CRUD flashcard set/cards + tính lịch ôn tập (SM-2)
 import { Injectable, NotFoundException, BadRequestException, ForbiddenException } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model, Types } from "mongoose";
@@ -16,8 +17,11 @@ export class FlashcardsService {
     @InjectModel(Flashcard.name) private flashcardModel: Model<FlashcardDocument>,
   ) {}
 
-  /* FLASHCARD SET METHODS*/
-
+  /*
+  Danh sách flashcard set của user (kèm cardCount và dueCount)
+  Input:
+    - userId — id user
+   */
   async findAllSets(userId: string): Promise<(FlashcardSet & { cardCount: number; dueCount: number })[]> {
     if (!Types.ObjectId.isValid(userId)) {
       throw new BadRequestException("userId không hợp lệ");
@@ -33,9 +37,11 @@ export class FlashcardsService {
 
     const setIds = sets.map((s) => s._id);
 
+    // Mốc cuối ngày để tính thẻ đến hạn ôn
     const today = new Date();
     today.setHours(23, 59, 59, 999);
 
+    // Chạy 2 aggregation song song: đếm tổng thẻ và đếm thẻ đến hạn
     const [cardCounts, dueCounts] = await Promise.all([
       this.flashcardModel.aggregate([
         { $match: { setId: { $in: setIds } } },
@@ -45,6 +51,7 @@ export class FlashcardsService {
         {
           $match: {
             setId: { $in: setIds },
+            // Thẻ đến hạn: nextReviewDate <= hôm nay hoặc chưa set ngày
             $or: [
               { nextReviewDate: { $lte: today } },
               { nextReviewDate: null },
@@ -70,9 +77,12 @@ export class FlashcardsService {
     }));
   }
 
-  // Lấy chi tiết bộ thẻ kèm theo các cards
-  // setId: ID của bộ thẻ
-  // userId: ID của user
+  /*
+  Chi tiết set + cards (check ownership)
+  Input:
+    - setId — id set
+    - userId — id user
+   */
   async findSetWithCards(setId: string, userId: string): Promise<{ set: FlashcardSet; cards: Flashcard[] }> {
     if (!Types.ObjectId.isValid(setId)) {
       throw new BadRequestException("setId không hợp lệ");
@@ -81,7 +91,7 @@ export class FlashcardsService {
       throw new BadRequestException("userId không hợp lệ");
     }
 
-    // Tìm set và kiểm tra quyền sở hữu
+    // Check ownership bằng _id + userId
     const set = await this.flashcardSetModel
       .findOne({
         _id: new Types.ObjectId(setId),
@@ -93,7 +103,6 @@ export class FlashcardsService {
       throw new NotFoundException(`Không tìm thấy bộ thẻ với ID: ${setId}`);
     }
 
-    // Lấy tất cả cards của set
     const cards = await this.flashcardModel
       .find({ setId: new Types.ObjectId(setId) })
       .sort({ createdAt: 1 })
@@ -102,9 +111,12 @@ export class FlashcardsService {
     return { set, cards };
   }
 
-  // Tạo bộ thẻ mới
-  // userId: ID của user
-  // createSetDto: Dữ liệu tạo bộ thẻ mới (chứa title và description)
+  /*
+  Tạo flashcard set mới
+  Input:
+    - userId — id user
+    - createSetDto — body request
+   */
   async createSet(userId: string, createSetDto: CreateFlashcardSetDto): Promise<FlashcardSet> {
     if (!Types.ObjectId.isValid(userId)) {
       throw new BadRequestException("userId không hợp lệ");
@@ -119,10 +131,13 @@ export class FlashcardsService {
     return newSet.save();
   }
 
-  // Cập nhật bộ thẻ
-  // setId: ID của bộ thẻ
-  // userId: ID của user
-  // updateSetDto: Dữ liệu cập nhật cho bộ thẻ (chứa title và description)
+  /*
+  Cập nhật flashcard set (owner-only)
+  Input:
+    - setId — id set
+    - userId — id user
+    - updateSetDto — body request
+   */
   async updateSet(setId: string, userId: string, updateSetDto: UpdateFlashcardSetDto): Promise<FlashcardSet> {
     if (!Types.ObjectId.isValid(setId)) {
       throw new BadRequestException("setId không hợp lệ");
@@ -149,9 +164,12 @@ export class FlashcardsService {
     return updatedSet;
   }
 
-  // Xóa bộ thẻ (và tất cả cards bên trong)
-  // setId: ID của bộ thẻ
-  // userId: ID của user
+  /*
+  Xóa flashcard set và xóa cascade toàn bộ cards
+  Input:
+    - setId — id set
+    - userId — id user
+   */
   async deleteSet(setId: string, userId: string): Promise<{ message: string }> {
     if (!Types.ObjectId.isValid(setId)) {
       throw new BadRequestException("setId không hợp lệ");
@@ -171,19 +189,19 @@ export class FlashcardsService {
       throw new NotFoundException(`Không tìm thấy bộ thẻ với ID: ${setId}`);
     }
 
-    // Xóa tất cả cards trong set
+    // Cascade-delete cards thuộc set
     await this.flashcardModel.deleteMany({ setId: new Types.ObjectId(setId) }).exec();
 
     return { message: "Đã xóa bộ thẻ và tất cả thẻ bên trong thành công" };
   }
 
-
-  /* FLASHCARD METHODS */
-
-  // Thêm card vào bộ thẻ
-  // setId: ID của bộ thẻ
-  // userId: ID của user
-  // createCardDto: Dữ liệu tạo card mới
+  /*
+  Thêm card vào set (check ownership)
+  Input:
+    - setId — id set
+    - userId — id user
+    - createCardDto — body request
+   */
   async addCard(setId: string, userId: string, createCardDto: CreateFlashcardDto): Promise<Flashcard> {
     if (!Types.ObjectId.isValid(setId)) {
       throw new BadRequestException("setId không hợp lệ");
@@ -192,7 +210,7 @@ export class FlashcardsService {
       throw new BadRequestException("userId không hợp lệ");
     }
 
-    // Kiểm tra set có tồn tại và thuộc về user không
+    // Validate set tồn tại và thuộc user
     const setExists = await this.flashcardSetModel
       .findOne({
         _id: new Types.ObjectId(setId),
@@ -215,10 +233,13 @@ export class FlashcardsService {
     return newCard.save();
   }
 
-  // Cập nhật card
-  // cardId: ID của card
-  // userId: ID của user
-  // updateCardDto: Dữ liệu cập nhật cho card
+  /*
+  Cập nhật card (check ownership theo set)
+  Input:
+    - cardId — id card
+    - userId — id user
+    - updateCardDto — body request
+   */
   async updateCard(cardId: string, userId: string, updateCardDto: UpdateFlashcardDto): Promise<Flashcard> {
     if (!Types.ObjectId.isValid(cardId)) {
       throw new BadRequestException("cardId không hợp lệ");
@@ -227,13 +248,12 @@ export class FlashcardsService {
       throw new BadRequestException("userId không hợp lệ");
     }
 
-    // Tìm card
     const card = await this.flashcardModel.findById(cardId).exec();
     if (!card) {
       throw new NotFoundException(`Không tìm thấy thẻ với ID: ${cardId}`);
     }
 
-    // Kiểm tra quyền sở hữu thông qua set
+    // Check ownership qua parent set
     const set = await this.flashcardSetModel
       .findOne({
         _id: card.setId,
@@ -245,7 +265,6 @@ export class FlashcardsService {
       throw new ForbiddenException("Bạn không có quyền chỉnh sửa thẻ này");
     }
 
-    // Cập nhật card
     const updatedCard = await this.flashcardModel
       .findByIdAndUpdate(cardId, { $set: updateCardDto }, { new: true })
       .exec();
@@ -253,9 +272,12 @@ export class FlashcardsService {
     return updatedCard;
   }
 
-  // Xóa card
-  // cardId: ID của card
-  // userId: ID của user
+  /*
+  Xóa card (check ownership theo set)
+  Input:
+    - cardId — id card
+    - userId — id user
+   */
   async deleteCard(cardId: string, userId: string): Promise<{ message: string }> {
     if (!Types.ObjectId.isValid(cardId)) {
       throw new BadRequestException("cardId không hợp lệ");
@@ -264,13 +286,12 @@ export class FlashcardsService {
       throw new BadRequestException("userId không hợp lệ");
     }
 
-    // Tìm card
     const card = await this.flashcardModel.findById(cardId).exec();
     if (!card) {
       throw new NotFoundException(`Không tìm thấy thẻ với ID: ${cardId}`);
     }
 
-    // Kiểm tra quyền sở hữu thông qua set
+    // Check ownership qua parent set
     const set = await this.flashcardSetModel
       .findOne({
         _id: card.setId,
@@ -282,16 +303,18 @@ export class FlashcardsService {
       throw new ForbiddenException("Bạn không có quyền xóa thẻ này");
     }
 
-    // Xóa card
     await this.flashcardModel.findByIdAndDelete(cardId).exec();
 
     return { message: "Đã xóa thẻ thành công" };
   }
 
-  // Cập nhật lịch ôn tập (Spaced Repetition - SM-2 Algorithm đơn giản)
-  // cardId: ID của card
-  // userId: ID của user
-  // updateReviewDto: Dữ liệu cập nhật kết quả ôn tập (chứa quality từ 0-5)
+  /*
+  Cập nhật lịch ôn tập (SM-2 đơn giản) và tăng reviewCount
+  Input:
+    - cardId — id card
+    - userId — id user
+    - updateReviewDto — quality 0–5
+   */
   async updateReviewSchedule(cardId: string, userId: string, updateReviewDto: UpdateReviewDto): Promise<Flashcard> {
     if (!Types.ObjectId.isValid(cardId)) {
       throw new BadRequestException("cardId không hợp lệ");
@@ -300,13 +323,12 @@ export class FlashcardsService {
       throw new BadRequestException("userId không hợp lệ");
     }
 
-    // Tìm card
     const card = await this.flashcardModel.findById(cardId).exec();
     if (!card) {
       throw new NotFoundException(`Không tìm thấy thẻ với ID: ${cardId}`);
     }
 
-    // Kiểm tra quyền sở hữu thông qua set
+    // Check ownership qua parent set
     const set = await this.flashcardSetModel
       .findOne({
         _id: card.setId,
@@ -318,16 +340,15 @@ export class FlashcardsService {
       throw new ForbiddenException("Bạn không có quyền cập nhật thẻ này");
     }
 
-    // Tính toán ngày ôn tập tiếp theo dựa trên quality (SM-2 đơn giản)
     const { quality } = updateReviewDto;
     const newReviewCount = card.reviewCount + 1;
     let daysUntilNextReview: number;
 
     if (quality < 3) {
-      // Trả lời sai hoặc khó nhớ -> ôn lại sớm
+      // Nhớ sai/khó → reset interval ngắn nhất
       daysUntilNextReview = 1;
     } else {
-      // Trả lời đúng -> tăng khoảng cách ôn tập
+      // Nhớ đúng → interval tăng dần theo số lần ôn
       switch (newReviewCount) {
         case 1:
           daysUntilNextReview = 1;
@@ -348,7 +369,7 @@ export class FlashcardsService {
           daysUntilNextReview = Math.min(60, newReviewCount * 7);
       }
 
-      // Điều chỉnh theo quality
+      // Điều chỉnh interval theo quality
       if (quality === 5) {
         daysUntilNextReview = Math.ceil(daysUntilNextReview * 1.3);
       } else if (quality === 3) {
@@ -359,7 +380,6 @@ export class FlashcardsService {
     const nextReviewDate = new Date();
     nextReviewDate.setDate(nextReviewDate.getDate() + daysUntilNextReview);
 
-    // Cập nhật card
     const updatedCard = await this.flashcardModel
       .findByIdAndUpdate(
         cardId,
@@ -374,14 +394,16 @@ export class FlashcardsService {
     return updatedCard;
   }
 
-  // Lấy các thẻ cần ôn tập hôm nay
-  // userId: ID của user
+  /*
+  Danh sách thẻ đến hạn ôn hôm nay (trong tất cả set của user)
+  Input:
+    - userId — id user
+   */
   async getCardsForReview(userId: string): Promise<Flashcard[]> {
     if (!Types.ObjectId.isValid(userId)) {
       throw new BadRequestException("userId không hợp lệ");
     }
 
-    // Lấy tất cả set của user
     const userSets = await this.flashcardSetModel
       .find({ userId: new Types.ObjectId(userId) })
       .select("_id")
@@ -389,7 +411,7 @@ export class FlashcardsService {
 
     const setIds = userSets.map((set) => set._id);
 
-    // Lấy các cards có nextReviewDate <= hôm nay hoặc chưa có nextReviewDate
+    // Include thẻ chưa có nextReviewDate để ôn ngay
     const today = new Date();
     today.setHours(23, 59, 59, 999);
 

@@ -1,3 +1,4 @@
+// Đăng ký module AI Grading
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 import { AIGradingService } from "./ai-grading.service";

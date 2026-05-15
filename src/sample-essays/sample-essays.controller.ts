@@ -1,3 +1,4 @@
+// REST /sample-essays — danh sách/chi tiết bài mẫu, tăng view, CRUD admin.
 import {
   Controller,
   Get,
@@ -21,8 +22,12 @@ import { UserRole, TargetBand } from "../common/enums";
 export class SampleEssaysController {
   constructor(private readonly sampleEssaysService: SampleEssaysService) {}
 
-  // GET /api/sample-essays?topicId=xxx&targetBand=xxx
-  // Lấy danh sách bài mẫu, có thể filter theo topicId và targetBand
+  /*
+  GET /sample-essays — danh sách bài mẫu (filter)
+  Input:
+    - topicId — query optional
+    - targetBand — query optional
+   */
   @Get()
   async findAll(
     @Query("topicId") topicId?: string,
@@ -31,22 +36,31 @@ export class SampleEssaysController {
     return this.sampleEssaysService.findAll(topicId, targetBand);
   }
 
-  // GET /api/sample-essays/:id
-  // Lấy chi tiết bài mẫu theo ID
+  /*
+  GET /sample-essays/:id — chi tiết bài mẫu
+  Input:
+    - id — id essay trên URL
+   */
   @Get(":id")
   async findOne(@Param("id") id: string) {
     return this.sampleEssaysService.findOne(id);
   }
 
-  // POST /api/sample-essays/:id/view
-  // Tăng viewCount khi user xem bài mẫu
+  /*
+  POST /sample-essays/:id/view — tăng viewCount
+  Input:
+    - id — id essay trên URL
+   */
   @Post(":id/view")
   async incrementViewCount(@Param("id") id: string) {
     return this.sampleEssaysService.incrementViewCount(id);
   }
 
-  // POST /api/sample-essays
-  // Tạo bài mẫu mới (Admin)
+  /*
+  POST /sample-essays — tạo bài mẫu (admin)
+  Input:
+    - createDto — body request
+   */
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Post()
@@ -54,8 +68,12 @@ export class SampleEssaysController {
     return this.sampleEssaysService.create(createDto);
   }
 
-  // PATCH /api/sample-essays/:id
-  // Cập nhật bài mẫu (Admin)
+  /*
+  PATCH /sample-essays/:id — cập nhật bài mẫu (admin)
+  Input:
+    - id — id essay trên URL
+    - updateDto — body request
+   */
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Patch(":id")
@@ -66,8 +84,11 @@ export class SampleEssaysController {
     return this.sampleEssaysService.update(id, updateDto);
   }
 
-  // DELETE /api/sample-essays/:id
-  // Xoá bài mẫu (Admin)
+  /*
+  DELETE /sample-essays/:id — ẩn bài mẫu (admin)
+  Input:
+    - id — id essay trên URL
+   */
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Delete(":id")

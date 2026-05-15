@@ -1,3 +1,4 @@
+// Module Auth: cấu hình JWT + Passport và export AuthService.
 import { Module } from "@nestjs/common";
 import { JwtModule, JwtModuleOptions } from "@nestjs/jwt";
 import { PassportModule } from "@nestjs/passport";
@@ -7,12 +8,11 @@ import { AuthService } from "./auth.service";
 import { AuthController } from "./auth.controller";
 import { JwtStrategy } from "./strategies/jwt.strategy";
 
-// Module xử lý authentication - JWT + Passport
 @Module({
   imports: [
     DatabaseModule,
     PassportModule,
-    // Cấu hình JWT async để đọc secret từ env
+    // Đọc JWT secret và thời hạn từ biến môi trường lúc runtime để tránh hard-code trong code
     JwtModule.registerAsync({
       imports: [ConfigModule],
       inject: [ConfigService],

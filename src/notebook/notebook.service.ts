@@ -1,3 +1,4 @@
+// Service CRUD NotebookNote (check ownership theo user)
 import { Injectable, NotFoundException, BadRequestException } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model, Types } from "mongoose";
@@ -11,8 +12,12 @@ export class NotebookService {
     @InjectModel(NotebookNote.name) private notebookNoteModel: Model<NotebookNoteDocument>,
   ) {}
 
-  // Lấy tất cả ghi chú của user
-  // collectionId: undefined = tất cả, "none" = chưa phân loại, "<id>" = theo bộ
+  /*
+  Danh sách note của user (filter theo collectionId)
+  Input:
+    - userId — id user
+    - collectionId — "none" | ObjectId | undefined
+   */
   async findAll(userId: string, collectionId?: string): Promise<NotebookNote[]> {
     if (!Types.ObjectId.isValid(userId)) {
       throw new BadRequestException("userId không hợp lệ");
@@ -21,6 +26,7 @@ export class NotebookService {
     const filter: Record<string, unknown> = { userId: new Types.ObjectId(userId) };
 
     if (collectionId === "none") {
+      // Chỉ lấy note chưa thuộc collection nào
       filter.collectionId = null;
     } else if (collectionId && Types.ObjectId.isValid(collectionId)) {
       filter.collectionId = new Types.ObjectId(collectionId);
@@ -29,9 +35,12 @@ export class NotebookService {
     return this.notebookNoteModel.find(filter).sort({ createdAt: -1 }).exec();
   }
 
-  // Lấy chi tiết 1 ghi chú
-  // id: ID của ghi chú
-  // userId: ID của user
+  /*
+  Chi tiết note (check ownership)
+  Input:
+    - id — id note
+    - userId — id user
+   */
   async findOne(id: string, userId: string): Promise<NotebookNote> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("id không hợp lệ");
@@ -54,9 +63,12 @@ export class NotebookService {
     return note;
   }
 
-  // Tạo ghi chú mới
-  // userId: ID của user
-  // createNoteDto: Dữ liệu ghi chú mới (chứa userDraftNote và title)
+  /*
+  Tạo note mới
+  Input:
+    - userId — id user
+    - createNoteDto — body request
+   */
   async create(userId: string, createNoteDto: CreateNoteDto): Promise<NotebookNote> {
     if (!Types.ObjectId.isValid(userId)) {
       throw new BadRequestException("userId không hợp lệ");
@@ -66,6 +78,7 @@ export class NotebookService {
       userId:        new Types.ObjectId(userId),
       userDraftNote: createNoteDto.userDraftNote,
       title:         createNoteDto.title || undefined,
+      // Cast collectionId string → ObjectId, hoặc null nếu không có
       collectionId:  createNoteDto.collectionId
                        ? new Types.ObjectId(createNoteDto.collectionId)
                        : null,
@@ -74,10 +87,13 @@ export class NotebookService {
     return newNote.save();
   }
 
-  // Cập nhật ghi chú
-  // id: ID của ghi chú
-  // userId: ID của user
-  // updateNoteDto: Dữ liệu cập nhật cho ghi chú
+  /*
+  Cập nhật note (owner-only), tự cast collectionId → ObjectId/null
+  Input:
+    - id — id note
+    - userId — id user
+    - updateNoteDto — body request
+   */
   async update(id: string, userId: string, updateNoteDto: UpdateNoteDto): Promise<NotebookNote> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("id không hợp lệ");
@@ -86,7 +102,7 @@ export class NotebookService {
       throw new BadRequestException("userId không hợp lệ");
     }
 
-    // Build payload rõ ràng để tránh Mongoose không auto-cast collectionId từ string → ObjectId
+    // Tạo payload thủ công để cast collectionId đúng kiểu
     const updatePayload: Record<string, unknown> = {};
     if (updateNoteDto.userDraftNote !== undefined) updatePayload.userDraftNote = updateNoteDto.userDraftNote;
     if (updateNoteDto.title         !== undefined) updatePayload.title         = updateNoteDto.title;
@@ -114,9 +130,12 @@ export class NotebookService {
     return updatedNote;
   }
 
-  // Xóa ghi chú
-  // id: ID của ghi chú
-  // userId: ID của user
+  /*
+  Xóa note (owner-only)
+  Input:
+    - id — id note
+    - userId — id user
+   */
   async delete(id: string, userId: string): Promise<{ message: string }> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("id không hợp lệ");

@@ -24,24 +24,25 @@ export class SubmissionsService {
     private readonly submissionQueue: Queue<GradingJobData>,
   ) {}
 
-
-  // Tạo bài nộp mới (DRAFT)
-  // userId: id của học viên
-  // createDto: { questionId, essayContent, timeSpentSeconds }
+  /*
+  Tạo submission mới (DRAFT)
+  Input:
+    - userId — id user từ JWT
+    - createDto — body request
+   */
   async create(userId: string, createDto: CreateSubmissionDto): Promise<SubmissionDocument> {
-    // 1. Kiểm tra question có tồn tại không
+    // Kiểm tra đề thi có tồn tại không trước khi tạo submission
     const question = await this.examQuestionModel.findById(createDto.questionId);
     if (!question) {
       throw new NotFoundException(`Exam question with ID ${createDto.questionId} not found`);
     }
 
-    // 2. Tính attempt number (lần làm thứ mấy)
+    // Đếm số lần user đã làm đề này để tính attemptNumber
     const previousAttempts = await this.submissionModel.countDocuments({
       userId: new Types.ObjectId(userId),
       questionId: new Types.ObjectId(createDto.questionId),
     });
 
-    // 3. Tạo submission mới
     const submission = new this.submissionModel({
       userId: new Types.ObjectId(userId),
       questionId: new Types.ObjectId(createDto.questionId),
@@ -57,42 +58,41 @@ export class SubmissionsService {
     return saved;
   }
 
-
-  // Nộp bài để chấm - Đẩy job vào Queue
-  // submissionId: ID của bài nộp cần chấm
-  // userId: ID của học viên
+  /*
+  Submit submission để chấm AI: DRAFT/FAILED -> SUBMITTED và add job vào BullMQ
+  Input:
+    - submissionId — id submission
+    - userId — id user (phải là chủ bài)
+   */
   async submitForGrading(submissionId: string, userId: string): Promise<{ message: string; jobId: string }> {
-    // 1. Tìm submission
     const submission = await this.submissionModel.findById(submissionId);
     if (!submission) {
       throw new NotFoundException(`Submission with ID ${submissionId} not found`);
     }
 
-    // 2. Kiểm tra quyền sở hữu
     if (submission.userId.toString() !== userId) {
       throw new ForbiddenException("You can only submit your own submissions");
     }
 
-    // 3. Kiểm tra status - chỉ cho phép submit từ DRAFT hoặc FAILED
+    // Chỉ cho phép nộp lại submission có status DRAFT hoặc FAILED
     if (![SubmissionStatus.DRAFT, SubmissionStatus.FAILED].includes(submission.status)) {
       throw new BadRequestException(
         `Cannot submit. Current status: ${submission.status}. Only DRAFT or FAILED submissions can be submitted.`
       );
     }
 
-    // 4. Lấy question prompt
     const question = await this.examQuestionModel.findById(submission.questionId);
     if (!question) {
       throw new NotFoundException("Associated exam question not found");
     }
 
-    // 5. Cập nhật status -> SUBMITTED
+    // Đánh dấu là SUBMITTED và xóa bất kỳ message lỗi trước đó
     submission.status = SubmissionStatus.SUBMITTED;
     submission.submittedAt = new Date();
-    submission.errorMessage = undefined; // Clear previous error
+    submission.errorMessage = undefined;
     await submission.save();
 
-    // 6. Đẩy job vào BullMQ Queue
+    // Xây dựng và đẩy job vào BullMQ queue
     const jobData: GradingJobData = {
       submissionId: submission._id.toString(),
       userId: userId,
@@ -106,13 +106,13 @@ export class SubmissionsService {
       jobData,
       {
         ...DEFAULT_JOB_OPTIONS,
-        jobId: `grading-${submissionId}-${Date.now()}`, // Unique job ID
+        jobId: `grading-${submissionId}-${Date.now()}`, // ID duy nhất để tránh duplicate jobs
       }
     );
 
     this.logger.log(`Submitted job ${job.id} for submission ${submissionId}`);
 
-    // 7. Tăng attempt count cho question
+    // Tăng số lần user đã làm đề này
     await this.examQuestionModel.findByIdAndUpdate(
       submission.questionId,
       { $inc: { attemptCount: 1 } }
@@ -124,10 +124,12 @@ export class SubmissionsService {
     };
   }
 
-
-  // Lấy danh sách bài nộp của user
-  // userId: ID của học viên
-  // queryDto: { questionId?, status?, page?, limit? }
+  /*
+  Danh sách submission của user
+  Input:
+    - userId — id user
+    - queryDto — questionId/status/page/limit
+   */
   async findByUser(userId: string, queryDto: QuerySubmissionDto): Promise<{
     data: SubmissionDocument[];
     total: number;
@@ -137,15 +139,13 @@ export class SubmissionsService {
   }> {
     const { questionId, status, page = 1, limit = 10 } = queryDto;
 
-    // Xây dựng filter cho query
+    // Xây dựng filter object từ query params
     const filter: any = { userId: new Types.ObjectId(userId) };
     if (questionId) filter.questionId = new Types.ObjectId(questionId);
     if (status) filter.status = status;
 
-    // Đếm tổng số bài nộp
     const total = await this.submissionModel.countDocuments(filter);
 
-    // Truy vấn với phân trang
     const data = await this.submissionModel
       .find(filter)
       .sort({ createdAt: -1 })
@@ -163,10 +163,12 @@ export class SubmissionsService {
     };
   }
 
-
-  // Lấy chi tiết 1 bài nộp (bao gồm aiResult nếu có)
-  // submissionId: ID của bài nộp
-  // userId: ID của học viên
+  /*
+  Chi tiết một submission
+  Input:
+    - submissionId — id submission
+    - userId — id user (phải là chủ bài)
+   */
   async findOne(submissionId: string, userId: string): Promise<SubmissionDocument> {
     const submission = await this.submissionModel
       .findById(submissionId)
@@ -177,7 +179,6 @@ export class SubmissionsService {
       throw new NotFoundException(`Submission with ID ${submissionId} not found`);
     }
 
-    // Kiểm tra quyền sở hữu
     if (submission.userId.toString() !== userId) {
       throw new ForbiddenException("You can only view your own submissions");
     }
@@ -185,11 +186,13 @@ export class SubmissionsService {
     return submission;
   }
 
-
-  // Cập nhật bài nháp (chỉ khi status = DRAFT)
-  // submissionId: ID của bài nộp cần cập nhật
-  // userId: ID của học viên
-  // updateDto: { essayContent?, timeSpentSeconds? }
+  /*
+  Cập nhật draft (chỉ khi status = DRAFT)
+  Input:
+    - submissionId — id submission
+    - userId — id user (phải là chủ bài)
+    - updateDto — body update
+   */
   async updateDraft(submissionId: string, userId: string, updateDto: UpdateSubmissionDto): Promise<SubmissionDocument> {
     const submission = await this.submissionModel.findById(submissionId);
 
@@ -205,17 +208,18 @@ export class SubmissionsService {
       throw new BadRequestException("Can only update submissions in DRAFT status");
     }
 
-    // Update các trường
     if (updateDto.essayContent) submission.essayContent = updateDto.essayContent;
     if (updateDto.timeSpentSeconds) submission.timeSpentSeconds = updateDto.timeSpentSeconds;
 
     return submission.save();
   }
 
-
-  // Xóa bài nháp (chỉ khi status = DRAFT)
-  // submissionId: ID của bài nộp cần xóa
-  // userId: ID của học viên
+  /*
+  Xóa vĩnh viễn draft (chỉ khi status = DRAFT)
+  Input:
+    - submissionId — id submission
+    - userId — id user (phải là chủ bài)
+   */
   async deleteDraft(submissionId: string, userId: string): Promise<void> {
     const submission = await this.submissionModel.findById(submissionId);
 
@@ -236,7 +240,8 @@ export class SubmissionsService {
   }
 
 
-  // Lấy trạng thái Queue (Admin)
+  // Thống kê số lượng job trong BullMQ queue (admin)
+
   async getQueueStatus(): Promise<{
     waiting: number;
     active: number;

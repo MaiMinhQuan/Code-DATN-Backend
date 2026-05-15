@@ -1,3 +1,4 @@
+// REST /favorite-essays — thêm/xóa/check/list bài mẫu yêu thích theo user.
 import {
   Controller,
   Get,
@@ -16,8 +17,11 @@ import { JwtAuthGuard } from "../auth/guards/jwt-auth.guard";
 export class FavoriteEssaysController {
   constructor(private readonly favoriteEssaysService: FavoriteEssaysService) {}
 
-  // GET /api/favorite-essays
-  // Lấy danh sách bài mẫu yêu thích
+  /*
+  GET /favorite-essays — danh sách bài mẫu yêu thích của user
+  Input:
+    - req.user — user từ JWT
+   */
   @UseGuards(JwtAuthGuard)
   @Get()
   async getFavorites(@Req() req) {
@@ -25,8 +29,12 @@ export class FavoriteEssaysController {
     return this.favoriteEssaysService.getFavorites(userId);
   }
 
-  // POST /api/favorite-essays
-  // Thêm bài mẫu vào yêu thích
+  /*
+  POST /favorite-essays — thêm vào yêu thích (tăng favoriteCount)
+  Input:
+    - req.user — user từ JWT
+    - addFavoriteDto — body request
+   */
   @UseGuards(JwtAuthGuard)
   @Post()
   async addFavorite(@Req() req, @Body() addFavoriteDto: AddFavoriteDto) {
@@ -38,8 +46,12 @@ export class FavoriteEssaysController {
     );
   }
 
-  // DELETE /api/favorite-essays/:essayId
-  // Xóa bài mẫu khỏi yêu thích
+  /*
+  DELETE /favorite-essays/:essayId — xóa khỏi yêu thích (giảm favoriteCount)
+  Input:
+    - req.user — user từ JWT
+    - essayId — id essay trên URL
+   */
   @UseGuards(JwtAuthGuard)
   @Delete(":essayId")
   async removeFavorite(@Req() req, @Param("essayId") essayId: string) {
@@ -47,8 +59,12 @@ export class FavoriteEssaysController {
     return this.favoriteEssaysService.removeFavorite(userId, essayId);
   }
 
-  // GET /api/favorite-essays/check/:essayId
-  // Kiểm tra bài mẫu có trong yêu thích của user hay không
+  /*
+  GET /favorite-essays/check/:essayId — check đã favorite chưa
+  Input:
+    - req.user — user từ JWT
+    - essayId — id essay trên URL
+   */
   @UseGuards(JwtAuthGuard)
   @Get("check/:essayId")
   async checkFavorite(@Req() req, @Param("essayId") essayId: string) {

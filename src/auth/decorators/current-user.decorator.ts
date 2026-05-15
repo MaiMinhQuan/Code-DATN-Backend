@@ -1,15 +1,13 @@
+// Decorator @CurrentUser() — lấy request.user (hoặc một field) từ JwtAuthGuard.
 import { createParamDecorator, ExecutionContext } from "@nestjs/common";
 
-// Decorator lấy thông tin user từ request (sau khi qua JwtAuthGuard)
-
-// Lấy toàn bộ user object
-// getUserProfile(@CurrentUser() user: UserPayload)
-
-// Lấy userId dạng string
-// createNote(@CurrentUser("userId") userId: string)
-
-
 export const CurrentUser = createParamDecorator(
+  /*
+  Lấy user hoặc field từ request.user
+  Input:
+    - data — tên field cần lấy (optional)
+    - ctx — ExecutionContext
+   */
   (data: string | undefined, ctx: ExecutionContext) => {
     const request = ctx.switchToHttp().getRequest();
     const user = request.user;
@@ -18,9 +16,8 @@ export const CurrentUser = createParamDecorator(
       return null;
     }
 
-    // Nếu cần field cụ thể
     if (data) {
-      // Xử lý cho userId/_id
+      // Chuẩn hóa các alias của trường ID thành chuỗi thuần
       if (data === "userId" || data === "_id" || data === "sub") {
         return user._id?.toString() || user.sub;
       }

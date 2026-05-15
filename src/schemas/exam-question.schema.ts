@@ -1,3 +1,4 @@
+// Schema ExamQuestion
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document, Types } from "mongoose";
 
@@ -12,30 +13,30 @@ export class ExamQuestion {
   topicId?: Types.ObjectId;
 
   @Prop({ required: true })
-  questionPrompt: string; // Đề bài IELTS Writing Task 2
+  questionPrompt: string;
 
   @Prop()
-  suggestedOutline?: string; // Gợi ý dàn ý (markdown hoặc plain text)
+  suggestedOutline?: string;
 
   @Prop({ default: 0 })
-  difficultyLevel: number; // 1-5 hoặc tùy chỉnh
+  difficultyLevel: number;
 
   @Prop({ default: true })
   isPublished: boolean;
 
   @Prop({ default: 0 })
-  attemptCount: number; // Số lượt làm bài
+  attemptCount: number;
 
   @Prop()
-  sourceReference?: string; // Nguồn đề thi (nếu có)
+  sourceReference?: string;
 
   @Prop({ type: [String], default: [] })
-  tags: string[]; // Tags để phân loại thêm: "education", "technology", "environment"...
+  tags: string[];
 }
 
 export const ExamQuestionSchema = SchemaFactory.createForClass(ExamQuestion);
 
-// Indexes
+// Index
 ExamQuestionSchema.index({ topicId: 1 });
 ExamQuestionSchema.index({ isPublished: 1 });
 ExamQuestionSchema.index({ difficultyLevel: 1 });

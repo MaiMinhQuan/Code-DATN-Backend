@@ -11,46 +11,53 @@ export class TopicsService {
     @InjectModel(Topic.name) private topicModel: Model<Topic>,
   ) {}
 
-  // Lấy danh sách tất cả topic
-  // Admin có thể xem cả topics inactive bằng query ?showAll=true
+  /*
+  Danh sách topic; mặc định chỉ topic đang active
+  Input:
+    - showAll — true thì gồm cả topic đã ẩn (admin)
+   */
   async findAll(showAll: boolean = false) {
-    const filter: any = {}
+    const filter: any = {};
 
-    // Nếu không có query showAll=true, chỉ lấy các topic active
     if (!showAll) {
       filter.isActive = true;
     }
 
     const topics = await this.topicModel
-                            .find(filter)
-                            .sort({ orderIndex: 1, createdAt: -1 }) // Sắp xếp theo orderIndex, sau đó createdAt
-                            .exec();
+      .find(filter)
+      .sort({ orderIndex: 1, createdAt: -1 }) // orderIndex tăng dần, cùng order thì mới trước
+      .exec();
     return topics;
   }
 
-  // Xem chi tiết 1 topic
-  // Có thể tìm theo _id hoặc slug
+  /*
+  Chi tiết một topic theo id hoặc slug
+  Input:
+    - identifier — id hoặc slug
+   */
   async findOne(identifier: string) {
     let topic;
 
-    // Thử tìm theo _id trước
     if (identifier.match(/^[0-9a-fA-F]{24}$/)) {
       topic = await this.topicModel.findById(identifier).exec();
     }
 
-    // Nếu không tìm thấy, thử tìm theo slug
     if (!topic) {
       topic = await this.topicModel.findOne({ slug: identifier}).exec();
     }
 
     if (!topic) {
-      throw new NotFoundException("Không tìm thấy chủ đề")
+      throw new NotFoundException("Không tìm thấy chủ đề");
     }
 
     return topic;
   }
 
-  // Tạo topic mới (chỉ cho admin)
+  /*
+  Tạo topic mới
+  Input:
+    - createTopicDto — body request
+   */
   async create(createTopicDto: CreateTopicDto) {
     const { name, description, iconUrl, orderIndex } = createTopicDto;
 
@@ -71,24 +78,28 @@ export class TopicsService {
     return newTopic;
   }
 
-  // Cập nhật topic (chỉ cho admin)
+  /*
+  Cập nhật topic
+  Input:
+    - id — id topic
+    - updateTopicDto — body request
+   */
   async update(id: string, updateTopicDto: UpdateTopicDto) {
     const topic = await this.topicModel.findById(id).exec();
     if (!topic) {
       throw new NotFoundException("Không tìm thấy chủ đề");
     }
 
-    // Nếu update name, kiểm tra trùng
     if (updateTopicDto.name && updateTopicDto.name !== topic.name) {
       const existingTopic = await this.topicModel
-                                    .findOne({ name: updateTopicDto.name })
-                                    .exec();
+        .findOne({ name: updateTopicDto.name })
+        .exec();
       if (existingTopic) {
         throw new ConflictException("Đã tồn tại chủ đề có tên này");
       }
     }
 
-    // Update các trường
+    // Chỉ gán trường có trong body
     if (updateTopicDto.name !== undefined) {
       topic.name = updateTopicDto.name;
     }
@@ -109,7 +120,11 @@ export class TopicsService {
     return topic;
   }
 
-  // Xóa topic (chỉ cho admin)
+  /*
+  Ẩn topic
+  Input:
+    - id — id topic
+   */
   async remove(id: string) {
     const topic = await this.topicModel.findById(id).exec();
     if (!topic) {
@@ -122,11 +137,14 @@ export class TopicsService {
     return {
       message: "Đã ẩn chủ đề thành công",
       topicId: topic._id,
-    }
+    };
   }
 
-  // Lấy topic theo slug
-  // Dùng cho việc filter courses, essays theo topic
+  /*
+  Tìm topic đang active theo slug
+  Input:
+    - slug — slug của topic
+   */
   async findBySlug(slug: string) {
     const topic = await this.topicModel.findOne({ slug, isActive: true}).exec();
     if (!topic) {

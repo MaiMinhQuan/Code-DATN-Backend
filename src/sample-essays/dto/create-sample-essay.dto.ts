@@ -1,3 +1,4 @@
+// DTO body POST /sample-essays
 import {
   IsString,
   IsNotEmpty,
@@ -16,7 +17,6 @@ import { Type } from "class-transformer";
 import { TargetBand } from "../../common/enums";
 import { HighlightAnnotationDto } from "./highlight-annotation.dto";
 
-// DTO cho POST /api/sample-essays - Tạo mới một sample essay
 export class CreateSampleEssayDto {
   @IsString()
   @IsNotEmpty({ message: "Tiêu đề không được để trống" })
@@ -61,5 +61,5 @@ export class CreateSampleEssayDto {
   @IsNumber()
   @Min(0)
   @Max(9)
-  overallBandScore?: number;   // 0-9, ví dụ: 7.5
+  overallBandScore?: number;
 }

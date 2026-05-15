@@ -1,3 +1,4 @@
+// Schema Topic
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from "mongoose";
 
@@ -26,11 +27,10 @@ export class Topic {
 
 export const TopicSchema = SchemaFactory.createForClass(Topic);
 
-// Indexes
-// Note: slug already has unique index from @Prop({ unique: true })
+// Index
 TopicSchema.index({ orderIndex: 1 });
 
-// Pre-save hook to generate slug from name
+// Tự tạo slug khi name thay đổi
 TopicSchema.pre("save", function (next) {
   if (this.isModified("name")) {
     this.slug = this.name

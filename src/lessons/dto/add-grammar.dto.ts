@@ -1,3 +1,4 @@
+// DTO body POST /lessons/:id/grammars
 import {
   IsString,
   IsNotEmpty,
@@ -6,7 +7,6 @@ import {
   MaxLength
 } from "class-validator";
 
-// DTO cho POST /api/lessons/:lessonId/grammars - Thêm grammar vào lesson
 export class AddGrammarDto {
   @IsString({ message: "Tiêu đề ngữ pháp phải là chuỗi ký tự" })
   @IsNotEmpty({ message: "Tiêu đề ngữ pháp không được để trống" })

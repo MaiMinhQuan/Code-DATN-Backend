@@ -1,8 +1,8 @@
+// DTO query GET /submissions
 import { IsEnum, IsOptional, IsMongoId, IsNumber, Min, Max } from "class-validator";
 import { Type } from "class-transformer";
 import { SubmissionStatus } from "@/common/enums";
 
-// DTO để truy vấn danh sách submission với các tham số lọc và phân trang
 export class QuerySubmissionDto {
   @IsMongoId({ message: "questionId phải là MongoDB ObjectId hợp lệ" })
   @IsOptional()
@@ -22,6 +22,6 @@ export class QuerySubmissionDto {
   @IsNumber()
   @IsOptional()
   @Min(1)
-  @Max(50)
+  @Max(100)
   limit?: number = 10;
 }

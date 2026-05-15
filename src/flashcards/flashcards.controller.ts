@@ -1,3 +1,4 @@
+// REST /flashcard-sets — CRUD set/cards và cập nhật lịch ôn tập (spaced repetition).
 import {
   Controller,
   Get,
@@ -21,10 +22,11 @@ import { JwtAuthGuard } from "../auth/guards/jwt-auth.guard";
 export class FlashcardsController {
   constructor(private readonly flashcardsService: FlashcardsService) {}
 
-  /* FLASHCARD SET ENDPOINTS */
-
-  // GET /api/flashcard-sets
-  // Lấy tất cả bộ thẻ của user
+  /*
+  GET /flashcard-sets — danh sách bộ thẻ của user
+  Input:
+    - req.user — user từ JWT
+   */
   @UseGuards(JwtAuthGuard)
   @Get()
   async findAllSets(@Req() req) {
@@ -32,8 +34,11 @@ export class FlashcardsController {
     return this.flashcardsService.findAllSets(userId);
   }
 
-  // GET /api/flashcard-sets/review
-  // Lấy các thẻ cần ôn tập hôm nay
+  /*
+  GET /flashcard-sets/review — danh sách thẻ đến hạn ôn
+  Input:
+    - req.user — user từ JWT
+   */
   @UseGuards(JwtAuthGuard)
   @Get("review")
   async getCardsForReview(@Req() req) {
@@ -41,8 +46,12 @@ export class FlashcardsController {
     return this.flashcardsService.getCardsForReview(userId);
   }
 
-  // GET /api/flashcard-sets/:id
-  // Lấy chi tiết bộ thẻ + cards
+  /*
+  GET /flashcard-sets/:id — chi tiết set + cards
+  Input:
+    - req.user — user từ JWT
+    - id — id set trên URL
+   */
   @UseGuards(JwtAuthGuard)
   @Get(":id")
   async findSetWithCards(@Req() req, @Param("id") id: string) {
@@ -50,8 +59,12 @@ export class FlashcardsController {
     return this.flashcardsService.findSetWithCards(id, userId);
   }
 
-  // POST /api/flashcard-sets
-  // Tạo bộ thẻ mới
+  /*
+  POST /flashcard-sets — tạo set mới
+  Input:
+    - req.user — user từ JWT
+    - createSetDto — body request
+   */
   @UseGuards(JwtAuthGuard)
   @Post()
   async createSet(@Req() req, @Body() createSetDto: CreateFlashcardSetDto) {
@@ -59,8 +72,13 @@ export class FlashcardsController {
     return this.flashcardsService.createSet(userId, createSetDto);
   }
 
-  // PATCH /api/flashcard-sets/:id
-  // Cập nhật bộ thẻ
+  /*
+  PATCH /flashcard-sets/:id — cập nhật set
+  Input:
+    - req.user — user từ JWT
+    - id — id set trên URL
+    - updateSetDto — body request
+   */
   @UseGuards(JwtAuthGuard)
   @Patch(":id")
   async updateSet(
@@ -72,8 +90,12 @@ export class FlashcardsController {
     return this.flashcardsService.updateSet(id, userId, updateSetDto);
   }
 
-  // DELETE /api/flashcard-sets/:id
-  // Xóa bộ thẻ (và tất cả cards bên trong)
+  /*
+  DELETE /flashcard-sets/:id — xóa set + cards
+  Input:
+    - req.user — user từ JWT
+    - id — id set trên URL
+   */
   @UseGuards(JwtAuthGuard)
   @Delete(":id")
   async deleteSet(@Req() req, @Param("id") id: string) {
@@ -81,10 +103,13 @@ export class FlashcardsController {
     return this.flashcardsService.deleteSet(id, userId);
   }
 
-  /* FLASHCARD ENDPOINTS */
-
-  // POST /api/flashcard-sets/:id/cards
-  // Thêm card vào bộ thẻ
+  /*
+  POST /flashcard-sets/:id/cards — thêm card vào set
+  Input:
+    - req.user — user từ JWT
+    - setId — id set trên URL
+    - createCardDto — body request
+   */
   @UseGuards(JwtAuthGuard)
   @Post(":id/cards")
   async addCard(
@@ -96,8 +121,13 @@ export class FlashcardsController {
     return this.flashcardsService.addCard(setId, userId, createCardDto);
   }
 
-  // PATCH /api/flashcard-sets/cards/:cardId
-  // Cập nhật card
+  /*
+  PATCH /flashcard-sets/cards/:cardId — cập nhật card
+  Input:
+    - req.user — user từ JWT
+    - cardId — id card trên URL
+    - updateCardDto — body request
+   */
   @UseGuards(JwtAuthGuard)
   @Patch("cards/:cardId")
   async updateCard(
@@ -109,8 +139,12 @@ export class FlashcardsController {
     return this.flashcardsService.updateCard(cardId, userId, updateCardDto);
   }
 
-  // DELETE /api/flashcard-sets/cards/:cardId
-  // Xóa card
+  /*
+  DELETE /flashcard-sets/cards/:cardId — xóa card
+  Input:
+    - req.user — user từ JWT
+    - cardId — id card trên URL
+   */
   @UseGuards(JwtAuthGuard)
   @Delete("cards/:cardId")
   async deleteCard(@Req() req, @Param("cardId") cardId: string) {
@@ -118,8 +152,13 @@ export class FlashcardsController {
     return this.flashcardsService.deleteCard(cardId, userId);
   }
 
-  // PATCH /api/flashcard-sets/cards/:cardId/review
-  // Cập nhật lịch ôn tập (Spaced Repetition)
+  /*
+  PATCH /flashcard-sets/cards/:cardId/review — cập nhật lịch ôn tập (SM-2)
+  Input:
+    - req.user — user từ JWT
+    - cardId — id card trên URL
+    - updateReviewDto — body request
+   */
   @UseGuards(JwtAuthGuard)
   @Patch("cards/:cardId/review")
   async updateReviewSchedule(

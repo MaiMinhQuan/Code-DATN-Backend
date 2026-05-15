@@ -1,3 +1,4 @@
+// DTO body POST /submissions
 import {
   IsString,
   IsNotEmpty,
@@ -8,7 +9,6 @@ import {
   MinLength,
 } from "class-validator";
 
-// DTO để tạo một submission mới
 export class CreateSubmissionDto {
   @IsMongoId({ message: "questionId phải là MongoDB ObjectId hợp lệ" })
   @IsNotEmpty({ message: "questionId không được để trống" })

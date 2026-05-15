@@ -1,3 +1,4 @@
+// Service bookmark bài mẫu: add/remove/list/check và đồng bộ favoriteCount.
 import { Injectable, NotFoundException, BadRequestException, ConflictException } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model, Types } from "mongoose";
@@ -11,22 +12,25 @@ export class FavoriteEssaysService {
     @InjectModel(SampleEssay.name) private sampleEssayModel: Model<SampleEssayDocument>,
   ) {}
 
-  // Thêm bài mẫu vào danh sách yêu thích
-  // userId: ID của user
-  // essayId: ID của bài mẫu
-  // personalNote: Ghi chú cá nhân của user cho bài mẫu này (optional)
+  /*
+  Thêm bài mẫu vào yêu thích (tăng favoriteCount), chặn favorite trùng
+  Input:
+    - userId — id user
+    - essayId — id essay
+    - personalNote — note (optional)
+   */
   async addFavorite(userId: string, essayId: string, personalNote?: string): Promise<FavoriteEssay> {
     if (!Types.ObjectId.isValid(essayId)) {
       throw new BadRequestException("essayId không hợp lệ");
     }
 
-    // Kiểm tra bài mẫu có tồn tại không
+    // Validate essay tồn tại
     const essayExists = await this.sampleEssayModel.findById(essayId).exec();
     if (!essayExists) {
       throw new NotFoundException(`Không tìm thấy bài mẫu với ID: ${essayId}`);
     }
 
-    // Kiểm tra đã thả tim chưa
+    // Chặn bookmark trùng
     const existingFavorite = await this.favoriteEssayModel
       .findOne({
         userId: new Types.ObjectId(userId),
@@ -38,7 +42,6 @@ export class FavoriteEssaysService {
       throw new ConflictException("Bài mẫu này đã có trong danh sách yêu thích");
     }
 
-    // Tạo mới favorite (đúng theo schema)
     const newFavorite = new this.favoriteEssayModel({
       userId: new Types.ObjectId(userId),
       essayId: new Types.ObjectId(essayId),
@@ -47,12 +50,12 @@ export class FavoriteEssaysService {
 
     await newFavorite.save();
 
-    // Tăng favoriteCount trong SampleEssay
+    // Đồng bộ favoriteCount
     await this.sampleEssayModel.findByIdAndUpdate(essayId, {
       $inc: { favoriteCount: 1 },
     });
 
-    // Populate và trả về
+    // Trả về document đã populate essay/topic
     return this.favoriteEssayModel
       .findById(newFavorite._id)
       .populate({
@@ -66,9 +69,12 @@ export class FavoriteEssaysService {
       .exec();
   }
 
-  // Xóa bài mẫu khỏi danh sách yêu thích
-  // userId: ID của user
-  // essayId: ID của bài mẫu cần xóa khỏi yêu thích
+  /*
+  Xóa khỏi yêu thích (giảm favoriteCount)
+  Input:
+    - userId — id user
+    - essayId — id essay
+   */
   async removeFavorite(userId: string, essayId: string): Promise<{ message: string }> {
     if (!Types.ObjectId.isValid(essayId)) {
       throw new BadRequestException("essayId không hợp lệ");
@@ -85,7 +91,7 @@ export class FavoriteEssaysService {
       throw new NotFoundException("Bài mẫu không có trong danh sách yêu thích");
     }
 
-    // Giảm favoriteCount trong SampleEssay
+    // Đồng bộ favoriteCount sau khi xóa
     await this.sampleEssayModel.findByIdAndUpdate(essayId, {
       $inc: { favoriteCount: -1 },
     });
@@ -93,8 +99,11 @@ export class FavoriteEssaysService {
     return { message: "Đã xóa bài mẫu khỏi danh sách yêu thích" };
   }
 
-  // Lấy danh sách tất cả bài mẫu yêu thích của user
-  // userId: ID của user
+  /*
+  Danh sách bài mẫu yêu thích của user (mới nhất trước)
+  Input:
+    - userId — id user
+   */
   async getFavorites(userId: string): Promise<FavoriteEssay[]> {
     if (!Types.ObjectId.isValid(userId)) {
       throw new BadRequestException("userId không hợp lệ");
@@ -110,13 +119,16 @@ export class FavoriteEssaysService {
           select: "name slug description",
         },
       })
-      .sort({ createdAt: -1 }) // Mới nhất trước
+      .sort({ createdAt: -1 })
       .exec();
   }
 
-  // Kiểm tra user có thích bài mẫu hay không
-  // userId: ID của user
-  // essayId: ID của bài mẫu
+  /*
+  Check user đã favorite essay chưa
+  Input:
+    - userId — id user
+    - essayId — id essay
+   */
   async isFavorite(userId: string, essayId: string): Promise<boolean> {
     if (!Types.ObjectId.isValid(userId) || !Types.ObjectId.isValid(essayId)) {
       return false;

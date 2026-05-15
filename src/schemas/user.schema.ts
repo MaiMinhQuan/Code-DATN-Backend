@@ -1,3 +1,4 @@
+// Schema User: tài khoản đăng nhập, phân quyền STUDENT/ADMIN.
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from "mongoose";
 import { UserRole } from "@/common/enums";
@@ -30,6 +31,5 @@ export class User {
 
 export const UserSchema = SchemaFactory.createForClass(User);
 
-// Indexes
-// Note: email already has unique index from @Prop({ unique: true })
+// Index
 UserSchema.index({ role: 1 });

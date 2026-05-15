@@ -24,9 +24,12 @@ import { CreateSubmissionDto, UpdateSubmissionDto, QuerySubmissionDto } from "./
 export class SubmissionsController {
   constructor(private readonly submissionsService: SubmissionsService) {}
 
-
-  // POST /api/submissions
-  // Tạo bài nộp mới (DRAFT)
+  /*
+  POST /submissions — tạo submission mới ở trạng thái DRAFT
+  Input:
+    - userId — id user từ JWT
+    - createDto — body request
+   */
   @Post()
   @Roles(UserRole.STUDENT, UserRole.ADMIN)
   async create(
@@ -40,12 +43,15 @@ export class SubmissionsController {
     };
   }
 
-
-  // POST /api/submissions/:id/submit
-  // Nộp bài để AI chấm
+  /*
+  POST /submissions/:id/submit — đưa submission vào queue để chấm AI (async, trả 202)
+  Input:
+    - submissionId — id submission trên URL
+    - userId — id user từ JWT
+   */
   @Post(":id/submit")
   @Roles(UserRole.STUDENT, UserRole.ADMIN)
-  @HttpCode(HttpStatus.ACCEPTED) // 202
+  @HttpCode(HttpStatus.ACCEPTED) // 202 — xử lý bất đồng bộ
   async submitForGrading(
     @Param("id") submissionId: string,
     @CurrentUser("userId") userId: string,
@@ -57,14 +63,17 @@ export class SubmissionsController {
       data: {
         submissionId,
         jobId: result.jobId,
-        note: "Use WebSocket or poll GET /api/submissions/:id to check grading status",
+        note: "Dùng WebSocket hoặc polling GET /api/submissions/:id để kiểm tra trạng thái chấm bài",
       },
     };
   }
 
-
-  // GET /api/submissions
-  // Lấy danh sách bài nộp của user hiện tại
+  /*
+  GET /submissions — danh sách submission của user hiện tại (phân trang)
+  Input:
+    - userId — id user từ JWT
+    - queryDto — query filter/pagination
+   */
   @Get()
   @Roles(UserRole.STUDENT, UserRole.ADMIN)
   async findAll(
@@ -78,9 +87,7 @@ export class SubmissionsController {
     };
   }
 
-
-  // GET /api/submissions/queue-status
-  // Lấy trạng thái Queue (Admin)
+  // GET /submissions/queue-status — thống kê BullMQ queue (admin)
   @Get("queue-status")
   @Roles(UserRole.ADMIN)
   async getQueueStatus() {
@@ -91,9 +98,12 @@ export class SubmissionsController {
     };
   }
 
-
-  // GET /api/submissions/:id
-  // Lấy chi tiết 1 bài nộp (bao gồm aiResult nếu đã chấm xong)
+  /*
+  GET /submissions/:id — chi tiết submission + kết quả AI (nếu có)
+  Input:
+    - submissionId — id submission trên URL
+    - userId — id user từ JWT (chỉ chủ sở hữu xem được)
+   */
   @Get(":id")
   @Roles(UserRole.STUDENT, UserRole.ADMIN)
   async findOne(
@@ -107,8 +117,13 @@ export class SubmissionsController {
     };
   }
 
-  // PATCH /api/submissions/:id
-  // Cập nhật bài nháp (chỉ khi status = DRAFT)
+  /*
+  PATCH /submissions/:id — cập nhật draft (chỉ khi status = DRAFT)
+  Input:
+    - submissionId — id submission trên URL
+    - userId — id user từ JWT (chỉ chủ sở hữu sửa được)
+    - updateDto — body request
+   */
   @Patch(":id")
   @Roles(UserRole.STUDENT, UserRole.ADMIN)
   async updateDraft(
@@ -123,9 +138,12 @@ export class SubmissionsController {
     };
   }
 
-
-  // DELETE /api/submissions/:id
-  // Xóa bài nháp (chỉ khi status = DRAFT)
+  /*
+  DELETE /submissions/:id — xóa vĩnh viễn draft (204)
+  Input:
+    - submissionId — id submission trên URL
+    - userId — id user từ JWT (chỉ chủ sở hữu xóa được)
+   */
   @Delete(":id")
   @Roles(UserRole.STUDENT, UserRole.ADMIN)
   @HttpCode(HttpStatus.NO_CONTENT) // 204

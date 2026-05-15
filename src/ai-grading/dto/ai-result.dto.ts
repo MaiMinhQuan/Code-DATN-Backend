@@ -1,12 +1,12 @@
+// DTO kết quả chấm AI chi tiết cho bài IELTS Writing Task 2.
 import { AIErrorDto } from "./ai-error.dto";
 
-// DTO cho AI Result - Kết quả đánh giá của AI cho một bài viết
 export class AIResultDto {
-  taskResponseScore: number; // 0-9
-  coherenceScore: number; // 0-9
-  lexicalScore: number; // 0-9
-  grammarScore: number; // 0-9
-  overallBand: number; // 0-9
+  taskResponseScore: number;
+  coherenceScore: number;
+  lexicalScore: number;
+  grammarScore: number;
+  overallBand: number;
   errors: AIErrorDto[];
   generalFeedback: string;
   strengths: string;

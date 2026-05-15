@@ -1,23 +1,23 @@
+// DTO highlight annotation (embed trong sample essay)
 import { IsNumber, IsString, IsEnum, IsOptional, Min } from "class-validator";
 import { HighlightType } from "../../common/enums";
 
-// DTO cho phần highlight trong CreateSampleEssayDto và UpdateSampleEssayDto
 export class HighlightAnnotationDto {
   @IsNumber()
   @Min(0)
-  startIndex: number;          // Vị trí bắt đầu trong fullEssayContent
+  startIndex: number;
 
   @IsNumber()
   @Min(0)
-  endIndex: number;            // Vị trí kết thúc
+  endIndex: number;
 
   @IsEnum(HighlightType)
-  highlightType: HighlightType; // VOCABULARY | GRAMMAR | STRUCTURE | ARGUMENT
+  highlightType: HighlightType;
 
   @IsString()
-  explanation: string;          // Giải thích bằng tiếng Việt
+  explanation: string;
 
   @IsOptional()
   @IsString()
-  color?: string;               // Hex color (optional): "#FF5733"
+  color?: string;
 }

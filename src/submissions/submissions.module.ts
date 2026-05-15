@@ -10,8 +10,7 @@ import {
   ExamQuestionSchema,
 } from "@/schemas";
 import { AIGradingModule } from "@/ai-grading/ai-grading.module";
-// WebsocketModule là @Global nên không cần import,
-// SubmissionsGateway sẽ được inject tự động
+// WebsocketModule được đánh dấu @Global nên SubmissionsGateway được inject tự động mà không cần import
 
 import { SubmissionsController } from "./submissions.controller";
 import { SubmissionsService } from "./submissions.service";
@@ -25,6 +24,7 @@ import { SUBMISSION_QUEUE_NAME } from "./queue/submission.constants";
       { name: ExamQuestion.name, schema: ExamQuestionSchema },
     ]),
 
+    // Đăng ký grading queue với kết nối Redis lấy từ config và cơ chế retry exponential backoff
     BullModule.registerQueueAsync({
       name: SUBMISSION_QUEUE_NAME,
       imports: [ConfigModule],
@@ -38,7 +38,7 @@ import { SUBMISSION_QUEUE_NAME } from "./queue/submission.constants";
           attempts: 3,
           backoff: {
             type: "exponential",
-            delay: 5000,
+            delay: 5000, // 5s -> 10s -> 20s
           },
         },
       }),

@@ -1,4 +1,4 @@
-import { Injectable, Logger, Inject } from "@nestjs/common";
+import { Injectable, Logger } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { GeminiGradingService } from "./services/gemini-grading.service";
 import { IAIGradingService } from "./interfaces/ai-grading.interface";
@@ -17,7 +17,7 @@ export class AIGradingService {
     this.initializeProvider();
   }
 
-  // Khởi tạo AI provider dựa trên config (ai.provider trong .env)
+  // Đọc cấu hình `ai.provider` để khởi tạo dịch vụ chấm điểm tương ứng.
   private initializeProvider(): void {
     const providerConfig = this.configService.get<string>("ai.provider") || "GEMINI";
 
@@ -31,20 +31,24 @@ export class AIGradingService {
     }
   }
 
-  // Chấm bài với provider hiện tại
-  // essayContent: Bài viết của học viên
-  // questionPrompt: Đề thi
+  /*
+  Chấm điểm bài viết IELTS Task 2.
+  Input:
+  - essayContent: Nội dung bài viết của học viên.
+  - questionPrompt: Đề thi tương ứng.
+  Output:
+  - AIResultDto: Kết quả chấm điểm chi tiết gồm band score, lỗi sai và nhận xét.
+  */
   async gradeEssay(essayContent: string, questionPrompt: string): Promise<AIResultDto> {
     const providerName = this.currentProvider.getProviderName();
 
     this.logger.log(`Grading essay with provider: ${providerName}`);
 
-    // Kiểm tra provider có sẵn sàng không
     const isAvailable = await this.currentProvider.isAvailable();
     if (!isAvailable) {
       this.logger.warn(`Provider ${providerName} is not available, falling back to Gemini`);
 
-      // Fallback to Gemini nếu provider chính không available
+      // Thử nghiệm fallback sang Gemini nếu provider chính không khả dụng
       if (providerName !== "GEMINI") {
         const geminiAvailable = await this.geminiService.isAvailable();
         if (geminiAvailable) {
@@ -58,12 +62,18 @@ export class AIGradingService {
     return this.currentProvider.gradeEssay(essayContent, questionPrompt);
   }
 
-  // Lấy tên provider hiện tại
+  // Trả về ID của AI provider đang sử dụng
   getCurrentProvider(): string {
     return this.currentProvider.getProviderName();
   }
 
-  // Chuyển đổi provider (runtime switching nếu cần)
+  /*
+  Đổi AI provider đang hoạt động
+  Input:
+  - provider: Giá trị enum của provider muốn chuyển sang.
+  Output:
+  - boolean: true nếu chuyển thành công, false nếu provider mục tiêu không khả dụng.
+  */
   async switchProvider(provider: AIProvider): Promise<boolean> {
     this.logger.log(`Switching AI provider to: ${provider}`);
 
@@ -87,7 +97,11 @@ export class AIGradingService {
     return true;
   }
 
-  // Kiểm tra trạng thái các providers
+  /*
+  Kiểm tra các AI provider sẵn sàng
+  Output:
+  - Mảng { provider: string, available: boolean } cho tất cả provider đã cấu hình.
+  */
   async getProvidersStatus(): Promise<{ provider: string; available: boolean }[]> {
     const geminiAvailable = await this.geminiService.isAvailable();
 

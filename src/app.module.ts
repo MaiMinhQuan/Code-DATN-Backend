@@ -1,3 +1,4 @@
+/** Module gốc của ứng dụng — kết nối tất cả feature module, cấu hình toàn cục và BullMQ. */
 import { Module } from "@nestjs/common";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import databaseConfig from "./config/database.config";
@@ -22,20 +23,21 @@ import { WebsocketModule } from "./websocket/websocket.module";
 
 @Module({
   imports: [
-    // Config Module - Load environment variables
+    // Tải biến môi trường toàn cục; hỗ trợ ghi đè bằng .env.local
     ConfigModule.forRoot({
       isGlobal: true,
       load: [databaseConfig, redisConfig, aiConfig],
       envFilePath: [".env.local", ".env"],
     }),
 
-    // BullMQ Global Configuration
+    // Cấu hình kết nối Redis toàn cục cho BullMQ từ biến môi trường
     BullModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
         connection: {
           host: configService.get<string>("redis.host"),
           port: configService.get<number>("redis.port"),
+          // Bỏ qua trường password khi không được thiết lập để tránh lỗi xác thực Redis
           password: configService.get<string>("redis.password") || undefined,
         },
       }),

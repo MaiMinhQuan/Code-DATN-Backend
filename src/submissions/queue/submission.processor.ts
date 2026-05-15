@@ -1,3 +1,4 @@
+// BullMQ worker: chấm bài bằng AI và emit tiến trình/trạng thái qua WebSocket.
 import { Processor, WorkerHost, OnWorkerEvent } from "@nestjs/bullmq";
 import { Logger } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
@@ -23,8 +24,11 @@ export class SubmissionProcessor extends WorkerHost {
     super();
   }
 
-  // Xử lý job chấm điểm bài viết IELTS (BullMQ Worker)
-  // Flow: PROCESSING → AI Grading → COMPLETED/FAILED → Emit WebSocket
+  /*
+  Xử lý job chấm bài: PROCESSING -> gọi AI -> lưu kết quả -> COMPLETED/FAILED và emit WS
+  Input:
+    - job — BullMQ Job (GradingJobData)
+   */
   async process(job: Job<GradingJobData>): Promise<GradingJobResult> {
     const { submissionId, userId, essayContent, questionPrompt, attemptNumber } = job.data;
 
@@ -32,10 +36,9 @@ export class SubmissionProcessor extends WorkerHost {
     this.logger.log(`[Job ${job.id}] User: ${userId}, Attempt: ${attemptNumber}`);
 
     try {
-      // 1. Cập nhật status -> PROCESSING
+      // Đánh dấu submission là PROCESSING để UI hiện thanh tiến trình
       await this.updateSubmissionStatus(submissionId, SubmissionStatus.PROCESSING);
 
-      // Emit progress event
       this.submissionsGateway.emitSubmissionProgress(userId, {
         submissionId,
         progress: 10,
@@ -45,10 +48,9 @@ export class SubmissionProcessor extends WorkerHost {
 
       await job.updateProgress(10);
 
-      // 2. Gọi AI Grading Service
+      // Emit "analysing" progress trước khi gọi AI
       this.logger.log(`[Job ${job.id}] Calling AI Grading Service...`);
 
-      // Emit progress
       this.submissionsGateway.emitSubmissionProgress(userId, {
         submissionId,
         progress: 30,
@@ -58,7 +60,7 @@ export class SubmissionProcessor extends WorkerHost {
 
       const aiResult = await this.aiGradingService.gradeEssay(essayContent, questionPrompt);
 
-      // Emit progress
+      // Emit "saving" progress sau khi AI trả về
       this.submissionsGateway.emitSubmissionProgress(userId, {
         submissionId,
         progress: 80,
@@ -68,7 +70,7 @@ export class SubmissionProcessor extends WorkerHost {
 
       await job.updateProgress(80);
 
-      // 3. Cập nhật Submission với kết quả AI
+      // Lưu kết quả AI và đánh dấu submission là COMPLETED
       await this.submissionModel.findByIdAndUpdate(submissionId, {
         status: SubmissionStatus.COMPLETED,
         aiResult: {
@@ -81,7 +83,7 @@ export class SubmissionProcessor extends WorkerHost {
 
       this.logger.log(`[Job ${job.id}] Completed successfully. Overall band: ${aiResult.overallBand}`);
 
-      // 4. Emit WebSocket event - COMPLETED
+      // Thông báo cho client rằng chấm bài đã hoàn thành
       this.submissionsGateway.emitSubmissionStatusUpdated(userId, {
         submissionId,
         status: SubmissionStatus.COMPLETED,
@@ -99,10 +101,9 @@ export class SubmissionProcessor extends WorkerHost {
     } catch (error) {
       this.logger.error(`[Job ${job.id}] Failed: ${error.message}`, error.stack);
 
-      // Cập nhật status -> FAILED
+      // Đánh dấu FAILED và thông báo cho client để retry
       await this.updateSubmissionFailed(submissionId, error.message);
 
-      // Emit WebSocket event - FAILED
       this.submissionsGateway.emitSubmissionStatusUpdated(userId, {
         submissionId,
         status: SubmissionStatus.FAILED,
@@ -111,16 +112,26 @@ export class SubmissionProcessor extends WorkerHost {
         timestamp: new Date(),
       });
 
-      throw error;
+      throw error; // Gửi lại để BullMQ ghi nhận lỗi và áp dụng logic retry
     }
   }
 
-  // Cập nhật status của submission
+  /*
+  Cập nhật status của submission
+  Input:
+    - submissionId — id submission
+    - status — trạng thái mới
+   */
   private async updateSubmissionStatus(submissionId: string, status: SubmissionStatus): Promise<void> {
     await this.submissionModel.findByIdAndUpdate(submissionId, { status });
   }
 
-  // Cập nhật status của submission khi thất bại
+  /*
+  Đánh dấu FAILED và lưu errorMessage vào submission
+  Input:
+    - submissionId — id submission
+    - errorMessage — message lỗi
+   */
   private async updateSubmissionFailed(submissionId: string, errorMessage: string): Promise<void> {
     await this.submissionModel.findByIdAndUpdate(submissionId, {
       status: SubmissionStatus.FAILED,
@@ -128,26 +139,27 @@ export class SubmissionProcessor extends WorkerHost {
     });
   }
 
-  // EVENT HANDLERS
-
-  // BullMQ event: Được gọi khi job hoàn thành thành công
+  // BullMQ event: job completed
   @OnWorkerEvent("completed")
   onCompleted(job: Job<GradingJobData>, result: GradingJobResult) {
     this.logger.log(`[Job ${job.id}] Completed - Submission: ${result.submissionId}`);
   }
 
-  // BullMQ event: Được gọi khi job thất bại sau tất cả các lần retry
+  // BullMQ event: job failed (hết retry)
   @OnWorkerEvent("failed")
   onFailed(job: Job<GradingJobData>, error: Error) {
     this.logger.error(`[Job ${job.id}] Failed - Error: ${error.message}`);
   }
 
-  // BullMQ event: Được gọi khi job bắt đầu được xử lý
+  /*
+  BullMQ event: job active -> emit PROCESSING cho client
+  Input:
+    - job — BullMQ Job
+   */
   @OnWorkerEvent("active")
   onActive(job: Job<GradingJobData>) {
     this.logger.log(`[Job ${job.id}] Started processing`);
 
-    // Emit status update khi bắt đầu processing
     const { userId, submissionId } = job.data;
     this.submissionsGateway.emitSubmissionStatusUpdated(userId, {
       submissionId,
@@ -157,13 +169,13 @@ export class SubmissionProcessor extends WorkerHost {
     });
   }
 
-  // BullMQ event: Được gọi khi job cập nhật tiến độ
+  // BullMQ event: job progress
   @OnWorkerEvent("progress")
   onProgress(job: Job<GradingJobData>, progress: number) {
     this.logger.debug(`[Job ${job.id}] Progress: ${progress}%`);
   }
 
-  // BullMQ event: Được gọi khi job bị stall (bị worker lấy đi nhưng không hoàn thành trong thời gian quy định)
+  // BullMQ event: job stalled (sẽ được retry)
   @OnWorkerEvent("stalled")
   onStalled(jobId: string) {
     this.logger.warn(`[Job ${jobId}] Stalled - will be retried`);
