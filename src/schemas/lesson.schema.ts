@@ -1,8 +1,8 @@
+// Schema Lesson
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document, Types } from "mongoose";
 import { TargetBand } from "@/common/enums";
 
-// Embedded Sub-documents
 @Schema({ _id: false })
 export class LessonVideo {
   @Prop({ required: true })
@@ -11,8 +11,9 @@ export class LessonVideo {
   @Prop({ required: true })
   videoUrl: string;
 
+  // Thời lượng video (giây)
   @Prop()
-  duration?: number; // in seconds
+  duration?: number;
 
   @Prop()
   thumbnailUrl?: string;
@@ -32,8 +33,9 @@ export class LessonVocabulary {
   @Prop({ type: [String], default: [] })
   examples: string[];
 
+  // Nghĩa tiếng Việt (tùy chọn)
   @Prop()
-  translation?: string; // Vietnamese translation
+  translation?: string;
 }
 
 @Schema({ _id: false })
@@ -47,11 +49,11 @@ export class LessonGrammar {
   @Prop({ type: [String], default: [] })
   examples: string[];
 
+  // Cấu trúc ngữ pháp (tùy chọn)
   @Prop()
-  structure?: string; // e.g., "Subject + Verb + Object"
+  structure?: string;
 }
 
-// Main Lesson Schema
 export type LessonDocument = Lesson & Document;
 
 @Schema({ timestamps: true })
@@ -74,7 +76,6 @@ export class Lesson {
   @Prop({ default: true })
   isPublished: boolean;
 
-  // Embedded arrays
   @Prop({ type: [LessonVideo], default: [] })
   videos: LessonVideo[];
 
@@ -85,12 +86,12 @@ export class Lesson {
   grammars: LessonGrammar[];
 
   @Prop()
-  notesContent?: string; // Rich text or Markdown for additional lesson notes
+  notesContent?: string;
 }
 
 export const LessonSchema = SchemaFactory.createForClass(Lesson);
 
-// Indexes
+// Index
 LessonSchema.index({ courseId: 1, orderIndex: 1 });
 LessonSchema.index({ targetBand: 1 });
 LessonSchema.index({ isPublished: 1 });

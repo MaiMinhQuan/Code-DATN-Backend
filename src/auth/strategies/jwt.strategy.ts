@@ -1,18 +1,17 @@
+// Passport JWT strategy: verify token và gán request.user
 import { Injectable, UnauthorizedException } from "@nestjs/common";
 import { PassportStrategy } from "@nestjs/passport";
 import { ExtractJwt, Strategy } from "passport-jwt";
 import { ConfigService } from "@nestjs/config";
 import { AuthService } from "../auth.service";
 
-// Tự động verify token và gọi validate()
-// Được JwtAuthGuard sử dụng để xác thực request
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(
     private configService: ConfigService,
     private authService: AuthService,
   ) {
-    // Cấu hình Passport JWT
+    // Lấy token từ Authorization: Bearer <token>
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
@@ -20,9 +19,11 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
-  // Được Passport gọi tự động sau khi verify token thành công
-  // Tham số: payload - Decoded JWT payload {sub: userId, email, role}
-  // Trả về: User object được inject vào request.user
+  /*
+  Passport gọi sau khi verify token: load user từ DB và check active
+  Input:
+    - payload — payload JWT (sub/email/role)
+   */
   async validate(payload: any) {
     const user = await this.authService.validateUser(payload.sub);
     if (!user) {

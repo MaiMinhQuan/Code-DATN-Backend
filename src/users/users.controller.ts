@@ -13,16 +13,23 @@ import { UpdateUserAdminDto } from "./dto/update-user-admin.dto";
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  // GET /api/users/profile
-  // Lấy thông tin profile của user đang đăng nhập
+  /*
+  GET /users/profile — trả profile user đang đăng nhập
+  Input:
+    - user từ JWT (@CurrentUser)
+  */
   @UseGuards(JwtAuthGuard)
   @Get("profile")
   async getProfile(@CurrentUser() user: UserDocument) {
     return this.usersService.getProfile(user._id.toString());
   }
 
-  // PATCH /api/users/profile
-  // Cập nhật profile của user đang đăng nhập
+  /*
+  PATCH /users/profile — cập nhật tên/avatar của user
+  Input:
+    - user JWT
+    - updateProfileDto — body request
+   */
   @UseGuards(JwtAuthGuard)
   @Patch("profile")
   async updateProfile(
@@ -32,8 +39,12 @@ export class UsersController {
     return this.usersService.updateProfile(user._id.toString(), updateProfileDto);
   }
 
-  // GET /api/users
-  // Lấy danh sách tất cả user (chỉ cho admin)
+  /*
+  GET /users — danh sách user
+  Input:
+    - query page, limit (optional)
+    - role (optional)
+   */
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Get()
@@ -45,8 +56,11 @@ export class UsersController {
     return this.usersService.findAll(page, limit, role);
   }
 
-  // GET /api/users/:id
-  // Lấy thông tin chi tiết của 1 user
+  /*
+  GET /users/:id — chi tiết một user (admin)
+  Input:
+    - id của user trên URL
+   */
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Get(":id")
@@ -54,8 +68,12 @@ export class UsersController {
     return this.usersService.findOne(id);
   }
 
-  // PATCH /api/users/:id
-  // Cập nhật thông tin user (chỉ cho admin)
+  /*
+  PATCH /users/:id — admin sửa user (tên, avatar, role, trạng thái)
+  Input:
+    - id của user trên URL
+    - updateUserAdminDto — body request
+   */
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Patch(":id")
@@ -66,8 +84,12 @@ export class UsersController {
     return this.usersService.updateUser(id, updateUserAdminDto);
   }
 
-  // DELETE /api/users/:id
-  // Xóa user (chỉ cho admin)
+  /*
+  DELETE /users/:id — khóa mềm user; không cho tự xóa chính mình (admin)
+  Input:
+    - id của user trên URL
+    - currentUser từ JWT
+   */
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Delete(":id")

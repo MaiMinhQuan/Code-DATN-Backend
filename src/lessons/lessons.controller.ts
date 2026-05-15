@@ -1,3 +1,4 @@
+// REST /lessons — đọc public; CRUD + embed video/vocab/grammar chỉ admin.
 import {
   Controller,
   Get,
@@ -26,8 +27,12 @@ import { UserRole, TargetBand } from "../common/enums";
 export class LessonsController {
   constructor(private readonly lessonsService: LessonsService) {}
 
-  // GET /api/lessons?courseId=xxx&targetBand=xxx
-  // Lấy danh sách lesson theo courseId và targetBand (nếu có)
+  /*
+  GET /lessons?courseId=...&targetBand=... — danh sách lesson theo courseId
+  Input:
+    - courseId — query bắt buộc
+    - targetBand — query optional
+   */
   @Get()
   async findByCourse(
     @Query("courseId") courseId: string,
@@ -40,15 +45,21 @@ export class LessonsController {
     return this.lessonsService.findByCourse(courseId, targetBand);
   }
 
-  // GET /api/lessons/:id
-  // Lấy chi tiết 1 lesson
+  /*
+  GET /lessons/:id — chi tiết lesson
+  Input:
+    - id — id lesson trên URL
+   */
   @Get(":id")
   async findOne(@Param("id") id: string) {
     return this.lessonsService.findOne(id);
   }
 
-  // POST /api/lessons
-  // Tạo lesson mới (admin)
+  /*
+  POST /lessons — tạo lesson (admin)
+  Input:
+    - createLessonDto — body request
+   */
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Post()
@@ -56,8 +67,12 @@ export class LessonsController {
     return this.lessonsService.create(createLessonDto);
   }
 
-  // PATCH /api/lessons/:id
-  // Cập nhật lesson (admin)
+  /*
+  PATCH /lessons/:id — cập nhật lesson (admin)
+  Input:
+    - id — id lesson trên URL
+    - updateLessonDto — body request
+   */
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Patch(":id")
@@ -68,8 +83,11 @@ export class LessonsController {
     return this.lessonsService.update(id, updateLessonDto);
   }
 
-  // DELETE /api/lessons/:id
-  // Xoá lesson (Admin)
+  /*
+  DELETE /lessons/:id — xóa lesson (admin)
+  Input:
+    - id — id lesson trên URL
+   */
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Delete(":id")
@@ -77,8 +95,12 @@ export class LessonsController {
     return this.lessonsService.remove(id);
   }
 
-  // POST /api/lessons/:id/videos
-  // Thêm video vào lesson (Admin)
+  /*
+  POST /lessons/:id/videos — thêm video (admin)
+  Input:
+    - id — id lesson trên URL
+    - addVideoDto — body request
+   */
   @Post(":id/videos")
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
@@ -89,8 +111,12 @@ export class LessonsController {
     return this.lessonsService.addVideo(id, addVideoDto);
   }
 
-  // DELETE /api/lessons/:id/videos/:index
-  // Xoá video khỏi lesson (Admin)
+  /*
+  DELETE /lessons/:id/videos/:index — xóa video theo index (admin)
+  Input:
+    - id — id lesson trên URL
+    - index — index video (0-based)
+   */
   @Delete(":id/videos/:index")
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
@@ -101,8 +127,12 @@ export class LessonsController {
     return this.lessonsService.removeVideo(id, index);
   }
 
-  // POST /api/lessons/:id/vocabularies
-  // Thêm từ vựng vào lesson (Admin)
+  /*
+  POST /lessons/:id/vocabularies — thêm vocabulary (admin)
+  Input:
+    - id — id lesson trên URL
+    - addVocabularyDto — body request
+   */
   @Post(":id/vocabularies")
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
@@ -113,8 +143,12 @@ export class LessonsController {
     return this.lessonsService.addVocabulary(id, addVocabularyDto);
   }
 
-  // DELETE /api/lessons/:id/vocabularies/:index
-  // Xoá từ vựng khỏi lesson (Admin)
+  /*
+  DELETE /lessons/:id/vocabularies/:index — xóa vocabulary theo index (admin)
+  Input:
+    - id — id lesson trên URL
+    - index — index vocabulary (0-based)
+   */
   @Delete(":id/vocabularies/:index")
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
@@ -125,8 +159,12 @@ export class LessonsController {
     return this.lessonsService.removeVocabulary(id, index);
   }
 
-  // POST /api/lessons/:id/grammars
-  // Thêm ngữ pháp vào lesson (Admin)
+  /*
+  POST /lessons/:id/grammars — thêm grammar (admin)
+  Input:
+    - id — id lesson trên URL
+    - addGrammarDto — body request
+   */
   @Post(":id/grammars")
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
@@ -137,8 +175,12 @@ export class LessonsController {
     return this.lessonsService.addGrammar(id, addGrammarDto);
   }
 
-  // DELETE /api/lessons/:id/grammars/:index
-  // Xoá ngữ pháp khỏi lesson (Admin)
+  /*
+  DELETE /lessons/:id/grammars/:index — xóa grammar theo index (admin)
+  Input:
+    - id — id lesson trên URL
+    - index — index grammar (0-based)
+   */
   @Delete(":id/grammars/:index")
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)

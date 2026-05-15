@@ -1,6 +1,6 @@
+// DTO body POST /topics
 import { IsString, IsNotEmpty, IsOptional, IsUrl, MinLength, MaxLength, IsInt, Min } from "class-validator";
 
-// DTO cho POST /api/topics - Tạo topic mới
 export class CreateTopicDto {
   @IsString()
   @IsNotEmpty({ message: "Tên chủ đề không được để trống" })

@@ -20,26 +20,33 @@ import { UpdateTopicDto } from "./dto/update-topic.dto";
 
 @Controller("topics")
 export class TopicsController {
-  constructor (private readonly topicsService: TopicsService) {}
+  constructor(private readonly topicsService: TopicsService) {}
 
-  // GET /api/topics
-  // Lấy danh sách các topic (public, không cần login)
-  // Query param: ?showAll=true (chỉ cho admin, xem cả inactive topics)
+  /*
+  GET /topics — danh sách topic
+  Input:
+    - showAll — query optional; true thì trả cả topic ẩn
+   */
   @Get()
   async findAll(@Query("showAll", new ParseBoolPipe({ optional: true})) showAll?: boolean) {
     return this.topicsService.findAll(showAll);
   }
 
-  // GET /api/topics/:identifier
-  // Lấy chi tiết 1 topic (public, không cần login)
-  // identifier có thể là _id hoặc slug
+  /*
+  GET /topics/:identifier — chi tiết một topic
+  Input:
+    - identifier — id Mongo hoặc slug trên URL
+   */
   @Get(":identifier")
   async findOne(@Param("identifier") identifier: string) {
     return this.topicsService.findOne(identifier);
   }
 
-  // POST /api/topics
-  // Tạo topic mới (chỉ cho admin)
+  /*
+  POST /topics — tạo topic (admin)
+  Input:
+    - createTopicDto — body request
+   */
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Post()
@@ -47,21 +54,27 @@ export class TopicsController {
     return this.topicsService.create(createTopicDto);
   }
 
-  // PATCH /api/topics/:id
-  // Cập nhật topic (chỉ cho admin)
-  // Body: { name?, description?, iconUrl?, orderIndex?, isActive? }
+  /*
+  PATCH /topics/:id — cập nhật topic (admin)
+  Input:
+    - id — _id topic trên URL
+    - updateTopicDto — body request
+   */
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Patch(":id")
   async update(
     @Param("id") id: string,
-    @Body() updateTopicDto: UpdateTopicDto
+    @Body() updateTopicDto: UpdateTopicDto,
   ) {
-    return this.topicsService.update(id, updateTopicDto)
+    return this.topicsService.update(id, updateTopicDto);
   }
 
-  // DELETE /api/topics/:id
-  // Xóa topic (chỉ cho admin)
+  /*
+  DELETE /topics/:id — ẩn topic soft-delete (admin)
+  Input:
+    - id — _id topic trên URL
+   */
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Delete(":id")

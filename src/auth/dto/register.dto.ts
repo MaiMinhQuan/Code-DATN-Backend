@@ -1,6 +1,6 @@
-import {IsEmail, IsNotEmpty, IsString, MinLength, MaxLength, Min} from "class-validator";
+// Register DTO - validate request body for POST /auth/register.
+import {IsEmail, IsNotEmpty, IsString, MinLength, MaxLength} from "class-validator";
 
-/** DTO cho POST /api/auth/register */
 export class RegisterDto {
   @IsEmail({}, { message:"Email không hợp lệ" })
   @IsNotEmpty({ message: "Email không được để trống " })

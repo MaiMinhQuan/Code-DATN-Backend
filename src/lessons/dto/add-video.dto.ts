@@ -1,3 +1,4 @@
+// DTO body POST /lessons/:id/videos
 import {
   IsString,
   IsNotEmpty,
@@ -8,7 +9,6 @@ import {
   Min
 } from "class-validator";
 
-// DTO cho POST /api/lessons/:lessonId/videos - Thêm video vào lesson
 export class AddVideoDto {
   @IsString({ message: "Tiêu đề video phải là chuỗi ký tự" })
   @IsNotEmpty({ message: "Tiêu đề video không được để trống" })

@@ -1,3 +1,4 @@
+// Service CRUD Course: lọc theo topic/published, validate id, tạo/cập nhật/xóa.
 import { Injectable, NotFoundException, BadRequestException } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model, Types } from "mongoose";
@@ -11,13 +12,16 @@ export class CoursesService {
     @InjectModel(Course.name) private courseModel: Model<CourseDocument>,
   ) {}
 
-  // Lấy danh sách các khóa học với filter
-  // topicId: lọc theo topic
-  // isPublished: lọc theo trạng thái publish
+  /*
+  Danh sách course (lọc theo topicId/isPublished)
+  Input:
+    - topicId — id topic (optional)
+    - isPublished — true/false (optional)
+   */
   async findAll(topicId?: string, isPublished?: boolean): Promise<Course[]> {
     const filter: any= {};
 
-    // Filter theo topicId
+    // Kiểm tra hợp lệ và áp dụng bộ lọc theo topic
     if (topicId) {
       if (!Types.ObjectId.isValid(topicId)) {
         throw new BadRequestException("topicId không hợp lệ");
@@ -25,7 +29,7 @@ export class CoursesService {
       filter["topicId._id"] = new Types.ObjectId(topicId);
     }
 
-    // Filter theo trạng thái publish
+    // Áp dụng bộ lọc trạng thái xuất bản khi được cung cấp tường minh
     if (isPublished !== undefined) {
       filter.isPublished = isPublished;
     }
@@ -33,11 +37,15 @@ export class CoursesService {
     return this.courseModel
               .find(filter)
               .populate("topicId", "name slug")
-              .sort({ orderIndex: 1, createdAt: -1 }) // Sắp xếp theo orderIndex, sau đó theo thời gian tạo
+              .sort({ orderIndex: 1, createdAt: -1 }) // Sắp xếp chính theo thứ tự hiển thị, phụ theo mới nhất
               .exec();
   }
 
-  // Lấy chi tiết 1 khóa học theo id
+  /*
+  Chi tiết course theo id
+  Input:
+    - id — id course
+   */
   async findOne(id: string): Promise<Course> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("ID không hợp lệ");
@@ -55,8 +63,13 @@ export class CoursesService {
     return course;
   }
 
-  // Tạo khóa học mới (chỉ cho admin)
+  /*
+  Tạo course mới (validate topicId tồn tại)
+  Input:
+    - createCourseDto — body request
+   */
   async create(createCourseDto: CreateCourseDto): Promise<Course> {
+    // Xác minh topic tồn tại bằng cách truy vấn trực tiếp collection topics
     const topicExists = await this.courseModel.db
                                       .collection("topics")
                                       .findOne({_id: new Types.ObjectId(createCourseDto.topicId)});
@@ -69,13 +82,18 @@ export class CoursesService {
     return newCourse.save();
   }
 
-  // Cập nhật khóa học (chỉ cho admin)
+  /*
+  Cập nhật course (validate courseId và topicId nếu đổi)
+  Input:
+    - id — id course
+    - updateCourseDto — body request
+   */
   async update(id: string, updateCourseDto: UpdateCourseDto): Promise<Course> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("courseId không hợp lệ");
     }
 
-    // Nếu update topicId, kiểm tra topic đó có tồn tại không
+    // Xác minh topicId mới tham chiếu đến topic thực tế trước khi áp dụng cập nhật
     const dto = updateCourseDto as Partial<CreateCourseDto>;
     if (dto.topicId) {
       const topicExists = await this.courseModel.db
@@ -99,7 +117,11 @@ export class CoursesService {
     return updatedCourse;
   }
 
-  // Xóa khóa học (chỉ cho admin)
+  /*
+  Xóa course vĩnh viễn
+  Input:
+    - id — id course
+   */
   async remove(id: string): Promise<{ message: string }> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("courseId không hợp lệ");

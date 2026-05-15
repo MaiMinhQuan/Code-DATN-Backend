@@ -1,37 +1,3 @@
-// import { NestFactory } from "@nestjs/core";
-// import { ValidationPipe } from "@nestjs/common";
-// import { AppModule } from "./app.module";
-
-// async function bootstrap() {
-//   const app = await NestFactory.create(AppModule);
-
-//   // Global validation pipe
-//   app.useGlobalPipes(
-//     new ValidationPipe({
-//       whitelist: true,
-//       forbidNonWhitelisted: true,
-//       transform: true,
-//     }),
-//   );
-
-//   // CORS configuration
-//   app.enableCors({
-//     origin: process.env.CORS_ORIGIN || "http://localhost:3001",
-//     credentials: true,
-//   });
-
-//   // API prefix
-//   app.setGlobalPrefix("api");
-
-//   const port = process.env.PORT || 3000;
-//   await app.listen(port);
-
-//   console.log(`Application is running on: http://localhost:${port}`);
-//   console.log(`API Documentation: http://localhost:${port}/api`);
-// }
-
-// bootstrap();
-
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
@@ -45,15 +11,16 @@ async function bootstrap() {
   const port = configService.get<number>('PORT') || 3000;
   const corsOrigin = configService.get<string>('CORS_ORIGIN') || 'http://localhost:3001';
 
+  // Đặt tiền tố toàn cục cho tất cả route REST API
   app.setGlobalPrefix("api");
 
-  // CORS
+  // Cho phép các origin được cấu hình qua biến môi trường CORS_ORIGIN
   app.enableCors({
     origin: corsOrigin.split(',').map(origin => origin.trim()),
     credentials: true,
   });
 
-  // Validation
+  // Pipe xác thực dữ liệu đầu vào toàn cục — tự động chuyển kiểu và loại bỏ trường không khai báo
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
@@ -65,11 +32,11 @@ async function bootstrap() {
     }),
   );
 
-  // WebSocket Adapter (Optional - dùng nếu cần custom CORS)
+  // Adapter tùy chỉnh cho WebSocket — ghi đè cấu hình CORS mặc định
   app.useWebSocketAdapter(new SocketIOAdapter(app, configService));
 
   await app.listen(port);
-  console.log(`Server running on http://localhost:${port}`);
-  console.log(`WebSocket available at ws://localhost:${port}/ws/submissions`);
+  console.log(`Server đang chạy tại http://localhost:${port}`);
+  console.log(`WebSocket khả dụng tại ws://localhost:${port}/ws/submissions`);
 }
 bootstrap();

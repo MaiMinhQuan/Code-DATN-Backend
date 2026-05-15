@@ -1,12 +1,10 @@
+// Guard WebSocket: verify JWT từ handshake, gán user lên socket
 import { CanActivate, ExecutionContext, Injectable, Logger } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import { WsException } from "@nestjs/websockets";
 import { Socket } from "socket.io";
 import { ConfigService } from "@nestjs/config";
 
-// WebSocket JWT Guard - Xác thực JWT token cho WebSocket connections
-// Trích xuất token từ query/auth/header và verify bằng JwtService
-// Gắn user info vào socket sau khi xác thực thành công
 @Injectable()
 export class WsJwtGuard implements CanActivate {
   private readonly logger = new Logger(WsJwtGuard.name);
@@ -16,8 +14,11 @@ export class WsJwtGuard implements CanActivate {
     private readonly configService: ConfigService,
   ) {}
 
-  // NestJS Guard lifecycle method - Xác thực WebSocket connection
-  // true nếu token hợp lệ, throw WsException nếu không hợp lệ
+  /*
+  Cho phép kết nối/handler WS nếu token hợp lệ
+  Input:
+    - context — ExecutionContext (chuyển sang client WS)
+   */
   async canActivate(context: ExecutionContext): Promise<boolean> {
     try {
       const client: Socket = context.switchToWs().getClient();
@@ -31,7 +32,7 @@ export class WsJwtGuard implements CanActivate {
         secret: this.configService.get<string>("JWT_SECRET"),
       });
 
-      // Gắn user info vào socket để sử dụng sau
+      // Gắn user lên socket (handler đọc (client as any).user)
       (client as any).user = {
         userId: payload.sub,
         email: payload.email,
@@ -47,25 +48,22 @@ export class WsJwtGuard implements CanActivate {
     }
   }
 
-  // Trích xuất token từ socket handshake
-  // Hỗ trợ nhiều cách gửi token:
-  // 1. Query param: ?token=xxx
-  // 2. Auth header: { auth: { token: "xxx" } }
-  // 3. Bearer header: { headers: { authorization: "Bearer xxx" } }
+  /*
+  Trích token: query ?token= -> handshake.auth.token -> Authorization Bearer
+  Input:
+    - client — socket.io client
+   */
   private extractTokenFromSocket(client: Socket): string | null {
-    // 1. Từ query param
     const tokenFromQuery = client.handshake.query.token as string;
     if (tokenFromQuery) {
       return tokenFromQuery;
     }
 
-    // 2. Từ auth object
     const tokenFromAuth = client.handshake.auth?.token as string;
     if (tokenFromAuth) {
       return tokenFromAuth;
     }
 
-    // 3. Từ Authorization header
     const authHeader = client.handshake.headers.authorization;
     if (authHeader && authHeader.startsWith("Bearer ")) {
       return authHeader.substring(7);

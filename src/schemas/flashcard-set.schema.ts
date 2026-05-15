@@ -1,3 +1,4 @@
+// Schema FlashcardSet
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document, Types } from "mongoose";
 
@@ -17,5 +18,5 @@ export class FlashcardSet {
 
 export const FlashcardSetSchema = SchemaFactory.createForClass(FlashcardSet);
 
-// Indexes
+// Index
 FlashcardSetSchema.index({ userId: 1 });

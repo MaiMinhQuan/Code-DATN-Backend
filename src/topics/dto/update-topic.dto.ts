@@ -1,6 +1,6 @@
+// DTO body PATCH /topics/:id
 import { IsString, IsOptional, IsBoolean, IsUrl, MinLength, MaxLength, IsInt, Min } from "class-validator";
 
-// DTO cho PATCH /api/topics/:id - Cập nhật topic
 export class UpdateTopicDto {
   @IsOptional()
   @IsString()

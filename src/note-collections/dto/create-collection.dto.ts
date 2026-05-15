@@ -1,3 +1,4 @@
+// DTO body POST /note-collections
 import { IsString, IsNotEmpty, IsOptional } from "class-validator";
 
 export class CreateCollectionDto {

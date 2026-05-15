@@ -1,3 +1,4 @@
+// Enums dùng chung toàn backend
 export enum UserRole {
   STUDENT = "STUDENT",
   ADMIN = "ADMIN",
@@ -10,11 +11,11 @@ export enum TargetBand {
 }
 
 export enum SubmissionStatus {
-  DRAFT = "DRAFT",
-  SUBMITTED = "SUBMITTED",
-  PROCESSING = "PROCESSING",
-  COMPLETED = "COMPLETED",
-  FAILED = "FAILED",
+  DRAFT = "DRAFT",           // Lưu nhưng chưa nộp
+  SUBMITTED = "SUBMITTED",   // Chờ xử lý
+  PROCESSING = "PROCESSING", // Đang chấm
+  COMPLETED = "COMPLETED",   // Chấm xong
+  FAILED = "FAILED",         // Chấm lỗi
 }
 
 export enum HighlightType {

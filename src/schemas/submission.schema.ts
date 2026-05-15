@@ -1,8 +1,8 @@
+// Schema Submission: bài nộp của user + kết quả chấm AI (embed).
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document, Types } from "mongoose";
 import { SubmissionStatus, ErrorCategory } from "@/common/enums";
 
-// Embedded Sub-document for AI Error Detection
 @Schema({ _id: false })
 export class AIError {
   @Prop({ required: true })
@@ -15,53 +15,52 @@ export class AIError {
   category: ErrorCategory;
 
   @Prop({ required: true })
-  originalText: string; // Đoạn text bị lỗi
+  originalText: string;
 
   @Prop({ required: true })
-  suggestion: string; // Gợi ý sửa
+  suggestion: string;
 
   @Prop({ required: true })
-  explanation: string; // Giải thích lỗi (tiếng Việt)
+  explanation: string;
 
+  // Mức độ lỗi: low | medium | high
   @Prop({ default: "medium" })
-  severity?: string; // "low", "medium", "high"
+  severity?: string;
 }
 
-// Embedded AI Result Document
 @Schema({ _id: false, suppressReservedKeysWarning: true })
 export class AIResult {
   @Prop({ type: Number, required: true, min: 0, max: 9 })
-  taskResponseScore: number; // Điểm Task Response (0-9)
+  taskResponseScore: number;
 
   @Prop({ type: Number, required: true, min: 0, max: 9 })
-  coherenceScore: number; // Điểm Coherence & Cohesion (0-9)
+  coherenceScore: number;
 
   @Prop({ type: Number, required: true, min: 0, max: 9 })
-  lexicalScore: number; // Điểm Lexical Resource (0-9)
+  lexicalScore: number;
 
   @Prop({ type: Number, required: true, min: 0, max: 9 })
-  grammarScore: number; // Điểm Grammatical Range & Accuracy (0-9)
+  grammarScore: number;
 
   @Prop({ type: Number, required: true, min: 0, max: 9 })
-  overallBand: number; // Điểm tổng (trung bình)
+  overallBand: number;
 
   @Prop({ type: [AIError], default: [] })
-  errors: AIError[]; // Danh sách lỗi phát hiện
+  errors: AIError[];
 
   @Prop()
-  generalFeedback?: string; // Nhận xét chung từ AI (tiếng Việt)
+  generalFeedback?: string;
 
   @Prop()
-  strengths?: string; // Điểm mạnh
+  strengths?: string;
 
   @Prop()
-  improvements?: string; // Điểm cần cải thiện
+  improvements?: string;
 
   @Prop()
-  processedAt?: Date; // Thời điểm AI chấm xong
+  processedAt?: Date;
 }
 
-// Main Submission Schema
 export type SubmissionDocument = Submission & Document;
 
 @Schema({ timestamps: true })
@@ -73,39 +72,39 @@ export class Submission {
   questionId: Types.ObjectId;
 
   @Prop({ required: true })
-  essayContent: string; // Nội dung bài viết của học viên
+  essayContent: string;
 
   @Prop()
-  wordCount?: number; // Số từ trong bài viết
+  wordCount?: number;
 
   @Prop()
-  timeSpentSeconds?: number; // Thời gian làm bài (giây)
+  timeSpentSeconds?: number;
 
   @Prop({ type: String, enum: SubmissionStatus, default: SubmissionStatus.DRAFT })
   status: SubmissionStatus;
 
   @Prop({ type: AIResult })
-  aiResult?: AIResult; // Kết quả chấm từ AI (chỉ có khi status = COMPLETED)
+  aiResult?: AIResult;
 
   @Prop()
-  errorMessage?: string; // Lưu lỗi nếu status = FAILED
+  errorMessage?: string;
 
   @Prop()
-  submittedAt?: Date; // Thời điểm nộp bài
+  submittedAt?: Date;
 
   @Prop({ default: 1 })
-  attemptNumber: number; // Lần làm thứ mấy (nếu làm lại cùng 1 đề)
+  attemptNumber: number;
 }
 
 export const SubmissionSchema = SchemaFactory.createForClass(Submission);
 
-// Indexes
+// Index
 SubmissionSchema.index({ userId: 1, createdAt: -1 });
 SubmissionSchema.index({ questionId: 1 });
 SubmissionSchema.index({ status: 1 });
 SubmissionSchema.index({ userId: 1, questionId: 1, attemptNumber: 1 });
 
-// Pre-save hook to calculate word count
+// Tự tính wordCount khi essayContent thay đổi
 SubmissionSchema.pre("save", function (next) {
   if (this.isModified("essayContent")) {
     this.wordCount = this.essayContent.trim().split(/\s+/).length;

@@ -1,3 +1,4 @@
+// Service CRUD SampleEssay: filter, tăng view, soft-delete (ẩn).
 import { Injectable, NotFoundException, BadRequestException } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model, Types } from "mongoose";
@@ -12,11 +13,14 @@ export class SampleEssaysService {
     @InjectModel(SampleEssay.name) private sampleEssayModel: Model<SampleEssayDocument>,
   ) {}
 
-  // Lấy danh sách bài mẫu (chỉ published)
-  // topicId: Filter theo topic
-  // targetBand: Filter theo band điểm
+  /*
+  Danh sách bài mẫu (chỉ isPublished=true), có thể filter theo topic/band
+  Input:
+    - topicId — id topic (optional)
+    - targetBand — band (optional)
+   */
   async findAll(topicId?: string, targetBand?: TargetBand): Promise<SampleEssay[]> {
-    const filter: any = { isPublished: true };
+    const filter: any = { isPublished: true }; // students only see published essays
 
     if (topicId) {
       if (!Types.ObjectId.isValid(topicId)) {
@@ -32,12 +36,15 @@ export class SampleEssaysService {
     return this.sampleEssayModel
       .find(filter)
       .populate("topicId", "name slug")
-      .sort({ favoriteCount: -1, createdAt: -1 })
+      .sort({ favoriteCount: -1, createdAt: -1 }) // most-favorited first, then newest
       .exec();
   }
 
-  // Lấy chi tiết bài mẫu theo ID
-  // id: ID của sample essay
+  /*
+  Chi tiết bài mẫu theo id
+  Input:
+    - id — id essay
+   */
   async findOne(id: string): Promise<SampleEssay> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("ID không hợp lệ");
@@ -55,8 +62,11 @@ export class SampleEssaysService {
     return essay;
   }
 
-  // Tăng viewCount khi user xem bài mẫu
-  // id: ID của sample essay
+  /*
+  Tăng viewCount +1 (atomic)
+  Input:
+    - id — id essay
+   */
   async incrementViewCount(id: string): Promise<{ viewCount: number }> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("ID không hợp lệ");
@@ -66,7 +76,7 @@ export class SampleEssaysService {
       .findByIdAndUpdate(
         id,
         { $inc: { viewCount: 1 } },
-        { new: true }
+        { new: true }, // trả về document sau update
       )
       .exec();
 
@@ -77,10 +87,13 @@ export class SampleEssaysService {
     return { viewCount: essay.viewCount };
   }
 
-  // Tạo bài mẫu mới (Admin)
-  // createDto: Dữ liệu bài mẫu mới
+  /*
+  Tạo bài mẫu mới (validate topicId tồn tại)
+  Input:
+    - createDto — body request
+   */
   async create(createDto: CreateSampleEssayDto): Promise<SampleEssay> {
-    // Kiểm tra topic tồn tại
+    // Verify the topic document exists before creating the essay
     const topicExists = await this.sampleEssayModel.db
       .collection("topics")
       .findOne({ _id: new Types.ObjectId(createDto.topicId) });
@@ -98,17 +111,20 @@ export class SampleEssaysService {
     return newEssay.save();
   }
 
-  // Cập nhật bài mẫu (Admin)
-  // id: ID của bài mẫu cần cập nhật
-  // updateDto: Dữ liệu cập nhật
+  /*
+  Cập nhật bài mẫu (validate topicId nếu đổi)
+  Input:
+    - id — id essay
+    - updateDto — body request
+   */
   async update(id: string, updateDto: UpdateSampleEssayDto): Promise<SampleEssay> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("ID không hợp lệ");
     }
 
-    // Kiểm tra topic mới tồn tại
     const dto = updateDto as any;
 
+    // Nếu đổi topicId thì validate topic tồn tại
     if (dto.topicId) {
       const topicExists = await this.sampleEssayModel.db
         .collection("topics")
@@ -131,14 +147,17 @@ export class SampleEssaysService {
     return updatedEssay;
   }
 
-  // Xoá bài mẫu (Admin)
-  // id: ID của bài mẫu cần xoá
+  /*
+  Ẩn bài mẫu (soft-delete: isPublished=false)
+  Input:
+    - id — id essay
+   */
   async remove(id: string): Promise<{ message: string }> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("ID không hợp lệ");
     }
 
-    // Soft delete
+    // Soft delete: chỉ ẩn bằng isPublished=false
     const essay = await this.sampleEssayModel
       .findByIdAndUpdate(id, { isPublished: false }, { new: true })
       .exec();

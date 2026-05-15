@@ -14,6 +14,6 @@ import { Topic, TopicSchema } from "../schemas/topic.schema";
   ],
   controllers: [CoursesController],
   providers: [CoursesService],
-  exports: [CoursesService]
+  exports: [CoursesService],
 })
 export class CoursesModule {}

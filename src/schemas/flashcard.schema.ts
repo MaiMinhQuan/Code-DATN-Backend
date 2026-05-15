@@ -1,3 +1,4 @@
+// Schema Flashcard
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document, Types } from "mongoose";
 
@@ -9,20 +10,20 @@ export class Flashcard {
   setId: Types.ObjectId;
 
   @Prop({ required: true })
-  frontContent: string; // Mặt trước (thường là từ vựng hoặc câu hỏi)
+  frontContent: string;
 
   @Prop({ required: true })
-  backContent: string; // Mặt sau (nghĩa, giải thích)
+  backContent: string;
 
   @Prop()
-  nextReviewDate?: Date; // Ngày ôn tập tiếp theo (spaced repetition)
+  nextReviewDate?: Date;
 
   @Prop({ default: 0 })
-  reviewCount: number; // Số lần đã ôn tập
+  reviewCount: number;
 }
 
 export const FlashcardSchema = SchemaFactory.createForClass(Flashcard);
 
-// Indexes
+// Index
 FlashcardSchema.index({ setId: 1 });
 FlashcardSchema.index({ nextReviewDate: 1 });

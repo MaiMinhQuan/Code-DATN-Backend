@@ -1,4 +1,4 @@
-// Định nghĩa tên các events WebSocket
+// Tên event, namespace và prefix room dùng chung cho WebSocket submissions.
 export const WS_EVENTS = {
   // Client -> Server
   JOIN_ROOM: "join_room",
@@ -11,12 +11,10 @@ export const WS_EVENTS = {
   ERROR: "error",
 } as const;
 
-// Định nghĩa namespace
 export const WS_NAMESPACES = {
   SUBMISSIONS: "/ws/submissions",
 } as const;
 
-// Room prefix
 export const ROOM_PREFIX = {
   USER: "user:",
   SUBMISSION: "submission:",

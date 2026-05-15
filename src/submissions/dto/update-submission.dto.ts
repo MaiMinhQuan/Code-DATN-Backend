@@ -1,6 +1,6 @@
+// DTO body PATCH /submissions/:id
 import { IsString, IsOptional, IsNumber, Min, MinLength } from "class-validator";
 
-// DTO để cập nhật một submission (chỉ cho phép cập nhật essayContent và timeSpentSeconds)
 export class UpdateSubmissionDto {
   @IsString({ message: "essayContent phải là chuỗi" })
   @IsOptional()

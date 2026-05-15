@@ -1,6 +1,6 @@
+// Đăng ký tất cả schema Mongoose để inject model qua @InjectModel
 import { MongooseModule } from "@nestjs/mongoose";
 
-// Import tất cả Schema
 import { User, UserSchema } from "@/schemas/user.schema";
 import { Topic, TopicSchema } from "@/schemas/topic.schema";
 import { Course, CourseSchema } from "@/schemas/course.schema";

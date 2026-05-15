@@ -1,8 +1,8 @@
+// Schema SampleEssay: bài mẫu + highlight annotation (embed).
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document, Types } from "mongoose";
 import { TargetBand, HighlightType } from "@/common/enums";
 
-// Embedded Sub-document for Highlight Annotations
 @Schema({ _id: false })
 export class HighlightAnnotation {
   @Prop({ required: true })
@@ -15,13 +15,13 @@ export class HighlightAnnotation {
   highlightType: HighlightType;
 
   @Prop({ required: true })
-  explanation: string; // Giải thích bằng tiếng Việt hoặc tiếng Anh
+  explanation: string;
 
+  // Màu custom (optional)
   @Prop()
-  color?: string; // Hex color code for UI customization
+  color?: string;
 }
 
-// Main SampleEssay Schema
 export type SampleEssayDocument = SampleEssay & Document;
 
 @Schema({ timestamps: true })
@@ -33,16 +33,16 @@ export class SampleEssay {
   topicId: Types.ObjectId;
 
   @Prop({ required: true })
-  questionPrompt: string; // Đề bài
+  questionPrompt: string;
 
   @Prop({ type: String, enum: TargetBand, required: true })
   targetBand: TargetBand;
 
   @Prop({ required: true })
-  outlineContent: string; // Dàn ý (có thể là markdown hoặc plain text)
+  outlineContent: string;
 
   @Prop({ required: true })
-  fullEssayContent: string; // Bài viết mẫu hoàn chỉnh
+  fullEssayContent: string;
 
   @Prop({ type: [HighlightAnnotation], default: [] })
   highlightAnnotations: HighlightAnnotation[];
@@ -60,13 +60,13 @@ export class SampleEssay {
   authorName?: string;
 
   @Prop({ type: Number, min: 0, max: 9 })
-  overallBandScore?: number; // e.g., 7.5
+  overallBandScore?: number;
 }
 
 export const SampleEssaySchema = SchemaFactory.createForClass(SampleEssay);
 
-// Indexes
+// Index phục vụ filter/sort
 SampleEssaySchema.index({ topicId: 1 });
 SampleEssaySchema.index({ targetBand: 1 });
 SampleEssaySchema.index({ isPublished: 1 });
-SampleEssaySchema.index({ favoriteCount: -1 }); // For sorting by popularity
+SampleEssaySchema.index({ favoriteCount: -1 }); // descending for popularity sorting

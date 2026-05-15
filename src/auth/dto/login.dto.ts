@@ -1,6 +1,6 @@
+// Login DTO — validate request body cho POST /auth/login.
 import {IsEmail, IsNotEmpty, IsString} from "class-validator";
 
-/** DTO cho POST /api/auth/login */
 export class LoginDto {
   @IsEmail({}, { message: "Email không hợp lệ" })
   @IsNotEmpty({ message: "Email không được để trống" })

@@ -1,3 +1,4 @@
+// Schema NotebookNote
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document, Types } from "mongoose";
 
@@ -9,16 +10,17 @@ export class NotebookNote {
   userId: Types.ObjectId;
 
   @Prop({ required: true })
-  userDraftNote: string; // Nội dung ghi chú tự do (có thể là plain text hoặc markdown)
+  userDraftNote: string;
 
   @Prop()
-  title?: string; // Tiêu đề tùy chọn cho ghi chú
+  title?: string;
 
+  // Collection cha (null nếu không thuộc collection nào)
   @Prop({ type: Types.ObjectId, ref: "NoteCollection", default: null })
-  collectionId: Types.ObjectId | null
+  collectionId: Types.ObjectId | null;
 }
 
 export const NotebookNoteSchema = SchemaFactory.createForClass(NotebookNote);
 
-// Indexes
+// Index phục vụ list note theo user, mới nhất trước
 NotebookNoteSchema.index({ userId: 1, createdAt: -1 });

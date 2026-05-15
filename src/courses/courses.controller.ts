@@ -1,3 +1,4 @@
+// REST /courses — đọc công khai; tạo/sửa/xóa chỉ admin.
 import {
   Controller,
   Get,
@@ -21,28 +22,38 @@ import { UserRole } from "../common/enums";
 export class CoursesController {
   constructor (private readonly coursesService: CoursesService) {}
 
-  // GET /api/courses
-  // Query params: topicId, isPublished
-  // lấy danh sách các khóa học (public)
+  /*
+  GET /courses — danh sách khóa học
+  Input:
+    - topicId — query optional
+    - isPublished — query optional ("true"/"false")
+   */
   @Get()
   async findAll(
     @Query("topicId") topicId?: string,
     @Query("isPublished") isPublished?: string,
   ) {
+    // Chuyển đổi query string sang boolean trước khi truyền vào service
     const isPublishedBool = isPublished === "true" ? true : isPublished === "false" ? false : undefined;
 
     return this.coursesService.findAll(topicId, isPublishedBool);
   }
 
-  // GET /api/courses/:id
-  // Lấy chi tiết 1 khóa học (Public)
+  /*
+  GET /courses/:id — chi tiết khóa học
+  Input:
+    - id — id course trên URL
+   */
   @Get(":id")
   async findOne(@Param("id") id: string) {
     return this.coursesService.findOne(id)
   }
 
-  // POST /api/courses
-  // Tạo khóa học mới (Admin)
+  /*
+  POST /courses — tạo khóa học (admin)
+  Input:
+    - createCourseDto — body request
+   */
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Post()
@@ -50,8 +61,12 @@ export class CoursesController {
     return this.coursesService.create(createCourseDto);
   }
 
-  // PATCH /api/courses/:id
-  // Cập nhật course (Admin)
+  /*
+  PATCH /courses/:id — cập nhật khóa học (admin)
+  Input:
+    - id — id course trên URL
+    - updateCourseDto — body request
+   */
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Patch(":id")
@@ -62,8 +77,11 @@ export class CoursesController {
     return this.coursesService.update(id, updateCourseDto);
   }
 
-  // DELETE /api/courses/:id
-  // Xóa khóa học (Admin)
+  /*
+  DELETE /courses/:id — xóa khóa học (admin)
+  Input:
+    - id — id course trên URL
+   */
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Delete(":id")

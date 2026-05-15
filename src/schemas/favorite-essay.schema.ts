@@ -1,3 +1,4 @@
+// Schema FavoriteEssay
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document, Types } from "mongoose";
 
@@ -12,11 +13,11 @@ export class FavoriteEssay {
   essayId: Types.ObjectId;
 
   @Prop()
-  personalNote?: string; // Ghi chú cá nhân của học viên về bài mẫu này
+  personalNote?: string;
 }
 
 export const FavoriteEssaySchema = SchemaFactory.createForClass(FavoriteEssay);
 
-// Indexes
+// Index
 FavoriteEssaySchema.index({ userId: 1, essayId: 1 }, { unique: true });
 FavoriteEssaySchema.index({ userId: 1 });

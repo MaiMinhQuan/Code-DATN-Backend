@@ -1,3 +1,4 @@
+// Service CRUD note collection; khi xóa collection thì detach note (không cascade-delete).
 import { Injectable, NotFoundException, BadRequestException } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model, Types } from "mongoose";
@@ -13,6 +14,11 @@ export class NoteCollectionsService {
     @InjectModel(NotebookNote.name)   private noteModel:       Model<NotebookNoteDocument>,
   ) {}
 
+  /*
+  Danh sách collection của user (mới nhất trước)
+  Input:
+    - userId — id user
+   */
   async findAll(userId: string): Promise<NoteCollection[]> {
     if (!Types.ObjectId.isValid(userId)) {
       throw new BadRequestException("userId không hợp lệ");
@@ -23,6 +29,12 @@ export class NoteCollectionsService {
       .exec();
   }
 
+  /*
+  Tạo collection mới
+  Input:
+    - userId — id user
+    - dto — body request
+   */
   async create(userId: string, dto: CreateCollectionDto): Promise<NoteCollection> {
     if (!Types.ObjectId.isValid(userId)) {
       throw new BadRequestException("userId không hợp lệ");
@@ -35,6 +47,13 @@ export class NoteCollectionsService {
     return created.save();
   }
 
+  /*
+  Cập nhật collection (owner-only)
+  Input:
+    - id — id collection
+    - userId — id user
+    - dto — body request
+   */
   async update(id: string, userId: string, dto: UpdateCollectionDto): Promise<NoteCollection> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("id không hợp lệ");
@@ -55,6 +74,12 @@ export class NoteCollectionsService {
     return updated;
   }
 
+  /*
+  Xóa collection và detach toàn bộ note (collectionId=null)
+  Input:
+    - id — id collection
+    - userId — id user
+   */
   async delete(id: string, userId: string): Promise<{ message: string }> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("id không hợp lệ");
@@ -68,7 +93,8 @@ export class NoteCollectionsService {
     if (!collection) {
       throw new NotFoundException(`Không tìm thấy bộ sưu tập với ID: ${id}`);
     }
-    // Chuyển tất cả notes thuộc bộ này về null trước khi xóa
+
+    // Detach notes trước khi xóa collection để không mất dữ liệu note
     await this.noteModel.updateMany(
       { collectionId: new Types.ObjectId(id) },
       { $set: { collectionId: null } },
