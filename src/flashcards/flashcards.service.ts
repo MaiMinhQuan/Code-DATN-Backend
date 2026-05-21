@@ -1,4 +1,4 @@
-// Service CRUD flashcard set/cards + tính lịch ôn tập (SM-2)
+// Service CRUD flashcard set/cards và ghi nhận lượt ôn tập
 import { Injectable, NotFoundException, BadRequestException, ForbiddenException } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model, Types } from "mongoose";
@@ -22,7 +22,7 @@ export class FlashcardsService {
   Input:
     - userId — id user
    */
-  async findAllSets(userId: string): Promise<(FlashcardSet & { cardCount: number; dueCount: number })[]> {
+  async findAllSets(userId: string): Promise<(FlashcardSet & { cardCount: number })[]> {
     if (!Types.ObjectId.isValid(userId)) {
       throw new BadRequestException("userId không hợp lệ");
     }
@@ -37,43 +37,18 @@ export class FlashcardsService {
 
     const setIds = sets.map((s) => s._id);
 
-    // Mốc cuối ngày để tính thẻ đến hạn ôn
-    const today = new Date();
-    today.setHours(23, 59, 59, 999);
-
-    // Chạy 2 aggregation song song: đếm tổng thẻ và đếm thẻ đến hạn
-    const [cardCounts, dueCounts] = await Promise.all([
-      this.flashcardModel.aggregate([
-        { $match: { setId: { $in: setIds } } },
-        { $group: { _id: "$setId", count: { $sum: 1 } } },
-      ]),
-      this.flashcardModel.aggregate([
-        {
-          $match: {
-            setId: { $in: setIds },
-            // Thẻ đến hạn: nextReviewDate <= hôm nay hoặc chưa set ngày
-            $or: [
-              { nextReviewDate: { $lte: today } },
-              { nextReviewDate: null },
-              { nextReviewDate: { $exists: false } },
-            ],
-          },
-        },
-        { $group: { _id: "$setId", count: { $sum: 1 } } },
-      ]),
+    const cardCounts = await this.flashcardModel.aggregate([
+      { $match: { setId: { $in: setIds } } },
+      { $group: { _id: "$setId", count: { $sum: 1 } } },
     ]);
 
     const cardCountMap = new Map<string, number>(
       cardCounts.map((c) => [c._id.toString(), c.count]),
     );
-    const dueCountMap = new Map<string, number>(
-      dueCounts.map((c) => [c._id.toString(), c.count]),
-    );
 
     return sets.map((set) => ({
       ...set,
       cardCount: cardCountMap.get(set._id.toString()) ?? 0,
-      dueCount: dueCountMap.get(set._id.toString()) ?? 0,
     }));
   }
 
@@ -309,13 +284,12 @@ export class FlashcardsService {
   }
 
   /*
-  Cập nhật lịch ôn tập (SM-2 đơn giản) và tăng reviewCount
+  Ghi nhận lượt ôn tập — tăng reviewCount
   Input:
     - cardId — id card
     - userId — id user
-    - updateReviewDto — quality 0–5
    */
-  async updateReviewSchedule(cardId: string, userId: string, updateReviewDto: UpdateReviewDto): Promise<Flashcard> {
+  async updateReviewSchedule(cardId: string, userId: string): Promise<Flashcard> {
     if (!Types.ObjectId.isValid(cardId)) {
       throw new BadRequestException("cardId không hợp lệ");
     }
@@ -328,104 +302,18 @@ export class FlashcardsService {
       throw new NotFoundException(`Không tìm thấy thẻ với ID: ${cardId}`);
     }
 
-    // Check ownership qua parent set
     const set = await this.flashcardSetModel
-      .findOne({
-        _id: card.setId,
-        userId: new Types.ObjectId(userId),
-      })
+      .findOne({ _id: card.setId, userId: new Types.ObjectId(userId) })
       .exec();
 
     if (!set) {
       throw new ForbiddenException("Bạn không có quyền cập nhật thẻ này");
     }
 
-    const { quality } = updateReviewDto;
-    const newReviewCount = card.reviewCount + 1;
-    let daysUntilNextReview: number;
-
-    if (quality < 3) {
-      // Nhớ sai/khó → reset interval ngắn nhất
-      daysUntilNextReview = 1;
-    } else {
-      // Nhớ đúng → interval tăng dần theo số lần ôn
-      switch (newReviewCount) {
-        case 1:
-          daysUntilNextReview = 1;
-          break;
-        case 2:
-          daysUntilNextReview = 3;
-          break;
-        case 3:
-          daysUntilNextReview = 7;
-          break;
-        case 4:
-          daysUntilNextReview = 14;
-          break;
-        case 5:
-          daysUntilNextReview = 30;
-          break;
-        default:
-          daysUntilNextReview = Math.min(60, newReviewCount * 7);
-      }
-
-      // Điều chỉnh interval theo quality
-      if (quality === 5) {
-        daysUntilNextReview = Math.ceil(daysUntilNextReview * 1.3);
-      } else if (quality === 3) {
-        daysUntilNextReview = Math.ceil(daysUntilNextReview * 0.8);
-      }
-    }
-
-    const nextReviewDate = new Date();
-    nextReviewDate.setDate(nextReviewDate.getDate() + daysUntilNextReview);
-
     const updatedCard = await this.flashcardModel
-      .findByIdAndUpdate(
-        cardId,
-        {
-          $set: { nextReviewDate },
-          $inc: { reviewCount: 1 },
-        },
-        { new: true },
-      )
+      .findByIdAndUpdate(cardId, { $inc: { reviewCount: 1 } }, { new: true })
       .exec();
 
     return updatedCard;
-  }
-
-  /*
-  Danh sách thẻ đến hạn ôn hôm nay (trong tất cả set của user)
-  Input:
-    - userId — id user
-   */
-  async getCardsForReview(userId: string): Promise<Flashcard[]> {
-    if (!Types.ObjectId.isValid(userId)) {
-      throw new BadRequestException("userId không hợp lệ");
-    }
-
-    const userSets = await this.flashcardSetModel
-      .find({ userId: new Types.ObjectId(userId) })
-      .select("_id")
-      .exec();
-
-    const setIds = userSets.map((set) => set._id);
-
-    // Include thẻ chưa có nextReviewDate để ôn ngay
-    const today = new Date();
-    today.setHours(23, 59, 59, 999);
-
-    return this.flashcardModel
-      .find({
-        setId: { $in: setIds },
-        $or: [
-          { nextReviewDate: { $lte: today } },
-          { nextReviewDate: null },
-          { nextReviewDate: { $exists: false } },
-        ],
-      })
-      .populate("setId", "title")
-      .sort({ nextReviewDate: 1 })
-      .exec();
   }
 }

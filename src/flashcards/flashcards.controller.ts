@@ -1,12 +1,12 @@
-// REST /flashcard-sets — CRUD set/cards và cập nhật lịch ôn tập (spaced repetition).
+// REST /flashcard-sets — CRUD set/cards và ghi nhận lượt ôn tập.
 import {
   Controller,
   Get,
   Post,
   Patch,
   Delete,
-  Body,
   Param,
+  Body,
   UseGuards,
   Req,
 } from "@nestjs/common";
@@ -15,7 +15,6 @@ import { CreateFlashcardSetDto } from "./dto/create-flashcard-set.dto";
 import { UpdateFlashcardSetDto } from "./dto/update-flashcard-set.dto";
 import { CreateFlashcardDto } from "./dto/create-flashcard.dto";
 import { UpdateFlashcardDto } from "./dto/update-flashcard.dto";
-import { UpdateReviewDto } from "./dto/update-review.dto";
 import { JwtAuthGuard } from "../auth/guards/jwt-auth.guard";
 
 @Controller("flashcard-sets")
@@ -32,18 +31,6 @@ export class FlashcardsController {
   async findAllSets(@Req() req) {
     const userId = req.user._id.toString();
     return this.flashcardsService.findAllSets(userId);
-  }
-
-  /*
-  GET /flashcard-sets/review — danh sách thẻ đến hạn ôn
-  Input:
-    - req.user — user từ JWT
-   */
-  @UseGuards(JwtAuthGuard)
-  @Get("review")
-  async getCardsForReview(@Req() req) {
-    const userId = req.user._id.toString();
-    return this.flashcardsService.getCardsForReview(userId);
   }
 
   /*
@@ -153,20 +140,15 @@ export class FlashcardsController {
   }
 
   /*
-  PATCH /flashcard-sets/cards/:cardId/review — cập nhật lịch ôn tập (SM-2)
+  PATCH /flashcard-sets/cards/:cardId/review — ghi nhận lượt ôn (tăng reviewCount)
   Input:
     - req.user — user từ JWT
     - cardId — id card trên URL
-    - updateReviewDto — body request
    */
   @UseGuards(JwtAuthGuard)
   @Patch("cards/:cardId/review")
-  async updateReviewSchedule(
-    @Req() req,
-    @Param("cardId") cardId: string,
-    @Body() updateReviewDto: UpdateReviewDto,
-  ) {
+  async updateReviewSchedule(@Req() req, @Param("cardId") cardId: string) {
     const userId = req.user._id.toString();
-    return this.flashcardsService.updateReviewSchedule(cardId, userId, updateReviewDto);
+    return this.flashcardsService.updateReviewSchedule(cardId, userId);
   }
 }

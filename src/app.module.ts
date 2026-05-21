@@ -20,6 +20,7 @@ import { AIGradingModule } from "./ai-grading/ai-grading.module";
 import { SubmissionsModule } from "./submissions/submissions.module";
 import { BullModule } from "@nestjs/bullmq";
 import { WebsocketModule } from "./websocket/websocket.module";
+import { AdminModule } from "./admin/admin.module";
 
 @Module({
   imports: [
@@ -59,6 +60,7 @@ import { WebsocketModule } from "./websocket/websocket.module";
     AIGradingModule,
     SubmissionsModule,
     WebsocketModule,
+    AdminModule,
   ],
   controllers: [],
   providers: [],
