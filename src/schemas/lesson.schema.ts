@@ -36,6 +36,14 @@ export class LessonVocabulary {
   // Nghĩa tiếng Việt (tùy chọn)
   @Prop()
   translation?: string;
+
+  // Mốc thời gian xuất hiện trong video (giây)
+  @Prop()
+  timestamp?: number;
+
+  // Câu ngữ cảnh trích từ video tại mốc đó
+  @Prop()
+  contextSentence?: string;
 }
 
 @Schema({ _id: false })
@@ -52,6 +60,14 @@ export class LessonGrammar {
   // Cấu trúc ngữ pháp (tùy chọn)
   @Prop()
   structure?: string;
+
+  // Mốc thời gian xuất hiện trong video (giây)
+  @Prop()
+  timestamp?: number;
+
+  // Câu ngữ cảnh trích từ video tại mốc đó
+  @Prop()
+  contextSentence?: string;
 }
 
 export type LessonDocument = Lesson & Document;

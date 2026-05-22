@@ -15,15 +15,10 @@ export class Flashcard {
   @Prop({ required: true })
   backContent: string;
 
-  @Prop()
-  nextReviewDate?: Date;
-
   @Prop({ default: 0 })
   reviewCount: number;
 }
 
 export const FlashcardSchema = SchemaFactory.createForClass(Flashcard);
 
-// Index
 FlashcardSchema.index({ setId: 1 });
-FlashcardSchema.index({ nextReviewDate: 1 });
