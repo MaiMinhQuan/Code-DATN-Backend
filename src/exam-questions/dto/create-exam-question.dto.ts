@@ -8,7 +8,6 @@ import {
   Min,
   Max,
   IsBoolean,
-  IsArray,
 } from "class-validator";
 
 export class CreateExamQuestionDto {
@@ -31,7 +30,7 @@ export class CreateExamQuestionDto {
   @IsOptional()
   @IsInt({ message: "Độ khó phải là số nguyên" })
   @Min(1, { message: "Độ khó tối thiểu là 1" })
-  @Max(5, { message: "Độ khó tối đa là 5" })
+  @Max(3, { message: "Độ khó tối đa là 3" })
   difficultyLevel?: number;
 
   @IsOptional()
@@ -41,9 +40,4 @@ export class CreateExamQuestionDto {
   @IsOptional()
   @IsString({ message: "Nguồn đề thi phải là chuỗi" })
   sourceReference?: string;
-
-  @IsOptional()
-  @IsArray({ message: "Tags phải là mảng" })
-  @IsString({ each: true, message: "Mỗi tag phải là chuỗi" })
-  tags?: string[];
 }

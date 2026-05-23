@@ -1,5 +1,6 @@
 // DTO body POST /topics
-import { IsString, IsNotEmpty, IsOptional, IsUrl, MinLength, MaxLength, IsInt, Min } from "class-validator";
+import { IsString, IsNotEmpty, IsOptional, MinLength, MaxLength, IsBoolean } from "class-validator";
+import { Transform } from "class-transformer";
 
 export class CreateTopicDto {
   @IsString()
@@ -14,11 +15,7 @@ export class CreateTopicDto {
   description?: string;
 
   @IsOptional()
-  @IsUrl({}, { message: "URL icon không hợp lệ" })
-  iconUrl?: string;
-
-  @IsOptional()
-  @IsInt({ message: "orderIndex phải là số nguyên"})
-  @Min(0, { message: "orderIndex phải >= 0" })
-  orderIndex?: number;
+  @Transform(({ value }) => value === "true" || value === true)
+  @IsBoolean()
+  isActive?: boolean;
 }

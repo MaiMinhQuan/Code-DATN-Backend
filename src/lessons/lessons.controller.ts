@@ -16,8 +16,11 @@ import { LessonsService } from "./lessons.service";
 import { CreateLessonDto } from "./dto/create-lesson.dto";
 import { UpdateLessonDto } from "./dto/update-lesson.dto";
 import { AddVideoDto } from "./dto/add-video.dto";
+import { UpdateVideoDto } from "./dto/update-video.dto";
 import { AddVocabularyDto } from "./dto/add-vocabulary.dto";
+import { UpdateVocabularyDto } from "./dto/update-vocabulary.dto";
 import { AddGrammarDto } from "./dto/add-grammar.dto";
+import { UpdateGrammarDto } from "./dto/update-grammar.dto";
 import { JwtAuthGuard } from "../auth/guards/jwt-auth.guard";
 import { RolesGuard } from "../auth/guards/roles.guard";
 import { Roles } from "../auth/decorators/roles.decorator";
@@ -28,7 +31,7 @@ export class LessonsController {
   constructor(private readonly lessonsService: LessonsService) {}
 
   /*
-  GET /lessons?courseId=...&targetBand=... — danh sách lesson theo courseId
+  GET /lessons?courseId=...&targetBand=... — danh sách lesson theo courseId (public, chỉ published)
   Input:
     - courseId — query bắt buộc
     - targetBand — query optional
@@ -42,17 +45,49 @@ export class LessonsController {
       throw new BadRequestException("courseId là bắt buộc");
     }
 
-    return this.lessonsService.findByCourse(courseId, targetBand);
+    return this.lessonsService.findByCourse(courseId, targetBand, false);
   }
 
   /*
-  GET /lessons/:id — chi tiết lesson
+  GET /lessons/admin?courseId=... — danh sách lesson dành cho admin (bao gồm cả nháp)
+  Input:
+    - courseId — query bắt buộc
+    - targetBand — query optional
+   */
+  @Get("admin")
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN)
+  async findByCourseAdmin(
+    @Query("courseId") courseId: string,
+    @Query("targetBand") targetBand?: TargetBand,
+  ) {
+    if (!courseId) {
+      throw new BadRequestException("courseId là bắt buộc");
+    }
+
+    return this.lessonsService.findByCourse(courseId, targetBand, true);
+  }
+
+  /*
+  GET /lessons/:id — chi tiết lesson (public, chỉ trả về nếu isPublished=true)
   Input:
     - id — id lesson trên URL
    */
   @Get(":id")
   async findOne(@Param("id") id: string) {
-    return this.lessonsService.findOne(id);
+    return this.lessonsService.findOne(id, false);
+  }
+
+  /*
+  GET /lessons/admin/:id — chi tiết lesson dành cho admin (kể cả nháp)
+  Input:
+    - id — id lesson trên URL
+   */
+  @Get("admin/:id")
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN)
+  async findOneAdmin(@Param("id") id: string) {
+    return this.lessonsService.findOne(id, true);
   }
 
   /*
@@ -112,6 +147,24 @@ export class LessonsController {
   }
 
   /*
+  PATCH /lessons/:id/videos/:index — cập nhật video theo index (admin)
+  Input:
+    - id — id lesson trên URL
+    - index — index video (0-based)
+    - updateVideoDto — body request
+   */
+  @Patch(":id/videos/:index")
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN)
+  async updateVideo(
+    @Param("id") id: string,
+    @Param("index", ParseIntPipe) index: number,
+    @Body() updateVideoDto: UpdateVideoDto,
+  ) {
+    return this.lessonsService.updateVideo(id, index, updateVideoDto);
+  }
+
+  /*
   DELETE /lessons/:id/videos/:index — xóa video theo index (admin)
   Input:
     - id — id lesson trên URL
@@ -144,6 +197,24 @@ export class LessonsController {
   }
 
   /*
+  PATCH /lessons/:id/vocabularies/:index — cập nhật vocabulary theo index (admin)
+  Input:
+    - id — id lesson trên URL
+    - index — index vocabulary (0-based)
+    - updateVocabularyDto — body request
+   */
+  @Patch(":id/vocabularies/:index")
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN)
+  async updateVocabulary(
+    @Param("id") id: string,
+    @Param("index", ParseIntPipe) index: number,
+    @Body() updateVocabularyDto: UpdateVocabularyDto,
+  ) {
+    return this.lessonsService.updateVocabulary(id, index, updateVocabularyDto);
+  }
+
+  /*
   DELETE /lessons/:id/vocabularies/:index — xóa vocabulary theo index (admin)
   Input:
     - id — id lesson trên URL
@@ -173,6 +244,24 @@ export class LessonsController {
     @Body() addGrammarDto: AddGrammarDto,
   ) {
     return this.lessonsService.addGrammar(id, addGrammarDto);
+  }
+
+  /*
+  PATCH /lessons/:id/grammars/:index — cập nhật grammar theo index (admin)
+  Input:
+    - id — id lesson trên URL
+    - index — index grammar (0-based)
+    - updateGrammarDto — body request
+   */
+  @Patch(":id/grammars/:index")
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN)
+  async updateGrammar(
+    @Param("id") id: string,
+    @Param("index", ParseIntPipe) index: number,
+    @Body() updateGrammarDto: UpdateGrammarDto,
+  ) {
+    return this.lessonsService.updateGrammar(id, index, updateGrammarDto);
   }
 
   /*

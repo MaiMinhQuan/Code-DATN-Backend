@@ -3,13 +3,12 @@ import {
   IsString,
   IsNotEmpty,
   IsOptional,
-  IsNumber,
   IsBoolean,
   IsMongoId,
   IsEnum,
   MaxLength,
-  Min
 } from "class-validator";
+import { Transform } from "class-transformer";
 import { TargetBand } from "@/common/enums";
 
 export class CreateLessonDto {
@@ -31,11 +30,7 @@ export class CreateLessonDto {
   @MaxLength(2000, { message: "Mô tả không được vượt quá 2000 ký tự" })
   description?: string;
 
-  @IsNumber({}, { message: "orderIndex phải là số" })
-  @IsOptional()
-  @Min(0, { message: "orderIndex không được nhỏ hơn 0" })
-  orderIndex?: number;
-
+  @Transform(({ value }) => value === "true" || value === true)
   @IsBoolean({ message: "isPublished phải là boolean" })
   @IsOptional()
   isPublished?: boolean;

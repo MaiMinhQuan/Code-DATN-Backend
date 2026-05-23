@@ -4,7 +4,9 @@ import {
   IsNotEmpty,
   IsOptional,
   IsArray,
-  MaxLength
+  IsNumber,
+  MaxLength,
+  Min,
 } from "class-validator";
 
 export class AddGrammarDto {
@@ -27,4 +29,14 @@ export class AddGrammarDto {
   @IsOptional()
   @MaxLength(200, { message: "structure không được vượt quá 200 ký tự" })
   structure?: string;
+
+  @IsNumber({}, { message: "timestamp phải là số (giây)" })
+  @IsOptional()
+  @Min(0, { message: "timestamp phải >= 0" })
+  timestamp?: number;
+
+  @IsString({ message: "contextSentence phải là chuỗi ký tự" })
+  @IsOptional()
+  @MaxLength(500, { message: "contextSentence không được vượt quá 500 ký tự" })
+  contextSentence?: string;
 }

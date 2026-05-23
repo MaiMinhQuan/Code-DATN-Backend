@@ -26,20 +26,11 @@ export class Course {
   @Prop({ required: true, type: Object })
   topicId: TopicInfo;
 
-  @Prop()
-  thumbnailUrl?: string;
-
-  @Prop({ default: 0 })
-  orderIndex: number;
-
   @Prop({ default: true })
   isPublished: boolean;
 
   @Prop({ default: 0 })
   totalLessons: number;
-
-  @Prop()
-  instructorName?: string;
 
   @Prop({ default: true })
   isActive: boolean;
@@ -49,5 +40,5 @@ export const CourseSchema = SchemaFactory.createForClass(Course);
 
 // Index
 CourseSchema.index({ "topicId._id": 1, isActive: 1 });
-CourseSchema.index({ isPublished: 1, isActive: 1, orderIndex: 1 });
+CourseSchema.index({ isPublished: 1, isActive: 1 });
 CourseSchema.index({ isActive: 1 });

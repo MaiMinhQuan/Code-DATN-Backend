@@ -18,7 +18,7 @@ export class ExamQuestionsService {
   Input:
     - query — query params
    */
-  async findAll(query: QueryExamQuestionDto): Promise<ExamQuestion[]> {
+  async findAll(query: QueryExamQuestionDto, isAdmin = false): Promise<ExamQuestion[]> {
     const filter: any = {};
 
     if (query.topicId) {
@@ -32,15 +32,10 @@ export class ExamQuestionsService {
       filter.difficultyLevel = query.difficultyLevel;
     }
 
-    // Mặc định chỉ lấy đề đã published khi caller không truyền giá trị
-    if (query.isPublished !== undefined) {
-      filter.isPublished = query.isPublished;
-    } else {
+    if (!isAdmin) {
       filter.isPublished = true;
-    }
-
-    if (query.tag) {
-      filter.tags = query.tag; // khớp các document có mảng tags chứa giá trị này
+    } else if (query.isPublished !== undefined) {
+      filter.isPublished = query.isPublished;
     }
 
     return this.examQuestionModel
@@ -122,8 +117,7 @@ export class ExamQuestionsService {
       difficultyLevel: createDto.difficultyLevel || 0,
       isPublished: createDto.isPublished !== undefined ? createDto.isPublished : true,
       sourceReference: createDto.sourceReference || undefined,
-      tags: createDto.tags || [],
-      attemptCount: 0, // khởi tạo bằng 0 khi tạo mới
+      attemptCount: 0,
     });
 
     await newQuestion.save();
