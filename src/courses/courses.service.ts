@@ -18,10 +18,17 @@ export class CoursesService {
     - topicId — id topic (optional)
     - isPublished — true/false (optional)
    */
-  async findAll(topicId?: string, isPublished?: boolean): Promise<Course[]> {
-    const filter: any= {};
+  async findAll(topicId?: string, isPublished?: boolean, isAdmin = false): Promise<Course[]> {
+    const filter: any = {};
 
-    // Kiểm tra hợp lệ và áp dụng bộ lọc theo topic
+    // Student luôn chỉ thấy course đã xuất bản
+    if (!isAdmin) {
+      filter.isPublished = true;
+    } else if (isPublished !== undefined) {
+      // Admin có thể filter thêm theo isPublished nếu muốn
+      filter.isPublished = isPublished;
+    }
+
     if (topicId) {
       if (!Types.ObjectId.isValid(topicId)) {
         throw new BadRequestException("topicId không hợp lệ");
@@ -29,15 +36,10 @@ export class CoursesService {
       filter["topicId._id"] = new Types.ObjectId(topicId);
     }
 
-    // Áp dụng bộ lọc trạng thái xuất bản khi được cung cấp tường minh
-    if (isPublished !== undefined) {
-      filter.isPublished = isPublished;
-    }
-
     return this.courseModel
               .find(filter)
               .populate("topicId", "name slug")
-              .sort({ orderIndex: 1, createdAt: -1 }) // Sắp xếp chính theo thứ tự hiển thị, phụ theo mới nhất
+              .sort({ createdAt: -1 })
               .exec();
   }
 
@@ -46,13 +48,16 @@ export class CoursesService {
   Input:
     - id — id course
    */
-  async findOne(id: string): Promise<Course> {
+  async findOne(id: string, isAdmin = false): Promise<Course> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("ID không hợp lệ");
     }
 
+    const query: any = { _id: new Types.ObjectId(id) };
+    if (!isAdmin) query.isPublished = true;
+
     const course = await this.courseModel
-                              .findById(id)
+                              .findOne(query)
                               .populate("topicId", "name slug description")
                               .exec();
 
@@ -69,16 +74,19 @@ export class CoursesService {
     - createCourseDto — body request
    */
   async create(createCourseDto: CreateCourseDto): Promise<Course> {
-    // Xác minh topic tồn tại bằng cách truy vấn trực tiếp collection topics
-    const topicExists = await this.courseModel.db
-                                      .collection("topics")
-                                      .findOne({_id: new Types.ObjectId(createCourseDto.topicId)});
+    const topic = await this.courseModel.db
+      .collection("topics")
+      .findOne({ _id: new Types.ObjectId(createCourseDto.topicId) });
 
-    if (!topicExists) {
+    if (!topic) {
       throw new BadRequestException("Topic không tồn tại");
     }
 
-    const newCourse = new this.courseModel(createCourseDto);
+    const { topicId, ...rest } = createCourseDto;
+    const newCourse = new this.courseModel({
+      ...rest,
+      topicId: { _id: topic._id, name: topic.name, slug: topic.slug },
+    });
     return newCourse.save();
   }
 
@@ -93,21 +101,23 @@ export class CoursesService {
       throw new BadRequestException("courseId không hợp lệ");
     }
 
-    // Xác minh topicId mới tham chiếu đến topic thực tế trước khi áp dụng cập nhật
-    const dto = updateCourseDto as Partial<CreateCourseDto>;
-    if (dto.topicId) {
-      const topicExists = await this.courseModel.db
-                                          .collection("topics")
-                                          .findOne({_id: new Types.ObjectId(dto.topicId)});
+    const { topicId, ...restDto } = updateCourseDto as any;
+    const updateData: any = { ...restDto };
 
-      if (!topicExists) {
+    if (topicId) {
+      const topic = await this.courseModel.db
+        .collection("topics")
+        .findOne({ _id: new Types.ObjectId(topicId) });
+
+      if (!topic) {
         throw new BadRequestException("Topic không tồn tại");
       }
+
+      updateData.topicId = { _id: topic._id, name: topic.name, slug: topic.slug };
     }
 
     const updatedCourse = await this.courseModel
-                                    .findByIdAndUpdate(id, updateCourseDto, { new: true })
-                                    .populate("topicId", "name slug description")
+                                    .findByIdAndUpdate(id, updateData, { new: true })
                                     .exec();
 
     if (!updatedCourse) {

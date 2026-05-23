@@ -18,6 +18,7 @@
     "docker:reset": "docker stop mongodb redis && docker rm mongodb redis && docker run -d -p 27017:27017 --name mongodb mongo:latest && docker run -d -p 6379:6379 --name redis redis:latest",
     "docker:logs": "docker logs mongodb && docker logs redis",
     "db:shell": "docker exec -it mongodb mongosh",
+    "seed": "ts-node -r tsconfig-paths/register src/seed.ts",
     "redis:cli": "docker exec -it redis redis-cli"
   },
   "dependencies": {

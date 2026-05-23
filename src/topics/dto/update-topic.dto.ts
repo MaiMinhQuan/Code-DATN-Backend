@@ -1,5 +1,6 @@
 // DTO body PATCH /topics/:id
-import { IsString, IsOptional, IsBoolean, IsUrl, MinLength, MaxLength, IsInt, Min } from "class-validator";
+import { IsString, IsOptional, IsBoolean, MinLength, MaxLength } from "class-validator";
+import { Transform } from "class-transformer";
 
 export class UpdateTopicDto {
   @IsOptional()
@@ -14,15 +15,7 @@ export class UpdateTopicDto {
   description?: string;
 
   @IsOptional()
-  @IsUrl({}, { message: "URL icon không hợp lệ" })
-  iconUrl?: string;
-
-  @IsOptional()
-  @IsInt({ message: "orderIndex phải là số nguyên" })
-  @Min(0, { message: "orderIndex phải >= 0" })
-  orderIndex?: number;
-
-  @IsOptional()
+  @Transform(({ value }) => value === "true" || value === true)
   @IsBoolean({ message: "isActive phải là true hoặc false" })
   isActive?: boolean;
 }

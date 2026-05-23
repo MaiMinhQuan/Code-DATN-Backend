@@ -7,8 +7,11 @@ import { Course, CourseDocument } from "../schemas/course.schema";
 import { CreateLessonDto } from "./dto/create-lesson.dto";
 import { UpdateLessonDto } from "./dto/update-lesson.dto";
 import { AddVideoDto } from "./dto/add-video.dto";
+import { UpdateVideoDto } from "./dto/update-video.dto";
 import { AddVocabularyDto } from "./dto/add-vocabulary.dto";
+import { UpdateVocabularyDto } from "./dto/update-vocabulary.dto";
 import { AddGrammarDto } from "./dto/add-grammar.dto";
+import { UpdateGrammarDto } from "./dto/update-grammar.dto";
 import { TargetBand } from "@/common/enums";
 
 @Injectable()
@@ -24,15 +27,16 @@ export class LessonsService {
     - courseId — id course
     - targetBand — filter band (optional)
    */
-  async findByCourse(courseId: string, targetBand?: TargetBand): Promise<Lesson[]> {
+  async findByCourse(courseId: string, targetBand?: TargetBand, showAll = false): Promise<Lesson[]> {
     if (!Types.ObjectId.isValid(courseId)) {
       throw new BadRequestException("courseId không hợp lệ");
     }
 
-    const filter: any = {
-      courseId: new Types.ObjectId(courseId),
-      isPublished: true, // Chỉ trả lesson đã publish
-    };
+    const filter: any = { courseId: new Types.ObjectId(courseId) };
+
+    if (!showAll) {
+      filter.isPublished = true;
+    }
 
     if (targetBand) {
       filter.targetBand = targetBand;
@@ -41,7 +45,7 @@ export class LessonsService {
     return this.lessonModel
               .find(filter)
               .populate("courseId", "title")
-              .sort({ orderIndex: 1, createdAt: -1 })
+              .sort({ createdAt: -1 })
               .exec();
   }
 
@@ -50,13 +54,16 @@ export class LessonsService {
   Input:
     - id — id lesson
    */
-  async findOne(id: string): Promise<Lesson> {
+  async findOne(id: string, isAdmin = false): Promise<Lesson> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("ID không hợp lệ");
     }
 
+    const query: any = { _id: new Types.ObjectId(id) };
+    if (!isAdmin) query.isPublished = true;
+
     const lesson = await this.lessonModel
-                              .findById(id)
+                              .findOne(query)
                               .populate("courseId", "title description")
                               .exec();
 
@@ -86,11 +93,8 @@ export class LessonsService {
     const newLesson = new this.lessonModel(createLessonDto);
     const savedLesson = await newLesson.save();
 
-    // Đồng bộ totalLessons
-    await this.courseModel.findByIdAndUpdate(
-      createLessonDto.courseId,
-      { $inc: { totalLessons: 1 } },
-    );
+    const count = await this.lessonModel.countDocuments({ courseId: new Types.ObjectId(createLessonDto.courseId) });
+    await this.courseModel.findByIdAndUpdate(createLessonDto.courseId, { totalLessons: count });
 
     return savedLesson;
   }
@@ -149,11 +153,8 @@ export class LessonsService {
 
     await this.lessonModel.findByIdAndDelete(id);
 
-    // Đồng bộ totalLessons sau khi xóa lesson
-    await this.courseModel.findByIdAndUpdate(
-      lesson.courseId,
-      { $inc: { totalLessons: -1 } },
-    );
+    const count = await this.lessonModel.countDocuments({ courseId: lesson.courseId });
+    await this.courseModel.findByIdAndUpdate(lesson.courseId, { totalLessons: count });
 
     return { message: "Xóa bài học thành công" };
   }
@@ -206,6 +207,8 @@ export class LessonsService {
       definition: addVocabularyDto.definition,
       examples: addVocabularyDto.examples ?? [],
       translation: addVocabularyDto.translation,
+      timestamp: addVocabularyDto.timestamp,
+      contextSentence: addVocabularyDto.contextSentence,
     });
     await lesson.save();
 
@@ -235,6 +238,8 @@ export class LessonsService {
       explanation: addGrammarDto.explanation,
       examples: addGrammarDto.examples ?? [],
       structure: addGrammarDto.structure,
+      timestamp: addGrammarDto.timestamp,
+      contextSentence: addGrammarDto.contextSentence,
     });
     await lesson.save();
 
@@ -320,6 +325,90 @@ export class LessonsService {
 
     // Xóa 1 phần tử tại grammarIndex
     lesson.grammars.splice(grammarIndex, 1);
+    await lesson.save();
+
+    return lesson;
+  }
+
+  /*
+  Cập nhật video theo index
+  Input:
+    - lessonId — id lesson
+    - videoIndex — index video (0-based)
+    - dto — các field cần cập nhật
+   */
+  async updateVideo(lessonId: string, videoIndex: number, dto: UpdateVideoDto): Promise<Lesson> {
+    if (!Types.ObjectId.isValid(lessonId)) {
+      throw new BadRequestException("lessonId không hợp lệ");
+    }
+
+    const lesson = await this.lessonModel.findById(lessonId);
+
+    if (!lesson) {
+      throw new NotFoundException(`Không tìm thấy bài học với ID: ${lessonId}`);
+    }
+
+    if (videoIndex < 0 || videoIndex >= lesson.videos.length) {
+      throw new BadRequestException("videoIndex không hợp lệ");
+    }
+
+    Object.assign(lesson.videos[videoIndex], dto);
+    await lesson.save();
+
+    return lesson;
+  }
+
+  /*
+  Cập nhật vocabulary theo index
+  Input:
+    - lessonId — id lesson
+    - vocabIndex — index vocabulary (0-based)
+    - dto — các field cần cập nhật
+   */
+  async updateVocabulary(lessonId: string, vocabIndex: number, dto: UpdateVocabularyDto): Promise<Lesson> {
+    if (!Types.ObjectId.isValid(lessonId)) {
+      throw new BadRequestException("lessonId không hợp lệ");
+    }
+
+    const lesson = await this.lessonModel.findById(lessonId);
+
+    if (!lesson) {
+      throw new NotFoundException(`Không tìm thấy bài học với ID: ${lessonId}`);
+    }
+
+    if (vocabIndex < 0 || vocabIndex >= lesson.vocabularies.length) {
+      throw new BadRequestException("vocabIndex không hợp lệ");
+    }
+
+    Object.assign(lesson.vocabularies[vocabIndex], dto);
+    await lesson.save();
+
+    return lesson;
+  }
+
+  /*
+  Cập nhật grammar theo index
+  Input:
+    - lessonId — id lesson
+    - grammarIndex — index grammar (0-based)
+    - dto — các field cần cập nhật
+   */
+  async updateGrammar(lessonId: string, grammarIndex: number, dto: UpdateGrammarDto): Promise<Lesson> {
+    if (!Types.ObjectId.isValid(lessonId)) {
+      throw new BadRequestException("lessonId không hợp lệ");
+    }
+
+    const lesson = await this.lessonModel.findById(lessonId);
+
+    if (!lesson) {
+      throw new NotFoundException(`Không tìm thấy bài học với ID: ${lessonId}`);
+    }
+
+    if (grammarIndex < 0 || grammarIndex >= lesson.grammars.length) {
+      throw new BadRequestException("grammarIndex không hợp lệ");
+    }
+
+    Object.assign(lesson.grammars[grammarIndex], dto);
     await lesson.save();
 
     return lesson;

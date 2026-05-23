@@ -15,20 +15,11 @@ export class Topic {
   @Prop({ trim: true })
   description?: string;
 
-  @Prop()
-  iconUrl?: string;
-
-  @Prop({ default: 0 })
-  orderIndex: number;
-
   @Prop({ default: true })
   isActive: boolean;
 }
 
 export const TopicSchema = SchemaFactory.createForClass(Topic);
-
-// Index
-TopicSchema.index({ orderIndex: 1 });
 
 // Tự tạo slug khi name thay đổi
 TopicSchema.pre("save", function (next) {

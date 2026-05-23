@@ -1,5 +1,5 @@
 // DTO body PATCH /lessons/:id
-import { PartialType } from "@nestjs/mapped-types";
+import { PartialType, OmitType } from "@nestjs/mapped-types";
 import { CreateLessonDto } from "./create-lesson.dto";
 
-export class UpdateLessonDto extends PartialType(CreateLessonDto) {}
+export class UpdateLessonDto extends PartialType(OmitType(CreateLessonDto, ["courseId"] as const)) {}

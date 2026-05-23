@@ -6,10 +6,7 @@ import { TargetBand, HighlightType } from "@/common/enums";
 @Schema({ _id: false })
 export class HighlightAnnotation {
   @Prop({ required: true })
-  startIndex: number;
-
-  @Prop({ required: true })
-  endIndex: number;
+  text: string;
 
   @Prop({ type: String, enum: HighlightType, required: true })
   highlightType: HighlightType;
@@ -17,7 +14,6 @@ export class HighlightAnnotation {
   @Prop({ required: true })
   explanation: string;
 
-  // Màu custom (optional)
   @Prop()
   color?: string;
 }
@@ -46,9 +42,6 @@ export class SampleEssay {
 
   @Prop({ type: [HighlightAnnotation], default: [] })
   highlightAnnotations: HighlightAnnotation[];
-
-  @Prop({ default: 0 })
-  viewCount: number;
 
   @Prop({ default: 0 })
   favoriteCount: number;

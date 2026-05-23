@@ -86,9 +86,6 @@ export class Lesson {
   @Prop({ type: String, trim: true })
   description?: string;
 
-  @Prop({ default: 0 })
-  orderIndex: number;
-
   @Prop({ default: true })
   isPublished: boolean;
 
@@ -108,6 +105,6 @@ export class Lesson {
 export const LessonSchema = SchemaFactory.createForClass(Lesson);
 
 // Index
-LessonSchema.index({ courseId: 1, orderIndex: 1 });
+LessonSchema.index({ courseId: 1, createdAt: -1 });
 LessonSchema.index({ targetBand: 1 });
 LessonSchema.index({ isPublished: 1 });

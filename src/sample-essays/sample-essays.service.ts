@@ -1,4 +1,4 @@
-// Service CRUD SampleEssay: filter, tăng view, soft-delete (ẩn).
+// Service CRUD SampleEssay: filter, soft-delete (ẩn).
 import { Injectable, NotFoundException, BadRequestException } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model, Types } from "mongoose";
@@ -63,31 +63,6 @@ export class SampleEssaysService {
   }
 
   /*
-  Tăng viewCount +1 (atomic)
-  Input:
-    - id — id essay
-   */
-  async incrementViewCount(id: string): Promise<{ viewCount: number }> {
-    if (!Types.ObjectId.isValid(id)) {
-      throw new BadRequestException("ID không hợp lệ");
-    }
-
-    const essay = await this.sampleEssayModel
-      .findByIdAndUpdate(
-        id,
-        { $inc: { viewCount: 1 } },
-        { new: true }, // trả về document sau update
-      )
-      .exec();
-
-    if (!essay) {
-      throw new NotFoundException("Không tìm thấy bài mẫu");
-    }
-
-    return { viewCount: essay.viewCount };
-  }
-
-  /*
   Tạo bài mẫu mới (validate topicId tồn tại)
   Input:
     - createDto — body request
@@ -104,7 +79,6 @@ export class SampleEssaysService {
 
     const newEssay = new this.sampleEssayModel({
       ...createDto,
-      viewCount: 0,
       favoriteCount: 0,
     });
 

@@ -29,9 +29,6 @@ export class ExamQuestion {
 
   @Prop()
   sourceReference?: string;
-
-  @Prop({ type: [String], default: [] })
-  tags: string[];
 }
 
 export const ExamQuestionSchema = SchemaFactory.createForClass(ExamQuestion);
@@ -40,4 +37,3 @@ export const ExamQuestionSchema = SchemaFactory.createForClass(ExamQuestion);
 ExamQuestionSchema.index({ topicId: 1 });
 ExamQuestionSchema.index({ isPublished: 1 });
 ExamQuestionSchema.index({ difficultyLevel: 1 });
-ExamQuestionSchema.index({ tags: 1 });

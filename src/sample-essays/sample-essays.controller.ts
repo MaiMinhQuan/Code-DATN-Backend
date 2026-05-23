@@ -1,4 +1,4 @@
-// REST /sample-essays — danh sách/chi tiết bài mẫu, tăng view, CRUD admin.
+// REST /sample-essays — danh sách/chi tiết bài mẫu, CRUD admin.
 import {
   Controller,
   Get,
@@ -44,16 +44,6 @@ export class SampleEssaysController {
   @Get(":id")
   async findOne(@Param("id") id: string) {
     return this.sampleEssaysService.findOne(id);
-  }
-
-  /*
-  POST /sample-essays/:id/view — tăng viewCount
-  Input:
-    - id — id essay trên URL
-   */
-  @Post(":id/view")
-  async incrementViewCount(@Param("id") id: string) {
-    return this.sampleEssaysService.incrementViewCount(id);
   }
 
   /*

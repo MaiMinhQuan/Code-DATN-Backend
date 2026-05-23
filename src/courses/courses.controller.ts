@@ -23,30 +23,54 @@ export class CoursesController {
   constructor (private readonly coursesService: CoursesService) {}
 
   /*
-  GET /courses — danh sách khóa học
+  GET /courses — danh sách khóa học (public, chỉ isPublished=true)
   Input:
     - topicId — query optional
-    - isPublished — query optional ("true"/"false")
    */
   @Get()
   async findAll(
     @Query("topicId") topicId?: string,
-    @Query("isPublished") isPublished?: string,
   ) {
-    // Chuyển đổi query string sang boolean trước khi truyền vào service
-    const isPublishedBool = isPublished === "true" ? true : isPublished === "false" ? false : undefined;
-
-    return this.coursesService.findAll(topicId, isPublishedBool);
+    return this.coursesService.findAll(topicId, undefined, false);
   }
 
   /*
-  GET /courses/:id — chi tiết khóa học
+  GET /courses/admin — danh sách khóa học dành cho admin (kể cả nháp)
+  Input:
+    - topicId — query optional
+    - isPublished — query optional ("true"/"false")
+   */
+  @Get("admin")
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN)
+  async findAllAdmin(
+    @Query("topicId") topicId?: string,
+    @Query("isPublished") isPublished?: string,
+  ) {
+    const isPublishedBool = isPublished === "true" ? true : isPublished === "false" ? false : undefined;
+    return this.coursesService.findAll(topicId, isPublishedBool, true);
+  }
+
+  /*
+  GET /courses/:id — chi tiết khóa học (public, chỉ trả về nếu isPublished=true)
   Input:
     - id — id course trên URL
    */
   @Get(":id")
   async findOne(@Param("id") id: string) {
-    return this.coursesService.findOne(id)
+    return this.coursesService.findOne(id, false);
+  }
+
+  /*
+  GET /courses/admin/:id — chi tiết khóa học dành cho admin (kể cả nháp)
+  Input:
+    - id — id course trên URL
+   */
+  @Get("admin/:id")
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN)
+  async findOneAdmin(@Param("id") id: string) {
+    return this.coursesService.findOne(id, true);
   }
 
   /*

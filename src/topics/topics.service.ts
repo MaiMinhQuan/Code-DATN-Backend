@@ -25,7 +25,7 @@ export class TopicsService {
 
     const topics = await this.topicModel
       .find(filter)
-      .sort({ orderIndex: 1, createdAt: -1 }) // orderIndex tăng dần, cùng order thì mới trước
+      .sort({ createdAt: -1 })
       .exec();
     return topics;
   }
@@ -59,7 +59,7 @@ export class TopicsService {
     - createTopicDto — body request
    */
   async create(createTopicDto: CreateTopicDto) {
-    const { name, description, iconUrl, orderIndex } = createTopicDto;
+    const { name, description, isActive } = createTopicDto;
 
     const existingTopic = await this.topicModel.findOne({ name }).exec();
     if (existingTopic) {
@@ -69,9 +69,7 @@ export class TopicsService {
     const newTopic = new this.topicModel({
       name,
       description,
-      iconUrl,
-      orderIndex: orderIndex ?? 0,
-      isActive: true,
+      isActive: isActive ?? true,
     });
 
     await newTopic.save();
@@ -105,12 +103,6 @@ export class TopicsService {
     }
     if (updateTopicDto.description !== undefined) {
       topic.description = updateTopicDto.description;
-    }
-    if (updateTopicDto.iconUrl !== undefined) {
-      topic.iconUrl = updateTopicDto.iconUrl;
-    }
-    if (updateTopicDto.orderIndex !== undefined) {
-      topic.orderIndex = updateTopicDto.orderIndex;
     }
     if (updateTopicDto.isActive !== undefined) {
       topic.isActive = updateTopicDto.isActive;

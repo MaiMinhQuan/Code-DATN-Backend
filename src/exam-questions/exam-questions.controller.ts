@@ -24,13 +24,25 @@ export class ExamQuestionsController {
   constructor(private readonly examQuestionsService: ExamQuestionsService) {}
 
   /*
-  GET /exam-questions — danh sách đề thi (filter)
+  GET /exam-questions — danh sách đề thi (public, chỉ isPublished=true)
   Input:
     - query — query params
    */
   @Get()
   async findAll(@Query() query: QueryExamQuestionDto) {
-    return this.examQuestionsService.findAll(query);
+    return this.examQuestionsService.findAll(query, false);
+  }
+
+  /*
+  GET /exam-questions/admin — danh sách đề thi dành cho admin (kể cả nháp)
+  Input:
+    - query — query params
+   */
+  @Get("admin")
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN)
+  async findAllAdmin(@Query() query: QueryExamQuestionDto) {
+    return this.examQuestionsService.findAll(query, true);
   }
 
   /*

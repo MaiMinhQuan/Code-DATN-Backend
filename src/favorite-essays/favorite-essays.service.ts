@@ -60,7 +60,7 @@ export class FavoriteEssaysService {
       .findById(newFavorite._id)
       .populate({
         path: "essayId",
-        select: "title topicId targetBand outlineContent viewCount favoriteCount questionPrompt",
+        select: "title topicId targetBand outlineContent favoriteCount questionPrompt",
         populate: {
           path: "topicId",
           select: "name slug description",
@@ -113,7 +113,7 @@ export class FavoriteEssaysService {
       .find({ userId: new Types.ObjectId(userId) })
       .populate({
         path: "essayId",
-        select: "title topicId targetBand outlineContent viewCount favoriteCount questionPrompt",
+        select: "title topicId targetBand outlineContent favoriteCount questionPrompt",
         populate: {
           path: "topicId",
           select: "name slug description",
