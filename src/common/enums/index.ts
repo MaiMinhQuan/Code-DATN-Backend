@@ -38,3 +38,8 @@ export enum AIProvider {
   GEMINI = "GEMINI",
   MISTRAL = "MISTRAL",
 }
+
+export enum FlashcardSetType {
+  LESSON   = "LESSON",
+  PERSONAL = "PERSONAL",
+}

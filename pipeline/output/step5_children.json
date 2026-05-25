@@ -1,0 +1,163 @@
+{
+  "topic": "Children",
+  "target_band": "BAND_6_0",
+  "exam_questions": [
+    {
+      "title": "Older Parents: Pros & Cons",
+      "questionPrompt": "Some people choose to have their first child at an older age. What are the reasons? Do the advantages outweigh the disadvantages?",
+      "suggestedOutline": "Introduction: Introduce the topic of delayed parenthood and state the essay's stance.\nBody Paragraph 1: Reasons for delaying parenthood (career, financial stability).\nBody Paragraph 2: Disadvantages (health risks).\nBody Paragraph 3: Advantages (maturity, financial security).\nConclusion: Summarize the main points and restate the essay's stance.",
+      "difficultyLevel": "MEDIUM",
+      "tags": [
+        "parenthood",
+        "age",
+        "advantages",
+        "disadvantages",
+        "society"
+      ]
+    },
+    {
+      "title": "Children's Smartphone Use: Positive or Negative?",
+      "questionPrompt": "Some children spend hours every day on their smartphones. Why is this the case? Do you think this is a positive or a negative development?",
+      "suggestedOutline": "Introduction: State the issue and the writer's opinion.\nBody 1: Reasons for smartphone use (parental convenience, technology acclimation).\nBody 2: Negative impacts (physical inactivity, shorter attention spans).\nConclusion: Summarize and offer a suggestion.",
+      "difficultyLevel": "MEDIUM",
+      "tags": [
+        "technology",
+        "children",
+        "health",
+        "society"
+      ]
+    }
+  ],
+  "sample_essays": [
+    {
+      "title": "Older Parents: Pros & Cons — Band 7.0",
+      "questionPrompt": "Some people choose to have their first child at an older age. What are the reasons? Do the advantages outweigh the disadvantages?",
+      "targetBand": "BAND_6_0",
+      "outlineContent": "<p><b>Loại bài luận:</b> Thảo luận và đưa ra ý kiến (Advantages outweigh Disadvantages)</p>\n<p><b>Quan điểm:</b> Lợi ích lớn hơn bất lợi</p>\n<p><b>Mở bài:</b> Giới thiệu về xu hướng sinh con muộn, nêu câu hỏi và quan điểm.</p>\n<ul>\n  <li><b>Đoạn 1 (Lý do):</b></li>\n  <ul>\n    <li><em>Sự ổn định nghề nghiệp:</em> Áp lực kinh tế, ưu tiên phát triển sự nghiệp trước khi có con, đạt được sự an toàn tài chính và vị trí cao hơn.</li>\n    <li><em>Sự phát triển cá nhân:</em> Xã hội nhấn mạnh phát triển cá nhân, ưu tiên phúc lợi cá nhân và tài chính.</li>\n  </ul>\n  <li><b>Đoạn 2 (Bất lợi):</b></li>\n  <ul>\n    <li><em>Rủi ro sức khỏe:</em> Nguy cơ về bệnh tiểu đường thai kỳ, cao huyết áp, và bất thường nhiễm sắc thể.</li>\n  </ul>\n  <li><b>Đoạn 3 (Lợi ích):</b></li>\n  <ul>\n    <li><em>Sự trưởng thành:</em> Tạo môi trường ổn định và nuôi dưỡng tốt hơn.</li>\n    <li><em>Ổn định tài chính:</em> Chuẩn bị tốt hơn cho việc giáo dục và phúc lợi của con.</li>\n    <li><em>Khả năng đưa ra quyết định:</em> Cách tiếp cận nuôi dạy con chu đáo và có chủ ý hơn.</li>\n  </ul>\n  <li><b>Kết luận:</b> Tóm tắt lại quan điểm, nhấn mạnh lợi ích lớn hơn bất lợi, và dự đoán xu hướng tiếp tục.</li>\n</ul>",
+      "fullEssayContent": "In recent years, an increasing number of individuals have opted to start their families later in life. This trend raises the question of why more people are choosing to have their first child at an older age and whether the benefits of doing so justify the drawbacks.\n\nOne of the primary reasons for delaying parenthood is the pursuit of career stability in a worrying economic climate. In today’s competitive job market, many individuals, particularly women, prefer to establish themselves professionally before starting a family. By focusing on their careers in their twenties and early thirties, they can achieve financial security and attain higher positions, which often translates to job satisfaction and greater resources for their future children. This growing trend is reflected in how mainstream society now places significant emphasis on personal development and achieving personal goals before embarking on parenthood. For that reason, many young adults prioritize their own personal and financial welfare, a situation that engenders an atmosphere less conducive to having children early in life.\n\nThere are legitimate disadvantages connected with having children later in life. One of the primary concerns is the potential health risks for both the mother and the child. Advanced maternal age is often associated with a higher risk of complications such as gestational diabetes, hypertension, and chromosomal abnormalities. However, despite these drawbacks, the advantages of having children later in life due to greater maturity overshadow the hypothetical drawbacks. The emotional maturity and life experience that older parents bring to child-rearing can result in a more stable and nurturing environment. Older parents are likely to be more financially secure and better prepared to provide for their children’s education and well-being. The ability to make well-considered decisions and the patience developed over time can contribute to a more thoughtful and deliberate approach to parenting.\n\nIn conclusion, while there are valid concerns regarding the health risks associated with having children later in life, the benefits, such as financial stability, emotional maturity, and better preparation for parenthood, outweigh these disadvantages. As societal norms and medical advancements continue to evolve, the trend of delaying parenthood is likely to remain prevalent, reflecting the changing priorities and values of modern individuals.",
+      "highlightAnnotations": [
+        {
+          "text": "In recent years, an increasing number of individuals have opted to start their families later in life",
+          "highlightType": "STRUCTURE",
+          "explanation": "Đây là một câu mở đầu ấn tượng, sử dụng cấu trúc 'In recent years, ... have opted to...' để giới thiệu chủ đề một cách trang trọng và thu hút. Nó cho thấy khả năng sử dụng các cấu trúc câu phức tạp và đa dạng, một tiêu chí quan trọng trong IELTS (Coherence and Cohesion, Grammatical Range and Accuracy).",
+          "color": "#34d399"
+        },
+        {
+          "text": "This trend raises the question of why more people are choosing to have their first child at an older age and whether the benefits of doing so justify the drawbacks",
+          "highlightType": "STRUCTURE",
+          "explanation": "Câu này thể hiện khả năng diễn đạt rõ ràng vấn đề và nêu bật cả hai khía cạnh của câu hỏi, thể hiện sự hiểu biết về yêu cầu của đề bài. Việc sử dụng 'raises the question' cho thấy một cách tiếp cận vấn đề mang tính học thuật, đáp ứng tiêu chí Task Response và Coherence and Cohesion.",
+          "color": "#34d399"
+        },
+        {
+          "text": "One of the primary reasons",
+          "highlightType": "STRUCTURE",
+          "explanation": "Cụm từ này được sử dụng để bắt đầu một đoạn văn, giới thiệu lý do chính. Việc sử dụng các cụm từ như vậy giúp bài luận có cấu trúc rõ ràng và mạch lạc, đáp ứng tiêu chí Coherence and Cohesion.",
+          "color": "#34d399"
+        },
+        {
+          "text": "in a worrying economic climate",
+          "highlightType": "VOCABULARY",
+          "explanation": "Sử dụng từ vựng 'worrying' để mô tả bối cảnh kinh tế thể hiện khả năng sử dụng từ vựng chính xác và phù hợp với ngữ cảnh. Điều này đáp ứng tiêu chí Lexical Resource.",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "attain higher positions",
+          "highlightType": "VOCABULARY",
+          "explanation": "Cụm từ này sử dụng từ vựng chính xác và trang trọng, thể hiện khả năng sử dụng từ vựng đa dạng và phù hợp với chủ đề. Nó đáp ứng tiêu chí Lexical Resource.",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "This growing trend is reflected in how mainstream society now places significant emphasis on personal development",
+          "highlightType": "STRUCTURE",
+          "explanation": "Câu này thể hiện khả năng liên kết các ý tưởng và sử dụng cấu trúc câu phức tạp để giải thích rõ ràng. Việc sử dụng 'This growing trend is reflected in...' cho thấy khả năng phân tích và diễn giải các xu hướng xã hội, đáp ứng tiêu chí Coherence and Cohesion và Task Response.",
+          "color": "#34d399"
+        },
+        {
+          "text": "legitimate disadvantages",
+          "highlightType": "VOCABULARY",
+          "explanation": "Sử dụng từ 'legitimate' cho thấy khả năng sử dụng từ vựng chính xác và phù hợp để thể hiện sự khách quan và phân tích vấn đề. Nó đáp ứng tiêu chí Lexical Resource.",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "overshadow the hypothetical drawbacks",
+          "highlightType": "VOCABULARY",
+          "explanation": "Cách diễn đạt này sử dụng từ vựng trang trọng và chính xác để so sánh các khía cạnh khác nhau của vấn đề, thể hiện khả năng sử dụng từ vựng phong phú và phù hợp. Nó đáp ứng tiêu chí Lexical Resource.",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "As societal norms and medical advancements continue to evolve",
+          "highlightType": "STRUCTURE",
+          "explanation": "Câu này thể hiện khả năng sử dụng cấu trúc câu phức tạp và liên kết các ý tưởng một cách mạch lạc. Việc sử dụng 'As...continue to evolve' cho thấy khả năng phân tích và đưa ra dự đoán về tương lai, đáp ứng tiêu chí Coherence and Cohesion và Task Response.",
+          "color": "#34d399"
+        }
+      ],
+      "overallBandScore": 7.0,
+      "authorName": "howtodoielts.com"
+    },
+    {
+      "title": "Children's Smartphone Use: Positive or Negative? — Band 7.0",
+      "questionPrompt": "Some children spend hours every day on their smartphones. Why is this the case? Do you think this is a positive or a negative development?",
+      "targetBand": "BAND_6_0",
+      "outlineContent": "<p><b>Loại bài luận:</b> Opinion Essay</p>\n<p><b>Quan điểm:</b> Tiêu cực</p>\n<p><b>Mở bài:</b>\n  <ul>\n    <li>Giới thiệu vấn đề: Trẻ em sử dụng smartphone quá nhiều.</li>\n    <li>Luận điểm: Nguyên nhân và tác động tiêu cực đến sức khỏe.</li>\n  </ul>\n</p>\n<p><b>Thân bài 1:</b> Nguyên nhân</p>\n<ul>\n  <li>Lý do chính: Sự tiện lợi của smartphone đối với cha mẹ.</li>\n  <li>Giải thích 1: Giữ trẻ bận rộn và giải trí (ví dụ: nhà hàng, sân bay).</li>\n  <li>Giải thích 2: Giúp trẻ làm quen với công nghệ (ví dụ: YouTube, Google search).</li>\n</ul>\n<p><b>Thân bài 2:</b> Tác động tiêu cực</p>\n<ul>\n  <li>Tác động 1: Ảnh hưởng đến sức khỏe thể chất (lối sống ít vận động).</li>\n  <li>Giải thích: Thay vì chơi bên ngoài, trẻ em ở nhà chơi game, xem video.</li>\n  <li>Tác động 2: Ảnh hưởng đến sức khỏe tinh thần (giảm khả năng tập trung).</li>\n  <li>Giải thích: Video ngắn gây nghiện, khác với đọc sách.</li>\n</ul>\n<p><b>Kết luận:</b>\n  <ul>\n    <li>Tóm tắt: Smartphone có lợi nhưng gây hại.</li>\n    <li>Đề xuất: Cha mẹ nên hạn chế thời gian sử dụng điện thoại của con.</li>\n  </ul>\n</p>",
+      "fullEssayContent": "Many today would argue that children spend too many hours on their smartphones. In my opinion, this is a natural result of the conveniences these phones afford and is decidedly negative as it severely impacts health.\n\nThe main reason children are using phones too much today is parents view it as a convenient option. This is firstly a simple practicality. Most parents are busy and tired after work and smartphones are one of the easiest methods to keep their children occupied and entertained. It is a common occurrence to witness children on phones at restaurants and airports while their parents are distracted. Moreover, parents can easily justify smartphones by claiming they help their children become better acclimated with technology. This justification is self-serving, but there is a degree of truth in the fact that young children will be able to understand applications and how to navigate websites like YouTube and Google search.\n\nAs far as I am concerned, the overuse of smartphones greatly impairs children physically and mentally. Physically, using a smartphone encourages a more sedentary lifestyle. A large proportion of children today are more likely to sit at home after school playing games, chatting, and scrolling through YouTube or TikTok instead of playing outside with friends. Over time, these become ingrained habits and threaten their long-term physical fitness. Intellectually, phones lead to shorter attention spans. Media online, especially applications that have embraced shorter video formats, produce dopamine responses in the brain that then require frequent stimulation. In contrast to a book, children can only gain these feelings from their digital devices.\n\nIn conclusion, despite the convenient uses of smartphones, they hinder the physical and intellectual development of children. Parents should limit their children’s screen time.",
+      "highlightAnnotations": [
+        {
+          "text": "Many today would argue",
+          "highlightType": "STRUCTURE",
+          "explanation": "Cụm từ này thể hiện sự mở đầu bài viết một cách khách quan, giới thiệu quan điểm chung của nhiều người về vấn đề. Cách diễn đạt này thể hiện sự đa dạng trong cách diễn đạt và khả năng sử dụng cấu trúc câu phức tạp, một tiêu chí quan trọng trong tiêu chí Coherence and Cohesion (Tính mạch lạc và liên kết) của IELTS.",
+          "color": "#34d399"
+        },
+        {
+          "text": "a natural result of the conveniences these phones afford",
+          "highlightType": "VOCABULARY",
+          "explanation": "Cách diễn đạt này sử dụng từ vựng ở mức độ cao (afford) và thể hiện khả năng sử dụng từ vựng một cách chính xác và tự nhiên, đáp ứng tiêu chí Lexical Resource (Vốn từ vựng) của IELTS. Việc sử dụng cụm từ 'natural result' thể hiện sự hiểu biết về cách diễn đạt ý tưởng một cách trôi chảy và mạch lạc.",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "decidedly negative",
+          "highlightType": "VOCABULARY",
+          "explanation": "Từ 'decidedly' (rõ ràng, dứt khoát) là một từ vựng nâng cao, thể hiện sự đa dạng trong vốn từ và khả năng diễn đạt ý kiến một cách mạnh mẽ. Việc sử dụng từ này giúp bài viết trở nên ấn tượng hơn và đáp ứng tiêu chí Lexical Resource (Vốn từ vựng) của IELTS.",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "a convenient option",
+          "highlightType": "VOCABULARY",
+          "explanation": "Việc sử dụng cụm từ 'a convenient option' thể hiện khả năng sử dụng từ vựng một cách chính xác và phù hợp với ngữ cảnh. Nó cho thấy khả năng diễn đạt ý tưởng một cách rõ ràng và mạch lạc, đáp ứng tiêu chí Lexical Resource (Vốn từ vựng) của IELTS.",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "better acclimated with technology",
+          "highlightType": "VOCABULARY",
+          "explanation": "Cụm từ 'better acclimated with technology' thể hiện khả năng sử dụng từ vựng ở mức độ cao và chính xác. 'Acclimated' là một từ vựng học thuật, thể hiện sự phong phú về vốn từ và khả năng sử dụng từ vựng một cách linh hoạt, đáp ứng tiêu chí Lexical Resource (Vốn từ vựng) của IELTS.",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "As far as I am concerned",
+          "highlightType": "STRUCTURE",
+          "explanation": "Cụm từ này là một cách diễn đạt trang trọng để giới thiệu quan điểm cá nhân, thể hiện khả năng sử dụng các cấu trúc câu phức tạp và đa dạng, đáp ứng tiêu chí Coherence and Cohesion (Tính mạch lạc và liên kết) của IELTS. Việc sử dụng cụm từ này giúp bài viết trở nên mạch lạc và rõ ràng hơn.",
+          "color": "#34d399"
+        },
+        {
+          "text": "sedentary lifestyle",
+          "highlightType": "VOCABULARY",
+          "explanation": "Cụm từ 'sedentary lifestyle' là một cụm từ vựng chuyên ngành, thể hiện khả năng sử dụng từ vựng một cách chính xác và phù hợp với chủ đề. Nó cho thấy sự hiểu biết về các khái niệm liên quan đến sức khỏe và lối sống, đáp ứng tiêu chí Lexical Resource (Vốn từ vựng) của IELTS.",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "ingrained habits",
+          "highlightType": "VOCABULARY",
+          "explanation": "Việc sử dụng cụm từ 'ingrained habits' thể hiện khả năng sử dụng từ vựng một cách chính xác và tự nhiên. 'Ingrained' là một từ vựng nâng cao, thể hiện sự phong phú về vốn từ và khả năng diễn đạt ý tưởng một cách hiệu quả, đáp ứng tiêu chí Lexical Resource (Vốn từ vựng) của IELTS.",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "shorter video formats",
+          "highlightType": "VOCABULARY",
+          "explanation": "Cụm từ 'shorter video formats' thể hiện khả năng sử dụng từ vựng một cách chính xác và phù hợp với bối cảnh. Nó cho thấy sự hiểu biết về các xu hướng truyền thông hiện đại và khả năng diễn đạt ý tưởng một cách rõ ràng, đáp ứng tiêu chí Lexical Resource (Vốn từ vựng) của IELTS.",
+          "color": "#fbbf24"
+        }
+      ],
+      "overallBandScore": 7.0,
+      "authorName": "howtodoielts.com"
+    }
+  ]
+}

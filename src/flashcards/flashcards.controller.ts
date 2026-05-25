@@ -16,6 +16,9 @@ import { UpdateFlashcardSetDto } from "./dto/update-flashcard-set.dto";
 import { CreateFlashcardDto } from "./dto/create-flashcard.dto";
 import { UpdateFlashcardDto } from "./dto/update-flashcard.dto";
 import { JwtAuthGuard } from "../auth/guards/jwt-auth.guard";
+import { RolesGuard } from "../auth/guards/roles.guard";
+import { Roles } from "../auth/decorators/roles.decorator";
+import { UserRole } from "../common/enums";
 
 @Controller("flashcard-sets")
 export class FlashcardsController {
@@ -31,6 +34,29 @@ export class FlashcardsController {
   async findAllSets(@Req() req) {
     const userId = req.user._id.toString();
     return this.flashcardsService.findAllSets(userId);
+  }
+
+  /*
+  GET /flashcard-sets/by-lesson/:lessonId — set + cards theo lessonId
+  Input:
+    - req.user — user từ JWT
+    - lessonId — id lesson trên URL
+   */
+  @UseGuards(JwtAuthGuard)
+  @Get("by-lesson/:lessonId")
+  async findSetByLesson(@Req() req, @Param("lessonId") lessonId: string) {
+    const userId = req.user._id.toString();
+    return this.flashcardsService.findSetWithCardsByLesson(lessonId, userId);
+  }
+
+  /*
+  GET /flashcard-sets/admin/by-lesson/:lessonId — admin lấy set + cards (bypass published check)
+  */
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN)
+  @Get("admin/by-lesson/:lessonId")
+  async adminFindSetByLesson(@Param("lessonId") lessonId: string) {
+    return this.flashcardsService.adminFindSetWithCardsByLesson(lessonId);
   }
 
   /*
@@ -137,6 +163,36 @@ export class FlashcardsController {
   async deleteCard(@Req() req, @Param("cardId") cardId: string) {
     const userId = req.user._id.toString();
     return this.flashcardsService.deleteCard(cardId, userId);
+  }
+
+  /*
+  POST /flashcard-sets/:id/admin/cards — admin thêm card vào LESSON set (bypass type check)
+   */
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN)
+  @Post(":id/admin/cards")
+  async adminAddCard(@Param("id") setId: string, @Body() createCardDto: CreateFlashcardDto) {
+    return this.flashcardsService.adminAddCard(setId, createCardDto);
+  }
+
+  /*
+  PATCH /flashcard-sets/admin/cards/:cardId — admin cập nhật card bất kỳ
+   */
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN)
+  @Patch("admin/cards/:cardId")
+  async adminUpdateCard(@Param("cardId") cardId: string, @Body() updateCardDto: UpdateFlashcardDto) {
+    return this.flashcardsService.adminUpdateCard(cardId, updateCardDto);
+  }
+
+  /*
+  DELETE /flashcard-sets/admin/cards/:cardId — admin xóa card bất kỳ
+   */
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN)
+  @Delete("admin/cards/:cardId")
+  async adminDeleteCard(@Param("cardId") cardId: string) {
+    return this.flashcardsService.adminDeleteCard(cardId);
   }
 
   /*

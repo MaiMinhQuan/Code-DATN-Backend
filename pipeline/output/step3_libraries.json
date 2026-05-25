@@ -1,0 +1,491 @@
+{
+  "topic": "Libraries",
+  "count": 2,
+  "contents": [
+    {
+      "video_id": "H7ZEWMYKnrI",
+      "title": "This IELTS Speaking Part 2 Strategy ACTUALLY Works",
+      "url": "https://www.youtube.com/watch?v=H7ZEWMYKnrI",
+      "vocabulary": [
+        {
+          "word": "challenging",
+          "pronunciation": "/ˈtʃælɪndʒɪŋ/",
+          "definition": "Difficult in a way that tests your abilities or resources.",
+          "translation": "thử thách",
+          "examples": [
+            "The exam was challenging.",
+            "It's a challenging task."
+          ],
+          "context_sentence": "I'll use it to show you how to give a great answer step by step even if the topic seems challenging.",
+          "timestamp": 15.0
+        },
+        {
+          "word": "bullet points",
+          "pronunciation": "/ˈbʊlɪt pɔɪnts/",
+          "definition": "Items in a list, each marked with a bullet.",
+          "translation": "các gạch đầu dòng",
+          "examples": [
+            "Make sure to address all the bullet points.",
+            "The presentation followed the bullet points."
+          ],
+          "context_sentence": "A question I often get asked is do I have to follow the bullet points no it's not necessary to follow these bullet points in strict order or talk about each of them but if you have",
+          "timestamp": 95.8
+        },
+        {
+          "word": "fluency",
+          "pronunciation": "/ˈfluːənsi/",
+          "definition": "The ability to speak or write easily, smoothly, and readily.",
+          "translation": "sự trôi chảy",
+          "examples": [
+            "He spoke with great fluency.",
+            "The test assesses your fluency."
+          ],
+          "context_sentence": "Having a story in mind can help you with the first Criterion fluency to get a band seven or higher you need to be able to keep going and",
+          "timestamp": 188.1
+        },
+        {
+          "word": "jot down",
+          "pronunciation": "/dʒɒt daʊn/",
+          "definition": "To write something quickly.",
+          "translation": "ghi nhanh",
+          "examples": [
+            "I jotted down some notes.",
+            "She jotted down his phone number."
+          ],
+          "context_sentence": "In the 60 seconds you have to prepare try to find a good story and then you may find it helpful to jot down a few key wordss to",
+          "timestamp": 258.6
+        },
+        {
+          "word": "paraphrasing",
+          "pronunciation": "/ˈpærəfreɪzɪŋ/",
+          "definition": "Expressing the meaning of something using different words, especially to achieve greater clarity.",
+          "translation": "diễn giải",
+          "examples": [
+            "The student was asked to paraphrase the passage.",
+            "Paraphrasing is an important skill for IELTS."
+          ],
+          "context_sentence": "A lot of test takers start off by paraphrasing the task here it would be something like you've asked",
+          "timestamp": 318.6
+        },
+        {
+          "word": "context",
+          "pronunciation": "/ˈkɒntekst/",
+          "definition": "The circumstances that form the setting for an event, statement, or idea, and in terms of which it can be fully understood.",
+          "translation": "bối cảnh",
+          "examples": [
+            "The historical context is important.",
+            "Understanding the context is crucial."
+          ],
+          "context_sentence": "If you like then I go on to describe the product the offer from the restaurant",
+          "timestamp": 382.0
+        },
+        {
+          "word": "let down",
+          "pronunciation": "/ˈlet daʊn/",
+          "definition": "A disappointment.",
+          "translation": "sự thất vọng",
+          "examples": [
+            "The movie was a let down.",
+            "The service was a let down."
+          ],
+          "context_sentence": "here it is the evening however turned out to be a major let down here the mood",
+          "timestamp": 429.1
+        },
+        {
+          "word": "unavailable",
+          "pronunciation": "/ˌʌnəˈveɪləbl/",
+          "definition": "Not able to be used or obtained; not at someone's disposal.",
+          "translation": "không có sẵn",
+          "examples": [
+            "The product is currently unavailable.",
+            "The information was unavailable."
+          ],
+          "context_sentence": "the service was slow and the vegetarian option was for whatever reason unavailable and when",
+          "timestamp": 451.9
+        },
+        {
+          "word": "repayment",
+          "pronunciation": "/rɪˈpeɪmənt/",
+          "definition": "The action of paying back money that is owed.",
+          "translation": "sự hoàn trả",
+          "examples": [
+            "He requested a repayment of the loan.",
+            "The repayment schedule was agreed upon."
+          ],
+          "context_sentence": "should offer us some money back um a repayment no um a p",
+          "timestamp": 509.8
+        },
+        {
+          "word": "generous",
+          "pronunciation": "/ˈdʒenərəs/",
+          "definition": "Showing a readiness to give more of something, as money or time, than is strictly necessary or expected.",
+          "translation": "hào phóng",
+          "examples": [
+            "A generous donation.",
+            "He was generous with his time."
+          ],
+          "context_sentence": "that she finally agreed to offer a generous discount this bullet",
+          "timestamp": 527.8
+        },
+        {
+          "word": "shake the feeling",
+          "pronunciation": "/ʃeɪk ðə ˈfiːlɪŋ/",
+          "definition": "To get rid of a feeling or belief.",
+          "translation": "gạt bỏ cảm giác",
+          "examples": [
+            "I can't shake the feeling that I've forgotten something.",
+            "She tried to shake the feeling of sadness."
+          ],
+          "context_sentence": "but I can't shake the feeling that if I'd been more careful choosing",
+          "timestamp": 557.8
+        },
+        {
+          "word": "connectives",
+          "pronunciation": "/kəˈnektɪvz/",
+          "definition": "Words or phrases that connect ideas or sentences.",
+          "translation": "từ nối",
+          "examples": [
+            "Using connectives improves coherence.",
+            "Examples of connectives include 'however' and 'because'."
+          ],
+          "context_sentence": "good range of connectives in the answer so and as to relate to causes and consequences however and",
+          "timestamp": 658.4
+        },
+        {
+          "word": "hesitation",
+          "pronunciation": "/ˌhezɪˈteɪʃn/",
+          "definition": "The action of pausing before saying or doing something, especially through uncertainty.",
+          "translation": "sự do dự",
+          "examples": [
+            "He spoke without hesitation.",
+            "There was a slight hesitation in her voice."
+          ],
+          "context_sentence": "The Examiner gives High grades to those who speak without much hesitation it's",
+          "timestamp": 684.0
+        },
+        {
+          "word": "intelligible",
+          "pronunciation": "/ɪnˈtelɪdʒəbl/",
+          "definition": "Able to be understood; comprehensible.",
+          "translation": "dễ hiểu",
+          "examples": [
+            "His speech was barely intelligible.",
+            "The writing was clear and intelligible."
+          ],
+          "context_sentence": "that we can be easily understood our pronunciation of individual words is clear and intelligible a",
+          "timestamp": 977.4
+        }
+      ],
+      "grammar": [
+        {
+          "title": "Third Conditional",
+          "explanation": "Used to talk about unreal situations in the past and their hypothetical results.",
+          "structure": "If + past perfect, would/could/might + have + past participle",
+          "examples": [
+            "If I had studied harder, I would have passed the exam.",
+            "If she had known, she would have helped."
+          ],
+          "context_sentence": "if I had been more careful choosing the venue the celebration would have turned out differently this",
+          "timestamp": 905.9
+        },
+        {
+          "title": "Passive Voice",
+          "explanation": "Used when the action is more important than the actor.",
+          "structure": "Subject + be + past participle (by + agent)",
+          "examples": [
+            "The book was written by him.",
+            "The building was destroyed in the fire."
+          ],
+          "context_sentence": "I was put in charge the beverages were included also have what's called a Clift sentence",
+          "timestamp": 864.6
+        },
+        {
+          "title": "Cleft Sentences",
+          "explanation": "Used to emphasize a particular part of a sentence.",
+          "structure": "It + be + emphasized element + that/who + rest of the sentence",
+          "examples": [
+            "It was John who broke the window.",
+            "It was the book that I wanted."
+          ],
+          "context_sentence": "It was when I threatened to post a negative review online that she agreed to offer a discount a",
+          "timestamp": 880.2
+        },
+        {
+          "title": "Use of 'However' and 'But' for Contrast",
+          "explanation": "Using these connectives to show contrast between ideas.",
+          "structure": "Sentence 1. However/But, sentence 2.",
+          "examples": [
+            "The weather was cold. However, we enjoyed the trip.",
+            "She was tired, but she kept working."
+          ],
+          "context_sentence": "the evening however turned out to be a major let down here the mood",
+          "timestamp": 429.1
+        },
+        {
+          "title": "Use of 'On top of that' to add information",
+          "explanation": "Using this phrase to introduce additional information.",
+          "structure": "Sentence 1. On top of that, sentence 2.",
+          "examples": [
+            "The food was cold. On top of that, the service was slow.",
+            "He was late. On top of that, he forgot his keys."
+          ],
+          "context_sentence": "and on top of that on to the next bullet point",
+          "timestamp": 474.9
+        },
+        {
+          "title": "Use of 'And' for listing",
+          "explanation": "Using 'and' to connect items in a list, avoiding overly formal structures like 'firstly, secondly'.",
+          "structure": "Item 1 and Item 2 and Item 3",
+          "examples": [
+            "I bought apples, bananas, and oranges.",
+            "She likes to read, write, and travel."
+          ],
+          "context_sentence": "instead I just used and and on to the next bullet point",
+          "timestamp": 474.9
+        },
+        {
+          "title": "Use of 'because' to explain reasons",
+          "explanation": "Using 'because' to explain the reason for something.",
+          "structure": "Sentence 1 because sentence 2",
+          "examples": [
+            "I stayed home because I was sick.",
+            "She was happy because she got a promotion."
+          ],
+          "context_sentence": "because the talk moved from Simply describing the situation to describing feelings",
+          "timestamp": 855.4
+        }
+      ]
+    },
+    {
+      "video_id": "M1ebzRy77jM",
+      "title": "Understand IELTS Writing: Tips and practice questions for Task 1 and 2  | TakeIELTS Preparation",
+      "url": "https://www.youtube.com/watch?v=M1ebzRy77jM",
+      "vocabulary": [
+        {
+          "word": "overview",
+          "pronunciation": "/ˈoʊvərˌvjuː/",
+          "definition": "a general description of a situation or subject",
+          "translation": "tổng quan",
+          "examples": [
+            "The presentation gave an overview of the company's performance.",
+            "I'll give you an overview of the main points."
+          ],
+          "context_sentence": "I’m going to give you an overview of the IELTS writing test,",
+          "timestamp": 14.0
+        },
+        {
+          "word": "migrate",
+          "pronunciation": "/ˈmaɪɡreɪt/",
+          "definition": "to move from one place to another, especially in order to find work or a better life",
+          "translation": "di cư",
+          "examples": [
+            "Many people migrate to cities in search of work.",
+            "Birds migrate south for the winter."
+          ],
+          "context_sentence": "IELTS General Training is designed for anyone wanting to migrate to",
+          "timestamp": 33.6
+        },
+        {
+          "word": "undergraduate",
+          "pronunciation": "/ˌʌndərˈɡrædʒuət/",
+          "definition": "a student who is studying for their first degree at a college or university",
+          "translation": "sinh viên đại học",
+          "examples": [
+            "She is an undergraduate student at Harvard.",
+            "The university offers both undergraduate and postgraduate programs."
+          ],
+          "context_sentence": "study at undergraduate or postgraduate level.",
+          "timestamp": 41.8
+        },
+        {
+          "word": "postgraduate",
+          "pronunciation": "/ˌpəʊstˈɡrædʒuət/",
+          "definition": "relating to a course of study that a student does after they have finished their first degree",
+          "translation": "sau đại học",
+          "examples": [
+            "He is doing postgraduate research.",
+            "She is pursuing a postgraduate degree in law."
+          ],
+          "context_sentence": "study at undergraduate or postgraduate level.",
+          "timestamp": 41.8
+        },
+        {
+          "word": "contributes",
+          "pronunciation": "/kənˈtrɪbjuːts/",
+          "definition": "to help to cause something",
+          "translation": "đóng góp",
+          "examples": [
+            "Smoking contributes to lung cancer.",
+            "Her work contributes significantly to the project's success."
+          ],
+          "context_sentence": "It’s important to remember that Task 2 contributes twice as much as Task 1",
+          "timestamp": 119.0
+        },
+        {
+          "word": "achieves its purpose",
+          "pronunciation": "/əˈtʃiːvz ɪts ˈpɜːrpəs/",
+          "definition": "succeeds in doing what it is intended to do",
+          "translation": "đạt được mục đích",
+          "examples": [
+            "The marketing campaign achieved its purpose of increasing sales.",
+            "The new policy achieves its purpose of improving efficiency."
+          ],
+          "context_sentence": "which is essentially - how well your letter achieves its purpose.",
+          "timestamp": 138.6
+        },
+        {
+          "word": "coherence and cohesion",
+          "pronunciation": "/kəʊˈhɪərəns ænd kəʊˈhiːʒən/",
+          "definition": "the quality of being logical and consistent and the act of forming a united whole",
+          "translation": "tính mạch lạc và sự gắn kết",
+          "examples": [
+            "The essay lacked coherence and cohesion, making it difficult to follow.",
+            "The writer used transition words to improve the coherence and cohesion of the text."
+          ],
+          "context_sentence": "Coherence and Cohesion – This is where you display your ability to write clearly and in an organised fashion.",
+          "timestamp": 158.4
+        },
+        {
+          "word": "lexical resource",
+          "pronunciation": "/ˈleksɪkəl rɪˈsɔːrs/",
+          "definition": "the range of vocabulary that a writer uses",
+          "translation": "nguồn từ vựng",
+          "examples": [
+            "The candidate demonstrated a strong lexical resource in their essay.",
+            "Expanding your lexical resource is key to achieving a high band score."
+          ],
+          "context_sentence": "Lexical Resource – This is where you show you can use appropriate vocabulary to communicate your ideas accurately and fluently.",
+          "timestamp": 165.6
+        },
+        {
+          "word": "grammatical range",
+          "pronunciation": "/ɡrəˈmætɪkəl reɪndʒ/",
+          "definition": "the variety of grammatical structures used in writing",
+          "translation": "phạm vi ngữ pháp",
+          "examples": [
+            "The essay showed a good grammatical range, using a variety of sentence structures.",
+            "To improve your score, focus on expanding your grammatical range."
+          ],
+          "context_sentence": "Grammatical Range and Accuracy – This is about demonstrating your ability to use a wide variety of grammatical structures with as few mistakes as possible.",
+          "timestamp": 174.1
+        },
+        {
+          "word": "appropriate tone",
+          "pronunciation": "/əˈprəʊpriət təʊn/",
+          "definition": "the style or manner of expression in writing that is suitable for a particular situation",
+          "translation": "giọng điệu phù hợp",
+          "examples": [
+            "The letter used an appropriate tone for a formal request.",
+            "Choosing the right tone is crucial for effective communication."
+          ],
+          "context_sentence": "A big part of Task 1 is showing the examiner you can use the appropriate tone for your letter.",
+          "timestamp": 267.0
+        },
+        {
+          "word": "incorporate",
+          "pronunciation": "/ɪnˈkɔːrpəreɪt/",
+          "definition": "to include something as part of a group, system, or plan",
+          "translation": "kết hợp",
+          "examples": [
+            "The design incorporates several new features.",
+            "The company incorporated feedback from its customers."
+          ],
+          "context_sentence": "You’ll need to incorporate your own thoughts, ideas and experience on the topic, BUT you must keep them relevant.",
+          "timestamp": 851.2
+        },
+        {
+          "word": "discursive essay",
+          "pronunciation": "/dɪsˈkɜːrsɪv ˈeseɪ/",
+          "definition": "an essay that explores a topic by discussing different viewpoints",
+          "translation": "bài luận thảo luận",
+          "examples": [
+            "The student was asked to write a discursive essay on the topic of climate change.",
+            "Discursive essays often present a balanced view of an issue."
+          ],
+          "context_sentence": "You are being asked to write a discursive essay which could look like any of the following:",
+          "timestamp": 773.2
+        },
+        {
+          "word": "daunting",
+          "pronunciation": "/ˈdɔːntɪŋ/",
+          "definition": "making you feel frightened or not confident",
+          "translation": "gây nản chí",
+          "examples": [
+            "The task seemed daunting at first, but she managed to complete it.",
+            "The climb to the top of the mountain was a daunting challenge."
+          ],
+          "context_sentence": "Now, this might seem a daunting list at first, but hopefully most of these topics are things",
+          "timestamp": 820.0
+        }
+      ],
+      "grammar": [
+        {
+          "title": "Modal Verbs for Politeness",
+          "explanation": "Using modal verbs like 'would' to make requests or suggestions sound less direct and more polite.",
+          "structure": "Would + subject + verb...",
+          "examples": [
+            "Would you be able to help me with this?",
+            "Would it be possible to reschedule the meeting?"
+          ],
+          "context_sentence": "‘Would it be possible to find alternative accommodation with immediate effect?’",
+          "timestamp": 403.6
+        },
+        {
+          "title": "Passive Voice",
+          "explanation": "Using the passive voice to make the subject of the sentence less important or to sound more formal.",
+          "structure": "Subject + be + past participle (by + agent)",
+          "examples": [
+            "The report was written by the team.",
+            "The decision was made after careful consideration."
+          ],
+          "context_sentence": "Formal letters also tend to use passive structures, avoid contractions and incorporate more formal vocabulary – for example, ‘with immediate effect’ rather than ‘right now’.",
+          "timestamp": 427.9
+        },
+        {
+          "title": "Contractions",
+          "explanation": "Avoiding contractions (e.g., can't, won't) in formal writing to maintain a more professional tone.",
+          "structure": "N/A",
+          "examples": [
+            "I cannot attend the meeting.",
+            "He will not be able to complete the task."
+          ],
+          "context_sentence": "Formal letters also tend to use passive structures, avoid contractions and incorporate more formal vocabulary – for example, ‘with immediate effect’ rather than ‘right now’.",
+          "timestamp": 427.9
+        },
+        {
+          "title": "Relative Clauses",
+          "explanation": "Using relative clauses to provide additional information about a noun.",
+          "structure": "Noun + who/which/that + verb...",
+          "examples": [
+            "The student who studies hard will succeed.",
+            "The book, which was written by a famous author, is very popular."
+          ],
+          "context_sentence": "Show off your knowledge by varying your sentence structures. For example try to include: inversion, the passive voice, or complex sentences such as using conditionals or relative clauses.",
+          "timestamp": 946.6
+        },
+        {
+          "title": "Conditionals",
+          "explanation": "Using conditional sentences to express hypothetical situations and their consequences.",
+          "structure": "If + clause, clause",
+          "examples": [
+            "If I had more time, I would study harder.",
+            "If it rains, we will stay inside."
+          ],
+          "context_sentence": "Show off your knowledge by varying your sentence structures. For example try to include: inversion, the passive voice, or complex sentences such as using conditionals or relative clauses.",
+          "timestamp": 946.6
+        },
+        {
+          "title": "Inversion",
+          "explanation": "Changing the usual word order in a sentence, often for emphasis or to create a more formal tone.",
+          "structure": "Auxiliary verb + subject + main verb",
+          "examples": [
+            "Never have I seen such a beautiful sunset.",
+            "Only then did I understand the problem."
+          ],
+          "context_sentence": "Show off your knowledge by varying your sentence structures. For example try to include: inversion, the passive voice, or complex sentences such as using conditionals or relative clauses.",
+          "timestamp": 946.6
+        }
+      ]
+    }
+  ]
+}

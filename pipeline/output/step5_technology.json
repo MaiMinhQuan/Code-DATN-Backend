@@ -1,0 +1,156 @@
+{
+  "topic": "Technology",
+  "target_band": "BAND_6_0",
+  "exam_questions": [
+    {
+      "title": "Technology & Crime: Pros and Cons",
+      "questionPrompt": "Some people think technology development decreases crime, while others believe it actually encourages crime. Discuss both views and give your own opinion.",
+      "suggestedOutline": "<p><b>Essay Type:</b> Discuss both views & give opinion</p>\n<p><b>Stance:</b> Technology benefits law enforcement.</p>\n<p><b>Intro Summary:</b> Introduce the topic, state the two views, and give the writer's opinion.</p>\n<ul>\n  <li><b>Body 1:</b> Negative impacts of technology on crime (cybercrimes).</li>\n  <li><ul>\n    <li>Online fraud, phishing, political crimes, selling illicit substances.</li>\n    <li>Early internet: difficult to combat.</li>\n    <li>Both sides become technologically savvy.</li>\n  </ul>\n  </li>\n  <li><b>Body 2:</b> Positive impacts of technology on crime (prevention).</li>\n  <li><ul>\n    <li>Security cameras as a deterrent.</li>\n    <li>Examples: speed cameras, traffic infractions reduction.</li>\n  </ul>\n  </li>\n  <li><b>Conclusion:</b> Summarize, restate opinion, and mention the balance between safety and security.</li>\n</ul>",
+      "difficultyLevel": "MEDIUM",
+      "tags": [
+        "technology",
+        "crime",
+        "security",
+        "law enforcement"
+      ]
+    },
+    {
+      "title": "Tech & kids' free time: advantages?",
+      "questionPrompt": "New technologies have changed the way children spend their free time. Do you think the advantages of this trend outweigh the disadvantages?",
+      "suggestedOutline": "<p><b>Essay type:</b> Opinion</p>\n<p><b>Stance:</b> Disadvantages outweigh advantages</p>\n<p><b>Introduction Summary:</b> Introduce the topic and state the negative impact of technology on children's free time.</p>\n<ul>\n  <li><b>Body 1:</b> Benefits of technology (education, communication, AI). Benefits if used responsibly.</li>\n  <li><b>Body 2:</b> Psychological drawbacks: addiction, lack of physical activity, mental health issues. Evidence: rising suicide rates.</li>\n  <li><b>Conclusion:</b> Reiterate the negative impact and suggest parental control.</li>\n</ul>",
+      "difficultyLevel": "MEDIUM",
+      "tags": [
+        "technology",
+        "children",
+        "mental health",
+        "free time"
+      ]
+    }
+  ],
+  "sample_essays": [
+    {
+      "title": "Technology & Crime: Pros and Cons — Band 7.0",
+      "questionPrompt": "Some people think technology development decreases crime, while others believe it actually encourages crime. Discuss both views and give your own opinion.",
+      "targetBand": "BAND_6_0",
+      "outlineContent": "<p><b>Đề bài:</b> Thảo luận về ảnh hưởng của công nghệ đến tội phạm.</p>\n<p><b>Quan điểm:</b> Đồng ý rằng công nghệ có lợi hơn cho việc chống tội phạm.</p>\n<p><b>Tóm tắt Mở bài:</b> Đề cập đến hai quan điểm về tác động của công nghệ đến tội phạm và nêu rõ quan điểm cá nhân.</p>\n<p><b>Đoạn thân bài 1:</b>\n <ul>\n  <li>Quan điểm tiêu cực: tội phạm mạng (gian lận trực tuyến, lừa đảo, buôn bán chất cấm).</li>\n  <li>Giải thích: tội phạm mạng khó đối phó trong giai đoạn đầu, nhưng cả tội phạm và cơ quan thực thi pháp luật đều trở nên tinh vi hơn.</li>\n  <li>Ví dụ: các vụ đánh cắp mật khẩu và cảnh báo người dùng.</li>\n </ul>\n</p>\n<p><b>Đoạn thân bài 2:</b>\n <ul>\n  <li>Quan điểm tích cực: công nghệ giúp ngăn chặn tội phạm.</li>\n  <li>Ví dụ: camera an ninh ở nơi công cộng và tư nhân có tính răn đe.</li>\n  <li>Ví dụ cụ thể: camera phạt nguội giảm vi phạm giao thông.</li>\n </ul>\n</p>\n<p><b>Kết luận:</b> Tóm tắt lại quan điểm, nhấn mạnh sự cân bằng giữa an toàn và quyền riêng tư.</p>",
+      "fullEssayContent": "Many today are of the belief that advances in technology have done more to combat, rather than aid, criminal behavior. In my opinion, although there are certain novel avenues now available to criminals related to online fraud, technology generally benefits law enforcement.\n\nThose who argue as to the negative implications of technology on crime point out the increased prevalence of cybercrimes. These crimes range from online fraud and fishing schemes to political crimes and the selling of illicit substances. In the early stages of the internet, such crimes were common online and difficult for enforcement agencies to combat. As advances have spread, both law enforcement agencies and criminals have become more technologically-savvy. A clear example of this would be the occasional news article reporting on a large-scale theft of passwords that warns users to update passwords and be more wary of storing private information online.\n\nHowever, the crimes mentioned above are rare and technological innovations now help prevent many crimes before they even occur. The strongest instance illustrating this point would be the deterrence resulting from security cameras in private and public spaces. Countries and cities that emphasize the value of these cameras over personal privacy concerns are significantly safer than unmonitored locations. A more specific example of this would be cameras that take photos of individuals speeding and send them speeding tickets through the mail or electronically. This simple and effective innovation can greatly reduce traffic infractions and as a result the number of accidents on a given road.\n\nIn conclusion, despite the marginal downsides related to exploitation of new technologies by a small percentage of total criminals, the deterrent effect of security cameras has made the world considerably safer. There is always a balance between safety and security that must be carefully maintained.",
+      "highlightAnnotations": [
+        {
+          "text": "Many today are of the belief",
+          "highlightType": "STRUCTURE",
+          "explanation": "Đây là một cách diễn đạt trang trọng và phức tạp để giới thiệu quan điểm chung, thể hiện sự đa dạng trong cấu trúc câu (Sentence Structure) và đáp ứng tiêu chí Coherence and Cohesion (CC) của IELTS. Việc sử dụng 'of the belief' thay vì 'believe' đơn thuần thể hiện trình độ ngôn ngữ cao hơn.",
+          "color": "#34d399"
+        },
+        {
+          "text": "combat, rather than aid",
+          "highlightType": "VOCABULARY",
+          "explanation": "Sử dụng từ vựng chính xác và phù hợp với ngữ cảnh, thể hiện khả năng sử dụng từ vựng đa dạng (Lexical Resource - LR). Cụm từ này thể hiện rõ ràng sự đối lập giữa hai mặt của vấn đề, giúp bài viết trở nên mạch lạc và thuyết phục hơn.",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "novel avenues",
+          "highlightType": "VOCABULARY",
+          "explanation": "Sử dụng từ vựng ít phổ biến nhưng chính xác và phù hợp với ngữ cảnh (Lexical Resource - LR). 'Novel' có nghĩa là 'mới mẻ', 'độc đáo', thể hiện sự hiểu biết sâu sắc về từ vựng và làm cho bài viết trở nên hấp dẫn hơn.",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "fishing schemes",
+          "highlightType": "VOCABULARY",
+          "explanation": "Sử dụng từ vựng chính xác và cụ thể để mô tả các loại tội phạm, thể hiện khả năng sử dụng từ vựng đa dạng và phù hợp với chủ đề (Lexical Resource - LR). Việc sử dụng 'fishing schemes' cho thấy người viết có kiến thức về các thuật ngữ liên quan đến tội phạm mạng.",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "illicit substances",
+          "highlightType": "VOCABULARY",
+          "explanation": "Sử dụng từ vựng trang trọng và chính xác, thể hiện khả năng sử dụng từ vựng đa dạng và phù hợp với ngữ cảnh (Lexical Resource - LR). Việc sử dụng 'illicit substances' thay vì 'drugs' đơn thuần cho thấy sự tinh tế trong việc lựa chọn từ ngữ.",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "technologically-savvy",
+          "highlightType": "VOCABULARY",
+          "explanation": "Sử dụng từ ghép (compound word) để diễn đạt ý một cách ngắn gọn và hiệu quả, thể hiện sự linh hoạt trong việc sử dụng từ vựng (Lexical Resource - LR). Từ này thể hiện sự am hiểu về công nghệ và khả năng sử dụng từ vựng một cách sáng tạo.",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "emphasize the value of these cameras over personal privacy concerns",
+          "highlightType": "ARGUMENT",
+          "explanation": "Đây là một cách diễn đạt rõ ràng và trực tiếp về một khía cạnh quan trọng của vấn đề, thể hiện khả năng lập luận và phát triển ý tưởng một cách logic (Task Response - TR). Việc đưa ra quan điểm về sự cân bằng giữa an ninh và quyền riêng tư cho thấy sự hiểu biết sâu sắc về vấn đề.",
+          "color": "#f87171"
+        },
+        {
+          "text": "marginal downsides related to exploitation of new technologies by a small percentage of total criminals",
+          "highlightType": "GRAMMAR",
+          "explanation": "Cấu trúc ngữ pháp phức tạp và chính xác, thể hiện khả năng sử dụng ngữ pháp đa dạng và chính xác (Grammatical Range and Accuracy - GRA). Việc sử dụng mệnh đề quan hệ và các cụm từ phức tạp cho thấy khả năng sử dụng ngôn ngữ ở mức độ cao.",
+          "color": "#818cf8"
+        }
+      ],
+      "overallBandScore": 7.0,
+      "authorName": "howtodoielts.com"
+    },
+    {
+      "title": "Tech & kids' free time: advantages? — Band 7.0",
+      "questionPrompt": "New technologies have changed the way children spend their free time. Do you think the advantages of this trend outweigh the disadvantages?",
+      "targetBand": "BAND_6_0",
+      "outlineContent": "<p><b>Đề bài:</b> Công nghệ mới đã thay đổi cách trẻ em sử dụng thời gian rảnh. Bạn có nghĩ rằng những lợi ích của xu hướng này lớn hơn những bất lợi?</p>\n<p><b>Dạng bài:</b> Opinion (Đưa ra ý kiến)</p>\n<p><b>Quan điểm:</b> Đồng ý với việc bất lợi lớn hơn lợi ích.</p>\n<p><b>Mở bài:</b> Giới thiệu về sự thay đổi trong hoạt động giải trí của trẻ em do công nghệ và khẳng định đây là một hiện tượng tiêu cực.</p>\n<p><b>Thân bài 1:</b> Lợi ích của công nghệ (ví dụ: email, nghiên cứu trực tuyến, video giáo dục, AI). Nếu trẻ được dạy sử dụng có trách nhiệm, chúng có thể học hỏi và trở thành thành viên tốt của xã hội.</p>\n<p><b>Thân bài 2:</b> Bất lợi về tâm lý của việc sử dụng công nghệ quá nhiều (ví dụ: nghiện mạng xã hội, ít vận động, ảnh hưởng đến sức khỏe tâm thần). Dẫn chứng về số liệu thống kê về các ca tự tử ở thanh thiếu niên.</p>\n<p><b>Kết luận:</b> Nhấn mạnh những bất lợi về sức khỏe tinh thần và kêu gọi cha mẹ quản lý thời gian sử dụng thiết bị của con cái.</p>",
+      "fullEssayContent": "There is little doubt that technological advances have greatly altered the free time activities of children around the world. In my opinion, this is a decidedly negative phenomenon since the far-reaching effects of technology on the human psyche are still largely unknown.\n\nProponents of children using technology contend that it can be used for a variety of purposes. This applies not only to traditional usages such as sending emails, doing research online, and watching educational videos but also burgeoning innovations like artificial intelligence. The recent emerge of applications like ChatGPT now enable all individuals, children included, the opportunity to make their lives more efficient, productive, and enjoyable. If children are taught responsible usage habits, then they can take advantage of the many benefits and become more well-rounded learners and future members of society.\n\nHowever, the psychological ramifications of habits centered around technology are potentially severe. Humans have not evolved the ability to properly interact with a digital world and children are especially vulnerable. A child who becomes addicted to a social media application such as TikTok might be less physically active and start to see the world through a virtual perspective. This can lead to the development of mild mental conditions related to anxiety and self-esteem, or more extreme ones related to disassociation and depression. The evidence for this is clearly expressed in the often-cited statistics on the rising number of suicide attempts among teenagers and children since the introduction of social media platforms.\n\nIn conclusion, regardless of how technology can be used as a tool, its drawbacks in terms of general mental health make it a negative overall. Parents must therefore carefully manage their children’s screen time.",
+      "highlightAnnotations": [
+        {
+          "text": "There is little doubt that",
+          "highlightType": "STRUCTURE",
+          "explanation": "Cấu trúc này thể hiện sự chắc chắn, trang trọng, và được sử dụng để giới thiệu quan điểm một cách rõ ràng và thuyết phục. Nó thể hiện sự đa dạng trong cấu trúc câu, một tiêu chí quan trọng trong IELTS (CC, GRA).",
+          "color": "#34d399"
+        },
+        {
+          "text": "technological advances",
+          "highlightType": "VOCABULARY",
+          "explanation": "Sử dụng từ vựng học thuật (academic vocabulary) và cụ thể hơn là 'advances' thay vì 'technology' thể hiện sự hiểu biết về từ vựng và khả năng diễn đạt chính xác (LR).",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "decidedly negative phenomenon",
+          "highlightType": "VOCABULARY",
+          "explanation": "Sự kết hợp của 'decidedly' (rõ ràng, dứt khoát) và 'negative phenomenon' (hiện tượng tiêu cực) thể hiện khả năng sử dụng từ vựng phong phú và chính xác để diễn đạt quan điểm một cách rõ ràng (LR).",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "Proponents of children using technology",
+          "highlightType": "STRUCTURE",
+          "explanation": "Sử dụng cụm từ 'Proponents of...' cho thấy sự đa dạng trong cấu trúc câu và khả năng diễn đạt ý tưởng phức tạp (CC, GRA). Nó cũng thể hiện khả năng trình bày các quan điểm khác nhau một cách khách quan.",
+          "color": "#34d399"
+        },
+        {
+          "text": "burgeoning innovations",
+          "highlightType": "VOCABULARY",
+          "explanation": "Việc sử dụng từ 'burgeoning' (đang phát triển mạnh) cho thấy vốn từ vựng phong phú và khả năng sử dụng từ ngữ chính xác để mô tả sự phát triển của công nghệ (LR).",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "make their lives more efficient, productive, and enjoyable",
+          "highlightType": "GRAMMAR",
+          "explanation": "Cấu trúc song song (parallel structure) với 'efficient, productive, and enjoyable' thể hiện khả năng sử dụng ngữ pháp chính xác và làm cho câu văn rõ ràng, dễ hiểu (GRA, CC).",
+          "color": "#818cf8"
+        },
+        {
+          "text": "psychological ramifications",
+          "highlightType": "VOCABULARY",
+          "explanation": "Sử dụng từ vựng học thuật 'ramifications' (hậu quả) cho thấy sự hiểu biết về từ vựng và khả năng diễn đạt ý tưởng phức tạp (LR).",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "Humans have not evolved the ability to properly interact with a digital world",
+          "highlightType": "ARGUMENT",
+          "explanation": "Đây là một luận điểm mạnh mẽ và mang tính suy luận cao, thể hiện khả năng lập luận và phát triển ý tưởng một cách logic (TR). Nó cũng cho thấy khả năng diễn đạt ý tưởng phức tạp.",
+          "color": "#f87171"
+        },
+        {
+          "text": "in terms of general mental health",
+          "highlightType": "VOCABULARY",
+          "explanation": "Việc sử dụng cụm từ 'in terms of' cho thấy sự linh hoạt trong việc sử dụng từ vựng và khả năng diễn đạt ý một cách chính xác (LR).",
+          "color": "#fbbf24"
+        }
+      ],
+      "overallBandScore": 7.0,
+      "authorName": "howtodoielts.com"
+    }
+  ]
+}

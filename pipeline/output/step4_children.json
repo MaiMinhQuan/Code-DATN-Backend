@@ -1,0 +1,648 @@
+{
+  "topic": "Children",
+  "count": 2,
+  "lessons": [
+    {
+      "topic": "Children",
+      "target_band": "BAND_6_0",
+      "lesson": {
+        "title": "how to *fully develop* body paragraphs - writing task 2 double question/two-part question essay",
+        "targetBand": "BAND_6_0",
+        "videos": [
+          {
+            "title": "how to *fully develop* body paragraphs - writing task 2 double question/two-part question essay",
+            "url": "https://www.youtube.com/watch?v=0JJHbByTYis",
+            "duration": 667,
+            "thumbnailUrl": "https://i.ytimg.com/vi/0JJHbByTYis/hqdefault.jpg"
+          }
+        ],
+        "vocabularies": [
+          {
+            "word": "develop",
+            "pronunciation": "/dɪˈveləp/",
+            "definition": "To elaborate on an idea or topic by providing details and explanations.",
+            "examples": [
+              "The writer needs to develop their argument further.",
+              "The company is developing a new product."
+            ],
+            "translation": "phát triển, triển khai",
+            "timestamp": 13.4,
+            "contextSentence": "The focus of this video will be on how to develop your body paragraphs."
+          },
+          {
+            "word": "double question",
+            "pronunciation": "/ˈdʌbəl ˈkwɛstʃən/",
+            "definition": "An IELTS Writing Task 2 question that asks two separate questions within the same prompt.",
+            "examples": [
+              "The essay requires you to address a double question.",
+              "Double questions often require two body paragraphs."
+            ],
+            "translation": "câu hỏi kép",
+            "timestamp": 2.6,
+            "contextSentence": "about how to answer double questions, also known as two-part questions."
+          },
+          {
+            "word": "algorithm",
+            "pronunciation": "/ˈælɡərɪðəm/",
+            "definition": "A set of rules or instructions that a computer follows to solve a problem or complete a task.",
+            "examples": [
+              "Search engine algorithms determine the order of search results.",
+              "Social media algorithms curate content based on user preferences."
+            ],
+            "translation": "thuật toán",
+            "timestamp": 105.4,
+            "contextSentence": "Social media algorithms are extremely good at providing people with content that will hold their attention."
+          },
+          {
+            "word": "hold attention",
+            "pronunciation": "/hoʊld əˈtɛnʃən/",
+            "definition": "To keep someone interested in something.",
+            "examples": [
+              "The speaker struggled to hold the audience's attention.",
+              "The colorful graphics helped to hold the viewers' attention."
+            ],
+            "translation": "giữ sự chú ý",
+            "timestamp": 109.6,
+            "contextSentence": "Social media algorithms are extremely good at providing people with content that will hold their attention."
+          },
+          {
+            "word": "engagement",
+            "pronunciation": "/ɪnˈɡeɪdʒmənt/",
+            "definition": "The level of interaction and involvement a user has with a platform or content.",
+            "examples": [
+              "The company is trying to increase user engagement.",
+              "High engagement rates indicate that the content is popular."
+            ],
+            "translation": "sự tương tác",
+            "timestamp": 133.4,
+            "contextSentence": "They also collect data on user engagement so that they can serve up content that is more likely to keep users on the platforms for longer."
+          },
+          {
+            "word": "self-control",
+            "pronunciation": "/ˌself kənˈtroʊl/",
+            "definition": "The ability to control one's impulses and behaviors.",
+            "examples": [
+              "Children often struggle with self-control.",
+              "Developing self-control is important for academic success."
+            ],
+            "translation": "khả năng tự kiểm soát",
+            "timestamp": 139.6,
+            "contextSentence": "Since children tend to lack self-control, they may be unable to resist those personalized posts and wind up wasting too much time on their phones."
+          },
+          {
+            "word": "progression",
+            "pronunciation": "/prəˈɡreʃən/",
+            "definition": "The process of developing or moving forward in a logical and organized way.",
+            "examples": [
+              "The essay lacked a clear progression of ideas.",
+              "The story followed a logical progression."
+            ],
+            "translation": "sự tiến triển, sự phát triển",
+            "timestamp": 189,
+            "contextSentence": "Now I’m gonna show you how to turn a list of items into good progression."
+          },
+          {
+            "word": "toxic",
+            "pronunciation": "/ˈtɒksɪk/",
+            "definition": "Causing harm or damage, often used to describe negative or harmful content.",
+            "examples": [
+              "The online comments were often toxic.",
+              "The company is trying to remove toxic content from its platform."
+            ],
+            "translation": "độc hại",
+            "timestamp": 409.8,
+            "contextSentence": "Because many social media posts are toxic, consuming them may make children unhappy with who they are."
+          },
+          {
+            "word": "unrealistic",
+            "pronunciation": "/ˌʌnrɪəˈlɪstɪk/",
+            "definition": "Not representing things as they really are; not practical or achievable.",
+            "examples": [
+              "The expectations were unrealistic.",
+              "The movie portrayed an unrealistic view of life."
+            ],
+            "translation": "phi thực tế",
+            "timestamp": 393.4,
+            "contextSentence": "Perfectly filtered pictures and staged videos on social media create an unrealistic world for children scrolling through their feeds."
+          },
+          {
+            "word": "specify",
+            "pronunciation": "/ˈspɛsɪfaɪ/",
+            "definition": "To state or describe something clearly and precisely.",
+            "examples": [
+              "The instructions specify the required materials.",
+              "The report should specify the findings in detail."
+            ],
+            "translation": "chỉ rõ",
+            "timestamp": 439.8,
+            "contextSentence": "In our example, we can specify exactly what they are unhappy about."
+          },
+          {
+            "word": "adolescent",
+            "pronunciation": "/ˌædəˈlɛsənt/",
+            "definition": "A young person who is developing into an adult.",
+            "examples": [
+              "Adolescent girls are particularly vulnerable to body image issues.",
+              "The study focused on adolescent behavior."
+            ],
+            "translation": "thanh thiếu niên",
+            "timestamp": 465.4,
+            "contextSentence": "After seeing post after post of fitness influencers who appear to have perfect lives and bodies, some adolescent girls may find it very difficult to refrain from comparing themselves to those influencers."
+          },
+          {
+            "word": "refrain from",
+            "pronunciation": "/rɪˈfreɪn frɒm/",
+            "definition": "To stop oneself from doing something.",
+            "examples": [
+              "Please refrain from smoking in this area.",
+              "She refrained from commenting on the situation."
+            ],
+            "translation": "kiềm chế, tránh",
+            "timestamp": 471,
+            "contextSentence": "After seeing post after post of fitness influencers who appear to have perfect lives and bodies, some adolescent girls may find it very difficult to refrain from comparing themselves to those influencers."
+          },
+          {
+            "word": "take a toll on",
+            "pronunciation": "/teɪk ə toʊl ɒn/",
+            "definition": "To have a negative effect on someone or something.",
+            "examples": [
+              "Stress can take a toll on your health.",
+              "The economic downturn took a toll on the company's profits."
+            ],
+            "translation": "gây ảnh hưởng xấu đến",
+            "timestamp": 614.2,
+            "contextSentence": "Sadly, this may take a toll on their mental health."
+          }
+        ],
+        "grammars": [
+          {
+            "title": "Using 'Why is this the case?'",
+            "explanation": "The video explains that when the question uses the plural 'reasons' and asks 'what are the reasons?', you need to write more than one reason. However, when the question is 'why is this the case?', you can give one or two reasons.",
+            "examples": [
+              "Why is this the case?",
+              "What are the reasons?"
+            ],
+            "structure": "Question structure",
+            "timestamp": 46.7,
+            "contextSentence": "So if they use the plural “reasons” and ask “what are the reasons?”, then we have to write more than one reason."
+          },
+          {
+            "title": "Using 'rather than'",
+            "explanation": "This phrase is used to show contrast or to indicate a preference for one thing over another.",
+            "examples": [
+              "She chose to study history rather than science.",
+              "He preferred reading rather than watching TV."
+            ],
+            "structure": "Verb + rather than + noun/gerund",
+            "timestamp": 169.6,
+            "contextSentence": "This is listing items rather than developing the main topic."
+          },
+          {
+            "title": "Using 'like' as an example",
+            "explanation": "The word 'like' is used to introduce examples or to clarify a general statement.",
+            "examples": [
+              "I enjoy outdoor activities, like hiking and camping.",
+              "She likes to eat fruits like apples and oranges."
+            ],
+            "structure": "General statement + like + specific examples",
+            "timestamp": 274.1,
+            "contextSentence": "So we can change it to: they track user behavior like search history and engagement."
+          },
+          {
+            "title": "Using 'Since' to introduce a reason",
+            "explanation": "The word 'since' is used to introduce a reason or cause.",
+            "examples": [
+              "Since it was raining, we stayed indoors.",
+              "Since I was tired, I went to bed early."
+            ],
+            "structure": "Since + clause, clause",
+            "timestamp": 315.4,
+            "contextSentence": "Since children tend to lack self-control, they may be unable to resist those personalized posts and wind up wasting too much time on their phones."
+          },
+          {
+            "title": "Using 'may' for possibility",
+            "explanation": "The modal verb 'may' is used to express possibility or probability.",
+            "examples": [
+              "It may rain later today.",
+              "She may decide to go to the party."
+            ],
+            "structure": "Subject + may + base verb",
+            "timestamp": 315.4,
+            "contextSentence": "Since children tend to lack self-control, they may be unable to resist those personalized posts and wind up wasting too much time on their phones."
+          },
+          {
+            "title": "Using 'in order to'",
+            "explanation": "This phrase is used to express the purpose or reason for doing something.",
+            "examples": [
+              "He studied hard in order to pass the exam.",
+              "They saved money in order to buy a new car."
+            ],
+            "structure": "In order to + base verb",
+            "timestamp": 334.8,
+            "contextSentence": "Again, in order for the paragraph to have only one topic, it’s best to choose only one side to discuss."
+          },
+          {
+            "title": "Using 'because' to introduce a reason",
+            "explanation": "The word 'because' is used to introduce a reason or cause.",
+            "examples": [
+              "I stayed home because I was sick.",
+              "She was happy because she got a good grade."
+            ],
+            "structure": "Because + clause, clause",
+            "timestamp": 409.8,
+            "contextSentence": "Because many social media posts are toxic, consuming them may make children unhappy with who they are."
+          }
+        ],
+        "notesContent": "# Children — Ghi chú học tập (Band 6.0)\n\n## Từ vựng quan trọng\n\n### develop `/dɪˈveləp/`\n**Nghĩa:** To elaborate on an idea or topic by providing details and explanations.\n**Dịch:** phát triển, triển khai\n**Ví dụ:** *The writer needs to develop their argument further.*\n\n### double question `/ˈdʌbəl ˈkwɛstʃən/`\n**Nghĩa:** An IELTS Writing Task 2 question that asks two separate questions within the same prompt.\n**Dịch:** câu hỏi kép\n**Ví dụ:** *The essay requires you to address a double question.*\n\n### algorithm `/ˈælɡərɪðəm/`\n**Nghĩa:** A set of rules or instructions that a computer follows to solve a problem or complete a task.\n**Dịch:** thuật toán\n**Ví dụ:** *Search engine algorithms determine the order of search results.*\n\n### hold attention `/hoʊld əˈtɛnʃən/`\n**Nghĩa:** To keep someone interested in something.\n**Dịch:** giữ sự chú ý\n**Ví dụ:** *The speaker struggled to hold the audience's attention.*\n\n### engagement `/ɪnˈɡeɪdʒmənt/`\n**Nghĩa:** The level of interaction and involvement a user has with a platform or content.\n**Dịch:** sự tương tác\n**Ví dụ:** *The company is trying to increase user engagement.*\n\n### self-control `/ˌself kənˈtroʊl/`\n**Nghĩa:** The ability to control one's impulses and behaviors.\n**Dịch:** khả năng tự kiểm soát\n**Ví dụ:** *Children often struggle with self-control.*\n\n### progression `/prəˈɡreʃən/`\n**Nghĩa:** The process of developing or moving forward in a logical and organized way.\n**Dịch:** sự tiến triển, sự phát triển\n**Ví dụ:** *The essay lacked a clear progression of ideas.*\n\n### toxic `/ˈtɒksɪk/`\n**Nghĩa:** Causing harm or damage, often used to describe negative or harmful content.\n**Dịch:** độc hại\n**Ví dụ:** *The online comments were often toxic.*\n\n### unrealistic `/ˌʌnrɪəˈlɪstɪk/`\n**Nghĩa:** Not representing things as they really are; not practical or achievable.\n**Dịch:** phi thực tế\n**Ví dụ:** *The expectations were unrealistic.*\n\n### specify `/ˈspɛsɪfaɪ/`\n**Nghĩa:** To state or describe something clearly and precisely.\n**Dịch:** chỉ rõ\n**Ví dụ:** *The instructions specify the required materials.*\n\n### adolescent `/ˌædəˈlɛsənt/`\n**Nghĩa:** A young person who is developing into an adult.\n**Dịch:** thanh thiếu niên\n**Ví dụ:** *Adolescent girls are particularly vulnerable to body image issues.*\n\n### refrain from `/rɪˈfreɪn frɒm/`\n**Nghĩa:** To stop oneself from doing something.\n**Dịch:** kiềm chế, tránh\n**Ví dụ:** *Please refrain from smoking in this area.*\n\n## Điểm ngữ pháp\n\n### Using 'Why is this the case?'\n**Cấu trúc:** `Question structure`\nThe video explains that when the question uses the plural 'reasons' and asks 'what are the reasons?', you need to write more than one reason. However, when the question is 'why is this the case?', you can give one or two reasons.\n> Why is this the case?\n\n### Using 'rather than'\n**Cấu trúc:** `Verb + rather than + noun/gerund`\nThis phrase is used to show contrast or to indicate a preference for one thing over another.\n> She chose to study history rather than science.\n\n### Using 'like' as an example\n**Cấu trúc:** `General statement + like + specific examples`\nThe word 'like' is used to introduce examples or to clarify a general statement.\n> I enjoy outdoor activities, like hiking and camping.\n\n### Using 'Since' to introduce a reason\n**Cấu trúc:** `Since + clause, clause`\nThe word 'since' is used to introduce a reason or cause.\n> Since it was raining, we stayed indoors.\n\n### Using 'may' for possibility\n**Cấu trúc:** `Subject + may + base verb`\nThe modal verb 'may' is used to express possibility or probability.\n> It may rain later today.\n\n### Using 'in order to'\n**Cấu trúc:** `In order to + base verb`\nThis phrase is used to express the purpose or reason for doing something.\n> He studied hard in order to pass the exam.\n"
+      },
+      "flashcard_set": {
+        "title": "Từ vựng: how to *fully develop* body paragraphs - writing t",
+        "description": "Bộ flashcard từ video 'how to *fully develop* body paragraphs - writing task 2 double question/two-part question essay'",
+        "cards": [
+          {
+            "frontContent": "develop",
+            "backContent": "Nghĩa: phát triển, triển khai\nPhát âm: /dɪˈveləp/\nVí dụ: The writer needs to develop their argument further."
+          },
+          {
+            "frontContent": "double question",
+            "backContent": "Nghĩa: câu hỏi kép\nPhát âm: /ˈdʌbəl ˈkwɛstʃən/\nVí dụ: The essay requires you to address a double question."
+          },
+          {
+            "frontContent": "algorithm",
+            "backContent": "Nghĩa: thuật toán\nPhát âm: /ˈælɡərɪðəm/\nVí dụ: Search engine algorithms determine the order of search results."
+          },
+          {
+            "frontContent": "hold attention",
+            "backContent": "Nghĩa: giữ sự chú ý\nPhát âm: /hoʊld əˈtɛnʃən/\nVí dụ: The speaker struggled to hold the audience's attention."
+          },
+          {
+            "frontContent": "engagement",
+            "backContent": "Nghĩa: sự tương tác\nPhát âm: /ɪnˈɡeɪdʒmənt/\nVí dụ: The company is trying to increase user engagement.\nĐồng nghĩa: action, commitment"
+          },
+          {
+            "frontContent": "self-control",
+            "backContent": "Nghĩa: khả năng tự kiểm soát\nPhát âm: /ˌself kənˈtroʊl/\nVí dụ: Children often struggle with self-control."
+          },
+          {
+            "frontContent": "progression",
+            "backContent": "Nghĩa: sự tiến triển, sự phát triển\nPhát âm: /prəˈɡreʃən/\nVí dụ: The essay lacked a clear progression of ideas.\nĐồng nghĩa: sequence"
+          },
+          {
+            "frontContent": "toxic",
+            "backContent": "Nghĩa: độc hại\nPhát âm: /ˈtɒksɪk/\nVí dụ: The online comments were often toxic.\nĐồng nghĩa: poisonous, venomous"
+          },
+          {
+            "frontContent": "unrealistic",
+            "backContent": "Nghĩa: phi thực tế\nPhát âm: /ˌʌnrɪəˈlɪstɪk/\nVí dụ: The expectations were unrealistic."
+          },
+          {
+            "frontContent": "specify",
+            "backContent": "Nghĩa: chỉ rõ\nPhát âm: /ˈspɛsɪfaɪ/\nVí dụ: The instructions specify the required materials.\nĐồng nghĩa: disambiguate, explicitize"
+          },
+          {
+            "frontContent": "adolescent",
+            "backContent": "Nghĩa: thanh thiếu niên\nPhát âm: /ˌædəˈlɛsənt/\nVí dụ: Adolescent girls are particularly vulnerable to body image issues."
+          },
+          {
+            "frontContent": "refrain from",
+            "backContent": "Nghĩa: kiềm chế, tránh\nPhát âm: /rɪˈfreɪn frɒm/\nVí dụ: Please refrain from smoking in this area."
+          },
+          {
+            "frontContent": "take a toll on",
+            "backContent": "Nghĩa: gây ảnh hưởng xấu đến\nPhát âm: /teɪk ə toʊl ɒn/\nVí dụ: Stress can take a toll on your health."
+          }
+        ]
+      },
+      "approved": true
+    },
+    {
+      "topic": "Children",
+      "target_band": "BAND_6_0",
+      "lesson": {
+        "title": "Discuss both views: Children learning to be good members of society",
+        "targetBand": "BAND_6_0",
+        "videos": [
+          {
+            "title": "Discuss both views: Children learning to be good members of society",
+            "url": "https://www.youtube.com/watch?v=Oqr_PMueV7k",
+            "duration": 1019,
+            "thumbnailUrl": "https://i.ytimg.com/vi/Oqr_PMueV7k/hqdefault.jpg"
+          }
+        ],
+        "vocabularies": [
+          {
+            "word": "debate",
+            "pronunciation": "/dɪˈbeɪt/",
+            "definition": "a discussion involving different points of view; a formal discussion on a particular topic in a meeting or legislative assembly, in which opposing arguments are put forward",
+            "examples": [
+              "The issue has been the subject of much debate.",
+              "The debate over the new policy is ongoing."
+            ],
+            "translation": "tranh luận",
+            "timestamp": 128.5,
+            "contextSentence": "the topic of who should be teaching children how to be good members of society has become a matter of increasing debate in these times!"
+          },
+          {
+            "word": "paraphrasing",
+            "pronunciation": "/ˈpærəfreɪzɪŋ/",
+            "definition": "expressing the meaning of something using different words, especially to achieve greater clarity.",
+            "examples": [
+              "The student was penalized for excessive paraphrasing.",
+              "Can you paraphrase this sentence for me?"
+            ],
+            "translation": "diễn giải",
+            "timestamp": 154.4,
+            "contextSentence": "However, don't take your paraphrasing to the point where you say that a few individuals and some people mean the same thing because they don't"
+          },
+          {
+            "word": "definitive article",
+            "pronunciation": "/dɪˈfɪnətɪv ˈɑːrtɪkl/",
+            "definition": "the word 'the' used before a noun to indicate that the identity of the noun is known to the speaker.",
+            "examples": [
+              "The definitive article is essential for clarity.",
+              "He forgot to use the definitive article in his essay."
+            ],
+            "translation": "mạo từ xác định",
+            "timestamp": 225.3,
+            "contextSentence": "here here here we should not use the definitive article before a plural noun when speaking in general."
+          },
+          {
+            "word": "parallelism",
+            "pronunciation": "/ˈpærəlelɪzəm/",
+            "definition": "the use of successive verbal constructions in poetry or prose that correspond in grammatical structure, sound, meter, meaning, etc.",
+            "examples": [
+              "The essay lacked parallelism, making it difficult to read.",
+              "Parallelism improves the flow and readability of the text."
+            ],
+            "translation": "tính song song",
+            "timestamp": 270.2,
+            "contextSentence": "and this is an advanced grammar structure called parallelism."
+          },
+          {
+            "word": "clauses",
+            "pronunciation": "/klɔːz/",
+            "definition": "a unit of grammatical organization next below the sentence in rank and in traditional grammar said to consist of a subject and predicate.",
+            "examples": [
+              "The sentence contains two clauses.",
+              "The first clause is the main clause."
+            ],
+            "translation": "mệnh đề",
+            "timestamp": 282.4,
+            "contextSentence": "when you have a sentence like this where you have two clauses, such responsibility lies on the parents shoulders, so here we have such responsibility begins the"
+          },
+          {
+            "word": "ample",
+            "pronunciation": "/ˈæmpl/",
+            "definition": "enough or more than enough; plentiful.",
+            "examples": [
+              "The school provides ample opportunities for students.",
+              "There is ample evidence to support the claim."
+            ],
+            "translation": "đủ, nhiều",
+            "timestamp": 459.4,
+            "contextSentence": "this provides schools with ample opportunity to teach young minds about the basis."
+          },
+          {
+            "word": "locality",
+            "pronunciation": "/ləˈkæləti/",
+            "definition": "a particular area or neighborhood.",
+            "examples": [
+              "The school is located in my locality.",
+              "The locality is known for its friendly atmosphere."
+            ],
+            "translation": "địa phương",
+            "timestamp": 489.5,
+            "contextSentence": "for instance many of the schools in my locality have special classes that teach students about rules"
+          },
+          {
+            "word": "etiquette",
+            "pronunciation": "/ˈetɪket/",
+            "definition": "the customary code of polite behavior in society or among members of a particular group.",
+            "examples": [
+              "Good etiquette is essential in formal settings.",
+              "She was praised for her excellent etiquette."
+            ],
+            "translation": "phép xã giao",
+            "timestamp": 512.5,
+            "contextSentence": "could you explain to me the difference between manners and etiquette?"
+          },
+          {
+            "word": "academic institutions",
+            "pronunciation": "/ˌækəˈdemɪk ˌɪnstɪˈtjuːʃənz/",
+            "definition": "schools, colleges, and universities.",
+            "examples": [
+              "Academic institutions play a crucial role in society.",
+              "He is a professor at a prestigious academic institution."
+            ],
+            "translation": "các tổ chức học thuật",
+            "timestamp": 522.1,
+            "contextSentence": "in everyday life hence it is the view of many that academic institutions and you"
+          },
+          {
+            "word": "impressionable",
+            "pronunciation": "/ɪmˈpreʃənəbl/",
+            "definition": "easily influenced because of a lack of critical ability.",
+            "examples": [
+              "Children are at their most impressionable during their early years.",
+              "She is at an impressionable age."
+            ],
+            "translation": "dễ bị ảnh hưởng",
+            "timestamp": 653.1,
+            "contextSentence": "during the most impressionable times"
+          },
+          {
+            "word": "instill",
+            "pronunciation": "/ɪnˈstɪl/",
+            "definition": "gradually but firmly establish (an idea or attitude) in a person's mind.",
+            "examples": [
+              "The teachers instilled a love of learning in their students.",
+              "The parents instilled a sense of responsibility in their children."
+            ],
+            "translation": "truyền đạt",
+            "timestamp": 709.2,
+            "contextSentence": "therefore if the parents can effectively instill a sense of good character now"
+          },
+          {
+            "word": "conditional",
+            "pronunciation": "/kənˈdɪʃənəl/",
+            "definition": "expressing a condition.",
+            "examples": [
+              "This is a first conditional sentence.",
+              "The essay uses zero and first conditionals."
+            ],
+            "translation": "câu điều kiện",
+            "timestamp": 735.5,
+            "contextSentence": "zero or first conditional this idea what idea is okay we have another"
+          },
+          {
+            "word": "potentially",
+            "pronunciation": "/pəˈtenʃəli/",
+            "definition": "with the possibility to happen or be true.",
+            "examples": [
+              "The new policy could potentially improve the situation.",
+              "The project is potentially very successful."
+            ],
+            "translation": "có khả năng",
+            "timestamp": 815.9,
+            "contextSentence": "although schools can potentially shape the minds of many young children, their"
+          },
+          {
+            "word": "contrasting statements",
+            "pronunciation": "/kənˈtræstɪŋ ˈsteɪtmənts/",
+            "definition": "statements that show a difference between two things.",
+            "examples": [
+              "The essay uses contrasting statements to present both sides of the argument.",
+              "The author uses contrasting statements to highlight the differences."
+            ],
+            "translation": "câu đối lập",
+            "timestamp": 842.7,
+            "contextSentence": "A couple days ago, she wrote about how the imperfect use of contrasting statements."
+          }
+        ],
+        "grammars": [
+          {
+            "title": "Using 'some' vs. 'a few'",
+            "explanation": "The word 'some' is less specific than 'a few'. 'A few' implies a small number, while 'some' is more general.",
+            "examples": [
+              "Some people believe...",
+              "A few students attended the lecture."
+            ],
+            "structure": "some + plural noun",
+            "timestamp": 154.4,
+            "contextSentence": "However, don't take your paraphrasing to the point where you say that a few individuals and some people mean the same thing because they don't"
+          },
+          {
+            "title": "Using the definite article 'the' with plural nouns",
+            "explanation": "Do not use 'the' before a plural noun when speaking in general terms.",
+            "examples": [
+              "The students are studying (specific students).",
+              "Students study (in general)."
+            ],
+            "structure": "The + plural noun (incorrect in general statements)",
+            "timestamp": 225.3,
+            "contextSentence": "here here here we should not use the definitive article before a plural noun when speaking in general."
+          },
+          {
+            "title": "Parallel Structure",
+            "explanation": "Use the same grammatical structure when listing similar ideas or arguments to improve readability and clarity.",
+            "examples": [
+              "She likes to read books, whereas he prefers to watch movies.",
+              "The company focuses on innovation, while the competitor emphasizes cost-cutting."
+            ],
+            "structure": "Clause 1, whereas clause 2",
+            "timestamp": 329.4,
+            "contextSentence": "whereas others argue this should be taught by schools."
+          },
+          {
+            "title": "Missing commas",
+            "explanation": "Commas are used to separate items in a list, and to separate clauses.",
+            "examples": [
+              "I bought apples, bananas, and oranges.",
+              "I went to the store, but it was closed."
+            ],
+            "structure": "Item 1, item 2, and item 3.",
+            "timestamp": 437.6,
+            "contextSentence": "once again missing comma, they spend a quarter of their day that would be six"
+          },
+          {
+            "title": "Using 'of' with plural nouns",
+            "explanation": "The structure 'of + plural noun' is often incorrect.",
+            "examples": [
+              "The children's lives (correct)",
+              "Of children's lives (incorrect)"
+            ],
+            "structure": "of + plural noun (incorrect)",
+            "timestamp": 422.6,
+            "contextSentence": "okay hopefully I don't have to explain why of children the schools are a and then definitely"
+          },
+          {
+            "title": "Using 'when' with time",
+            "explanation": "Use 'when' to introduce a clause about time.",
+            "examples": [
+              "When I was young, I loved to play.",
+              "When the time comes, we will act."
+            ],
+            "structure": "When + clause",
+            "timestamp": 658.5,
+            "contextSentence": "when with with time we use when when character development is at a vital stage and... instead of developing this"
+          },
+          {
+            "title": "First Conditional",
+            "explanation": "Used to talk about a possible situation and its likely result.",
+            "examples": [
+              "If it rains, I will stay inside.",
+              "If you study hard, you will pass the exam."
+            ],
+            "structure": "If + present simple, will + base form",
+            "timestamp": 709.2,
+            "contextSentence": "therefore if the parents can effectively instill a sense of good character now"
+          }
+        ],
+        "notesContent": "# Children — Ghi chú học tập (Band 6.0)\n\n## Từ vựng quan trọng\n\n### debate `/dɪˈbeɪt/`\n**Nghĩa:** a discussion involving different points of view; a formal discussion on a particular topic in a meeting or legislative assembly, in which opposing arguments are put forward\n**Dịch:** tranh luận\n**Ví dụ:** *The issue has been the subject of much debate.*\n\n### paraphrasing `/ˈpærəfreɪzɪŋ/`\n**Nghĩa:** expressing the meaning of something using different words, especially to achieve greater clarity.\n**Dịch:** diễn giải\n**Ví dụ:** *The student was penalized for excessive paraphrasing.*\n\n### definitive article `/dɪˈfɪnətɪv ˈɑːrtɪkl/`\n**Nghĩa:** the word 'the' used before a noun to indicate that the identity of the noun is known to the speaker.\n**Dịch:** mạo từ xác định\n**Ví dụ:** *The definitive article is essential for clarity.*\n\n### parallelism `/ˈpærəlelɪzəm/`\n**Nghĩa:** the use of successive verbal constructions in poetry or prose that correspond in grammatical structure, sound, meter, meaning, etc.\n**Dịch:** tính song song\n**Ví dụ:** *The essay lacked parallelism, making it difficult to read.*\n\n### clauses `/klɔːz/`\n**Nghĩa:** a unit of grammatical organization next below the sentence in rank and in traditional grammar said to consist of a subject and predicate.\n**Dịch:** mệnh đề\n**Ví dụ:** *The sentence contains two clauses.*\n\n### ample `/ˈæmpl/`\n**Nghĩa:** enough or more than enough; plentiful.\n**Dịch:** đủ, nhiều\n**Ví dụ:** *The school provides ample opportunities for students.*\n\n### locality `/ləˈkæləti/`\n**Nghĩa:** a particular area or neighborhood.\n**Dịch:** địa phương\n**Ví dụ:** *The school is located in my locality.*\n\n### etiquette `/ˈetɪket/`\n**Nghĩa:** the customary code of polite behavior in society or among members of a particular group.\n**Dịch:** phép xã giao\n**Ví dụ:** *Good etiquette is essential in formal settings.*\n\n### academic institutions `/ˌækəˈdemɪk ˌɪnstɪˈtjuːʃənz/`\n**Nghĩa:** schools, colleges, and universities.\n**Dịch:** các tổ chức học thuật\n**Ví dụ:** *Academic institutions play a crucial role in society.*\n\n### impressionable `/ɪmˈpreʃənəbl/`\n**Nghĩa:** easily influenced because of a lack of critical ability.\n**Dịch:** dễ bị ảnh hưởng\n**Ví dụ:** *Children are at their most impressionable during their early years.*\n\n### instill `/ɪnˈstɪl/`\n**Nghĩa:** gradually but firmly establish (an idea or attitude) in a person's mind.\n**Dịch:** truyền đạt\n**Ví dụ:** *The teachers instilled a love of learning in their students.*\n\n### conditional `/kənˈdɪʃənəl/`\n**Nghĩa:** expressing a condition.\n**Dịch:** câu điều kiện\n**Ví dụ:** *This is a first conditional sentence.*\n\n## Điểm ngữ pháp\n\n### Using 'some' vs. 'a few'\n**Cấu trúc:** `some + plural noun`\nThe word 'some' is less specific than 'a few'. 'A few' implies a small number, while 'some' is more general.\n> Some people believe...\n\n### Using the definite article 'the' with plural nouns\n**Cấu trúc:** `The + plural noun (incorrect in general statements)`\nDo not use 'the' before a plural noun when speaking in general terms.\n> The students are studying (specific students).\n\n### Parallel Structure\n**Cấu trúc:** `Clause 1, whereas clause 2`\nUse the same grammatical structure when listing similar ideas or arguments to improve readability and clarity.\n> She likes to read books, whereas he prefers to watch movies.\n\n### Missing commas\n**Cấu trúc:** `Item 1, item 2, and item 3.`\nCommas are used to separate items in a list, and to separate clauses.\n> I bought apples, bananas, and oranges.\n\n### Using 'of' with plural nouns\n**Cấu trúc:** `of + plural noun (incorrect)`\nThe structure 'of + plural noun' is often incorrect.\n> The children's lives (correct)\n\n### Using 'when' with time\n**Cấu trúc:** `When + clause`\nUse 'when' to introduce a clause about time.\n> When I was young, I loved to play.\n"
+      },
+      "flashcard_set": {
+        "title": "Từ vựng: Discuss both views: Children learning to be good m",
+        "description": "Bộ flashcard từ video 'Discuss both views: Children learning to be good members of society'",
+        "cards": [
+          {
+            "frontContent": "debate",
+            "backContent": "Nghĩa: tranh luận\nPhát âm: /dɪˈbeɪt/\nVí dụ: The issue has been the subject of much debate."
+          },
+          {
+            "frontContent": "paraphrasing",
+            "backContent": "Nghĩa: diễn giải\nPhát âm: /ˈpærəfreɪzɪŋ/\nVí dụ: The student was penalized for excessive paraphrasing."
+          },
+          {
+            "frontContent": "definitive article",
+            "backContent": "Nghĩa: mạo từ xác định\nPhát âm: /dɪˈfɪnətɪv ˈɑːrtɪkl/\nVí dụ: The definitive article is essential for clarity."
+          },
+          {
+            "frontContent": "parallelism",
+            "backContent": "Nghĩa: tính song song\nPhát âm: /ˈpærəlelɪzəm/\nVí dụ: The essay lacked parallelism, making it difficult to read."
+          },
+          {
+            "frontContent": "clauses",
+            "backContent": "Nghĩa: mệnh đề\nPhát âm: /klɔːz/\nVí dụ: The sentence contains two clauses."
+          },
+          {
+            "frontContent": "ample",
+            "backContent": "Nghĩa: đủ, nhiều\nPhát âm: /ˈæmpl/\nVí dụ: The school provides ample opportunities for students.\nĐồng nghĩa: abundant, bountiful, capacious, copious"
+          },
+          {
+            "frontContent": "locality",
+            "backContent": "Nghĩa: địa phương\nPhát âm: /ləˈkæləti/\nVí dụ: The school is located in my locality."
+          },
+          {
+            "frontContent": "etiquette",
+            "backContent": "Nghĩa: phép xã giao\nPhát âm: /ˈetɪket/\nVí dụ: Good etiquette is essential in formal settings."
+          },
+          {
+            "frontContent": "academic institutions",
+            "backContent": "Nghĩa: các tổ chức học thuật\nPhát âm: /ˌækəˈdemɪk ˌɪnstɪˈtjuːʃənz/\nVí dụ: Academic institutions play a crucial role in society."
+          },
+          {
+            "frontContent": "impressionable",
+            "backContent": "Nghĩa: dễ bị ảnh hưởng\nPhát âm: /ɪmˈpreʃənəbl/\nVí dụ: Children are at their most impressionable during their early years."
+          },
+          {
+            "frontContent": "instill",
+            "backContent": "Nghĩa: truyền đạt\nPhát âm: /ɪnˈstɪl/\nVí dụ: The teachers instilled a love of learning in their students."
+          },
+          {
+            "frontContent": "conditional",
+            "backContent": "Nghĩa: câu điều kiện\nPhát âm: /kənˈdɪʃənəl/\nVí dụ: This is a first conditional sentence.\nĐồng nghĩa: if-then, material conditional, hypothetical, conditioned"
+          },
+          {
+            "frontContent": "potentially",
+            "backContent": "Nghĩa: có khả năng\nPhát âm: /pəˈtenʃəli/\nVí dụ: The new policy could potentially improve the situation."
+          },
+          {
+            "frontContent": "contrasting statements",
+            "backContent": "Nghĩa: câu đối lập\nPhát âm: /kənˈtræstɪŋ ˈsteɪtmənts/\nVí dụ: The essay uses contrasting statements to present both sides of the argument."
+          }
+        ]
+      },
+      "approved": true
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "topic": "Libraries",
+  "target_band": "BAND_6_0",
+  "exam_questions": [
+    {
+      "title": "Libraries vs. Internet: Public Access",
+      "questionPrompt": "Some people think that the government should provide free public libraries in every town, while others think that this is a waste of money because people can access information on the internet. Discuss both viewpoints and give your own opinion.",
+      "suggestedOutline": "1. Intro: State the two viewpoints and the writer's opinion.\n2. Body 1: Internet - advantages (access, flexibility, cost).\n3. Body 2: Libraries - advantages (environment, community, equality).\n4. Conclusion: Restate opinion and emphasize the importance of libraries.",
+      "difficultyLevel": "MEDIUM",
+      "tags": [
+        "libraries",
+        "internet",
+        "education",
+        "government",
+        "society"
+      ]
+    }
+  ],
+  "sample_essays": [
+    {
+      "title": "Libraries vs. Internet: Public Access — Band 7.0",
+      "questionPrompt": "Some people think that the government should provide free public libraries in every town, while others think that this is a waste of money because people can access information on the internet. Discuss both viewpoints and give your own opinion.",
+      "targetBand": "BAND_6_0",
+      "outlineContent": "<p><b>Loại bài luận:</b> Thảo luận hai mặt và đưa ra ý kiến</p>\n\n<p><b>Quan điểm:</b> Đồng ý với việc chính phủ nên duy trì thư viện</p>\n\n<p><b>Mở bài:</b> Giới thiệu hai quan điểm trái chiều về việc xây dựng thư viện công cộng và đưa ra luận điểm cá nhân.</p>\n\n<p><b>Thân bài 1 (Quan điểm 1 - Internet):</b></p>\n<ul>\n  <li>Internet cung cấp thông tin miễn phí và dễ dàng.</li>\n  <li>Ví dụ: Sinh viên có thể truy cập tài liệu nghiên cứu trực tuyến.</li>\n  <li>Internet giúp việc học linh hoạt và bao quát hơn.</li>\n  <li>Chi phí duy trì thư viện cao hơn so với tài nguyên số.</li>\n</ul>\n\n<p><b>Thân bài 2 (Quan điểm 2 - Thư viện):</b></p>\n<ul>\n  <li>Thư viện cung cấp môi trường đọc tập trung, thúc đẩy sự tập trung.</li>\n  <li>Ví dụ: Thư viện là trung tâm cộng đồng (Finland).</li>\n  <li>Thư viện tạo ra các cơ hội học tập bình đẳng.</li>\n  <li>Thư viện cần thiết cho những người không có internet.</li>\n</ul>\n\n<p><b>Kết luận:</b> Tóm tắt lại các luận điểm và khẳng định vai trò quan trọng của thư viện, kêu gọi chính phủ đầu tư vào thư viện.</p>",
+      "fullEssayContent": "Some people argue that governments should build free public libraries in every town, while others claim that this is unnecessary since the internet already provides easy access to information. Although online sources are undeniably convenient, I believe that libraries still serve an essential social and educational role that the internet cannot fully replace.\n\nOn one hand, the internet allows people to access a vast amount of information at little or no cost. For example, students can now locate millions of research papers, lectures, and e-books from websites like Google Scholar or Coursera without leaving their homes. This has made learning more flexible and inclusive, especially for people living in remote areas. Furthermore, maintaining physical libraries can be expensive, requiring staff salaries, electricity, and constant book replacement, whereas digital resources are comparatively cheap to update and distribute. From this perspective, building libraries may appear outdated and financially inefficient.\n\nOn the other hand, public libraries provide benefits beyond mere access to information. They offer quiet, structured environments that promote deep reading and concentration, something that online browsing often discourages. For instance, in Finland, libraries act as community centers where children attend storytelling sessions, the elderly join reading clubs, and unemployed residents receive job-search training. These social interactions strengthen community bonds and create equal learning opportunities regardless of income level. As not everyone has reliable internet access, especially in developing countries, libraries remain an essential bridge to intellectual and social progress.\n\nIn conclusion, while the internet has revolutionized how people obtain information, libraries continue to play a vital educational and social role. Governments should not view them as a financial burden but as long-term investments in literacy, equality, and community well-being.",
+      "highlightAnnotations": [
+        {
+          "text": "undeniably convenient",
+          "highlightType": "VOCABULARY",
+          "explanation": "Sử dụng từ 'undeniably' (không thể phủ nhận) làm tăng tính thuyết phục của lập luận, thể hiện khả năng sử dụng từ vựng đa dạng và chính xác (Lexical Resource). Việc sử dụng một trạng từ mạnh như vậy cũng thể hiện sự tự tin của người viết trong việc trình bày quan điểm của mình.",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "an essential social and educational role",
+          "highlightType": "VOCABULARY",
+          "explanation": "Cụm từ này sử dụng từ vựng liên quan đến chủ đề một cách chính xác và hiệu quả, thể hiện sự hiểu biết về vấn đề và khả năng sử dụng từ vựng phong phú. Việc sử dụng cả 'social' và 'educational' cho thấy sự đa dạng trong cách diễn đạt (Lexical Resource).",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "On one hand",
+          "highlightType": "STRUCTURE",
+          "explanation": "Đây là một cụm từ liên kết (linking phrase) được sử dụng để giới thiệu một quan điểm đối lập, thể hiện sự mạch lạc và gắn kết (Coherence and Cohesion) trong bài viết. Việc sử dụng các cụm từ liên kết như vậy giúp bài viết có cấu trúc rõ ràng và dễ theo dõi.",
+          "color": "#34d399"
+        },
+        {
+          "text": "a vast amount of information",
+          "highlightType": "VOCABULARY",
+          "explanation": "Sử dụng cụm từ 'a vast amount of information' thay vì 'a lot of information' cho thấy khả năng sử dụng từ vựng phong phú hơn và chính xác hơn (Lexical Resource). 'Vast' là một từ mạnh, nhấn mạnh quy mô lớn của thông tin có sẵn trên internet.",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "From this perspective",
+          "highlightType": "STRUCTURE",
+          "explanation": "Cụm từ này được sử dụng để chuyển đổi giữa các ý tưởng, thể hiện sự mạch lạc (Coherence) trong bài viết. Nó giúp người đọc dễ dàng theo dõi luồng lập luận và hiểu rõ mối quan hệ giữa các ý tưởng khác nhau.",
+          "color": "#34d399"
+        },
+        {
+          "text": "On the other hand",
+          "highlightType": "STRUCTURE",
+          "explanation": "Tương tự như 'On one hand', cụm từ này thể hiện sự mạch lạc và gắn kết (Coherence and Cohesion) bằng cách giới thiệu một quan điểm đối lập. Việc sử dụng các cụm từ liên kết như vậy giúp bài viết có cấu trúc rõ ràng và dễ theo dõi.",
+          "color": "#34d399"
+        },
+        {
+          "text": "promote deep reading and concentration",
+          "highlightType": "VOCABULARY",
+          "explanation": "Cụm từ này sử dụng từ vựng liên quan đến chủ đề một cách chính xác và hiệu quả, thể hiện sự hiểu biết về vấn đề và khả năng sử dụng từ vựng phong phú. 'Deep reading' và 'concentration' là những từ vựng phù hợp và chính xác trong ngữ cảnh này (Lexical Resource).",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "In conclusion",
+          "highlightType": "STRUCTURE",
+          "explanation": "Đây là một cụm từ liên kết (linking phrase) được sử dụng để giới thiệu phần kết luận, thể hiện sự mạch lạc và gắn kết (Coherence and Cohesion) trong bài viết. Việc sử dụng các cụm từ liên kết như vậy giúp bài viết có cấu trúc rõ ràng và dễ theo dõi.",
+          "color": "#34d399"
+        },
+        {
+          "text": "literacy, equality, and community well-being",
+          "highlightType": "VOCABULARY",
+          "explanation": "Liệt kê ba từ khóa quan trọng liên quan đến chủ đề, thể hiện khả năng sử dụng từ vựng đa dạng và chính xác (Lexical Resource). Cách diễn đạt này cũng cho thấy sự hiểu biết sâu sắc về vấn đề và khả năng trình bày các ý tưởng một cách rõ ràng và hiệu quả.",
+          "color": "#fbbf24"
+        }
+      ],
+      "overallBandScore": 7.0,
+      "authorName": "howtodoielts.com"
+    }
+  ]
+}
