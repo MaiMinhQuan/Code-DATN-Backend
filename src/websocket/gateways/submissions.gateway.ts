@@ -18,6 +18,7 @@ import {
   SocketWithUser,
   SubmissionStatusPayload,
   SubmissionProgressPayload,
+  PipelineProgressPayload,
 } from "../interfaces/socket-with-user.interface";
 
 // CORS ở đây có thể bị adapter ghi đè phần origin; credentials bật cho cookie nếu cần
@@ -201,6 +202,11 @@ export class SubmissionsGateway
       `Emitted ${WS_EVENTS.SUBMISSION_PROGRESS} to room ${room} | ` +
       `Progress: ${payload.progress}%`
     );
+  }
+
+  emitPipelineProgress(jobId: string, payload: PipelineProgressPayload): void {
+    const room = `${ROOM_PREFIX.PIPELINE}${jobId}`;
+    this.server.to(room).emit(WS_EVENTS.PIPELINE_PROGRESS, payload);
   }
 
   /*

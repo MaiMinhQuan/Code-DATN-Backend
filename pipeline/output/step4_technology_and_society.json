@@ -1,0 +1,302 @@
+{
+  "topic": "Technology and Society",
+  "count": 1,
+  "lessons": [
+    {
+      "topic": "Technology and Society",
+      "target_band": "BAND_6_0",
+      "lesson": {
+        "title": "IELTS English Podcast - Speaking Topic: Technology",
+        "targetBand": "BAND_6_0",
+        "videos": [
+          {
+            "title": "IELTS English Podcast - Speaking Topic: Technology",
+            "url": "https://www.youtube.com/watch?v=LNvLVXVTOpc",
+            "duration": 626,
+            "thumbnailUrl": "https://i.ytimg.com/vi/LNvLVXVTOpc/hqdefault.jpg"
+          }
+        ],
+        "vocabularies": [
+          {
+            "word": "curriculum",
+            "pronunciation": "/kəˈrɪkjələm/",
+            "definition": "The subjects that are taught in a school, college, etc., or the things that are studied in a particular subject.",
+            "examples": [
+              "The school has a new curriculum for science.",
+              "The curriculum includes history, geography, and mathematics."
+            ],
+            "translation": "chương trình học",
+            "timestamp": 16.8,
+            "contextSentence": "this is a 40 topic curriculum."
+          },
+          {
+            "word": "technophile",
+            "pronunciation": "/ˈtɛknəfaɪl/",
+            "definition": "A person who is enthusiastic about new technology.",
+            "examples": [
+              "He is a technophile and always buys the latest gadgets.",
+              "Technophiles are often early adopters of new technologies."
+            ],
+            "translation": "người yêu công nghệ",
+            "timestamp": 101.3,
+            "contextSentence": "The first group are called technophiles."
+          },
+          {
+            "word": "technophobe",
+            "pronunciation": "/ˈtɛknəfəʊb/",
+            "definition": "A person who dislikes or avoids new technology.",
+            "examples": [
+              "My grandfather is a technophobe and refuses to use a computer.",
+              "Technophobes often find new technology intimidating."
+            ],
+            "translation": "người sợ công nghệ",
+            "timestamp": 105.3,
+            "contextSentence": "The second group are called technophobes."
+          },
+          {
+            "word": "gadget",
+            "pronunciation": "/ˈɡædʒɪt/",
+            "definition": "A small, useful machine or device.",
+            "examples": [
+              "She has a lot of gadgets in her kitchen.",
+              "This new gadget can translate languages in real time."
+            ],
+            "translation": "tiện ích, thiết bị",
+            "timestamp": 174.9,
+            "contextSentence": "What gadgets do you use on a daily basis?"
+          },
+          {
+            "word": "immediately",
+            "pronunciation": "/ɪˈmiːdiətli/",
+            "definition": "Without any delay; instantly.",
+            "examples": [
+              "I need to leave immediately.",
+              "The problem needs to be addressed immediately."
+            ],
+            "translation": "ngay lập tức",
+            "timestamp": 182.9,
+            "contextSentence": "The ones that come to my mind immediately are my phone, my laptop,"
+          },
+          {
+            "word": "e-book reader",
+            "pronunciation": "/ˈiːbʊk ˈriːdə(r)/",
+            "definition": "A portable electronic device designed for reading digital books.",
+            "examples": [
+              "I prefer reading on my e-book reader.",
+              "E-book readers are convenient for travel."
+            ],
+            "translation": "máy đọc sách điện tử",
+            "timestamp": 187.7,
+            "contextSentence": "my e-book reader, my camera."
+          },
+          {
+            "word": "upgrade",
+            "pronunciation": "/ʌpˈɡreɪd/",
+            "definition": "To improve something or make it more modern.",
+            "examples": [
+              "I decided to upgrade my computer.",
+              "The company is upgrading its software."
+            ],
+            "translation": "nâng cấp",
+            "timestamp": 231.8,
+            "contextSentence": "but last year I decided to upgrade to kind of a top of the range."
+          },
+          {
+            "word": "videography",
+            "pronunciation": "/ˌvɪdiˈɒɡrəfi/",
+            "definition": "The process or art of making videos.",
+            "examples": [
+              "He is studying videography at university.",
+              "Her videography skills are very impressive."
+            ],
+            "translation": "nghệ thuật quay phim",
+            "timestamp": 293.2,
+            "contextSentence": "because as I said, I do like videography, particularly,"
+          },
+          {
+            "word": "obsolete",
+            "pronunciation": "/ˈɒbsəliːt/",
+            "definition": "No longer produced or used; out of date.",
+            "examples": [
+              "The old technology has become obsolete.",
+              "Many traditional skills have become obsolete."
+            ],
+            "translation": "lỗi thời",
+            "timestamp": 394.4,
+            "contextSentence": "A lot of other technology became obsolete."
+          },
+          {
+            "word": "game changer",
+            "pronunciation": "/ˈɡeɪm ˌtʃeɪndʒər/",
+            "definition": "A new idea, method, or product that completely changes the way that something is done.",
+            "examples": [
+              "The invention of the internet was a game changer.",
+              "This new software is a game changer for our business."
+            ],
+            "translation": "thay đổi cuộc chơi",
+            "timestamp": 383.8,
+            "contextSentence": "I think the the biggest technological development that comes to my mind is the phone, the smart phone, because it was a real game changer."
+          },
+          {
+            "word": "reliance on",
+            "pronunciation": "/rɪˈlaɪəns ɒn/",
+            "definition": "The state of depending on or trusting in something or someone.",
+            "examples": [
+              "Our reliance on fossil fuels is causing environmental problems.",
+              "There is an increasing reliance on technology in education."
+            ],
+            "translation": "sự phụ thuộc vào",
+            "timestamp": 483.4,
+            "contextSentence": "Another one that comes to my mind is our reliance on maps"
+          },
+          {
+            "word": "distraction",
+            "pronunciation": "/dɪˈstrækʃən/",
+            "definition": "A thing that prevents someone from giving their attention to something else.",
+            "examples": [
+              "The noise was a distraction.",
+              "I find that phones are a distraction."
+            ],
+            "translation": "sự xao nhãng",
+            "timestamp": 525.6,
+            "contextSentence": "I find that phones are a distraction."
+          }
+        ],
+        "grammars": [
+          {
+            "title": "Use of 'Whether...or'",
+            "explanation": "Used to express alternatives or possibilities.",
+            "examples": [
+              "Whether it rains or shines, we will go.",
+              "I don't know whether I should go or stay."
+            ],
+            "structure": "Whether + clause, or + clause",
+            "timestamp": 152.4,
+            "contextSentence": "Whether it's work, I'm using my laptop, my phone"
+          },
+          {
+            "title": "Use of 'on a daily basis'",
+            "explanation": "To describe something that happens every day.",
+            "examples": [
+              "I exercise on a daily basis.",
+              "She checks her email on a daily basis."
+            ],
+            "structure": "Verb + on a daily basis",
+            "timestamp": 174.9,
+            "contextSentence": "What gadgets do you use on a daily basis?"
+          },
+          {
+            "title": "Use of 'I'd like to'",
+            "explanation": "A polite way of saying 'I want to'.",
+            "examples": [
+              "I'd like to go to the cinema.",
+              "I'd like to ask a question."
+            ],
+            "structure": "I'd like to + infinitive verb",
+            "timestamp": 221.9,
+            "contextSentence": "I'd like to tell you about my phone."
+          },
+          {
+            "title": "Use of 'because' and 'because of'",
+            "explanation": "To explain the reason for something. 'Because' is followed by a clause, 'because of' by a noun phrase.",
+            "examples": [
+              "I stayed home because I was sick.",
+              "I stayed home because of my illness."
+            ],
+            "structure": "Because + clause; Because of + noun phrase",
+            "timestamp": 293.2,
+            "contextSentence": "because as I said, I do like videography, particularly,"
+          },
+          {
+            "title": "Use of 'in my opinion'",
+            "explanation": "To express a personal viewpoint.",
+            "examples": [
+              "In my opinion, this is the best solution.",
+              "In my opinion, the movie was very good."
+            ],
+            "structure": "In my opinion, + statement",
+            "timestamp": 309.7,
+            "contextSentence": "In my opinion, it's definitely the best phone I've ever had,"
+          },
+          {
+            "title": "Use of 'For example'",
+            "explanation": "To introduce an example.",
+            "examples": [
+              "I enjoy many sports, for example, football and basketball.",
+              "There are many different types of fruit, for example, apples and oranges."
+            ],
+            "structure": "For example, + example",
+            "timestamp": 459.7,
+            "contextSentence": "For example, people rely on modern technology for writing"
+          },
+          {
+            "title": "Use of 'I think'",
+            "explanation": "To express an opinion or belief.",
+            "examples": [
+              "I think it's a good idea.",
+              "I think we should go now."
+            ],
+            "structure": "I think + clause",
+            "timestamp": 379.5,
+            "contextSentence": "I think the the biggest technological development that comes to my mind is the phone, the smart phone,"
+          }
+        ],
+        "notesContent": "# Technology and Society — Ghi chú học tập (Band 6.0)\n\n## Từ vựng quan trọng\n\n### curriculum `/kəˈrɪkjələm/`\n**Nghĩa:** The subjects that are taught in a school, college, etc., or the things that are studied in a particular subject.\n**Dịch:** chương trình học\n**Ví dụ:** *The school has a new curriculum for science.*\n\n### technophile `/ˈtɛknəfaɪl/`\n**Nghĩa:** A person who is enthusiastic about new technology.\n**Dịch:** người yêu công nghệ\n**Ví dụ:** *He is a technophile and always buys the latest gadgets.*\n\n### technophobe `/ˈtɛknəfəʊb/`\n**Nghĩa:** A person who dislikes or avoids new technology.\n**Dịch:** người sợ công nghệ\n**Ví dụ:** *My grandfather is a technophobe and refuses to use a computer.*\n\n### gadget `/ˈɡædʒɪt/`\n**Nghĩa:** A small, useful machine or device.\n**Dịch:** tiện ích, thiết bị\n**Ví dụ:** *She has a lot of gadgets in her kitchen.*\n\n### immediately `/ɪˈmiːdiətli/`\n**Nghĩa:** Without any delay; instantly.\n**Dịch:** ngay lập tức\n**Ví dụ:** *I need to leave immediately.*\n\n### e-book reader `/ˈiːbʊk ˈriːdə(r)/`\n**Nghĩa:** A portable electronic device designed for reading digital books.\n**Dịch:** máy đọc sách điện tử\n**Ví dụ:** *I prefer reading on my e-book reader.*\n\n### upgrade `/ʌpˈɡreɪd/`\n**Nghĩa:** To improve something or make it more modern.\n**Dịch:** nâng cấp\n**Ví dụ:** *I decided to upgrade my computer.*\n\n### videography `/ˌvɪdiˈɒɡrəfi/`\n**Nghĩa:** The process or art of making videos.\n**Dịch:** nghệ thuật quay phim\n**Ví dụ:** *He is studying videography at university.*\n\n### obsolete `/ˈɒbsəliːt/`\n**Nghĩa:** No longer produced or used; out of date.\n**Dịch:** lỗi thời\n**Ví dụ:** *The old technology has become obsolete.*\n\n### game changer `/ˈɡeɪm ˌtʃeɪndʒər/`\n**Nghĩa:** A new idea, method, or product that completely changes the way that something is done.\n**Dịch:** thay đổi cuộc chơi\n**Ví dụ:** *The invention of the internet was a game changer.*\n\n### reliance on `/rɪˈlaɪəns ɒn/`\n**Nghĩa:** The state of depending on or trusting in something or someone.\n**Dịch:** sự phụ thuộc vào\n**Ví dụ:** *Our reliance on fossil fuels is causing environmental problems.*\n\n### distraction `/dɪˈstrækʃən/`\n**Nghĩa:** A thing that prevents someone from giving their attention to something else.\n**Dịch:** sự xao nhãng\n**Ví dụ:** *The noise was a distraction.*\n\n## Điểm ngữ pháp\n\n### Use of 'Whether...or'\n**Cấu trúc:** `Whether + clause, or + clause`\nUsed to express alternatives or possibilities.\n> Whether it rains or shines, we will go.\n\n### Use of 'on a daily basis'\n**Cấu trúc:** `Verb + on a daily basis`\nTo describe something that happens every day.\n> I exercise on a daily basis.\n\n### Use of 'I'd like to'\n**Cấu trúc:** `I'd like to + infinitive verb`\nA polite way of saying 'I want to'.\n> I'd like to go to the cinema.\n\n### Use of 'because' and 'because of'\n**Cấu trúc:** `Because + clause; Because of + noun phrase`\nTo explain the reason for something. 'Because' is followed by a clause, 'because of' by a noun phrase.\n> I stayed home because I was sick.\n\n### Use of 'in my opinion'\n**Cấu trúc:** `In my opinion, + statement`\nTo express a personal viewpoint.\n> In my opinion, this is the best solution.\n\n### Use of 'For example'\n**Cấu trúc:** `For example, + example`\nTo introduce an example.\n> I enjoy many sports, for example, football and basketball.\n"
+      },
+      "flashcard_set": {
+        "title": "Từ vựng: IELTS English Podcast - Speaking Topic: Technology",
+        "description": "Bộ flashcard từ video 'IELTS English Podcast - Speaking Topic: Technology'",
+        "cards": [
+          {
+            "frontContent": "curriculum",
+            "backContent": "Nghĩa: chương trình học\nPhát âm: /kəˈrɪkjələm/\nVí dụ: The school has a new curriculum for science."
+          },
+          {
+            "frontContent": "technophile",
+            "backContent": "Nghĩa: người yêu công nghệ\nPhát âm: /ˈtɛknəfaɪl/\nVí dụ: He is a technophile and always buys the latest gadgets."
+          },
+          {
+            "frontContent": "technophobe",
+            "backContent": "Nghĩa: người sợ công nghệ\nPhát âm: /ˈtɛknəfəʊb/\nVí dụ: My grandfather is a technophobe and refuses to use a computer."
+          },
+          {
+            "frontContent": "gadget",
+            "backContent": "Nghĩa: tiện ích, thiết bị\nPhát âm: /ˈɡædʒɪt/\nVí dụ: She has a lot of gadgets in her kitchen.\nĐồng nghĩa: contraption, contrivance, doohickey, gizmo"
+          },
+          {
+            "frontContent": "immediately",
+            "backContent": "Nghĩa: ngay lập tức\nPhát âm: /ɪˈmiːdiətli/\nVí dụ: I need to leave immediately.\nĐồng nghĩa: forthwith, now, tout de suite, after"
+          },
+          {
+            "frontContent": "e-book reader",
+            "backContent": "Nghĩa: máy đọc sách điện tử\nPhát âm: /ˈiːbʊk ˈriːdə(r)/\nVí dụ: I prefer reading on my e-book reader."
+          },
+          {
+            "frontContent": "upgrade",
+            "backContent": "Nghĩa: nâng cấp\nPhát âm: /ʌpˈɡreɪd/\nVí dụ: I decided to upgrade my computer."
+          },
+          {
+            "frontContent": "videography",
+            "backContent": "Nghĩa: nghệ thuật quay phim\nPhát âm: /ˌvɪdiˈɒɡrəfi/\nVí dụ: He is studying videography at university."
+          },
+          {
+            "frontContent": "obsolete",
+            "backContent": "Nghĩa: lỗi thời\nPhát âm: /ˈɒbsəliːt/\nVí dụ: The old technology has become obsolete.\nĐồng nghĩa: abortive, obscure, rudimental, antiquated"
+          },
+          {
+            "frontContent": "game changer",
+            "backContent": "Nghĩa: thay đổi cuộc chơi\nPhát âm: /ˈɡeɪm ˌtʃeɪndʒər/\nVí dụ: The invention of the internet was a game changer."
+          },
+          {
+            "frontContent": "reliance on",
+            "backContent": "Nghĩa: sự phụ thuộc vào\nPhát âm: /rɪˈlaɪəns ɒn/\nVí dụ: Our reliance on fossil fuels is causing environmental problems."
+          },
+          {
+            "frontContent": "distraction",
+            "backContent": "Nghĩa: sự xao nhãng\nPhát âm: /dɪˈstrækʃən/\nVí dụ: The noise was a distraction."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "topic": "Tariffs",
+  "count": 2,
+  "videos": [
+    {
+      "video_id": "zI23CDFKnB8",
+      "title": "6 easy steps for starting international trade 2021 (import/export)",
+      "channel": "Barzin Trade",
+      "duration_sec": 602,
+      "has_caption": true,
+      "thumbnail": "https://i.ytimg.com/vi/zI23CDFKnB8/hqdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=zI23CDFKnB8",
+      "description": "This is BARZIN TALK #1\n\n1. Get your business basics in order\nAnyone starting a business in the 21st century needs to cover certain bases, like creating a website as well as social media channels like Facebook, Twitter, and a host of others.\n\nSo here's your first step: Get the basics in order. This m"
+    },
+    {
+      "video_id": "ScXJ5au8q_w",
+      "title": "Writing a Basic Form - Web Development",
+      "channel": "Udacity",
+      "duration_sec": 261,
+      "has_caption": true,
+      "thumbnail": "https://i.ytimg.com/vi/ScXJ5au8q_w/hqdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=ScXJ5au8q_w",
+      "description": "This video is part of an online course, Web Development. Check out the course here: https://www.udacity.com/course/cs253."
+    }
+  ]
+}

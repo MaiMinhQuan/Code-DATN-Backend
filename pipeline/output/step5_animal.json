@@ -1,0 +1,86 @@
+{
+  "topic": "Animal",
+  "target_band": "BAND_6_0",
+  "exam_questions": [
+    {
+      "title": "Animal & Plant Decline: Causes & Solutions",
+      "questionPrompt": "In many countries, the number of animals and plants is declining. Why do you think this is happening? How can this issue be solved?",
+      "suggestedOutline": "<p><em>Argumentative Essay</em></p>\n<p><strong>Stance:</strong> Human activities are the main cause, and sustainable policies are the solution.</p>\n<p><strong>Introduction:</strong> Briefly introduce the issue and state the writer's opinion.</p>\n<ul>\n <li><strong>Body 1:</strong> Causes: Deforestation, pollution, illegal wildlife trade.</li>\n <li><strong>Body 2:</strong> Solutions: Conservation and restoration efforts, sustainable practices.</li>\n</ul>\n<p><strong>Conclusion:</strong> Summarize the issue and emphasize human responsibility.</p>",
+      "difficultyLevel": "MEDIUM",
+      "tags": [
+        "environment",
+        "animals",
+        "plants",
+        "conservation",
+        "sustainability"
+      ]
+    }
+  ],
+  "sample_essays": [
+    {
+      "title": "Animal & Plant Decline: Causes & Solutions — Band 7.0",
+      "questionPrompt": "In many countries, the number of animals and plants is declining. Why do you think this is happening? How can this issue be solved?",
+      "targetBand": "BAND_6_0",
+      "outlineContent": "<p>Đây là một bài luận <em>Argumentative</em>. Quan điểm của người viết là các hoạt động của con người là nguyên nhân chính dẫn đến sự suy giảm số lượng loài động thực vật, và các chính sách bền vững có thể giải quyết vấn đề này.</p>\n<ul>\n <li><strong>Mở bài:</strong> Giới thiệu vấn đề suy giảm số lượng loài động thực vật và nêu quan điểm.</li>\n <li><strong>Thân bài 1:</strong> Nguyên nhân chính: phá rừng, ô nhiễm, buôn bán động vật hoang dã trái phép.</li>\n <li><strong>Thân bài 2:</strong> Giải pháp: bảo tồn và phục hồi môi trường sống, các chương trình bảo tồn đa dạng sinh học, thực hành bền vững.</li>\n <li><strong>Kết luận:</strong> Tóm tắt lại vấn đề và nhấn mạnh trách nhiệm của con người.</li>\n</ul>",
+      "fullEssayContent": "The decline in the number of animal and plant species is a pressing issue facing many countries worldwide. In my opinion, this is a result of human activity and can be countered by adopting sustainable policy initiatives.\n\nFewer animal and plant species is mainly a human problem. Firstly, there is now rampant deforestation for agricultural expansion, logging, and infrastructure development. In the Amazon rainforest, pristine habitats are being cleared for cattle ranching, depriving countless species of their natural homes. Relatedly, pollution, including industrial discharge and agricultural runoff, poses a significant threat. The global release of toxic chemicals into rivers and oceans leads to the death of marine life and disrupts delicate aquatic ecosystems. An additional human activity that deserves attention is illegal wildlife trade. This practice is driven by high demand for exotic pets, traditional medicine, and animal parts, pushing many species towards endangerment and potential extinction.\n\nThe keys to reversing natural degradation are conservation and restoration efforts. Biodiversity conservation programs should focus on preserving and restoring specific habitats. For instance, reforestation initiatives can aim to replant native tree species in deforested areas, providing crucial habitats for various wildlife species. Marine protected areas can be established to safeguard vulnerable marine ecosystems and promote sustainable fishing practices. Captive breeding and reintroduction programs can help revive endangered species. Evidence for this approach comes from initiatives to breed and release critically endangered species like the black rhinoceros. Complementary sustainable practices in agriculture, forestry, and fishing can also be promoted to minimize human impact on ecosystems.\n\nDecreasing population figures for animal and plant species is a critical issue that demands immediate attention and action. It is humanity’s collective responsibility to protect and restore the natural world given the origin of these issues.",
+      "highlightAnnotations": [
+        {
+          "text": "a pressing issue",
+          "highlightType": "VOCABULARY",
+          "explanation": "Cụm từ này thể hiện vốn từ vựng phong phú và chính xác, thay vì chỉ dùng 'important' hoặc 'problem'. Nó cho thấy người viết có khả năng sử dụng từ vựng một cách linh hoạt và phù hợp với ngữ cảnh, đáp ứng tiêu chí Lexical Resource (LR) của IELTS.",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "worldwide",
+          "highlightType": "VOCABULARY",
+          "explanation": "Từ này thể hiện sự hiểu biết về phạm vi toàn cầu của vấn đề, cho thấy người viết có khả năng sử dụng từ vựng chính xác và phù hợp với chủ đề. Nó thể hiện sự đa dạng trong cách sử dụng từ ngữ, đáp ứng tiêu chí Lexical Resource (LR).",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "human activity",
+          "highlightType": "VOCABULARY",
+          "explanation": "Cụm từ này thể hiện sự chính xác và rõ ràng trong việc diễn đạt ý tưởng. Nó cho thấy người viết có khả năng sử dụng từ vựng một cách hiệu quả để truyền đạt thông tin một cách mạch lạc và dễ hiểu, đáp ứng tiêu chí Lexical Resource (LR).",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "rampant deforestation",
+          "highlightType": "VOCABULARY",
+          "explanation": "Cụm từ này sử dụng từ 'rampant' (lan tràn) để mô tả mức độ nghiêm trọng của nạn phá rừng, thể hiện khả năng sử dụng từ ngữ chính xác và biểu cảm. Điều này thể hiện sự đa dạng trong vốn từ vựng và khả năng diễn đạt ý tưởng một cách sinh động, đáp ứng tiêu chí Lexical Resource (LR).",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "depriving countless species of their natural homes",
+          "highlightType": "GRAMMAR",
+          "explanation": "Cấu trúc 'depriving...of...' thể hiện sự đa dạng trong cấu trúc ngữ pháp và khả năng sử dụng ngữ pháp một cách chính xác. Việc sử dụng cấu trúc này giúp bài viết trở nên mạch lạc và thể hiện sự hiểu biết sâu sắc về ngữ pháp, đáp ứng tiêu chí Grammatical Range and Accuracy (GRA).",
+          "color": "#818cf8"
+        },
+        {
+          "text": "delicate aquatic ecosystems",
+          "highlightType": "VOCABULARY",
+          "explanation": "Cụm từ này sử dụng từ 'delicate' (mong manh) để mô tả các hệ sinh thái dưới nước, thể hiện khả năng sử dụng từ ngữ chính xác và phù hợp với ngữ cảnh. Nó cho thấy sự phong phú trong vốn từ vựng và khả năng diễn đạt ý tưởng một cách chi tiết, đáp ứng tiêu chí Lexical Resource (LR).",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "reversing natural degradation",
+          "highlightType": "VOCABULARY",
+          "explanation": "Cụm từ này sử dụng từ 'reversing' (đảo ngược) và 'degradation' (sự suy thoái) để diễn đạt ý tưởng một cách chính xác và hiệu quả. Việc sử dụng từ vựng này thể hiện sự đa dạng trong vốn từ vựng và khả năng diễn đạt ý tưởng một cách mạch lạc, đáp ứng tiêu chí Lexical Resource (LR).",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "Evidence for this approach comes from initiatives",
+          "highlightType": "STRUCTURE",
+          "explanation": "Câu này sử dụng một cấu trúc phức tạp để đưa ra bằng chứng, thể hiện khả năng sử dụng cấu trúc câu đa dạng và phức tạp. Việc sử dụng cấu trúc này giúp bài viết trở nên mạch lạc và thể hiện sự hiểu biết sâu sắc về ngữ pháp, đáp ứng tiêu chí Grammatical Range and Accuracy (GRA) và Coherence and Cohesion (CC).",
+          "color": "#34d399"
+        },
+        {
+          "text": "humanity’s collective responsibility",
+          "highlightType": "VOCABULARY",
+          "explanation": "Cụm từ này thể hiện sự hiểu biết về trách nhiệm chung của con người đối với vấn đề. Việc sử dụng từ 'collective' (tập thể) cho thấy sự chính xác trong việc sử dụng từ vựng và thể hiện sự đa dạng trong vốn từ, đáp ứng tiêu chí Lexical Resource (LR).",
+          "color": "#fbbf24"
+        }
+      ],
+      "overallBandScore": 7.0,
+      "authorName": "howtodoielts.com"
+    }
+  ]
+}

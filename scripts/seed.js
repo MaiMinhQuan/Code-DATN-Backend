@@ -58,7 +58,7 @@ const SubmissionModel   = mongoose.model("Submission",   mkSchema());
 async function seed() {
   console.log("🔌 Connecting to MongoDB...");
   await mongoose.connect(MONGODB_URI);
-  console.log("✅ Connected\n");
+  console.log(" Connected\n");
 
   // ── 1. Topics ──────────────────────────────────────────────────────────────
 
@@ -604,20 +604,20 @@ In conclusion, while AI has proven its value in specific, well-defined tasks, th
 
 ## 1. Subject-Verb Agreement
 ❌ "The number of people are increasing"
-✅ "The number of people is increasing"
+ "The number of people is increasing"
 
 ## 2. Article (a/an/the)
 ❌ "Education is important for economy"
-✅ "Education is important for the economy"
+ "Education is important for the economy"
 → Dùng THE khi nói về khái niệm tổng quát
 
 ## 3. Modal + Base Verb
 ❌ "universities should aligns"
-✅ "universities should align"
+ "universities should align"
 
 ## 4. Parallel Structure
 ❌ "He enjoys reading, to write, and to swim"
-✅ "He enjoys reading, writing, and swimming"`,
+ "He enjoys reading, writing, and swimming"`,
     },
     {
       userId: student1._id,
@@ -770,7 +770,7 @@ In conclusion, I believe that both individuals and governments must work togethe
   // ── Summary ────────────────────────────────────────────────────────────────
 
   console.log("\n" + "═".repeat(52));
-  console.log("✅ Seed completed!\n");
+  console.log(" Seed completed!\n");
   console.log("📊 Summary:");
   console.log("   Topics         : 6");
   console.log("   Users          : 3");

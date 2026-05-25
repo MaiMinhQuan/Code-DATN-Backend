@@ -12,6 +12,7 @@ import { FlashcardSet, FlashcardSetSchema } from "@/schemas/flashcard-set.schema
 import { Flashcard, FlashcardSchema } from "@/schemas/flashcard.schema";
 import { ExamQuestion, ExamQuestionSchema } from "@/schemas/exam-question.schema";
 import { Submission, SubmissionSchema } from "@/schemas/submission.schema";
+import { PipelineJob, PipelineJobSchema } from "@/schemas/pipeline-job.schema";
 
 export const databaseProviders = [
   MongooseModule.forFeature([
@@ -26,5 +27,6 @@ export const databaseProviders = [
     { name: Flashcard.name, schema: FlashcardSchema },
     { name: ExamQuestion.name, schema: ExamQuestionSchema },
     { name: Submission.name, schema: SubmissionSchema },
+    { name: PipelineJob.name, schema: PipelineJobSchema },
   ]),
 ];

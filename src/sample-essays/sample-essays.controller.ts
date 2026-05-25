@@ -23,13 +23,29 @@ export class SampleEssaysController {
   constructor(private readonly sampleEssaysService: SampleEssaysService) {}
 
   /*
-  GET /sample-essays — danh sách bài mẫu (filter)
+  GET /sample-essays — danh sách bài mẫu công khai (isPublished=true)
   Input:
     - topicId — query optional
     - targetBand — query optional
    */
   @Get()
   async findAll(
+    @Query("topicId") topicId?: string,
+    @Query("targetBand") targetBand?: TargetBand,
+  ) {
+    return this.sampleEssaysService.findAll(topicId, targetBand, true);
+  }
+
+  /*
+  GET /sample-essays/admin/all — danh sách tất cả bài mẫu (admin, kể cả nháp)
+  Input:
+    - topicId — query optional
+    - targetBand — query optional
+   */
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN)
+  @Get("admin/all")
+  async findAllAdmin(
     @Query("topicId") topicId?: string,
     @Query("targetBand") targetBand?: TargetBand,
   ) {

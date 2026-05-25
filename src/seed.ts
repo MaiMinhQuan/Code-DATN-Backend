@@ -49,7 +49,7 @@ function daysAgo(n: number): Date {
 
 async function seed() {
   await mongoose.connect(MONGO_URI);
-  console.log("✅ Connected to MongoDB:", MONGO_URI);
+  console.log(" Connected to MongoDB:", MONGO_URI);
 
   // Xóa sạch dữ liệu cũ
   const models = [UserModel, TopicModel, CourseModel, LessonModel, ExamQuestionModel, SampleEssayModel, SubmissionModel, FlashcardSetModel, FlashcardModel, NoteCollectionModel, NotebookNoteModel, FavoriteEssayModel];
@@ -543,7 +543,7 @@ Bài học này tập trung vào kỹ năng **mô tả quy trình** (process des
 
 ❌ **Yếu:** *"The government should do something about plastic pollution."*
 
-✅ **Mạnh:** *"Governments should introduce extended producer responsibility (EPR) legislation, which requires manufacturers to fund the collection and recycling of packaging they produce. This approach has proven effective in Germany, where EPR policies have helped achieve a recycling rate of over 65%."*
+ **Mạnh:** *"Governments should introduce extended producer responsibility (EPR) legislation, which requires manufacturers to fund the collection and recycling of packaging they produce. This approach has proven effective in Germany, where EPR policies have helped achieve a recycling rate of over 65%."*
 
 ---
 
@@ -797,7 +797,7 @@ Một bài viết Band 7+ không chỉ trình bày ý kiến — nó **thể hi�
 
 ❌ Band 5-6: *"In conclusion, international cooperation on climate is important."*
 
-✅ Band 7+: *"In conclusion, the journey from Copenhagen's paralysis to Paris's unanimous agreement demonstrates that seemingly impossible global challenges can be resolved — but only when optimism is treated not as naïve sentiment but as a strategic commitment to collective action."*
+ Band 7+: *"In conclusion, the journey from Copenhagen's paralysis to Paris's unanimous agreement demonstrates that seemingly impossible global challenges can be resolved — but only when optimism is treated not as naïve sentiment but as a strategic commitment to collective action."*
 
 ---
 
@@ -1575,7 +1575,7 @@ Secondly, recycling can help to reduce waste and protect`,
       userId: u2._id,
       collectionId: nc1._id,
       title: "Nominalization — kỹ thuật Band 7+ từ L5",
-      userDraftNote: "<p><strong>Nominalization — Kỹ thuật Band 7+ (L5)</strong></p>\n<p>Chuyển động từ / tính từ thành danh từ để câu văn học thuật hơn, súc tích hơn và tránh lặp cấu trúc chủ-vị đơn điệu.</p>\n<p><strong>So sánh trực tiếp:</strong></p>\n<ul>\n<li><p>❌ <em>We failed to implement the policy</em> → ✅ <em>The failure to implement the policy...</em></p></li>\n<li><p>❌ <em>Countries reduce emissions slowly</em> → ✅ <em>The slow reduction of emissions by countries...</em></p></li>\n<li><p>❌ <em>If we accelerate deforestation...</em> → ✅ <em>The acceleration of deforestation...</em></p></li>\n<li><p>❌ <em>We eliminated natural carbon sinks</em> → ✅ <em>The elimination of natural carbon sinks...</em></p></li>\n</ul>\n<p><strong>Bảng chuyển đổi hay dùng:</strong></p>\n<ul>\n<li><p>implement → <strong>implementation</strong></p></li>\n<li><p>reduce → <strong>reduction</strong></p></li>\n<li><p>invest → <strong>investment</strong></p></li>\n<li><p>emit → <strong>emission</strong></p></li>\n<li><p>eliminate → <strong>elimination</strong></p></li>\n<li><p>accelerate → <strong>acceleration</strong></p></li>\n<li><p>destroy → <strong>destruction</strong></p></li>\n<li><p>deteriorate → <strong>deterioration</strong></p></li>\n</ul>\n<p><strong>Trong bài mẫu E1 (Band 7.0):</strong> <em>The acceleration of biodiversity loss and the elimination of natural carbon sinks are not separate crises.</em> — hai nominalization làm chủ ngữ compound, câu trở nên súc tích và học thuật ngay lập tức.</p>",
+      userDraftNote: "<p><strong>Nominalization — Kỹ thuật Band 7+ (L5)</strong></p>\n<p>Chuyển động từ / tính từ thành danh từ để câu văn học thuật hơn, súc tích hơn và tránh lặp cấu trúc chủ-vị đơn điệu.</p>\n<p><strong>So sánh trực tiếp:</strong></p>\n<ul>\n<li><p>❌ <em>We failed to implement the policy</em> →  <em>The failure to implement the policy...</em></p></li>\n<li><p>❌ <em>Countries reduce emissions slowly</em> →  <em>The slow reduction of emissions by countries...</em></p></li>\n<li><p>❌ <em>If we accelerate deforestation...</em> →  <em>The acceleration of deforestation...</em></p></li>\n<li><p>❌ <em>We eliminated natural carbon sinks</em> →  <em>The elimination of natural carbon sinks...</em></p></li>\n</ul>\n<p><strong>Bảng chuyển đổi hay dùng:</strong></p>\n<ul>\n<li><p>implement → <strong>implementation</strong></p></li>\n<li><p>reduce → <strong>reduction</strong></p></li>\n<li><p>invest → <strong>investment</strong></p></li>\n<li><p>emit → <strong>emission</strong></p></li>\n<li><p>eliminate → <strong>elimination</strong></p></li>\n<li><p>accelerate → <strong>acceleration</strong></p></li>\n<li><p>destroy → <strong>destruction</strong></p></li>\n<li><p>deteriorate → <strong>deterioration</strong></p></li>\n</ul>\n<p><strong>Trong bài mẫu E1 (Band 7.0):</strong> <em>The acceleration of biodiversity loss and the elimination of natural carbon sinks are not separate crises.</em> — hai nominalization làm chủ ngữ compound, câu trở nên súc tích và học thuật ngay lập tức.</p>",
     },
     {
       userId: u2._id,

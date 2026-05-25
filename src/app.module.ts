@@ -21,6 +21,7 @@ import { SubmissionsModule } from "./submissions/submissions.module";
 import { BullModule } from "@nestjs/bullmq";
 import { WebsocketModule } from "./websocket/websocket.module";
 import { AdminModule } from "./admin/admin.module";
+import { PipelineModule } from "./pipeline/pipeline.module";
 
 @Module({
   imports: [
@@ -61,6 +62,7 @@ import { AdminModule } from "./admin/admin.module";
     SubmissionsModule,
     WebsocketModule,
     AdminModule,
+    PipelineModule,
   ],
   controllers: [],
   providers: [],

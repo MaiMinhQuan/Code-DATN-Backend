@@ -7,6 +7,7 @@ export const WS_EVENTS = {
   // Server -> Client
   SUBMISSION_STATUS_UPDATED: "submission_status_updated",
   SUBMISSION_PROGRESS: "submission_progress",
+  PIPELINE_PROGRESS: "pipeline_progress",
   CONNECTED: "connected",
   ERROR: "error",
 } as const;
@@ -18,4 +19,5 @@ export const WS_NAMESPACES = {
 export const ROOM_PREFIX = {
   USER: "user:",
   SUBMISSION: "submission:",
+  PIPELINE: "pipeline:",
 } as const;

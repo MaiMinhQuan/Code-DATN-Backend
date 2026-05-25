@@ -26,3 +26,10 @@ export interface SubmissionProgressPayload {
   message: string;
   timestamp: Date;
 }
+
+// Payload emit pipeline_progress
+export interface PipelineProgressPayload {
+  jobId: string;
+  step?: number;
+  message: string;
+}

@@ -1,0 +1,637 @@
+{
+  "topic": "Tariffs",
+  "count": 2,
+  "lessons": [
+    {
+      "topic": "Tariffs",
+      "target_band": "BAND_6_0",
+      "lesson": {
+        "title": "6 easy steps for starting international trade 2021 (import/export)",
+        "targetBand": "BAND_6_0",
+        "videos": [
+          {
+            "title": "6 easy steps for starting international trade 2021 (import/export)",
+            "url": "https://www.youtube.com/watch?v=zI23CDFKnB8",
+            "duration": 602,
+            "thumbnailUrl": "https://i.ytimg.com/vi/zI23CDFKnB8/hqdefault.jpg"
+          }
+        ],
+        "vocabularies": [
+          {
+            "word": "imports",
+            "pronunciation": "/ˈɪmpɔːrts/",
+            "definition": "Goods or services brought into a country from another country.",
+            "examples": [
+              "The country's imports of oil have increased.",
+              "Imports are essential for many industries."
+            ],
+            "translation": "hàng nhập khẩu",
+            "timestamp": 12.5,
+            "contextSentence": "Imports are any good or service brought in from one country to another"
+          },
+          {
+            "word": "exports",
+            "pronunciation": "/ˈɛkspɔːrts/",
+            "definition": "Goods or services produced in one country and sold to another.",
+            "examples": [
+              "The country's exports include manufactured goods and agricultural products.",
+              "Increased exports can boost a country's economy."
+            ],
+            "translation": "hàng xuất khẩu",
+            "timestamp": 17.9,
+            "contextSentence": "while exports are goods and services produced in the home country for sale to other markets"
+          },
+          {
+            "word": "complex",
+            "pronunciation": "/ˈkɒmpleks/",
+            "definition": "Involving many different and connected parts; intricate.",
+            "examples": [
+              "The instructions were complex and difficult to understand.",
+              "The global economy is a complex system."
+            ],
+            "translation": "phức tạp",
+            "timestamp": 25.3,
+            "contextSentence": "The modern system of international trade is a complex web of import/export businesses that"
+          },
+          {
+            "word": "distribution",
+            "pronunciation": "/ˌdɪstrɪˈbjuːʃn/",
+            "definition": "The action of sharing something out among a number of recipients.",
+            "examples": [
+              "The company handles the distribution of its products.",
+              "Efficient distribution is crucial for success."
+            ],
+            "translation": "phân phối",
+            "timestamp": 31.4,
+            "contextSentence": "handle the sale, distribution, and delivery of goods from one nation to another"
+          },
+          {
+            "word": "credibility",
+            "pronunciation": "/ˌkredɪˈbɪləti/",
+            "definition": "The quality of being trusted and believed in.",
+            "examples": [
+              "The company needs to build its credibility.",
+              "His credibility was damaged by the scandal."
+            ],
+            "translation": "sự tín nhiệm",
+            "timestamp": 174,
+            "contextSentence": "it is all about proving that your organization is trustable"
+          },
+          {
+            "word": "legalized",
+            "pronunciation": "/ˈliːɡəlaɪzd/",
+            "definition": "Made lawful; given legal status.",
+            "examples": [
+              "The government legalized the use of cannabis.",
+              "The company's activities must be legalized to operate."
+            ],
+            "translation": "hợp pháp hóa",
+            "timestamp": 206.6,
+            "contextSentence": "in order to get any certification any license to make your activities legalized"
+          },
+          {
+            "word": "passionate about",
+            "pronunciation": "/ˈpæʃənət əˈbaʊt/",
+            "definition": "Having or showing strong feelings or enthusiasm for something.",
+            "examples": [
+              "She is passionate about environmental issues.",
+              "He is passionate about his work."
+            ],
+            "translation": "đam mê",
+            "timestamp": 228,
+            "contextSentence": "well, find a product or industry you are passionate about and that you think could sell in international markets"
+          },
+          {
+            "word": "identify",
+            "pronunciation": "/aɪˈdentɪfaɪ/",
+            "definition": "To recognize or establish; to determine.",
+            "examples": [
+              "The police are trying to identify the suspect.",
+              "We need to identify the problem before we can solve it."
+            ],
+            "translation": "xác định",
+            "timestamp": 238,
+            "contextSentence": "after finding the right product, identify the right market"
+          },
+          {
+            "word": "crucial",
+            "pronunciation": "/ˈkruːʃəl/",
+            "definition": "Of great importance; essential.",
+            "examples": [
+              "This decision is crucial to our success.",
+              "A good education is crucial for a successful career."
+            ],
+            "translation": "quan trọng",
+            "timestamp": 307.9,
+            "contextSentence": "A strong relationship with a manufacturer/supplier is crucial to long-running success in an imports/exports business."
+          },
+          {
+            "word": "logistics",
+            "pronunciation": "/ləˈdʒɪstɪks/",
+            "definition": "The detailed organization and implementation of a complex operation.",
+            "examples": [
+              "The company has a strong logistics department.",
+              "The logistics of the project were very challenging."
+            ],
+            "translation": "hậu cần",
+            "timestamp": 327.2,
+            "contextSentence": "and figure out the logistics of taking their product from their local warehouse to another one, maybe other side of the globe"
+          },
+          {
+            "word": "markup",
+            "pronunciation": "/ˈmɑːrkʌp/",
+            "definition": "The amount added to the cost price of goods to cover overhead and profit.",
+            "examples": [
+              "The retailer added a 50% markup to the product's cost.",
+              "The company needs to adjust its markup to remain competitive."
+            ],
+            "translation": "đánh dấu",
+            "timestamp": 387.9,
+            "contextSentence": "Be sure to price your product such that your markup wont exceed what a customer is willing to pay"
+          },
+          {
+            "word": "distributors",
+            "pronunciation": "/dɪˈstrɪbjətərz/",
+            "definition": "A person or company that supplies goods to retailers.",
+            "examples": [
+              "The company uses distributors to sell its products.",
+              "Finding reliable distributors is key to market penetration."
+            ],
+            "translation": "nhà phân phối",
+            "timestamp": 453.8,
+            "contextSentence": "You usually need to find distributors and clients who will take on your product and sell to others"
+          },
+          {
+            "word": "coordination",
+            "pronunciation": "/kəʊˌɔːrdɪˈneɪʃn/",
+            "definition": "The act of organizing people or things so that they work together effectively.",
+            "examples": [
+              "The project required a high degree of coordination.",
+              "Effective coordination is essential for success."
+            ],
+            "translation": "sự phối hợp",
+            "timestamp": 529.6,
+            "contextSentence": "it requires an extraordinary amount of coordination"
+          },
+          {
+            "word": "freight forwarder",
+            "pronunciation": "/freɪt ˈfɔːrwərdər/",
+            "definition": "A company that organizes shipments for individuals or corporations to get goods from the manufacturer or producer to a market, customer or final point of distribution.",
+            "examples": [
+              "The company hired a freight forwarder to handle the shipping.",
+              "A freight forwarder can simplify the import/export process."
+            ],
+            "translation": "người giao nhận vận tải",
+            "timestamp": 534,
+            "contextSentence": "Hiring a global freight forwarder is generally a good idea for all imports/exports businesses,"
+          }
+        ],
+        "grammars": [
+          {
+            "title": "Passive Voice",
+            "explanation": "Used to describe actions where the subject is acted upon. Useful for describing processes and avoiding personal pronouns.",
+            "examples": [
+              "The product is sold internationally.",
+              "The goods were delivered on time."
+            ],
+            "structure": "Subject + be (is/are/was/were) + past participle",
+            "timestamp": 17.9,
+            "contextSentence": "exports are goods and services produced in the home country for sale to other markets"
+          },
+          {
+            "title": "Present Perfect",
+            "explanation": "Used to describe actions that started in the past and continue to the present or have a result in the present.",
+            "examples": [
+              "I have studied SEO ranking.",
+              "We have identified the problem."
+            ],
+            "structure": "Subject + have/has + past participle",
+            "timestamp": 8.5,
+            "contextSentence": "For nearly as long as there’s been people, there’s been trade."
+          },
+          {
+            "title": "Modal Verbs of Obligation (have to)",
+            "explanation": "Expresses necessity or requirement.",
+            "examples": [
+              "You have to get legalized.",
+              "They have to follow the rules."
+            ],
+            "structure": "Subject + have to + base verb",
+            "timestamp": 87.1,
+            "contextSentence": "have to cover certain basis"
+          },
+          {
+            "title": "Conditional Sentences (Type 1)",
+            "explanation": "Used to talk about possible situations and their likely results.",
+            "examples": [
+              "If you study SEO, you will rank higher.",
+              "If you find the right product, you will succeed."
+            ],
+            "structure": "If + present simple, will + base verb",
+            "timestamp": 174,
+            "contextSentence": "if you just remember I told you that international trade is all about credibility"
+          },
+          {
+            "title": "Relative Clauses",
+            "explanation": "Used to provide additional information about a noun.",
+            "examples": [
+              "The product which you can internationally trade.",
+              "The company that handles distribution."
+            ],
+            "structure": "Who/which/that + verb/clause",
+            "timestamp": 296.8,
+            "contextSentence": "Once you have a product which you can internationally trade, its time for you to find a supplier or a local manufacturer that can make the product"
+          },
+          {
+            "title": "Gerunds and Infinitives",
+            "explanation": "Used to express the purpose or reason for an action.",
+            "examples": [
+              "In order to get any certification.",
+              "Starting a business in the international trade field."
+            ],
+            "structure": "To + infinitive or V-ing",
+            "timestamp": 206.6,
+            "contextSentence": "in order to get any certification any license to make your activities legalized"
+          },
+          {
+            "title": "Adverbial Clauses of Purpose",
+            "explanation": "Used to explain the reason for an action.",
+            "examples": [
+              "In order to find your product.",
+              "In order to move your cargo."
+            ],
+            "structure": "In order to + infinitive",
+            "timestamp": 257.9,
+            "contextSentence": "in order to find your product and also do your market research"
+          }
+        ],
+        "notesContent": "# Tariffs — Ghi chú học tập (Band 6.0)\n\n## Từ vựng quan trọng\n\n### imports `/ˈɪmpɔːrts/`\n**Nghĩa:** Goods or services brought into a country from another country.\n**Dịch:** hàng nhập khẩu\n**Ví dụ:** *The country's imports of oil have increased.*\n\n### exports `/ˈɛkspɔːrts/`\n**Nghĩa:** Goods or services produced in one country and sold to another.\n**Dịch:** hàng xuất khẩu\n**Ví dụ:** *The country's exports include manufactured goods and agricultural products.*\n\n### complex `/ˈkɒmpleks/`\n**Nghĩa:** Involving many different and connected parts; intricate.\n**Dịch:** phức tạp\n**Ví dụ:** *The instructions were complex and difficult to understand.*\n\n### distribution `/ˌdɪstrɪˈbjuːʃn/`\n**Nghĩa:** The action of sharing something out among a number of recipients.\n**Dịch:** phân phối\n**Ví dụ:** *The company handles the distribution of its products.*\n\n### credibility `/ˌkredɪˈbɪləti/`\n**Nghĩa:** The quality of being trusted and believed in.\n**Dịch:** sự tín nhiệm\n**Ví dụ:** *The company needs to build its credibility.*\n\n### legalized `/ˈliːɡəlaɪzd/`\n**Nghĩa:** Made lawful; given legal status.\n**Dịch:** hợp pháp hóa\n**Ví dụ:** *The government legalized the use of cannabis.*\n\n### passionate about `/ˈpæʃənət əˈbaʊt/`\n**Nghĩa:** Having or showing strong feelings or enthusiasm for something.\n**Dịch:** đam mê\n**Ví dụ:** *She is passionate about environmental issues.*\n\n### identify `/aɪˈdentɪfaɪ/`\n**Nghĩa:** To recognize or establish; to determine.\n**Dịch:** xác định\n**Ví dụ:** *The police are trying to identify the suspect.*\n\n### crucial `/ˈkruːʃəl/`\n**Nghĩa:** Of great importance; essential.\n**Dịch:** quan trọng\n**Ví dụ:** *This decision is crucial to our success.*\n\n### logistics `/ləˈdʒɪstɪks/`\n**Nghĩa:** The detailed organization and implementation of a complex operation.\n**Dịch:** hậu cần\n**Ví dụ:** *The company has a strong logistics department.*\n\n### markup `/ˈmɑːrkʌp/`\n**Nghĩa:** The amount added to the cost price of goods to cover overhead and profit.\n**Dịch:** đánh dấu\n**Ví dụ:** *The retailer added a 50% markup to the product's cost.*\n\n### distributors `/dɪˈstrɪbjətərz/`\n**Nghĩa:** A person or company that supplies goods to retailers.\n**Dịch:** nhà phân phối\n**Ví dụ:** *The company uses distributors to sell its products.*\n\n## Điểm ngữ pháp\n\n### Passive Voice\n**Cấu trúc:** `Subject + be (is/are/was/were) + past participle`\nUsed to describe actions where the subject is acted upon. Useful for describing processes and avoiding personal pronouns.\n> The product is sold internationally.\n\n### Present Perfect\n**Cấu trúc:** `Subject + have/has + past participle`\nUsed to describe actions that started in the past and continue to the present or have a result in the present.\n> I have studied SEO ranking.\n\n### Modal Verbs of Obligation (have to)\n**Cấu trúc:** `Subject + have to + base verb`\nExpresses necessity or requirement.\n> You have to get legalized.\n\n### Conditional Sentences (Type 1)\n**Cấu trúc:** `If + present simple, will + base verb`\nUsed to talk about possible situations and their likely results.\n> If you study SEO, you will rank higher.\n\n### Relative Clauses\n**Cấu trúc:** `Who/which/that + verb/clause`\nUsed to provide additional information about a noun.\n> The product which you can internationally trade.\n\n### Gerunds and Infinitives\n**Cấu trúc:** `To + infinitive or V-ing`\nUsed to express the purpose or reason for an action.\n> In order to get any certification.\n"
+      },
+      "flashcard_set": {
+        "title": "Từ vựng: 6 easy steps for starting international trade 2021",
+        "description": "Bộ flashcard từ video '6 easy steps for starting international trade 2021 (import/export)'",
+        "cards": [
+          {
+            "frontContent": "imports",
+            "backContent": "Nghĩa: hàng nhập khẩu\nPhát âm: /ˈɪmpɔːrts/\nVí dụ: The country's imports of oil have increased.\nĐồng nghĩa: importance, importancy, meaning, purport"
+          },
+          {
+            "frontContent": "exports",
+            "backContent": "Nghĩa: hàng xuất khẩu\nPhát âm: /ˈɛkspɔːrts/\nVí dụ: The country's exports include manufactured goods and agricultural products.\nĐồng nghĩa: remove"
+          },
+          {
+            "frontContent": "complex",
+            "backContent": "Nghĩa: phức tạp\nPhát âm: /ˈkɒmpleks/\nVí dụ: The instructions were complex and difficult to understand.\nĐồng nghĩa: complicated, detailed, difficult, hard"
+          },
+          {
+            "frontContent": "distribution",
+            "backContent": "Nghĩa: phân phối\nPhát âm: /ˌdɪstrɪˈbjuːʃn/\nVí dụ: The company handles the distribution of its products."
+          },
+          {
+            "frontContent": "credibility",
+            "backContent": "Nghĩa: sự tín nhiệm\nPhát âm: /ˌkredɪˈbɪləti/\nVí dụ: The company needs to build its credibility.\nĐồng nghĩa: believability, personal capital"
+          },
+          {
+            "frontContent": "legalized",
+            "backContent": "Nghĩa: hợp pháp hóa\nPhát âm: /ˈliːɡəlaɪzd/\nVí dụ: The government legalized the use of cannabis."
+          },
+          {
+            "frontContent": "passionate about",
+            "backContent": "Nghĩa: đam mê\nPhát âm: /ˈpæʃənət əˈbaʊt/\nVí dụ: She is passionate about environmental issues."
+          },
+          {
+            "frontContent": "identify",
+            "backContent": "Nghĩa: xác định\nPhát âm: /aɪˈdentɪfaɪ/\nVí dụ: The police are trying to identify the suspect.\nĐồng nghĩa: ID"
+          },
+          {
+            "frontContent": "crucial",
+            "backContent": "Nghĩa: quan trọng\nPhát âm: /ˈkruːʃəl/\nVí dụ: This decision is crucial to our success."
+          },
+          {
+            "frontContent": "logistics",
+            "backContent": "Nghĩa: hậu cần\nPhát âm: /ləˈdʒɪstɪks/\nVí dụ: The company has a strong logistics department."
+          },
+          {
+            "frontContent": "markup",
+            "backContent": "Nghĩa: đánh dấu\nPhát âm: /ˈmɑːrkʌp/\nVí dụ: The retailer added a 50% markup to the product's cost."
+          },
+          {
+            "frontContent": "distributors",
+            "backContent": "Nghĩa: nhà phân phối\nPhát âm: /dɪˈstrɪbjətərz/\nVí dụ: The company uses distributors to sell its products."
+          },
+          {
+            "frontContent": "coordination",
+            "backContent": "Nghĩa: sự phối hợp\nPhát âm: /kəʊˌɔːrdɪˈneɪʃn/\nVí dụ: The project required a high degree of coordination."
+          },
+          {
+            "frontContent": "freight forwarder",
+            "backContent": "Nghĩa: người giao nhận vận tải\nPhát âm: /freɪt ˈfɔːrwərdər/\nVí dụ: The company hired a freight forwarder to handle the shipping."
+          }
+        ]
+      },
+      "approved": true
+    },
+    {
+      "topic": "Tariffs",
+      "target_band": "BAND_6_0",
+      "lesson": {
+        "title": "Writing a Basic Form - Web Development",
+        "targetBand": "BAND_6_0",
+        "videos": [
+          {
+            "title": "Writing a Basic Form - Web Development",
+            "url": "https://www.youtube.com/watch?v=ScXJ5au8q_w",
+            "duration": 261,
+            "thumbnailUrl": "https://i.ytimg.com/vi/ScXJ5au8q_w/hqdefault.jpg"
+          }
+        ],
+        "vocabularies": [
+          {
+            "word": "template",
+            "pronunciation": "/ˈtɛmplɪt/",
+            "definition": "a pre-designed document or file that can be used as a starting point for creating new documents or files",
+            "examples": [
+              "The company uses a standard template for all its reports.",
+              "I created a template for my resume to make it easier to update."
+            ],
+            "translation": "mẫu",
+            "timestamp": 6.1,
+            "contextSentence": "talking about how to use templates."
+          },
+          {
+            "word": "application",
+            "pronunciation": "/ˌæplɪˈkeɪʃən/",
+            "definition": "a piece of software designed for a specific purpose",
+            "examples": [
+              "This is a web application.",
+              "I downloaded a new application for my phone."
+            ],
+            "translation": "ứng dụng",
+            "timestamp": 15.3,
+            "contextSentence": "to build a few templates in a simple web application."
+          },
+          {
+            "word": "handler",
+            "pronunciation": "/ˈhændlə(r)/",
+            "definition": "a function or method that processes a specific request or event in a program",
+            "examples": [
+              "The event handler responds to user clicks.",
+              "The handler processes the data from the form."
+            ],
+            "translation": "trình xử lý",
+            "timestamp": 33.9,
+            "contextSentence": "It's got one handler on slash called main page."
+          },
+          {
+            "word": "inherit",
+            "pronunciation": "/ɪnˈherɪt/",
+            "definition": "to receive or derive a characteristic or property from a parent class or object",
+            "examples": [
+              "The new class inherits properties from the parent class.",
+              "She inherited her love of music from her mother."
+            ],
+            "translation": "kế thừa",
+            "timestamp": 44.6,
+            "contextSentence": "I've made my main page handler inherit from a class called Handler, which I defined up here."
+          },
+          {
+            "word": "method",
+            "pronunciation": "/ˈmɛθəd/",
+            "definition": "a function associated with an object or class",
+            "examples": [
+              "The class has several methods.",
+              "The method calculates the average."
+            ],
+            "translation": "phương thức",
+            "timestamp": 47.9,
+            "contextSentence": "this just adds one method called Write."
+          },
+          {
+            "word": "helper functions",
+            "pronunciation": "/ˈhelpər ˈfʌŋkʃənz/",
+            "definition": "functions designed to assist other functions or processes, often simplifying complex tasks",
+            "examples": [
+              "We'll create helper functions to handle data validation.",
+              "The code uses helper functions to improve readability."
+            ],
+            "translation": "hàm hỗ trợ",
+            "timestamp": 60.5,
+            "contextSentence": "And we'll be adding a few more helper functions, to this handler, as we go."
+          },
+          {
+            "word": "terminal",
+            "pronunciation": "/ˈtɜːrmɪnl/",
+            "definition": "a text-based interface used to interact with a computer system",
+            "examples": [
+              "I opened the terminal to run the command.",
+              "The developer used the terminal to debug the code."
+            ],
+            "translation": "thiết bị đầu cuối",
+            "timestamp": 76.4,
+            "contextSentence": "Let's go ahead, and make sure this works. We go to our terminal."
+          },
+          {
+            "word": "directory",
+            "pronunciation": "/dəˈrektəri/",
+            "definition": "a location on a computer's file system where files and other directories are stored",
+            "examples": [
+              "I created a new directory to organize my files.",
+              "The file is located in the root directory."
+            ],
+            "translation": "thư mục",
+            "timestamp": 78.3,
+            "contextSentence": "I'm in the template lesson directory, where these files are."
+          },
+          {
+            "word": "parameter",
+            "pronunciation": "/pəˈræmɪtər/",
+            "definition": "a value that is passed to a function or method",
+            "examples": [
+              "The function takes two parameters.",
+              "The parameter controls the size of the image."
+            ],
+            "translation": "tham số",
+            "timestamp": 220.2,
+            "contextSentence": "it'll just add that parameter to the URL."
+          },
+          {
+            "word": "submit",
+            "pronunciation": "/səbˈmɪt/",
+            "definition": "to send a form or data to a server for processing",
+            "examples": [
+              "Please submit the form.",
+              "I submitted my application online."
+            ],
+            "translation": "gửi",
+            "timestamp": 217.9,
+            "contextSentence": "Which means when I submit this form, it'll just add that parameter to the URL."
+          },
+          {
+            "word": "syntax",
+            "pronunciation": "/ˈsɪntæks/",
+            "definition": "the rules and structure of a programming language",
+            "examples": [
+              "The code has a syntax error.",
+              "Understanding the syntax is crucial for writing code."
+            ],
+            "translation": "cú pháp",
+            "timestamp": 155.1,
+            "contextSentence": "This is basically the python syntax for a multi line string."
+          },
+          {
+            "word": "multi-line string",
+            "pronunciation": "/ˌmʌltiˈlaɪn strɪŋ/",
+            "definition": "a string that spans multiple lines in code",
+            "examples": [
+              "Use a multi-line string for long text.",
+              "The code uses a multi-line string for HTML."
+            ],
+            "translation": "chuỗi nhiều dòng",
+            "timestamp": 155.1,
+            "contextSentence": "This is basically the python syntax for a multi line string."
+          },
+          {
+            "word": "recall",
+            "pronunciation": "/rɪˈkɔːl/",
+            "definition": "to remember something",
+            "examples": [
+              "I recall the incident clearly.",
+              "Can you recall what happened last night?"
+            ],
+            "translation": "nhớ lại",
+            "timestamp": 209.3,
+            "contextSentence": "Now, recall that since we didn't set a method on that form, the default method is going to be GET."
+          }
+        ],
+        "grammars": [
+          {
+            "title": "Present Simple for habitual actions and facts",
+            "explanation": "Used to describe habits, general truths, repeated actions, or unchanging situations.",
+            "examples": [
+              "I go to the gym every day.",
+              "The sun rises in the east."
+            ],
+            "structure": "Subject + Verb (base form or -s/-es)",
+            "timestamp": 33.9,
+            "contextSentence": "It's got one handler on slash called main page."
+          },
+          {
+            "title": "Use of 'which' for non-defining relative clauses",
+            "explanation": "Used to add extra information about a noun in the main clause. The information is not essential to identify the noun.",
+            "examples": [
+              "I went to London, which is a beautiful city.",
+              "He failed the exam, which was disappointing."
+            ],
+            "structure": "Main clause, which + verb...",
+            "timestamp": 33.9,
+            "contextSentence": "Which is here."
+          },
+          {
+            "title": "Use of 'as' to show time or reason",
+            "explanation": "Used to indicate that something happens at the same time as something else or to give a reason.",
+            "examples": [
+              "As I was walking home, it started to rain.",
+              "As it was raining, we stayed inside."
+            ],
+            "structure": "As + clause",
+            "timestamp": 81.7,
+            "contextSentence": "As you can see, ,we'll run the app server, like so I, I prefer to run"
+          },
+          {
+            "title": "Conditional Sentences (Type 1)",
+            "explanation": "Used to talk about possible situations and their likely results in the future.",
+            "examples": [
+              "If it rains, I will stay home.",
+              "If you study hard, you will pass the exam."
+            ],
+            "structure": "If + present simple, will + base form",
+            "timestamp": 141.2,
+            "contextSentence": "If you want to make a basic form we can just return html directly from our handler here."
+          },
+          {
+            "title": "Use of 'going to' for future plans",
+            "explanation": "Used to express intentions, plans, or predictions based on present evidence.",
+            "examples": [
+              "I am going to visit my family next week.",
+              "They are going to start a new project."
+            ],
+            "structure": "Subject + be (am/is/are) + going to + verb",
+            "timestamp": 126.7,
+            "contextSentence": "Now in this slide, I'm going to ask you lots of questions like, what happens when you do x or y or whatever."
+          },
+          {
+            "title": "Use of 'since' to show time",
+            "explanation": "Used to indicate a period of time that started in the past and continues to the present.",
+            "examples": [
+              "I have lived here since 2010.",
+              "She has been working here since Monday."
+            ],
+            "structure": "Since + a point in time",
+            "timestamp": 209.3,
+            "contextSentence": "Now, recall that since we didn't set a method on that form, the default method is going to be GET."
+          }
+        ],
+        "notesContent": "# Tariffs — Ghi chú học tập (Band 6.0)\n\n## Từ vựng quan trọng\n\n### template `/ˈtɛmplɪt/`\n**Nghĩa:** a pre-designed document or file that can be used as a starting point for creating new documents or files\n**Dịch:** mẫu\n**Ví dụ:** *The company uses a standard template for all its reports.*\n\n### application `/ˌæplɪˈkeɪʃən/`\n**Nghĩa:** a piece of software designed for a specific purpose\n**Dịch:** ứng dụng\n**Ví dụ:** *This is a web application.*\n\n### handler `/ˈhændlə(r)/`\n**Nghĩa:** a function or method that processes a specific request or event in a program\n**Dịch:** trình xử lý\n**Ví dụ:** *The event handler responds to user clicks.*\n\n### inherit `/ɪnˈherɪt/`\n**Nghĩa:** to receive or derive a characteristic or property from a parent class or object\n**Dịch:** kế thừa\n**Ví dụ:** *The new class inherits properties from the parent class.*\n\n### method `/ˈmɛθəd/`\n**Nghĩa:** a function associated with an object or class\n**Dịch:** phương thức\n**Ví dụ:** *The class has several methods.*\n\n### helper functions `/ˈhelpər ˈfʌŋkʃənz/`\n**Nghĩa:** functions designed to assist other functions or processes, often simplifying complex tasks\n**Dịch:** hàm hỗ trợ\n**Ví dụ:** *We'll create helper functions to handle data validation.*\n\n### terminal `/ˈtɜːrmɪnl/`\n**Nghĩa:** a text-based interface used to interact with a computer system\n**Dịch:** thiết bị đầu cuối\n**Ví dụ:** *I opened the terminal to run the command.*\n\n### directory `/dəˈrektəri/`\n**Nghĩa:** a location on a computer's file system where files and other directories are stored\n**Dịch:** thư mục\n**Ví dụ:** *I created a new directory to organize my files.*\n\n### parameter `/pəˈræmɪtər/`\n**Nghĩa:** a value that is passed to a function or method\n**Dịch:** tham số\n**Ví dụ:** *The function takes two parameters.*\n\n### submit `/səbˈmɪt/`\n**Nghĩa:** to send a form or data to a server for processing\n**Dịch:** gửi\n**Ví dụ:** *Please submit the form.*\n\n### syntax `/ˈsɪntæks/`\n**Nghĩa:** the rules and structure of a programming language\n**Dịch:** cú pháp\n**Ví dụ:** *The code has a syntax error.*\n\n### multi-line string `/ˌmʌltiˈlaɪn strɪŋ/`\n**Nghĩa:** a string that spans multiple lines in code\n**Dịch:** chuỗi nhiều dòng\n**Ví dụ:** *Use a multi-line string for long text.*\n\n## Điểm ngữ pháp\n\n### Present Simple for habitual actions and facts\n**Cấu trúc:** `Subject + Verb (base form or -s/-es)`\nUsed to describe habits, general truths, repeated actions, or unchanging situations.\n> I go to the gym every day.\n\n### Use of 'which' for non-defining relative clauses\n**Cấu trúc:** `Main clause, which + verb...`\nUsed to add extra information about a noun in the main clause. The information is not essential to identify the noun.\n> I went to London, which is a beautiful city.\n\n### Use of 'as' to show time or reason\n**Cấu trúc:** `As + clause`\nUsed to indicate that something happens at the same time as something else or to give a reason.\n> As I was walking home, it started to rain.\n\n### Conditional Sentences (Type 1)\n**Cấu trúc:** `If + present simple, will + base form`\nUsed to talk about possible situations and their likely results in the future.\n> If it rains, I will stay home.\n\n### Use of 'going to' for future plans\n**Cấu trúc:** `Subject + be (am/is/are) + going to + verb`\nUsed to express intentions, plans, or predictions based on present evidence.\n> I am going to visit my family next week.\n\n### Use of 'since' to show time\n**Cấu trúc:** `Since + a point in time`\nUsed to indicate a period of time that started in the past and continues to the present.\n> I have lived here since 2010.\n"
+      },
+      "flashcard_set": {
+        "title": "Từ vựng: Writing a Basic Form - Web Development",
+        "description": "Bộ flashcard từ video 'Writing a Basic Form - Web Development'",
+        "cards": [
+          {
+            "frontContent": "template",
+            "backContent": "Nghĩa: mẫu\nPhát âm: /ˈtɛmplɪt/\nVí dụ: The company uses a standard template for all its reports."
+          },
+          {
+            "frontContent": "application",
+            "backContent": "Nghĩa: ứng dụng\nPhát âm: /ˌæplɪˈkeɪʃən/\nVí dụ: This is a web application.\nĐồng nghĩa: app, program, software"
+          },
+          {
+            "frontContent": "handler",
+            "backContent": "Nghĩa: trình xử lý\nPhát âm: /ˈhændlə(r)/\nVí dụ: The event handler responds to user clicks."
+          },
+          {
+            "frontContent": "inherit",
+            "backContent": "Nghĩa: kế thừa\nPhát âm: /ɪnˈherɪt/\nVí dụ: The new class inherits properties from the parent class."
+          },
+          {
+            "frontContent": "method",
+            "backContent": "Nghĩa: phương thức\nPhát âm: /ˈmɛθəd/\nVí dụ: The class has several methods."
+          },
+          {
+            "frontContent": "helper functions",
+            "backContent": "Nghĩa: hàm hỗ trợ\nPhát âm: /ˈhelpər ˈfʌŋkʃənz/\nVí dụ: We'll create helper functions to handle data validation."
+          },
+          {
+            "frontContent": "terminal",
+            "backContent": "Nghĩa: thiết bị đầu cuối\nPhát âm: /ˈtɜːrmɪnl/\nVí dụ: I opened the terminal to run the command.\nĐồng nghĩa: endly, endsome, final, late"
+          },
+          {
+            "frontContent": "directory",
+            "backContent": "Nghĩa: thư mục\nPhát âm: /dəˈrektəri/\nVí dụ: I created a new directory to organize my files.\nĐồng nghĩa: folder"
+          },
+          {
+            "frontContent": "parameter",
+            "backContent": "Nghĩa: tham số\nPhát âm: /pəˈræmɪtər/\nVí dụ: The function takes two parameters.\nĐồng nghĩa: distinguishing, feature, argument"
+          },
+          {
+            "frontContent": "submit",
+            "backContent": "Nghĩa: gửi\nPhát âm: /səbˈmɪt/\nVí dụ: Please submit the form."
+          },
+          {
+            "frontContent": "syntax",
+            "backContent": "Nghĩa: cú pháp\nPhát âm: /ˈsɪntæks/\nVí dụ: The code has a syntax error.\nĐồng nghĩa: syntaxis"
+          },
+          {
+            "frontContent": "multi-line string",
+            "backContent": "Nghĩa: chuỗi nhiều dòng\nPhát âm: /ˌmʌltiˈlaɪn strɪŋ/\nVí dụ: Use a multi-line string for long text."
+          },
+          {
+            "frontContent": "recall",
+            "backContent": "Nghĩa: nhớ lại\nPhát âm: /rɪˈkɔːl/\nVí dụ: I recall the incident clearly.\nĐồng nghĩa: withcall"
+          }
+        ]
+      },
+      "approved": false
+    }
+  ]
+}

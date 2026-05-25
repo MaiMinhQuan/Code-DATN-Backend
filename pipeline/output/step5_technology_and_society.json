@@ -1,0 +1,162 @@
+{
+  "topic": "Technology and Society",
+  "target_band": "BAND_6_0",
+  "exam_questions": [
+    {
+      "title": "Technology & Crime: Pros and Cons",
+      "questionPrompt": "Some people think technology development decreases crime, while others believe it actually encourages crime. Discuss both views and give your own opinion.",
+      "suggestedOutline": "essay outline for exam question",
+      "difficultyLevel": "MEDIUM",
+      "tags": [
+        "technology",
+        "crime",
+        "security",
+        "society"
+      ]
+    },
+    {
+      "title": "Elderly & Technology: Benefits & Encouragement",
+      "questionPrompt": "Advanced technology has brought many beneficial changes to the world. However, some old people today struggle with the use of technologies such as mobile phones and the Internet. How can the elderly benefit from using advanced technologies? How can the elderly be encouraged to use consumer electronics more often?",
+      "suggestedOutline": "markdown outline for exam question",
+      "difficultyLevel": "MEDIUM",
+      "tags": [
+        "technology",
+        "elderly",
+        "benefits",
+        "encouragement"
+      ]
+    }
+  ],
+  "sample_essays": [
+    {
+      "title": "Technology & Crime: Pros and Cons — Band 7.5",
+      "questionPrompt": "Some people think technology development decreases crime, while others believe it actually encourages crime. Discuss both views and give your own opinion.",
+      "targetBand": "BAND_6_0",
+      "outlineContent": "<p><b>Loại bài luận:</b> Thảo luận hai mặt và đưa ra ý kiến cá nhân</p>\n<p><b>Quan điểm:</b> Đồng ý với việc công nghệ giúp ích cho việc phòng chống tội phạm.</p>\n<p><b>Tóm tắt Mở bài:</b></p>\n<ul>\n <li>Nhiều người tin rằng công nghệ giúp ích cho việc phòng chống tội phạm.</li>\n <li>Ý kiến cá nhân: Công nghệ có lợi cho việc thực thi pháp luật, mặc dù có những rủi ro liên quan đến tội phạm mạng.</li>\n</ul>\n<p><b>Đoạn thân bài 1:</b> Mặt tiêu cực của công nghệ đối với tội phạm</p>\n<ul>\n <li>Tội phạm mạng ngày càng phổ biến (gian lận trực tuyến, lừa đảo, tội phạm chính trị, buôn bán chất cấm).</li>\n <li>Khó khăn trong việc đối phó với tội phạm mạng trong giai đoạn đầu của internet.</li>\n <li>Cả cơ quan thực thi pháp luật và tội phạm đều trở nên am hiểu công nghệ hơn.</li>\n <li>Ví dụ: Bài báo cảnh báo về đánh cắp mật khẩu.</li>\n</ul>\n<p><b>Đoạn thân bài 2:</b> Mặt tích cực của công nghệ đối với việc phòng chống tội phạm</p>\n<ul>\n <li>Công nghệ giúp ngăn chặn tội phạm trước khi chúng xảy ra.</li>\n <li>Ví dụ: Camera an ninh (trong không gian công cộng và tư nhân) có tác dụng răn đe.</li>\n <li>Các thành phố có camera an ninh an toàn hơn.</li>\n <li>Ví dụ cụ thể: Camera phạt nguội.</li>\n</ul>\n<p><b>Kết luận:</b></p>\n<ul>\n <li>Tóm tắt: Mặt tích cực của camera an ninh lớn hơn mặt tiêu cực.</li>\n <li>Cần cân bằng giữa an toàn và an ninh.</li>\n</ul>",
+      "fullEssayContent": "Many today are of the belief that advances in technology have done more to combat, rather than aid, criminal behavior. In my opinion, although there are certain novel avenues now available to criminals related to online fraud, technology generally benefits law enforcement.\n\nThose who argue as to the negative implications of technology on crime point out the increased prevalence of cybercrimes. These crimes range from online fraud and fishing schemes to political crimes and the selling of illicit substances. In the early stages of the internet, such crimes were common online and difficult for enforcement agencies to combat. As advances have spread, both law enforcement agencies and criminals have become more technologically-savvy. A clear example of this would be the occasional news article reporting on a large-scale theft of passwords that warns users to update passwords and be more wary of storing private information online.\n\nHowever, the crimes mentioned above are rare and technological innovations now help prevent many crimes before they even occur. The strongest instance illustrating this point would be the deterrence resulting from security cameras in private and public spaces. Countries and cities that emphasize the value of these cameras over personal privacy concerns are significantly safer than unmonitored locations. A more specific example of this would be cameras that take photos of individuals speeding and send them speeding tickets through the mail or electronically. This simple and effective innovation can greatly reduce traffic infractions and as a result the number of accidents on a given road.\n\nIn conclusion, despite the marginal downsides related to exploitation of new technologies by a small percentage of total criminals, the deterrent effect of security cameras has made the world considerably safer. There is always a balance between safety and security that must be carefully maintained.",
+      "highlightAnnotations": [
+        {
+          "text": "combat, rather than aid",
+          "highlightType": "VOCABULARY",
+          "explanation": "Việc sử dụng cụm từ đồng nghĩa 'combat' (chống lại) thay vì 'aid' (hỗ trợ) thể hiện sự đa dạng trong vốn từ vựng (Lexical Resource), một tiêu chí quan trọng trong IELTS. Cách diễn đạt này cũng rõ ràng thể hiện sự đối lập giữa hai quan điểm trong câu hỏi.",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "novel avenues",
+          "highlightType": "VOCABULARY",
+          "explanation": "Cụm từ 'novel avenues' (con đường mới) thể hiện khả năng sử dụng từ vựng linh hoạt và chính xác (Lexical Resource). 'Novel' có nghĩa là 'mới mẻ' và 'avenues' có nghĩa là 'con đường', tạo ra một hình ảnh sống động và phù hợp với ngữ cảnh của sự phát triển công nghệ.",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "fishing schemes",
+          "highlightType": "VOCABULARY",
+          "explanation": "Việc sử dụng từ 'fishing schemes' (lừa đảo trực tuyến) cho thấy khả năng sử dụng từ vựng liên quan đến chủ đề một cách chính xác và hiệu quả (Lexical Resource). Đây là một thuật ngữ chuyên ngành, thể hiện sự hiểu biết của người viết về chủ đề này.",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "illicit substances",
+          "highlightType": "VOCABULARY",
+          "explanation": "Việc sử dụng cụm từ 'illicit substances' (chất cấm) cho thấy khả năng sử dụng từ vựng chính xác và phù hợp với ngữ cảnh (Lexical Resource). Nó thay thế cho các cụm từ thông thường hơn, thể hiện sự đa dạng và phong phú trong cách diễn đạt.",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "technologically-savvy",
+          "highlightType": "VOCABULARY",
+          "explanation": "Từ 'technologically-savvy' (am hiểu công nghệ) là một cách diễn đạt trang trọng và chính xác, thể hiện khả năng sử dụng từ vựng một cách linh hoạt và hiệu quả (Lexical Resource). Nó giúp bài viết trở nên chuyên nghiệp hơn.",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "The strongest instance illustrating this point",
+          "highlightType": "STRUCTURE",
+          "explanation": "Cụm từ này là một ví dụ về cách sử dụng cấu trúc câu phức tạp để thể hiện ý tưởng một cách rõ ràng và mạch lạc (Coherence and Cohesion). Nó giúp người đọc dễ dàng theo dõi lập luận của người viết và hiểu được mối liên kết giữa các ý.",
+          "color": "#34d399"
+        },
+        {
+          "text": "deterrence resulting from security cameras",
+          "highlightType": "ARGUMENT",
+          "explanation": "Cụm từ này thể hiện khả năng phân tích và lập luận (Task Response). Nó tập trung vào một khía cạnh cụ thể của vấn đề (tác dụng răn đe của camera an ninh) và đưa ra một lập luận rõ ràng và thuyết phục.",
+          "color": "#f87171"
+        },
+        {
+          "text": "emphasize the value of these cameras over personal privacy concerns",
+          "highlightType": "ARGUMENT",
+          "explanation": "Cụm từ này thể hiện khả năng phân tích và lập luận (Task Response). Nó đưa ra một so sánh giữa hai yếu tố (giá trị của camera an ninh và sự riêng tư cá nhân) và thể hiện một quan điểm rõ ràng về vấn đề.",
+          "color": "#f87171"
+        },
+        {
+          "text": "There is always a balance between safety and security that must be carefully maintained.",
+          "highlightType": "STRUCTURE",
+          "explanation": "Câu kết luận này thể hiện khả năng sử dụng cấu trúc câu phức tạp để tóm tắt và đưa ra một kết luận toàn diện (Coherence and Cohesion). Nó không chỉ tóm tắt các ý chính mà còn đưa ra một nhận xét tổng quan về vấn đề, thể hiện sự hiểu biết sâu sắc về chủ đề.",
+          "color": "#34d399"
+        }
+      ],
+      "overallBandScore": 7.5,
+      "authorName": "howtodoielts.com"
+    },
+    {
+      "title": "Elderly & Technology: Benefits & Encouragement — Band 7.0",
+      "questionPrompt": "Advanced technology has brought many beneficial changes to the world. However, some old people today struggle with the use of technologies such as mobile phones and the Internet. How can the elderly benefit from using advanced technologies? How can the elderly be encouraged to use consumer electronics more often?",
+      "targetBand": "BAND_6_0",
+      "outlineContent": "<p><b>Loại bài luận:</b> Opinion</p>\n<p><b>Quan điểm:</b> Người cao tuổi có thể hưởng lợi từ công nghệ, đặc biệt là thông qua các mô hình kinh doanh trực tuyến và cần được khuyến khích sử dụng công nghệ.</p>\n<p><b>Mở bài:</b> Công nghệ tiên tiến không được chia sẻ đồng đều giữa các nhóm tuổi. Người cao tuổi có thể hưởng lợi nhiều hơn về sự tiện lợi, đặc biệt là từ các mô hình kinh doanh trực tuyến.</p>\n<ul>\n  <li><b>Đoạn 1:</b>\n    <ul>\n      <li>Công nghệ cải thiện sự tiện lợi, ví dụ: mua sắm trực tuyến.</li>\n      <li>Ví dụ về đại dịch Covid-19: Người cao tuổi học cách mua sắm trực tuyến.</li>\n      <li>Điện thoại thông minh giúp duy trì liên lạc với gia đình.</li>\n    </ul>\n  </li>\n  <li><b>Đoạn 2:</b>\n    <ul>\n      <li>Các công ty nên khuyến khích khách hàng trực tuyến.</li>\n      <li>Ví dụ về đại dịch Covid-19: Bắt buộc thích nghi.</li>\n      <li>Ví dụ về đặt vé máy bay trực tuyến.</li>\n    </ul>\n  </li>\n</ul>\n<p><b>Kết luận:</b> Người cao tuổi có thể có cuộc sống dễ dàng hơn nếu sử dụng công nghệ. Con cháu nên giúp đỡ họ.</p>",
+      "fullEssayContent": "The advances made in the field of technology are not shared equally by all age demographics. In my opinion, the elderly in particular could benefit more in terms of convenience and this could be achieved by businesses transitioning to primarily online business models.\n\nImproved capability with consumer electronics engenders a more convenient life. This improvement would be immediately evident when shopping online. During the recent Covid-19 pandemic many older individuals first learned how to place orders for food and other necessities online. Since the pandemic restrictions have eased, many now continue to use these applications to shop for the best prices, remain at home, and be assured of the quality of their purchases. Moreover, smartphones in particular today are essential for remaining in contact with one’s family. Most older people value family relations above all else and would be able to make video calls and message their children and grandchildren if they were more tech-savvy.\n\nIn order to achieve this level of convenience, companies should continue to encourage customers to engage online. Older individuals will not be convinced simply by the benefits of technology as many may be stubborn. The Coronavirus pandemic is again an illustrative example as it demonstrated that only when forced to adapt did older people begin to learn the full functionality of their phones. Companies today are already increasingly emphasizing online orders and by phasing out in-person discounts and physical stores they will compel the elderly to adapt to modern conveniences. For instance, hopeful travelers must essentially learn to navigate an airline’s website to book flights these days.\n\nIn conclusion, older people can lead easier lives if they utilize developments in technology that companies have already begun to embrace. Naturally, children should also help educate their older parents about these benefits.",
+      "highlightAnnotations": [
+        {
+          "text": "are not shared equally by all age demographics",
+          "highlightType": "VOCABULARY",
+          "explanation": "Cách diễn đạt này thể hiện sự đa dạng về từ vựng (vocabulary) bằng cách sử dụng các từ phức tạp và chính xác ('shared equally', 'age demographics') thay vì các từ đơn giản. Điều này thể hiện khả năng sử dụng vốn từ vựng phong phú và chính xác, một tiêu chí quan trọng của Band 7+.",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "in terms of convenience",
+          "highlightType": "VOCABULARY",
+          "explanation": "Cụm từ này sử dụng một cách diễn đạt trang trọng và chính xác để chỉ ra khía cạnh mà người cao tuổi có thể hưởng lợi. Việc sử dụng 'in terms of' thể hiện khả năng sử dụng từ vựng linh hoạt và phù hợp với ngữ cảnh, một đặc điểm của Band 7+.",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "engenders a more convenient life",
+          "highlightType": "VOCABULARY",
+          "explanation": "Từ 'engenders' là một từ vựng nâng cao, thể hiện khả năng sử dụng vốn từ vựng phong phú và chính xác. Việc sử dụng từ này thay vì các từ đơn giản hơn như 'creates' hoặc 'leads to' thể hiện sự hiểu biết về từ vựng và khả năng diễn đạt ý tưởng một cách tinh tế, một tiêu chí của Band 7+.",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "During the recent Covid-19 pandemic",
+          "highlightType": "STRUCTURE",
+          "explanation": "Cụm từ mở đầu này cung cấp bối cảnh rõ ràng và sử dụng cấu trúc ngữ pháp phức tạp (cụm giới từ) để liên kết ý tưởng. Điều này thể hiện khả năng sử dụng các cấu trúc câu đa dạng và phức tạp, một tiêu chí quan trọng của Band 7+.",
+          "color": "#34d399"
+        },
+        {
+          "text": "Since the pandemic restrictions have eased",
+          "highlightType": "GRAMMAR",
+          "explanation": "Câu này sử dụng mệnh đề trạng ngữ chỉ thời gian với thì hiện tại hoàn thành, thể hiện khả năng sử dụng ngữ pháp chính xác và đa dạng. Việc sử dụng cấu trúc ngữ pháp phức tạp này thể hiện sự kiểm soát tốt về ngữ pháp, một tiêu chí của Band 7+.",
+          "color": "#818cf8"
+        },
+        {
+          "text": "Most older people value family relations above all else",
+          "highlightType": "ARGUMENT",
+          "explanation": "Câu này đưa ra một luận điểm rõ ràng và được hỗ trợ bởi các ví dụ cụ thể. Việc đưa ra một tuyên bố chung về giá trị của người cao tuổi giúp củng cố lập luận và làm cho bài luận trở nên thuyết phục hơn. Điều này thể hiện khả năng phát triển và trình bày các luận điểm một cách mạch lạc, một tiêu chí của Band 7+.",
+          "color": "#f87171"
+        },
+        {
+          "text": "In order to achieve this level of convenience",
+          "highlightType": "STRUCTURE",
+          "explanation": "Cấu trúc 'In order to' được sử dụng để liên kết các ý tưởng một cách rõ ràng và mạch lạc, thể hiện khả năng sử dụng các liên từ và cấu trúc câu phức tạp để xây dựng lập luận. Điều này thể hiện sự mạch lạc và gắn kết, một tiêu chí của Band 7+.",
+          "color": "#34d399"
+        },
+        {
+          "text": "is again an illustrative example",
+          "highlightType": "VOCABULARY",
+          "explanation": "Cụm từ này sử dụng từ vựng chính xác và phù hợp ('illustrative example') để làm rõ ý. Việc sử dụng từ vựng phong phú và chính xác thể hiện khả năng sử dụng vốn từ vựng linh hoạt và hiệu quả, một tiêu chí của Band 7+.",
+          "color": "#fbbf24"
+        },
+        {
+          "text": "by phasing out in-person discounts and physical stores they will compel the elderly to adapt to modern conveniences",
+          "highlightType": "ARGUMENT",
+          "explanation": "Câu này kết hợp nhiều ý tưởng và sử dụng cấu trúc câu phức tạp để thể hiện một lập luận. Việc sử dụng các từ nối và cấu trúc ngữ pháp phức tạp thể hiện khả năng kiểm soát ngữ pháp và sự mạch lạc trong lập luận. Điều này thể hiện khả năng phát triển và trình bày các luận điểm một cách mạch lạc, một tiêu chí của Band 7+.",
+          "color": "#f87171"
+        }
+      ],
+      "overallBandScore": 7.0,
+      "authorName": "howtodoielts.com"
+    }
+  ]
+}

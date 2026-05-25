@@ -19,8 +19,12 @@ export class SampleEssaysService {
     - topicId — id topic (optional)
     - targetBand — band (optional)
    */
-  async findAll(topicId?: string, targetBand?: TargetBand): Promise<SampleEssay[]> {
-    const filter: any = { isPublished: true }; // students only see published essays
+  async findAll(topicId?: string, targetBand?: TargetBand, isPublished?: boolean): Promise<SampleEssay[]> {
+    const filter: any = {};
+
+    if (isPublished !== undefined) {
+      filter.isPublished = isPublished;
+    }
 
     if (topicId) {
       if (!Types.ObjectId.isValid(topicId)) {
@@ -36,7 +40,7 @@ export class SampleEssaysService {
     return this.sampleEssayModel
       .find(filter)
       .populate("topicId", "name slug")
-      .sort({ favoriteCount: -1, createdAt: -1 }) // most-favorited first, then newest
+      .sort({ favoriteCount: -1, createdAt: -1 })
       .exec();
   }
 
@@ -67,6 +71,12 @@ export class SampleEssaysService {
   Input:
     - createDto — body request
    */
+  private calcTargetBand(score: number): TargetBand {
+    if (score >= 7.0) return TargetBand.BAND_7_PLUS;
+    if (score >= 6.0) return TargetBand.BAND_6_0;
+    return TargetBand.BAND_5_0;
+  }
+
   async create(createDto: CreateSampleEssayDto): Promise<SampleEssay> {
     // Verify the topic document exists before creating the essay
     const topicExists = await this.sampleEssayModel.db
@@ -77,8 +87,13 @@ export class SampleEssaysService {
       throw new BadRequestException("Topic không tồn tại");
     }
 
+    const dto = createDto as any;
+    if (dto.overallBandScore > 0) {
+      dto.targetBand = this.calcTargetBand(Number(dto.overallBandScore));
+    }
+
     const newEssay = new this.sampleEssayModel({
-      ...createDto,
+      ...dto,
       favoriteCount: 0,
     });
 
@@ -97,6 +112,10 @@ export class SampleEssaysService {
     }
 
     const dto = updateDto as any;
+
+    if (dto.overallBandScore > 0) {
+      dto.targetBand = this.calcTargetBand(Number(dto.overallBandScore));
+    }
 
     // Nếu đổi topicId thì validate topic tồn tại
     if (dto.topicId) {

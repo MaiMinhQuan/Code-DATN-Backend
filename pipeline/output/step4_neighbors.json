@@ -1,0 +1,630 @@
+{
+  "topic": "Neighbors",
+  "count": 2,
+  "lessons": [
+    {
+      "topic": "Neighbors",
+      "target_band": "BAND_6_0",
+      "lesson": {
+        "title": "IELTS SPEAKING TEST 2017 - DESCRIBE YOUR NEIGHBORS",
+        "targetBand": "BAND_6_0",
+        "videos": [
+          {
+            "title": "IELTS SPEAKING TEST 2017 - DESCRIBE YOUR NEIGHBORS",
+            "url": "https://www.youtube.com/watch?v=jDK0-GO7D-I",
+            "duration": 252,
+            "thumbnailUrl": "https://i.ytimg.com/vi/jDK0-GO7D-I/hqdefault.jpg"
+          }
+        ],
+        "vocabularies": [
+          {
+            "word": "interact",
+            "pronunciation": "/ˌɪntərˈækt/",
+            "definition": "to communicate or work together with someone or something",
+            "examples": [
+              "Children learn how to interact with others at school.",
+              "The software allows users to interact with the data in various ways."
+            ],
+            "translation": "tương tác",
+            "timestamp": 30.6,
+            "contextSentence": "it's all about how we interact with people who are our neighbors"
+          },
+          {
+            "word": "competition",
+            "pronunciation": "/ˌkɒmpəˈtɪʃən/",
+            "definition": "the act of competing; a contest or rivalry",
+            "examples": [
+              "There is fierce competition between the two companies.",
+              "The competition for the job was intense."
+            ],
+            "translation": "sự cạnh tranh",
+            "timestamp": 51.8,
+            "contextSentence": "at first we weren't really good friends because there's some competition between America my country and England"
+          },
+          {
+            "word": "light-hearted",
+            "pronunciation": "/ˌlaɪtˈhɑːrtɪd/",
+            "definition": "cheerful and without worry",
+            "examples": [
+              "He made a light-hearted joke about the situation.",
+              "The atmosphere at the party was light-hearted and relaxed."
+            ],
+            "translation": "vui vẻ, vô tư",
+            "timestamp": 63.9,
+            "contextSentence": "but it's light-hearted and fun as I got to know this guy"
+          },
+          {
+            "word": "humanitarian work",
+            "pronunciation": "/hjuːˌmænɪˈteəriən wɜːrk/",
+            "definition": "work that is done to help people who are suffering, especially in a war or natural disaster",
+            "examples": [
+              "The organization provides humanitarian work in disaster-stricken areas.",
+              "She dedicated her life to humanitarian work."
+            ],
+            "translation": "công tác nhân đạo",
+            "timestamp": 83.3,
+            "contextSentence": "and he did a lot of humanitarian work as well"
+          },
+          {
+            "word": "respectful",
+            "pronunciation": "/rɪˈspektfəl/",
+            "definition": "showing politeness and consideration for others",
+            "examples": [
+              "The students were respectful of their teacher.",
+              "It's important to be respectful of other cultures."
+            ],
+            "translation": "tôn trọng",
+            "timestamp": 111.4,
+            "contextSentence": "I'm a good neighbor because I try hard to be respectful"
+          },
+          {
+            "word": "conscientious",
+            "pronunciation": "/ˌkɒnʃiˈenʃəs/",
+            "definition": "taking care to do things carefully and correctly",
+            "examples": [
+              "She is a conscientious worker and always completes her tasks on time.",
+              "The company is conscientious about its environmental impact."
+            ],
+            "translation": "tận tâm, chu đáo",
+            "timestamp": 117.0,
+            "contextSentence": "and by being conscientious"
+          },
+          {
+            "word": "experience",
+            "pronunciation": "/ɪkˈspɪəriəns/",
+            "definition": "practical contact with and observation of facts or events",
+            "examples": [
+              "He has a lot of experience in the field of marketing.",
+              "She gained valuable experience working abroad."
+            ],
+            "translation": "kinh nghiệm",
+            "timestamp": 139.6,
+            "contextSentence": "maybe there's an older person who has had a lot of experience in some type of business"
+          },
+          {
+            "word": "characteristics",
+            "pronunciation": "/ˌkærəktəˈrɪstɪks/",
+            "definition": "a feature or quality belonging typically to a person, place, or thing and serving to identify it",
+            "examples": [
+              "One of the main characteristics of this breed is its intelligence.",
+              "The city is known for its unique characteristics."
+            ],
+            "translation": "đặc điểm",
+            "timestamp": 166.5,
+            "contextSentence": "and then describe the characteristics of what a good neighbor is and what a bad neighbor is"
+          },
+          {
+            "word": "examiner",
+            "pronunciation": "/ɪɡˈzæmɪnər/",
+            "definition": "a person who examines someone or something",
+            "examples": [
+              "The examiner will assess your writing skills.",
+              "The examiner asked me some questions about my experience."
+            ],
+            "translation": "giám khảo",
+            "timestamp": 191.1,
+            "contextSentence": "to make it more interesting for the IELTS examiner's and also to prevent"
+          },
+          {
+            "word": "memorizing",
+            "pronunciation": "/ˈmeməraɪzɪŋ/",
+            "definition": "to learn something so that you remember it exactly",
+            "examples": [
+              "She spent hours memorizing the poem.",
+              "It's not a good idea to memorize answers for the IELTS."
+            ],
+            "translation": "học thuộc lòng",
+            "timestamp": 196.8,
+            "contextSentence": "prevent people from preparing too much for the IELTS by memorizing an answer"
+          },
+          {
+            "word": "organized",
+            "pronunciation": "/ˈɔːrɡənaɪzd/",
+            "definition": "arranged or planned in a systematic way",
+            "examples": [
+              "The meeting was well-organized.",
+              "She is an organized person and always keeps things tidy."
+            ],
+            "translation": "có tổ chức",
+            "timestamp": 212.7,
+            "contextSentence": "you'll have a very organized way of delivering a great answer"
+          }
+        ],
+        "grammars": [
+          {
+            "title": "Present Simple for Habits and Facts",
+            "explanation": "Used to describe habits, general truths, and repeated actions.",
+            "examples": [
+              "I speak English.",
+              "He likes to read."
+            ],
+            "structure": "Subject + Verb (base form/ -s/-es)",
+            "timestamp": 41.1,
+            "contextSentence": "He speaks the same language as me but in a very different way"
+          },
+          {
+            "title": "Past Simple Tense",
+            "explanation": "Used to describe completed actions in the past.",
+            "examples": [
+              "I went to the store yesterday.",
+              "She studied hard for the exam."
+            ],
+            "structure": "Subject + Verb (past form)",
+            "timestamp": 69.1,
+            "contextSentence": "I gave him some books that I thought would be interesting to him"
+          },
+          {
+            "title": "Relative Clauses",
+            "explanation": "Used to provide additional information about a noun.",
+            "examples": [
+              "The man who lives next door is a doctor.",
+              "The book that I read was interesting."
+            ],
+            "structure": "Noun + who/which/that + verb...",
+            "timestamp": 35.0,
+            "contextSentence": "I have a neighbor who's from England"
+          },
+          {
+            "title": "Modal Verb 'could' for Possibility",
+            "explanation": "Used to express possibility in the past.",
+            "examples": [
+              "He could have gone to the party.",
+              "She could have studied harder."
+            ],
+            "structure": "Could + have + past participle",
+            "timestamp": 30.6,
+            "contextSentence": "here's an example of how you could answer those three questions"
+          },
+          {
+            "title": "Conditional Sentences (Type 1)",
+            "explanation": "Used to talk about possible situations and their consequences.",
+            "examples": [
+              "If I study hard, I will pass the exam.",
+              "If it rains, I will stay home."
+            ],
+            "structure": "If + present simple, will + base verb",
+            "timestamp": 96.0,
+            "contextSentence": "so if I go to town and buy some special snacks I bring them over for he and his wife"
+          },
+          {
+            "title": "Present Perfect Tense",
+            "explanation": "Used to describe actions that started in the past and continue to the present or have a result in the present.",
+            "examples": [
+              "I have lived here for five years.",
+              "She has finished her work."
+            ],
+            "structure": "Subject + have/has + past participle",
+            "timestamp": 139.6,
+            "contextSentence": "maybe there's an older person who has had a lot of experience in some type of business"
+          },
+          {
+            "title": "Use of 'and' for listing and connecting ideas",
+            "explanation": "Used to connect words, phrases, or clauses of equal importance.",
+            "examples": [
+              "I like apples and oranges.",
+              "She is smart and hardworking."
+            ],
+            "structure": "Word/Phrase/Clause + and + Word/Phrase/Clause",
+            "timestamp": 117.0,
+            "contextSentence": "and by being conscientious"
+          }
+        ],
+        "notesContent": "# Neighbors — Ghi chú học tập (Band 6.0)\n\n## Từ vựng quan trọng\n\n### interact `/ˌɪntərˈækt/`\n**Nghĩa:** to communicate or work together with someone or something\n**Dịch:** tương tác\n**Ví dụ:** *Children learn how to interact with others at school.*\n\n### competition `/ˌkɒmpəˈtɪʃən/`\n**Nghĩa:** the act of competing; a contest or rivalry\n**Dịch:** sự cạnh tranh\n**Ví dụ:** *There is fierce competition between the two companies.*\n\n### light-hearted `/ˌlaɪtˈhɑːrtɪd/`\n**Nghĩa:** cheerful and without worry\n**Dịch:** vui vẻ, vô tư\n**Ví dụ:** *He made a light-hearted joke about the situation.*\n\n### humanitarian work `/hjuːˌmænɪˈteəriən wɜːrk/`\n**Nghĩa:** work that is done to help people who are suffering, especially in a war or natural disaster\n**Dịch:** công tác nhân đạo\n**Ví dụ:** *The organization provides humanitarian work in disaster-stricken areas.*\n\n### respectful `/rɪˈspektfəl/`\n**Nghĩa:** showing politeness and consideration for others\n**Dịch:** tôn trọng\n**Ví dụ:** *The students were respectful of their teacher.*\n\n### conscientious `/ˌkɒnʃiˈenʃəs/`\n**Nghĩa:** taking care to do things carefully and correctly\n**Dịch:** tận tâm, chu đáo\n**Ví dụ:** *She is a conscientious worker and always completes her tasks on time.*\n\n### experience `/ɪkˈspɪəriəns/`\n**Nghĩa:** practical contact with and observation of facts or events\n**Dịch:** kinh nghiệm\n**Ví dụ:** *He has a lot of experience in the field of marketing.*\n\n### characteristics `/ˌkærəktəˈrɪstɪks/`\n**Nghĩa:** a feature or quality belonging typically to a person, place, or thing and serving to identify it\n**Dịch:** đặc điểm\n**Ví dụ:** *One of the main characteristics of this breed is its intelligence.*\n\n### examiner `/ɪɡˈzæmɪnər/`\n**Nghĩa:** a person who examines someone or something\n**Dịch:** giám khảo\n**Ví dụ:** *The examiner will assess your writing skills.*\n\n### memorizing `/ˈmeməraɪzɪŋ/`\n**Nghĩa:** to learn something so that you remember it exactly\n**Dịch:** học thuộc lòng\n**Ví dụ:** *She spent hours memorizing the poem.*\n\n### organized `/ˈɔːrɡənaɪzd/`\n**Nghĩa:** arranged or planned in a systematic way\n**Dịch:** có tổ chức\n**Ví dụ:** *The meeting was well-organized.*\n\n## Điểm ngữ pháp\n\n### Present Simple for Habits and Facts\n**Cấu trúc:** `Subject + Verb (base form/ -s/-es)`\nUsed to describe habits, general truths, and repeated actions.\n> I speak English.\n\n### Past Simple Tense\n**Cấu trúc:** `Subject + Verb (past form)`\nUsed to describe completed actions in the past.\n> I went to the store yesterday.\n\n### Relative Clauses\n**Cấu trúc:** `Noun + who/which/that + verb...`\nUsed to provide additional information about a noun.\n> The man who lives next door is a doctor.\n\n### Modal Verb 'could' for Possibility\n**Cấu trúc:** `Could + have + past participle`\nUsed to express possibility in the past.\n> He could have gone to the party.\n\n### Conditional Sentences (Type 1)\n**Cấu trúc:** `If + present simple, will + base verb`\nUsed to talk about possible situations and their consequences.\n> If I study hard, I will pass the exam.\n\n### Present Perfect Tense\n**Cấu trúc:** `Subject + have/has + past participle`\nUsed to describe actions that started in the past and continue to the present or have a result in the present.\n> I have lived here for five years.\n"
+      },
+      "flashcard_set": {
+        "title": "Từ vựng: IELTS SPEAKING TEST 2017 - DESCRIBE YOUR NEIGHBORS",
+        "description": "Bộ flashcard từ video 'IELTS SPEAKING TEST 2017 - DESCRIBE YOUR NEIGHBORS'",
+        "cards": [
+          {
+            "frontContent": "interact",
+            "backContent": "Nghĩa: tương tác\nPhát âm: /ˌɪntərˈækt/\nVí dụ: Children learn how to interact with others at school.\nĐồng nghĩa: entracte, interlude, intermission"
+          },
+          {
+            "frontContent": "competition",
+            "backContent": "Nghĩa: sự cạnh tranh\nPhát âm: /ˌkɒmpəˈtɪʃən/\nVí dụ: There is fierce competition between the two companies."
+          },
+          {
+            "frontContent": "light-hearted",
+            "backContent": "Nghĩa: vui vẻ, vô tư\nPhát âm: /ˌlaɪtˈhɑːrtɪd/\nVí dụ: He made a light-hearted joke about the situation."
+          },
+          {
+            "frontContent": "humanitarian work",
+            "backContent": "Nghĩa: công tác nhân đạo\nPhát âm: /hjuːˌmænɪˈteəriən wɜːrk/\nVí dụ: The organization provides humanitarian work in disaster-stricken areas."
+          },
+          {
+            "frontContent": "respectful",
+            "backContent": "Nghĩa: tôn trọng\nPhát âm: /rɪˈspektfəl/\nVí dụ: The students were respectful of their teacher."
+          },
+          {
+            "frontContent": "conscientious",
+            "backContent": "Nghĩa: tận tâm, chu đáo\nPhát âm: /ˌkɒnʃiˈenʃəs/\nVí dụ: She is a conscientious worker and always completes her tasks on time."
+          },
+          {
+            "frontContent": "experience",
+            "backContent": "Nghĩa: kinh nghiệm\nPhát âm: /ɪkˈspɪəriəns/\nVí dụ: He has a lot of experience in the field of marketing.\nĐồng nghĩa: undergo"
+          },
+          {
+            "frontContent": "characteristics",
+            "backContent": "Nghĩa: đặc điểm\nPhát âm: /ˌkærəktəˈrɪstɪks/\nVí dụ: One of the main characteristics of this breed is its intelligence.\nĐồng nghĩa: attribute, hallmark, idiosyncrasy, mannerism"
+          },
+          {
+            "frontContent": "examiner",
+            "backContent": "Nghĩa: giám khảo\nPhát âm: /ɪɡˈzæmɪnər/\nVí dụ: The examiner will assess your writing skills."
+          },
+          {
+            "frontContent": "memorizing",
+            "backContent": "Nghĩa: học thuộc lòng\nPhát âm: /ˈmeməraɪzɪŋ/\nVí dụ: She spent hours memorizing the poem."
+          },
+          {
+            "frontContent": "organized",
+            "backContent": "Nghĩa: có tổ chức\nPhát âm: /ˈɔːrɡənaɪzd/\nVí dụ: The meeting was well-organized."
+          }
+        ]
+      }
+    },
+    {
+      "topic": "Neighbors",
+      "target_band": "BAND_6_0",
+      "lesson": {
+        "title": "IELTS Speaking Part 2: Describe a Childhood Neighborhood",
+        "targetBand": "BAND_6_0",
+        "videos": [
+          {
+            "title": "IELTS Speaking Part 2: Describe a Childhood Neighborhood",
+            "url": "https://www.youtube.com/watch?v=d2zjbYxECIM",
+            "duration": 450,
+            "thumbnailUrl": "https://i.ytimg.com/vi/d2zjbYxECIM/hqdefault.jpg"
+          }
+        ],
+        "vocabularies": [
+          {
+            "word": "cozy neighborhood",
+            "pronunciation": null,
+            "definition": "A comfortable and pleasant area to live in.",
+            "examples": [
+              "We lived in a cozy neighborhood with friendly neighbors.",
+              "The cafe had a cozy neighborhood feel."
+            ],
+            "translation": "khu dân cư ấm cúng",
+            "timestamp": 19.0,
+            "contextSentence": "When I was a child, I lived in a cozy neighborhood called Coin Pitch, which was situated on the outskirts of our town."
+          },
+          {
+            "word": "situated on",
+            "pronunciation": null,
+            "definition": "Located on the outskirts of.",
+            "examples": [
+              "The hotel is situated on a beautiful beach.",
+              "The school is situated on the edge of the city."
+            ],
+            "translation": "nằm ở",
+            "timestamp": 22.8,
+            "contextSentence": "When I was a child, I lived in a cozy neighborhood called Coin Pitch, which was situated on the outskirts of our town."
+          },
+          {
+            "word": "close-knit community",
+            "pronunciation": null,
+            "definition": "A tightly connected and supportive group of people.",
+            "examples": [
+              "The town had a close-knit community where everyone knew each other.",
+              "She valued the close-knit community of her neighborhood."
+            ],
+            "translation": "cộng đồng gắn bó",
+            "timestamp": 29.5,
+            "contextSentence": "It was a peaceful and close-knit community nestled amid lush greenery and rolling hills."
+          },
+          {
+            "word": "lush greenery",
+            "pronunciation": null,
+            "definition": "Abundant and vibrant green plants.",
+            "examples": [
+              "The park was filled with lush greenery.",
+              "The house was surrounded by lush greenery."
+            ],
+            "translation": "cây xanh tươi tốt",
+            "timestamp": 31.5,
+            "contextSentence": "It was a peaceful and close-knit community nestled amid lush greenery and rolling hills."
+          },
+          {
+            "word": "rolling hills",
+            "pronunciation": null,
+            "definition": "Hills that have gentle sloping shapes.",
+            "examples": [
+              "The countryside was dotted with rolling hills.",
+              "They enjoyed hiking in the rolling hills."
+            ],
+            "translation": "đồi thoai thoải",
+            "timestamp": 32.0,
+            "contextSentence": "It was a peaceful and close-knit community nestled amid lush greenery and rolling hills."
+          },
+          {
+            "word": "warm and friendly atmosphere",
+            "pronunciation": null,
+            "definition": "Making the area feel welcoming and pleasant.",
+            "examples": [
+              "The restaurant had a warm and friendly atmosphere.",
+              "The staff created a warm and friendly atmosphere for the guests."
+            ],
+            "translation": "bầu không khí ấm áp và thân thiện",
+            "timestamp": 38.8,
+            "contextSentence": "The neighborhood primarily consisted of families and retirees, creating a warm and friendly atmosphere."
+          },
+          {
+            "word": "delightful experience",
+            "pronunciation": null,
+            "definition": "A very enjoyable and positive time.",
+            "examples": [
+              "The trip was a delightful experience.",
+              "She had a delightful experience at the concert."
+            ],
+            "translation": "trải nghiệm thú vị",
+            "timestamp": 42.8,
+            "contextSentence": "Living in Kangpi was truly a delightful experience."
+          },
+          {
+            "word": "well-maintained houses",
+            "pronunciation": null,
+            "definition": "Houses that are kept in good condition.",
+            "examples": [
+              "The neighborhood had many well-maintained houses.",
+              "They take pride in their well-maintained houses."
+            ],
+            "translation": "nhà được bảo trì tốt",
+            "timestamp": 49.8,
+            "contextSentence": "The streets were lined with beautiful, well-maintained houses, each with its own unique charm."
+          },
+          {
+            "word": "sense of community",
+            "pronunciation": null,
+            "definition": "Feeling of belonging and togetherness.",
+            "examples": [
+              "The school fostered a strong sense of community.",
+              "They worked to build a sense of community in their new town."
+            ],
+            "translation": "tinh thần cộng đồng",
+            "timestamp": 51.0,
+            "contextSentence": "The neighborhood had a strong sense of community, and neighbors often engaged in activities together, such as organizing street parties, picnics in the park, and holiday celebrations."
+          },
+          {
+            "word": "outdoor spaces",
+            "pronunciation": null,
+            "definition": "Areas outside like parks and gardens.",
+            "examples": [
+              "The city has many outdoor spaces for recreation.",
+              "They enjoyed spending time in the outdoor spaces of their home."
+            ],
+            "translation": "không gian ngoài trời",
+            "timestamp": 65.3,
+            "contextSentence": "One of the standout features of this neighborhood was its emphasis on outdoor spaces."
+          },
+          {
+            "word": "walking trails",
+            "pronunciation": null,
+            "definition": "Paths for walking or hiking.",
+            "examples": [
+              "The park has several walking trails.",
+              "They enjoyed hiking on the walking trails."
+            ],
+            "translation": "đường mòn đi bộ",
+            "timestamp": 77.8,
+            "contextSentence": "Additionally, there were several walking trails that wound through the scenic landscape, providing a perfect setting for outdoor enthusiasts and nature lovers."
+          },
+          {
+            "word": "scenic landscape",
+            "pronunciation": null,
+            "definition": "Beautiful and picturesque scenery.",
+            "examples": [
+              "The area had a scenic landscape.",
+              "They enjoyed the scenic landscape during their drive."
+            ],
+            "translation": "phong cảnh đẹp",
+            "timestamp": 82.3,
+            "contextSentence": "Additionally, there were several walking trails that wound through the scenic landscape, providing a perfect setting for outdoor enthusiasts and nature lovers."
+          },
+          {
+            "word": "multicultural neighborhood",
+            "pronunciation": null,
+            "definition": "A place with people from various cultures.",
+            "examples": [
+              "The city is known for its multicultural neighborhoods.",
+              "They enjoyed living in a multicultural neighborhood."
+            ],
+            "translation": "khu dân cư đa văn hóa",
+            "timestamp": 91.5,
+            "contextSentence": "The residents of Kangpich were diverse yet unified. It was a multicultural neighborhood where people from different backgrounds and cultures coexisted harmoniously."
+          },
+          {
+            "word": "cultural diversity",
+            "pronunciation": null,
+            "definition": "Variety of different cultures.",
+            "examples": [
+              "The city celebrates its cultural diversity.",
+              "They appreciated the cultural diversity of the community."
+            ],
+            "translation": "sự đa dạng văn hóa",
+            "timestamp": 301.0,
+            "contextSentence": "This cultural diversity allowed for a rich exchange of ideas and traditions, fostering an environment of acceptance and understanding."
+          },
+          {
+            "word": "career prospects",
+            "pronunciation": null,
+            "definition": "Opportunities for professional advancement.",
+            "examples": [
+              "The job offers excellent career prospects.",
+              "They were looking for a city with good career prospects."
+            ],
+            "translation": "triển vọng nghề nghiệp",
+            "timestamp": 386.0,
+            "contextSentence": "my preferences and priorities have shifted, and I now gravitate toward more vibrant urban areas with better career prospects and a wider range of cultural activities."
+          }
+        ],
+        "grammars": [
+          {
+            "title": "Past Simple and Past Continuous",
+            "explanation": "Used to describe past events and actions in progress.",
+            "examples": [
+              "When I was a child, I lived in a cozy neighborhood.",
+              "The streets were lined with beautiful houses."
+            ],
+            "structure": "Subject + was/were + V-ing (Past Continuous); Subject + V-ed (Past Simple)",
+            "timestamp": 19.0,
+            "contextSentence": "When I was a child, I lived in a cozy neighborhood called Coin Pitch, which was situated on the outskirts of our town."
+          },
+          {
+            "title": "Relative Clauses",
+            "explanation": "Used to provide additional information about a noun.",
+            "examples": [
+              "The neighborhood, which was situated on the outskirts, was peaceful.",
+              "The parks that children could freely play in were numerous."
+            ],
+            "structure": "Noun + who/which/that + verb/clause",
+            "timestamp": 19.0,
+            "contextSentence": "When I was a child, I lived in a cozy neighborhood called Coin Pitch, which was situated on the outskirts of our town."
+          },
+          {
+            "title": "Use of 'Although' and 'However'",
+            "explanation": "To contrast ideas and show concession.",
+            "examples": [
+              "Although Kangpich offered tranquility, it lacked certain amenities.",
+              "I hold dear the memories of my childhood neighborhood. However, I wouldn't necessarily choose to live there in the future."
+            ],
+            "structure": "Although/Even though + clause, clause; Clause. However, clause.",
+            "timestamp": 128.1,
+            "contextSentence": "Although Kangpich offered tranquility and a close community, it lacked certain amenities and opportunities that I seek in my adult life."
+          },
+          {
+            "title": "Present Perfect Tense",
+            "explanation": "To describe experiences that started in the past and continue to the present or have relevance to the present.",
+            "examples": [
+              "I have cherished memories of growing up in Kangpich.",
+              "My preferences and priorities have shifted."
+            ],
+            "structure": "Subject + have/has + past participle",
+            "timestamp": 108.4,
+            "contextSentence": "Reflecting my experiences, I have cherished memories of growing up in Kangpich."
+          },
+          {
+            "title": "Use of 'would' for hypothetical situations",
+            "explanation": "To express hypothetical situations or preferences.",
+            "examples": [
+              "I wouldn't necessarily choose to live there in the future.",
+              "I would like to live in a city."
+            ],
+            "structure": "Subject + would + base verb",
+            "timestamp": 121.0,
+            "contextSentence": "However, as much as I hold dear the memories of my childhood neighborhood, I wouldn't necessarily choose to live there in the future."
+          },
+          {
+            "title": "Adverbial Clauses of Reason",
+            "explanation": "To explain the reason for something.",
+            "examples": [
+              "As I have grown, my preferences have shifted.",
+              "Because it lacked amenities, I wouldn't live there."
+            ],
+            "structure": "Because/As/Since + clause, clause",
+            "timestamp": 138.9,
+            "contextSentence": "As I have grown, my preferences and priorities have shifted, and I now gravitate toward more vibrant urban areas with better career prospects and a wider range of cultural activities."
+          },
+          {
+            "title": "Use of 'so' to summarize",
+            "explanation": "To summarize or conclude a point.",
+            "examples": [
+              "So, I wouldn't live there.",
+              "So, I prefer urban areas."
+            ],
+            "structure": "So + summary statement",
+            "timestamp": 152.8,
+            "contextSentence": "So now let's get to the phrases and collocations and their simplified definitions:"
+          }
+        ],
+        "notesContent": "# Neighbors — Ghi chú học tập (Band 6.0)\n\n## Từ vựng quan trọng\n\n### cozy neighborhood `None`\n**Nghĩa:** A comfortable and pleasant area to live in.\n**Dịch:** khu dân cư ấm cúng\n**Ví dụ:** *We lived in a cozy neighborhood with friendly neighbors.*\n\n### situated on `None`\n**Nghĩa:** Located on the outskirts of.\n**Dịch:** nằm ở\n**Ví dụ:** *The hotel is situated on a beautiful beach.*\n\n### close-knit community `None`\n**Nghĩa:** A tightly connected and supportive group of people.\n**Dịch:** cộng đồng gắn bó\n**Ví dụ:** *The town had a close-knit community where everyone knew each other.*\n\n### lush greenery `None`\n**Nghĩa:** Abundant and vibrant green plants.\n**Dịch:** cây xanh tươi tốt\n**Ví dụ:** *The park was filled with lush greenery.*\n\n### rolling hills `None`\n**Nghĩa:** Hills that have gentle sloping shapes.\n**Dịch:** đồi thoai thoải\n**Ví dụ:** *The countryside was dotted with rolling hills.*\n\n### warm and friendly atmosphere `None`\n**Nghĩa:** Making the area feel welcoming and pleasant.\n**Dịch:** bầu không khí ấm áp và thân thiện\n**Ví dụ:** *The restaurant had a warm and friendly atmosphere.*\n\n### delightful experience `None`\n**Nghĩa:** A very enjoyable and positive time.\n**Dịch:** trải nghiệm thú vị\n**Ví dụ:** *The trip was a delightful experience.*\n\n### well-maintained houses `None`\n**Nghĩa:** Houses that are kept in good condition.\n**Dịch:** nhà được bảo trì tốt\n**Ví dụ:** *The neighborhood had many well-maintained houses.*\n\n### sense of community `None`\n**Nghĩa:** Feeling of belonging and togetherness.\n**Dịch:** tinh thần cộng đồng\n**Ví dụ:** *The school fostered a strong sense of community.*\n\n### outdoor spaces `None`\n**Nghĩa:** Areas outside like parks and gardens.\n**Dịch:** không gian ngoài trời\n**Ví dụ:** *The city has many outdoor spaces for recreation.*\n\n### walking trails `None`\n**Nghĩa:** Paths for walking or hiking.\n**Dịch:** đường mòn đi bộ\n**Ví dụ:** *The park has several walking trails.*\n\n### scenic landscape `None`\n**Nghĩa:** Beautiful and picturesque scenery.\n**Dịch:** phong cảnh đẹp\n**Ví dụ:** *The area had a scenic landscape.*\n\n## Điểm ngữ pháp\n\n### Past Simple and Past Continuous\n**Cấu trúc:** `Subject + was/were + V-ing (Past Continuous); Subject + V-ed (Past Simple)`\nUsed to describe past events and actions in progress.\n> When I was a child, I lived in a cozy neighborhood.\n\n### Relative Clauses\n**Cấu trúc:** `Noun + who/which/that + verb/clause`\nUsed to provide additional information about a noun.\n> The neighborhood, which was situated on the outskirts, was peaceful.\n\n### Use of 'Although' and 'However'\n**Cấu trúc:** `Although/Even though + clause, clause; Clause. However, clause.`\nTo contrast ideas and show concession.\n> Although Kangpich offered tranquility, it lacked certain amenities.\n\n### Present Perfect Tense\n**Cấu trúc:** `Subject + have/has + past participle`\nTo describe experiences that started in the past and continue to the present or have relevance to the present.\n> I have cherished memories of growing up in Kangpich.\n\n### Use of 'would' for hypothetical situations\n**Cấu trúc:** `Subject + would + base verb`\nTo express hypothetical situations or preferences.\n> I wouldn't necessarily choose to live there in the future.\n\n### Adverbial Clauses of Reason\n**Cấu trúc:** `Because/As/Since + clause, clause`\nTo explain the reason for something.\n> As I have grown, my preferences have shifted.\n"
+      },
+      "flashcard_set": {
+        "title": "Từ vựng: IELTS Speaking Part 2: Describe a Childhood Neighb",
+        "description": "Bộ flashcard từ video 'IELTS Speaking Part 2: Describe a Childhood Neighborhood'",
+        "cards": [
+          {
+            "frontContent": "cozy neighborhood",
+            "backContent": "Nghĩa: khu dân cư ấm cúng\nPhát âm: None\nVí dụ: We lived in a cozy neighborhood with friendly neighbors."
+          },
+          {
+            "frontContent": "situated on",
+            "backContent": "Nghĩa: nằm ở\nPhát âm: None\nVí dụ: The hotel is situated on a beautiful beach."
+          },
+          {
+            "frontContent": "close-knit community",
+            "backContent": "Nghĩa: cộng đồng gắn bó\nPhát âm: None\nVí dụ: The town had a close-knit community where everyone knew each other."
+          },
+          {
+            "frontContent": "lush greenery",
+            "backContent": "Nghĩa: cây xanh tươi tốt\nPhát âm: None\nVí dụ: The park was filled with lush greenery."
+          },
+          {
+            "frontContent": "rolling hills",
+            "backContent": "Nghĩa: đồi thoai thoải\nPhát âm: None\nVí dụ: The countryside was dotted with rolling hills."
+          },
+          {
+            "frontContent": "warm and friendly atmosphere",
+            "backContent": "Nghĩa: bầu không khí ấm áp và thân thiện\nPhát âm: None\nVí dụ: The restaurant had a warm and friendly atmosphere."
+          },
+          {
+            "frontContent": "delightful experience",
+            "backContent": "Nghĩa: trải nghiệm thú vị\nPhát âm: None\nVí dụ: The trip was a delightful experience."
+          },
+          {
+            "frontContent": "well-maintained houses",
+            "backContent": "Nghĩa: nhà được bảo trì tốt\nPhát âm: None\nVí dụ: The neighborhood had many well-maintained houses."
+          },
+          {
+            "frontContent": "sense of community",
+            "backContent": "Nghĩa: tinh thần cộng đồng\nPhát âm: None\nVí dụ: The school fostered a strong sense of community."
+          },
+          {
+            "frontContent": "outdoor spaces",
+            "backContent": "Nghĩa: không gian ngoài trời\nPhát âm: None\nVí dụ: The city has many outdoor spaces for recreation."
+          },
+          {
+            "frontContent": "walking trails",
+            "backContent": "Nghĩa: đường mòn đi bộ\nPhát âm: None\nVí dụ: The park has several walking trails."
+          },
+          {
+            "frontContent": "scenic landscape",
+            "backContent": "Nghĩa: phong cảnh đẹp\nPhát âm: None\nVí dụ: The area had a scenic landscape."
+          },
+          {
+            "frontContent": "multicultural neighborhood",
+            "backContent": "Nghĩa: khu dân cư đa văn hóa\nPhát âm: None\nVí dụ: The city is known for its multicultural neighborhoods."
+          },
+          {
+            "frontContent": "cultural diversity",
+            "backContent": "Nghĩa: sự đa dạng văn hóa\nPhát âm: None\nVí dụ: The city celebrates its cultural diversity."
+          },
+          {
+            "frontContent": "career prospects",
+            "backContent": "Nghĩa: triển vọng nghề nghiệp\nPhát âm: None\nVí dụ: The job offers excellent career prospects."
+          }
+        ]
+      }
+    }
+  ]
+}

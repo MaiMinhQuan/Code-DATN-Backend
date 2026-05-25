@@ -1,0 +1,10 @@
+google-api-python-client==2.136.0
+yt-dlp>=2024.1.0
+openai>=1.0.0
+requests==2.32.3
+python-dotenv==1.0.1
+isodate==0.6.1
+ddgs>=7.0.0
+pymongo>=4.0.0
+beautifulsoup4>=4.12.0
+lxml>=5.0.0

@@ -14,7 +14,7 @@ async function clear() {
     console.log(`🗑️  Cleared: ${name}`);
   }
 
-  console.log("\n✅ All collections cleared");
+  console.log("\n All collections cleared");
   await mongoose.disconnect();
   process.exit(0);
 }
