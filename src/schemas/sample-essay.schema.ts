@@ -1,7 +1,7 @@
 // Schema SampleEssay: bài mẫu + highlight annotation (embed).
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document, Types } from "mongoose";
-import { TargetBand, HighlightType } from "@/common/enums";
+import { HighlightType } from "@/common/enums";
 
 @Schema({ _id: false })
 export class HighlightAnnotation {
@@ -31,9 +31,6 @@ export class SampleEssay {
   @Prop({ required: true })
   questionPrompt: string;
 
-  @Prop({ type: String, enum: TargetBand, required: true })
-  targetBand: TargetBand;
-
   @Prop({ required: true })
   outlineContent: string;
 
@@ -52,14 +49,14 @@ export class SampleEssay {
   @Prop()
   authorName?: string;
 
-  @Prop({ type: Number, min: 0, max: 9 })
-  overallBandScore?: number;
+  @Prop({ type: Number, required: true, min: 0, max: 9 })
+  overallBandScore: number;
 }
 
 export const SampleEssaySchema = SchemaFactory.createForClass(SampleEssay);
 
 // Index phục vụ filter/sort
 SampleEssaySchema.index({ topicId: 1 });
-SampleEssaySchema.index({ targetBand: 1 });
+SampleEssaySchema.index({ overallBandScore: 1 });
 SampleEssaySchema.index({ isPublished: 1 });
 SampleEssaySchema.index({ favoriteCount: -1 }); // descending for popularity sorting

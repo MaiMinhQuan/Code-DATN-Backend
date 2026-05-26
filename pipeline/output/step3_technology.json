@@ -13,8 +13,8 @@
           "definition": "The subjects that are taught in a school, college, etc., or the things that are studied in a particular subject.",
           "translation": "chương trình học",
           "examples": [
-            "The school has a very broad curriculum.",
-            "The curriculum includes history, science, and mathematics."
+            "The school has a new curriculum for science.",
+            "The curriculum includes history, geography, and mathematics."
           ],
           "context_sentence": "this is a 40 topic curriculum.",
           "timestamp": 16.8
@@ -22,10 +22,10 @@
         {
           "word": "golden period",
           "pronunciation": "/ˈɡəʊldən ˈpɪəriəd/",
-          "definition": "A time of great success, happiness, or prosperity.",
+          "definition": "A period of time that is very successful or enjoyable.",
           "translation": "giai đoạn vàng",
           "examples": [
-            "The company is enjoying a golden period of growth.",
+            "The company is experiencing a golden period of growth.",
             "The 1920s were a golden period for jazz music."
           ],
           "context_sentence": "But for me right now, this is a real golden period.",
@@ -37,8 +37,8 @@
           "definition": "A person who is enthusiastic about new technology.",
           "translation": "người yêu công nghệ",
           "examples": [
-            "He is a true technophile, always eager to try the latest gadgets.",
-            "Technophiles often embrace technological advancements quickly."
+            "He is a technophile and always buys the latest gadgets.",
+            "Technophiles are eager to embrace new technological advancements."
           ],
           "context_sentence": "The first group are called technophiles.",
           "timestamp": 101.3
@@ -46,11 +46,11 @@
         {
           "word": "technophobe",
           "pronunciation": "/ˈtɛknəfəʊb/",
-          "definition": "A person who dislikes or fears new technology.",
+          "definition": "A person who dislikes or is afraid of new technology.",
           "translation": "người sợ công nghệ",
           "examples": [
             "My grandmother is a technophobe and struggles with computers.",
-            "Technophobes may avoid using new technologies due to fear or lack of understanding."
+            "Technophobes often avoid using modern technology."
           ],
           "context_sentence": "The second group are called technophobes.",
           "timestamp": 105.3
@@ -59,10 +59,10 @@
           "word": "gadget",
           "pronunciation": "/ˈɡædʒɪt/",
           "definition": "A small, useful machine or device.",
-          "translation": "tiện ích",
+          "translation": "tiện ích, đồ dùng",
           "examples": [
             "I have a lot of gadgets in my kitchen.",
-            "This new gadget can translate languages in real time."
+            "This new gadget can translate any language."
           ],
           "context_sentence": "What gadgets do you use on a daily basis?",
           "timestamp": 174.9
@@ -74,7 +74,7 @@
           "translation": "ngay lập tức",
           "examples": [
             "I knew immediately that something was wrong.",
-            "The doctor told me to call him immediately if the symptoms worsened."
+            "The fire alarm went off immediately."
           ],
           "context_sentence": "The ones that come to my mind immediately are my phone, my laptop,",
           "timestamp": 182.9
@@ -85,34 +85,22 @@
           "definition": "To improve something or make it more modern.",
           "translation": "nâng cấp",
           "examples": [
-            "I decided to upgrade my computer.",
-            "The company is planning to upgrade its software."
+            "I need to upgrade my computer.",
+            "The company upgraded its software."
           ],
           "context_sentence": "but last year I decided to upgrade to kind of a top of the range.",
           "timestamp": 232.9
         },
         {
-          "word": "intuitive",
-          "pronunciation": "/ɪnˈtjuːɪtɪv/",
-          "definition": "Using or based on intuition; readily learned or understood.",
-          "translation": "trực quan",
-          "examples": [
-            "The software has an intuitive interface.",
-            "The design is intuitive and easy to use."
-          ],
-          "context_sentence": "You know, it's quite an intuitive design, so it's quite easy to learn how to use it,",
-          "timestamp": 273.2
-        },
-        {
           "word": "videography",
-          "pronunciation": "/vɪdiˈɒɡrəfi/",
+          "pronunciation": "/ˌvɪdiˈɒɡrəfi/",
           "definition": "The process or art of making videos.",
-          "translation": "quay phim",
+          "translation": "nghệ thuật quay phim",
           "examples": [
-            "He has a passion for videography.",
-            "She is studying videography at university."
+            "He is studying videography at university.",
+            "Her passion is videography and creating short films."
           ],
-          "context_sentence": "because as I said, I do like videography, particularly, I want to take good videos of my daughter",
+          "context_sentence": "because as I said, I do like videography, particularly,",
           "timestamp": 293.2
         },
         {
@@ -122,7 +110,7 @@
           "translation": "lỗi thời",
           "examples": [
             "Many traditional farming methods have become obsolete.",
-            "The technology has quickly become obsolete."
+            "This technology is now obsolete."
           ],
           "context_sentence": "A lot of other technology became obsolete.",
           "timestamp": 394.4
@@ -130,22 +118,22 @@
         {
           "word": "game changer",
           "pronunciation": "/ˈɡeɪm ˌtʃeɪndʒər/",
-          "definition": "A new idea, method, or thing that completely changes the way that something is done.",
+          "definition": "A new idea, method, or product that completely changes the way that people do something.",
           "translation": "thay đổi cuộc chơi",
           "examples": [
-            "The invention of the printing press was a game changer.",
-            "This new technology is a real game changer for the industry."
+            "The invention of the internet was a game changer.",
+            "This new software is a game changer for our business."
           ],
-          "context_sentence": "because it was a real game changer.",
+          "context_sentence": "I think the the biggest technological development that comes to my mind is the phone, the smart phone, because it was a real game changer.",
           "timestamp": 383.8
         },
         {
-          "word": "reliance",
-          "pronunciation": "/rɪˈlaɪəns/",
+          "word": "reliance on",
+          "pronunciation": "/rɪˈlaɪəns ɒn/",
           "definition": "The state of depending on or trusting in something or someone.",
-          "translation": "sự phụ thuộc",
+          "translation": "sự phụ thuộc vào",
           "examples": [
-            "Our reliance on fossil fuels is unsustainable.",
+            "Our reliance on fossil fuels is causing environmental problems.",
             "There is an increasing reliance on technology in education."
           ],
           "context_sentence": "Another one that comes to my mind is our reliance on maps",
@@ -154,11 +142,11 @@
         {
           "word": "distraction",
           "pronunciation": "/dɪˈstrækʃən/",
-          "definition": "A thing that prevents someone from concentrating on something else.",
+          "definition": "A thing that prevents someone from giving their attention to something else.",
           "translation": "sự xao nhãng",
           "examples": [
-            "The noise was a distraction.",
-            "Social media can be a major distraction for students."
+            "The noise was a distraction during the exam.",
+            "He found it hard to work with so many distractions."
           ],
           "context_sentence": "I find that phones are a distraction.",
           "timestamp": 525.6
@@ -166,18 +154,51 @@
       ],
       "grammar": [
         {
-          "title": "Present Perfect Tense",
-          "explanation": "Used to describe an action that started in the past and continues to the present or has a result in the present.",
+          "title": "Use of 'Whether' to introduce alternatives",
+          "explanation": "Used to introduce two or more possibilities or choices.",
+          "structure": "Whether + clause, or + clause",
+          "examples": [
+            "I don't know whether I should go or stay.",
+            "Whether you like it or not, you have to do it."
+          ],
+          "context_sentence": "Whether it's work, I'm using my laptop, my phone",
+          "timestamp": 152.4
+        },
+        {
+          "title": "Use of 'Whether' to introduce alternatives",
+          "explanation": "Used to introduce two or more possibilities or choices.",
+          "structure": "Whether + clause, or + clause",
+          "examples": [
+            "I don't know whether I should go or stay.",
+            "Whether you like it or not, you have to do it."
+          ],
+          "context_sentence": "Whether it's work, I'm using my laptop, my phone",
+          "timestamp": 152.4
+        },
+        {
+          "title": "Use of 'Whether' to introduce alternatives",
+          "explanation": "Used to introduce two or more possibilities or choices.",
+          "structure": "Whether + clause, or + clause",
+          "examples": [
+            "I don't know whether I should go or stay.",
+            "Whether you like it or not, you have to do it."
+          ],
+          "context_sentence": "Whether it's work, I'm using my laptop, my phone",
+          "timestamp": 152.4
+        },
+        {
+          "title": "Present Perfect Simple",
+          "explanation": "Used to describe an action that started in the past and continues to the present, or an action completed in the recent past.",
           "structure": "Subject + have/has + past participle",
           "examples": [
             "I have lived here for five years.",
             "She has finished her homework."
           ],
           "context_sentence": "I've always had kind of okay phones, but last year I decided to upgrade",
-          "timestamp": 226.7
+          "timestamp": 228.9
         },
         {
-          "title": "Past Perfect Tense",
+          "title": "Past Perfect Simple",
           "explanation": "Used to describe an action that was completed before another action in the past.",
           "structure": "Subject + had + past participle",
           "examples": [
@@ -188,59 +209,26 @@
           "timestamp": 311.2
         },
         {
-          "title": "Use of 'Whether' to introduce alternatives",
-          "explanation": "Used to introduce two or more possibilities.",
-          "structure": "Whether + clause",
+          "title": "Passive Voice",
+          "explanation": "Used when the action is more important than the actor.",
+          "structure": "Subject + be + past participle (by + agent)",
           "examples": [
-            "I don't know whether I should go or stay.",
-            "She's not sure whether to buy the red dress or the blue one."
+            "The book was written by him.",
+            "The house is being built."
           ],
-          "context_sentence": "Whether it's work, I'm using my laptop, my phone equipment for my podcast or sports.",
-          "timestamp": 152.4
+          "context_sentence": "So perhaps people's sense of direction, finding our way, that's getting worse nowadays.",
+          "timestamp": 494.4
         },
         {
-          "title": "Use of 'For example' to introduce examples",
-          "explanation": "Used to introduce a specific instance to illustrate a point.",
-          "structure": "For example, + sentence",
+          "title": "Conditional Sentences (Type 1)",
+          "explanation": "Used to talk about possible situations and their consequences in the future.",
+          "structure": "If + present simple, will + base form",
           "examples": [
-            "For example, the price of gasoline has increased.",
-            "For example, many people enjoy playing sports."
+            "If it rains, I will stay home.",
+            "If she studies hard, she will pass the exam."
           ],
-          "context_sentence": "For example, people rely on modern technology for writing",
-          "timestamp": 459.7
-        },
-        {
-          "title": "Use of 'because' to express reason",
-          "explanation": "Used to introduce the reason for something.",
-          "structure": "Sentence + because + clause",
-          "examples": [
-            "I am happy because I passed the exam.",
-            "She is tired because she worked all day."
-          ],
-          "context_sentence": "I think the the biggest technological development that comes to my mind is the phone, because it was a real game changer.",
-          "timestamp": 379.5
-        },
-        {
-          "title": "Use of 'so' to express result",
-          "explanation": "Used to introduce the result or consequence of something.",
-          "structure": "Sentence + so + clause",
-          "examples": [
-            "It was raining, so I took an umbrella.",
-            "He was tired, so he went to bed early."
-          ],
-          "context_sentence": "So I was excited to have this that I can carry around with me day to day.",
-          "timestamp": 250.3
-        },
-        {
-          "title": "Use of 'not only...but also'",
-          "explanation": "Used to add information and emphasize a point.",
-          "structure": "Not only + auxiliary verb + subject + ... but also ...",
-          "examples": [
-            "She is not only intelligent but also kind.",
-            "He not only speaks English but also French."
-          ],
-          "context_sentence": "And it didn't disappoint. I was really impressed.",
-          "timestamp": 260.1
+          "context_sentence": "if there's something you care about and you're really interested in, use it.",
+          "timestamp": 581.0
         }
       ]
     },
@@ -255,23 +243,23 @@
           "definition": "difficult in an interesting or enjoyable way",
           "translation": "thử thách",
           "examples": [
-            "The exam was challenging.",
-            "It's a challenging task to learn a new language."
+            "The exam was challenging but rewarding.",
+            "It's a challenging task, but I'm confident I can do it."
           ],
           "context_sentence": "I've selected quite a challenging topic that was used in real exams",
           "timestamp": 26.8
         },
         {
           "word": "to what extent",
-          "pronunciation": " /tuː wɒt ɪkˈstɛnt/",
+          "pronunciation": "/tuː wɒt ɪkˈstɛnt/",
           "definition": "used to ask or talk about how much something is true or how great something is",
           "translation": "ở mức độ nào",
           "examples": [
             "To what extent do you agree with this statement?",
-            "To what extent is climate change caused by humans?"
+            "To what extent is this problem serious?"
           ],
-          "context_sentence": "to what extent do you agree or disagree so this is an opinion essay",
-          "timestamp": 61.0
+          "context_sentence": "to what extent do you agree or disagree you know the rest right write it",
+          "timestamp": 45.5
         },
         {
           "word": "maintain",
@@ -279,20 +267,20 @@
           "definition": "to keep something at the same level or standard",
           "translation": "duy trì",
           "examples": [
-            "He maintained his composure despite the pressure.",
-            "The company is struggling to maintain its market share."
+            "The company is struggling to maintain its market share.",
+            "It's important to maintain a healthy lifestyle."
           ],
           "context_sentence": "your ability to maintain a good point of view",
           "timestamp": 77.1
         },
         {
           "word": "pressing",
-          "pronunciation": "/ˈpresɪŋ/",
-          "definition": "urgent; needing to be dealt with immediately",
+          "pronunciation": "/ˈprɛsɪŋ/",
+          "definition": "urgent or needing to be dealt with immediately",
           "translation": "cấp bách",
           "examples": [
-            "The government is facing pressing economic problems.",
-            "There are pressing issues that need to be addressed."
+            "There are pressing issues that need to be addressed.",
+            "The government is facing pressing economic problems."
           ],
           "context_sentence": "that even though there are pressing problems on Earth this is still money well spent",
           "timestamp": 107.9
@@ -300,23 +288,23 @@
         {
           "word": "diverting",
           "pronunciation": "/daɪˈvɜːrtɪŋ/",
-          "definition": "to change the use or purpose of something",
+          "definition": "to change the use of something, especially money or resources",
           "translation": "chuyển hướng",
           "examples": [
-            "The government is diverting funds from education to defense.",
-            "The company diverted resources to a new project."
+            "The company is diverting resources to a new project.",
+            "The government is diverting funds from education to defense."
           ],
           "context_sentence": "I firmly believe that diverting financial resources from space exploration would be a mistake",
           "timestamp": 306.6
         },
         {
-          "word": "benefits",
-          "pronunciation": "/ˈbenɪfɪts/",
-          "definition": "an advantage or profit gained from something",
-          "translation": "lợi ích",
+          "word": "benefits to humanity",
+          "pronunciation": "/ˈbɛnɪfɪts tuː hjuːˈmænɪti/",
+          "definition": "positive effects or advantages for all people",
+          "translation": "lợi ích cho nhân loại",
           "examples": [
-            "The benefits of exercise are well-known.",
-            "The company offers a range of benefits to its employees."
+            "Technological advancements have brought numerous benefits to humanity.",
+            "The discovery of penicillin was a major benefit to humanity."
           ],
           "context_sentence": "these projects have brought and will continue to bring great benefits to humanity",
           "timestamp": 314.6
@@ -324,35 +312,35 @@
         {
           "word": "paraphrasing",
           "pronunciation": "/ˈpærəfreɪzɪŋ/",
-          "definition": "to express the meaning of something using different words, especially to achieve greater clarity",
+          "definition": "expressing the meaning of something using different words, especially to achieve greater clarity",
           "translation": "diễn giải",
           "examples": [
-            "The student was asked to paraphrase the passage.",
-            "Paraphrasing can help you understand the text better."
+            "The student was able to paraphrase the complex text.",
+            "Paraphrasing is an important skill for academic writing."
           ],
           "context_sentence": "In the first notice the paraphrasing spend too much money on Space research becomes the millions",
           "timestamp": 330.7
         },
         {
-          "word": "urgent",
-          "pronunciation": "/ˈɜːrdʒənt/",
-          "definition": "needing immediate attention",
-          "translation": "khẩn cấp",
+          "word": "urgent issues",
+          "pronunciation": "/ˈɜːrdʒənt ˈɪʃuːz/",
+          "definition": "serious problems that need immediate attention",
+          "translation": "vấn đề cấp bách",
           "examples": [
-            "The situation requires urgent action.",
-            "The doctor said the patient needed urgent care."
+            "Climate change is one of the most urgent issues facing the world today.",
+            "The government must address the urgent issues of poverty and inequality."
           ],
-          "context_sentence": "would be better invested in addressing urgent issues on this planet",
+          "context_sentence": "would be better invested in addressing urgent issues on this planet the",
           "timestamp": 284.5
         },
         {
           "word": "facilitated",
           "pronunciation": "/fəˈsɪlɪteɪtɪd/",
-          "definition": "to make an action or process easier",
+          "definition": "made an action or process easy or easier",
           "translation": "tạo điều kiện",
           "examples": [
-            "The new software facilitates communication.",
-            "The teacher facilitated a discussion among the students."
+            "The new software facilitated the work of the team.",
+            "The new road facilitated trade between the two countries."
           ],
           "context_sentence": "have not only facilitated scientific advances in areas such as weather monitoring and navigation",
           "timestamp": 487.3
@@ -364,97 +352,119 @@
           "translation": "sâu sắc",
           "examples": [
             "The experience had a profound effect on her.",
-            "The philosopher's ideas were profound."
+            "The book offers a profound insight into human nature."
           ],
-          "context_sentence": "we have witnessed profound changes in the way we connect with each other",
+          "context_sentence": "we have witnessed profound changes in the way we connect with each other using the internet to",
           "timestamp": 516.7
         },
         {
           "word": "interconnected",
-          "pronunciation": "/ˌɪntərkəˈnektɪd/",
+          "pronunciation": "/ˌɪntərkəˈnɛktɪd/",
           "definition": "connected with each other",
           "translation": "liên kết",
           "examples": [
             "The world is becoming increasingly interconnected.",
-            "The internet has interconnected people all over the world."
+            "The internet has made the world more interconnected."
           ],
           "context_sentence": "satellite technology has interconnected the world shaping the way we live today",
           "timestamp": 539.4
         },
         {
           "word": "spin-offs",
-          "pronunciation": "/ˈspɪnɒfs/",
+          "pronunciation": "/ˈspɪnˌɒfs/",
           "definition": "a useful result of an activity designed to produce something else",
           "translation": "sản phẩm phụ",
           "examples": [
-            "Many spin-offs have resulted from space exploration.",
-            "The company developed a spin-off product from its main line."
+            "The company's research led to several spin-offs.",
+            "Space exploration has resulted in many technological spin-offs."
           ],
           "context_sentence": "these spinoffs cover a wide range from comfortable memory phone mattresses to Tiny cameras in Mobile",
           "timestamp": 772.1
         },
         {
-          "word": "yield",
-          "pronunciation": "/jiːld/",
-          "definition": "to produce or provide something",
-          "translation": "mang lại",
+          "word": "cutting-edge",
+          "pronunciation": "/ˌkʌtɪŋ ˈɛdʒ/",
+          "definition": "the newest and most advanced",
+          "translation": "tối tân",
           "examples": [
-            "The research yielded some surprising results.",
-            "The investment is expected to yield a good return."
+            "The company uses cutting-edge technology.",
+            "They are developing cutting-edge medical treatments."
           ],
-          "context_sentence": "how Innovations originally intended for space exploration continue to yield practical benefits",
-          "timestamp": 803.9
+          "context_sentence": "We have some topic specific vocabulary which is great to have cuttingedge Technologies to mean",
+          "timestamp": 819.5
         },
         {
           "word": "expenditure",
-          "pronunciation": "/ɪkˈspendɪtʃər/",
+          "pronunciation": "/ɪkˈspɛndɪtʃər/",
           "definition": "the action of spending funds",
           "translation": "chi tiêu",
           "examples": [
-            "Government expenditure on healthcare has increased.",
-            "The company's expenditure was higher than expected."
+            "The government's expenditure on education has increased.",
+            "The company needs to reduce its expenditure."
           ],
-          "context_sentence": "there is no doubt that the expenditure on Space research is enormous",
+          "context_sentence": "there is no doubt that the expenditure on Space research is enormous this",
           "timestamp": 890.4
         }
       ],
       "grammar": [
         {
-          "title": "To what extent questions",
-          "explanation": "Understanding the structure and requirements of 'To what extent do you agree/disagree' essay questions.",
-          "structure": "Question: To what extent do you agree or disagree?",
-          "examples": [
-            "To what extent do you agree with the statement?",
-            "To what extent is this a problem?"
-          ],
-          "context_sentence": "to what extent do you agree or disagree so this is an opinion essay",
-          "timestamp": 61.0
-        },
-        {
           "title": "Complex Sentences with 'Although'",
-          "explanation": "Using 'although' to create complex sentences and show contrast.",
-          "structure": "Although + clause, clause.",
+          "explanation": "Using 'although' (or 'though') to introduce a concessive clause, showing contrast.",
+          "structure": "Although/Though + clause, clause.",
           "examples": [
             "Although it was raining, we went for a walk.",
-            "Although she was tired, she kept working."
+            "Though she was tired, she kept working."
           ],
-          "context_sentence": "Although there are undoubtedly many problems on Earth that need tackling I firmly believe that diverting financial resources from space exploration would be a mistake",
+          "context_sentence": "Although there are undoubtedly many problems on Earth that need tackling I firmly believe that diverting financial resources from space",
           "timestamp": 292.4
         },
         {
-          "title": "Present Perfect Tense",
-          "explanation": "Using the present perfect tense to show the ongoing effects of past actions.",
-          "structure": "Subject + have/has + past participle",
+          "title": "Paraphrasing with Passive Voice",
+          "explanation": "Changing active voice to passive voice to rephrase the question.",
+          "structure": "Object + be + past participle + (by + subject)",
           "examples": [
-            "I have lived here for five years.",
-            "She has finished her homework."
+            "The government spends too much money -> The millions spent annually on government funded space projects...",
+            "They are building a new bridge -> A new bridge is being built."
           ],
-          "context_sentence": "to show how developments which began some time ago continue to have effect on us today",
-          "timestamp": 660.8
+          "context_sentence": "spend too much money on Space research becomes the millions spent on government funded space projects would be better invested",
+          "timestamp": 330.7
         },
         {
-          "title": "Using Present Participles",
-          "explanation": "Using present participles (-ing) to combine sentences and add detail.",
+          "title": "Using Commas with Dependent Clauses",
+          "explanation": "Correct punctuation when a dependent clause starts a sentence.",
+          "structure": "Dependent clause, independent clause.",
+          "examples": [
+            "Because it was raining, we stayed inside.",
+            "If you study hard, you will pass the exam."
+          ],
+          "context_sentence": "In this complex sentence very important we need a comma examiners do check if you punctuate correctly so we have our",
+          "timestamp": 378.0
+        },
+        {
+          "title": "Topic Sentences",
+          "explanation": "Starting a paragraph with a sentence that introduces the main idea.",
+          "structure": "A clear statement of the paragraph's focus.",
+          "examples": [
+            "The development of satellite technology has greatly improved our lives.",
+            "There are several benefits to the use of renewable energy."
+          ],
+          "context_sentence": "we're going to start with the topic sentence and then give some examples and make any relevant comments",
+          "timestamp": 436.1
+        },
+        {
+          "title": "Not only...but also...",
+          "explanation": "A correlative conjunction used to emphasize two related points.",
+          "structure": "Not only + auxiliary verb + subject + verb, but also + verb...",
+          "examples": [
+            "Not only did he pass the exam, but he also got a scholarship.",
+            "Satellites have not only helped scientists make progress, but have also changed our daily lives."
+          ],
+          "context_sentence": "satellites orbiting the Earth have not only facilitated scientific advances but have also transformed our daily lives",
+          "timestamp": 564.3
+        },
+        {
+          "title": "Using Present Participles for Sentence Variety",
+          "explanation": "Using -ing forms to combine sentences and add detail.",
           "structure": "Clause, + V-ing + ...",
           "examples": [
             "She walked to the store, buying some milk.",
@@ -464,37 +474,26 @@
           "timestamp": 637.0
         },
         {
-          "title": "Not only... but also...",
-          "explanation": "Using 'not only... but also...' to present two related ideas.",
-          "structure": "Not only + auxiliary verb + subject + but also...",
+          "title": "Present Perfect Tense",
+          "explanation": "Using the present perfect to show the ongoing impact of past events.",
+          "structure": "Have/has + past participle",
           "examples": [
-            "Not only is he intelligent, but he is also kind.",
-            "She is not only a talented singer, but also a great dancer."
+            "I have lived here for five years.",
+            "She has finished her work."
           ],
-          "context_sentence": "satellites orbiting the Earth have not only facilitated scientific advances but have also transformed our daily lives",
-          "timestamp": 564.3
+          "context_sentence": "the verb tense is mainly the present perfect to show how developments which began some time ago continue to have effect on",
+          "timestamp": 660.8
         },
         {
           "title": "Referencing",
-          "explanation": "Using pronouns and demonstratives to refer back to previous ideas.",
-          "structure": "Pronoun/demonstrative + noun",
+          "explanation": "Using pronouns and other words to refer back to previously mentioned ideas.",
+          "structure": "Using words like 'these', 'this', 'it', etc. to connect ideas.",
           "examples": [
-            "This is a good example.",
-            "These are the results."
+            "These examples illustrate the point.",
+            "It is important to remember the main idea."
           ],
           "context_sentence": "be careful to use referencing in your essay because examiners check if you do now",
           "timestamp": 860.8
-        },
-        {
-          "title": "Linking words",
-          "explanation": "Using linking words to connect ideas between sentences and paragraphs.",
-          "structure": "Linking word, + sentence",
-          "examples": [
-            "However, the results were different.",
-            "Furthermore, the study showed..."
-          ],
-          "context_sentence": "Furthermore carton AG Technologies initially developed for space exploration have been successfully adapted and turned into every typ products we use on Earth",
-          "timestamp": 730.4
         }
       ]
     }

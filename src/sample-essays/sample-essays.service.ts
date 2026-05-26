@@ -13,14 +13,47 @@ export class SampleEssaysService {
     @InjectModel(SampleEssay.name) private sampleEssayModel: Model<SampleEssayDocument>,
   ) {}
 
+  private applyBandFilter(
+    filter: Record<string, unknown>,
+    minBand?: number,
+    maxBand?: number,
+    legacyTargetBand?: TargetBand,
+  ) {
+    let min = minBand;
+    let max = maxBand;
+
+    if (legacyTargetBand && min === undefined && max === undefined) {
+      if (legacyTargetBand === TargetBand.BAND_7_PLUS) {
+        min = 7;
+        max = 9;
+      } else if (legacyTargetBand === TargetBand.BAND_6_0) {
+        min = 6;
+        max = 6.5;
+      } else if (legacyTargetBand === TargetBand.BAND_5_0) {
+        min = 0;
+        max = 5.5;
+      }
+    }
+
+    if (min !== undefined || max !== undefined) {
+      const bandFilter: Record<string, number> = {};
+      if (min !== undefined) bandFilter.$gte = min;
+      if (max !== undefined) bandFilter.$lte = max;
+      filter.overallBandScore = bandFilter;
+    }
+  }
+
   /*
-  Danh sách bài mẫu (chỉ isPublished=true), có thể filter theo topic/band
-  Input:
-    - topicId — id topic (optional)
-    - targetBand — band (optional)
-   */
-  async findAll(topicId?: string, targetBand?: TargetBand, isPublished?: boolean): Promise<SampleEssay[]> {
-    const filter: any = {};
+  Danh sách bài mẫu, filter theo topic / overallBandScore (minBand, maxBand).
+  */
+  async findAll(
+    topicId?: string,
+    minBand?: number,
+    maxBand?: number,
+    legacyTargetBand?: TargetBand,
+    isPublished?: boolean,
+  ): Promise<SampleEssay[]> {
+    const filter: Record<string, unknown> = {};
 
     if (isPublished !== undefined) {
       filter.isPublished = isPublished;
@@ -33,9 +66,7 @@ export class SampleEssaysService {
       filter.topicId = new Types.ObjectId(topicId);
     }
 
-    if (targetBand) {
-      filter.targetBand = targetBand;
-    }
+    this.applyBandFilter(filter, minBand, maxBand, legacyTargetBand);
 
     return this.sampleEssayModel
       .find(filter)
@@ -44,11 +75,6 @@ export class SampleEssaysService {
       .exec();
   }
 
-  /*
-  Chi tiết bài mẫu theo id
-  Input:
-    - id — id essay
-   */
   async findOne(id: string): Promise<SampleEssay> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("ID không hợp lệ");
@@ -66,19 +92,7 @@ export class SampleEssaysService {
     return essay;
   }
 
-  /*
-  Tạo bài mẫu mới (validate topicId tồn tại)
-  Input:
-    - createDto — body request
-   */
-  private calcTargetBand(score: number): TargetBand {
-    if (score >= 7.0) return TargetBand.BAND_7_PLUS;
-    if (score >= 6.0) return TargetBand.BAND_6_0;
-    return TargetBand.BAND_5_0;
-  }
-
   async create(createDto: CreateSampleEssayDto): Promise<SampleEssay> {
-    // Verify the topic document exists before creating the essay
     const topicExists = await this.sampleEssayModel.db
       .collection("topics")
       .findOne({ _id: new Types.ObjectId(createDto.topicId) });
@@ -87,37 +101,21 @@ export class SampleEssaysService {
       throw new BadRequestException("Topic không tồn tại");
     }
 
-    const dto = createDto as any;
-    if (dto.overallBandScore > 0) {
-      dto.targetBand = this.calcTargetBand(Number(dto.overallBandScore));
-    }
-
     const newEssay = new this.sampleEssayModel({
-      ...dto,
+      ...createDto,
       favoriteCount: 0,
     });
 
     return newEssay.save();
   }
 
-  /*
-  Cập nhật bài mẫu (validate topicId nếu đổi)
-  Input:
-    - id — id essay
-    - updateDto — body request
-   */
   async update(id: string, updateDto: UpdateSampleEssayDto): Promise<SampleEssay> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("ID không hợp lệ");
     }
 
-    const dto = updateDto as any;
+    const dto = updateDto as CreateSampleEssayDto & UpdateSampleEssayDto;
 
-    if (dto.overallBandScore > 0) {
-      dto.targetBand = this.calcTargetBand(Number(dto.overallBandScore));
-    }
-
-    // Nếu đổi topicId thì validate topic tồn tại
     if (dto.topicId) {
       const topicExists = await this.sampleEssayModel.db
         .collection("topics")
@@ -140,17 +138,11 @@ export class SampleEssaysService {
     return updatedEssay;
   }
 
-  /*
-  Ẩn bài mẫu (soft-delete: isPublished=false)
-  Input:
-    - id — id essay
-   */
   async remove(id: string): Promise<{ message: string }> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("ID không hợp lệ");
     }
 
-    // Soft delete: chỉ ẩn bằng isPublished=false
     const essay = await this.sampleEssayModel
       .findByIdAndUpdate(id, { isPublished: false }, { new: true })
       .exec();

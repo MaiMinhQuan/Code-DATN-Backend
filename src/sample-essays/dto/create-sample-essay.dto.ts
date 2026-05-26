@@ -2,7 +2,6 @@
 import {
   IsString,
   IsNotEmpty,
-  IsEnum,
   IsOptional,
   IsNumber,
   IsMongoId,
@@ -14,7 +13,6 @@ import {
   MaxLength,
 } from "class-validator";
 import { Type } from "class-transformer";
-import { TargetBand } from "../../common/enums";
 import { HighlightAnnotationDto } from "./highlight-annotation.dto";
 
 export class CreateSampleEssayDto {
@@ -30,9 +28,6 @@ export class CreateSampleEssayDto {
   @IsString()
   @IsNotEmpty({ message: "Đề bài không được để trống" })
   questionPrompt: string;
-
-  @IsEnum(TargetBand, { message: "targetBand phải là BAND_5_0, BAND_6_0, hoặc BAND_7_PLUS" })
-  targetBand: TargetBand;
 
   @IsString()
   @IsNotEmpty({ message: "Dàn ý không được để trống" })
@@ -57,9 +52,8 @@ export class CreateSampleEssayDto {
   @MaxLength(100)
   authorName?: string;
 
-  @IsOptional()
   @IsNumber()
   @Min(0)
   @Max(9)
-  overallBandScore?: number;
+  overallBandScore: number;
 }

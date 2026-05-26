@@ -37,6 +37,7 @@ export enum ErrorCategory {
 export enum AIProvider {
   GEMINI = "GEMINI",
   MISTRAL = "MISTRAL",
+  HUGGINGFACE = "HUGGINGFACE",
 }
 
 export enum FlashcardSetType {

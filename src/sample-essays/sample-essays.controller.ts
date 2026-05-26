@@ -18,55 +18,54 @@ import { RolesGuard } from "../auth/guards/roles.guard";
 import { Roles } from "../auth/decorators/roles.decorator";
 import { UserRole, TargetBand } from "../common/enums";
 
+function parseBandQuery(value?: string): number | undefined {
+  if (value === undefined || value === "") return undefined;
+  const n = Number(value);
+  return Number.isFinite(n) ? n : undefined;
+}
+
 @Controller("sample-essays")
 export class SampleEssaysController {
   constructor(private readonly sampleEssaysService: SampleEssaysService) {}
 
-  /*
-  GET /sample-essays — danh sách bài mẫu công khai (isPublished=true)
-  Input:
-    - topicId — query optional
-    - targetBand — query optional
-   */
   @Get()
   async findAll(
     @Query("topicId") topicId?: string,
+    @Query("minBand") minBand?: string,
+    @Query("maxBand") maxBand?: string,
     @Query("targetBand") targetBand?: TargetBand,
   ) {
-    return this.sampleEssaysService.findAll(topicId, targetBand, true);
+    return this.sampleEssaysService.findAll(
+      topicId,
+      parseBandQuery(minBand),
+      parseBandQuery(maxBand),
+      targetBand,
+      true,
+    );
   }
 
-  /*
-  GET /sample-essays/admin/all — danh sách tất cả bài mẫu (admin, kể cả nháp)
-  Input:
-    - topicId — query optional
-    - targetBand — query optional
-   */
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Get("admin/all")
   async findAllAdmin(
     @Query("topicId") topicId?: string,
+    @Query("minBand") minBand?: string,
+    @Query("maxBand") maxBand?: string,
     @Query("targetBand") targetBand?: TargetBand,
   ) {
-    return this.sampleEssaysService.findAll(topicId, targetBand);
+    return this.sampleEssaysService.findAll(
+      topicId,
+      parseBandQuery(minBand),
+      parseBandQuery(maxBand),
+      targetBand,
+    );
   }
 
-  /*
-  GET /sample-essays/:id — chi tiết bài mẫu
-  Input:
-    - id — id essay trên URL
-   */
   @Get(":id")
   async findOne(@Param("id") id: string) {
     return this.sampleEssaysService.findOne(id);
   }
 
-  /*
-  POST /sample-essays — tạo bài mẫu (admin)
-  Input:
-    - createDto — body request
-   */
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Post()
@@ -74,12 +73,6 @@ export class SampleEssaysController {
     return this.sampleEssaysService.create(createDto);
   }
 
-  /*
-  PATCH /sample-essays/:id — cập nhật bài mẫu (admin)
-  Input:
-    - id — id essay trên URL
-    - updateDto — body request
-   */
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Patch(":id")
@@ -90,11 +83,6 @@ export class SampleEssaysController {
     return this.sampleEssaysService.update(id, updateDto);
   }
 
-  /*
-  DELETE /sample-essays/:id — ẩn bài mẫu (admin)
-  Input:
-    - id — id essay trên URL
-   */
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Delete(":id")

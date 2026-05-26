@@ -312,7 +312,6 @@ def _seed_essays(db, topic_name: str, topic_id: ObjectId, dry_run: bool):
             "title": se["title"],
             "topicId": topic_id,
             "questionPrompt": se["questionPrompt"],
-            "targetBand": _calc_target_band(float(band_score)) if band_score else se.get("targetBand", "BAND_7_PLUS"),
             "outlineContent": se.get("outlineContent", ""),
             "fullEssayContent": se["fullEssayContent"],
             "highlightAnnotations": [
@@ -324,7 +323,7 @@ def _seed_essays(db, topic_name: str, topic_id: ObjectId, dry_run: bool):
                 }
                 for a in se.get("highlightAnnotations", [])
             ],
-            "overallBandScore": se.get("overallBandScore", 0),
+            "overallBandScore": float(band_score) if band_score else 7.0,
             "authorName": se.get("authorName", ""),
             "isPublished": False,
             "favoriteCount": 0,
