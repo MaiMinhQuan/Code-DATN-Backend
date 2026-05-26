@@ -1,4 +1,12 @@
-import { Controller, Get, Param, Query, UseGuards, ParseIntPipe } from "@nestjs/common";
+import {
+  Controller,
+  Get,
+  Param,
+  Query,
+  UseGuards,
+  ParseIntPipe,
+  DefaultValuePipe,
+} from "@nestjs/common";
 import { AdminService } from "./admin.service";
 import { JwtAuthGuard } from "@/auth/guards/jwt-auth.guard";
 import { RolesGuard } from "@/auth/guards/roles.guard";
@@ -28,9 +36,17 @@ export class AdminController {
   @Get("users/:userId/submissions")
   async getUserSubmissions(
     @Param("userId") userId: string,
-    @Query("page", new ParseIntPipe({ optional: true })) page?: number,
-    @Query("limit", new ParseIntPipe({ optional: true })) limit?: number,
+    @Query("page", new DefaultValuePipe(1), ParseIntPipe) page: number,
+    @Query("limit", new DefaultValuePipe(10), ParseIntPipe) limit: number,
   ) {
     return this.adminService.getUserSubmissions(userId, page, limit);
+  }
+
+  /*
+  GET /admin/submissions/:submissionId — chi tiết một bài nộp (ADMIN only).
+  */
+  @Get("submissions/:submissionId")
+  async getSubmissionDetail(@Param("submissionId") submissionId: string) {
+    return this.adminService.getSubmissionDetail(submissionId);
   }
 }

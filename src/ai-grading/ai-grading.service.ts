@@ -1,6 +1,7 @@
 import { Injectable, Logger } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { GeminiGradingService } from "./services/gemini-grading.service";
+import { HuggingFaceGradingService } from "./services/huggingface-grading.service";
 import { IAIGradingService } from "./interfaces/ai-grading.interface";
 import { AIResultDto } from "./dto/ai-result.dto";
 import { AIProvider } from "../common/enums";
@@ -13,6 +14,7 @@ export class AIGradingService {
   constructor(
     private configService: ConfigService,
     private geminiService: GeminiGradingService,
+    private huggingFaceService: HuggingFaceGradingService,
   ) {
     this.initializeProvider();
   }
@@ -24,6 +26,9 @@ export class AIGradingService {
     this.logger.log(`Initializing AI provider: ${providerConfig}`);
 
     switch (providerConfig.toUpperCase()) {
+      case AIProvider.HUGGINGFACE:
+        this.currentProvider = this.huggingFaceService;
+        break;
       case AIProvider.GEMINI:
       default:
         this.currentProvider = this.geminiService;
@@ -80,6 +85,9 @@ export class AIGradingService {
     let newProvider: IAIGradingService;
 
     switch (provider) {
+      case AIProvider.HUGGINGFACE:
+        newProvider = this.huggingFaceService;
+        break;
       case AIProvider.GEMINI:
       default:
         newProvider = this.geminiService;
@@ -103,10 +111,14 @@ export class AIGradingService {
   - Mảng { provider: string, available: boolean } cho tất cả provider đã cấu hình.
   */
   async getProvidersStatus(): Promise<{ provider: string; available: boolean }[]> {
-    const geminiAvailable = await this.geminiService.isAvailable();
+    const [geminiAvailable, hfAvailable] = await Promise.all([
+      this.geminiService.isAvailable(),
+      this.huggingFaceService.isAvailable(),
+    ]);
 
     return [
-      { provider: "GEMINI", available: geminiAvailable },
+      { provider: "GEMINI",       available: geminiAvailable },
+      { provider: "HUGGINGFACE",  available: hfAvailable     },
     ];
   }
 }

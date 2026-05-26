@@ -1,5 +1,5 @@
 // Service tính toán thống kê tổng quan cho Admin Dashboard.
-import { Injectable } from "@nestjs/common";
+import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model, Types } from "mongoose";
 import {
@@ -93,5 +93,24 @@ export class AdminService {
       limit,
       totalPages: Math.ceil(total / limit),
     };
+  }
+
+  /*
+  Lấy chi tiết một submission để admin rà soát chất lượng chấm AI.
+  Input:
+    - submissionId — id bài nộp
+  */
+  async getSubmissionDetail(submissionId: string) {
+    const submission = await this.submissionModel
+      .findById(submissionId)
+      .populate("questionId", "title questionPrompt")
+      .populate("userId", "fullName email role isActive")
+      .exec();
+
+    if (!submission) {
+      throw new NotFoundException("Không tìm thấy submission");
+    }
+
+    return submission;
   }
 }
