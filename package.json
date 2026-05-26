@@ -19,6 +19,7 @@
     "docker:logs": "docker logs mongodb && docker logs redis",
     "db:shell": "docker exec -it mongodb mongosh",
     "seed": "ts-node -r tsconfig-paths/register src/seed.ts",
+    "seed:users": "node scripts/seed-users-only.js",
     "version:sync": "node ../scripts/sync-version.js",
     "redis:cli": "docker exec -it redis redis-cli"
   },
