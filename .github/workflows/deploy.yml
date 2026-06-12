@@ -1,0 +1,39 @@
+# Deploy backend lên VPS khi push main
+name: Deploy Backend
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-backend
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: SSH deploy to VPS
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script_stop: true
+          script: |
+            set -euo pipefail
+            DEPLOY_PATH="${{ secrets.DEPLOY_PATH }}"
+            if [ -z "$DEPLOY_PATH" ]; then DEPLOY_PATH="/root/ielts-app"; fi
+
+            echo "==> Pull backend"
+            cd "$DEPLOY_PATH/backend"
+            git fetch origin main
+            git reset --hard origin/main
+
+            echo "==> Rebuild backend container"
+            cd "$DEPLOY_PATH"
+            docker compose -f deploy/docker-compose.yml --env-file deploy/.env up -d --build backend
+
+            echo "==> Done"
+            docker compose -f deploy/docker-compose.yml ps backend
