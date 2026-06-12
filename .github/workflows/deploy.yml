@@ -3,7 +3,7 @@ name: Deploy Backend
 
 on:
   push:
-    branches: [main]
+    branches: [main, master]
   workflow_dispatch:
 
 concurrency:
@@ -28,8 +28,8 @@ jobs:
 
             echo "==> Pull backend"
             cd "$DEPLOY_PATH/backend"
-            git fetch origin main
-            git reset --hard origin/main
+            git fetch origin
+            git reset --hard origin/HEAD
 
             echo "==> Rebuild backend container"
             cd "$DEPLOY_PATH"
