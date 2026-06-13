@@ -15,6 +15,7 @@ Output: output/step2_<slug>.json
 import re
 import sys
 import json
+import time
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from dataclasses import dataclass, asdict
@@ -220,17 +221,30 @@ def _fetch_via_innertube(session: requests.Session, video: VideoResult) -> Video
         },
         "videoId": video.video_id,
     }
-    try:
-        resp = session.post(
-            INNERTUBE_PLAYER_URL,
-            json=payload,
-            headers={"Content-Type": "application/json"},
-            timeout=20,
-        )
-        resp.raise_for_status()
-        data = resp.json()
-    except Exception as e:
-        print(f"         ✗ InnerTube lỗi: {e}")
+
+    data = None
+    for attempt in range(3):
+        try:
+            resp = session.post(
+                INNERTUBE_PLAYER_URL,
+                json=payload,
+                headers={"Content-Type": "application/json"},
+                timeout=25,
+            )
+            resp.raise_for_status()
+            data = resp.json()
+            break
+        except (requests.exceptions.ProxyError, requests.exceptions.ConnectionError) as e:
+            if attempt < 2:
+                time.sleep(2)
+                continue
+            print(f"         ✗ InnerTube lỗi proxy: {e}")
+            return None
+        except Exception as e:
+            print(f"         ✗ InnerTube lỗi: {e}")
+            return None
+
+    if data is None:
         return None
 
     playability = data.get("playabilityStatus", {})
@@ -262,11 +276,21 @@ def _fetch_via_innertube(session: requests.Session, video: VideoResult) -> Video
         return None
 
     lang = track.get("languageCode", "en")
-    try:
-        sub_resp = session.get(base_url, timeout=20)
-        sub_resp.raise_for_status()
-    except Exception as e:
-        print(f"         ✗ InnerTube timedtext lỗi: {e}")
+    for attempt in range(3):
+        try:
+            sub_resp = session.get(base_url, timeout=25)
+            sub_resp.raise_for_status()
+            break
+        except (requests.exceptions.ProxyError, requests.exceptions.ConnectionError) as e:
+            if attempt < 2:
+                time.sleep(2)
+                continue
+            print(f"         ✗ InnerTube timedtext lỗi proxy: {e}")
+            return None
+        except Exception as e:
+            print(f"         ✗ InnerTube timedtext lỗi: {e}")
+            return None
+    else:
         return None
 
     segments = _parse_subtitle_payload(sub_resp.text, "xml")
@@ -278,6 +302,17 @@ def _fetch_via_innertube(session: requests.Session, video: VideoResult) -> Video
 
 
 # ─── Strategy 2: youtube-transcript-api ──────────────────────────────────────
+
+def _snippet_value(snip, field: str, default=0):
+    """Đọc field từ FetchedTranscriptSnippet hoặc dict."""
+    if hasattr(snip, field):
+        val = getattr(snip, field)
+        if val is not None:
+            return val
+    if isinstance(snip, dict):
+        return snip.get(field, default)
+    return default
+
 
 def _fetch_via_transcript_api(video: VideoResult) -> VideoTranscript | None:
     try:
@@ -313,9 +348,9 @@ def _fetch_via_transcript_api(video: VideoResult) -> VideoTranscript | None:
 
     snippets = getattr(fetched, "snippets", None) or list(fetched)
     for snip in snippets:
-        text = getattr(snip, "text", None) or snip.get("text", "")
-        start = getattr(snip, "start", None) or snip.get("start", 0)
-        duration = getattr(snip, "duration", None) or snip.get("duration", 0)
+        text = str(_snippet_value(snip, "text", ""))
+        start = _snippet_value(snip, "start", 0)
+        duration = _snippet_value(snip, "duration", 0)
         if text.strip():
             segments.append(TranscriptSegment(
                 text=text.strip(),
