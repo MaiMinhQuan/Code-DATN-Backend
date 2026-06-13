@@ -1,5 +1,5 @@
-import { IsString, IsNotEmpty, IsOptional, IsInt, Min, Max } from "class-validator";
-import { Type } from "class-transformer";
+import { IsString, IsNotEmpty, IsOptional, IsInt, IsBoolean, Min, Max } from "class-validator";
+import { Type, Transform } from "class-transformer";
 
 export class CreatePipelineJobDto {
   @IsString()
@@ -19,4 +19,9 @@ export class CreatePipelineJobDto {
   @Min(1)
   @Max(20)
   maxEssays?: number;
+
+  @IsOptional()
+  @IsBoolean()
+  @Transform(({ value }) => value !== false && value !== "false")
+  skipEssays?: boolean;
 }

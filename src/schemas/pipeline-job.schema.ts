@@ -24,6 +24,9 @@ export class PipelineJob {
   @Prop({ default: 8 })
   maxEssays: number;
 
+  @Prop({ default: false })
+  skipEssays: boolean;
+
   @Prop({
     default: "pending",
     enum: ["pending", "running", "waiting_review", "analyzing", "ready_to_seed", "seeding", "done", "failed"],

@@ -265,7 +265,11 @@ def _seed_lesson(db, topic_name: str, topic_id: ObjectId, topic_slug: str, dry_r
 
 
 def _seed_essays(db, topic_name: str, topic_id: ObjectId, dry_run: bool):
-    data = _load_step5(topic_name)
+    try:
+        data = _load_step5(topic_name)
+    except FileNotFoundError:
+        print("  [SampleEssay] Không có file step5 (bỏ qua bài mẫu)")
+        return
 
     # ExamQuestions — bo qua cau hoi da ton tai (theo questionPrompt)
     eq_docs = []

@@ -34,6 +34,7 @@ export class PipelineService {
       topic: dto.topic,
       maxVideos: dto.maxVideos ?? 8,
       maxEssays: dto.maxEssays ?? 8,
+      skipEssays: dto.skipEssays ?? false,
       status: "pending",
       currentStep: 0,
       logs: [],
@@ -41,7 +42,7 @@ export class PipelineService {
     await job.save();
     const jobId = (job._id as any).toString();
 
-    this.runMainPipeline(jobId, job.topic, job.maxVideos, job.maxEssays).catch((err) => {
+    this.runMainPipeline(jobId, job.topic, job.maxVideos, job.maxEssays, job.skipEssays).catch((err) => {
       console.error(`[Pipeline] Job ${jobId} failed:`, err.message);
     });
 
@@ -149,12 +150,13 @@ export class PipelineService {
     return { started: true };
   }
 
-  // Bước 1→4, rồi tự động chạy bước 5 scrape
+  // Bước 1→4, rồi bước 5 scrape (nếu không skipEssays)
   private async runMainPipeline(
     jobId: string,
     topic: string,
     maxVideos: number,
     maxEssays: number,
+    skipEssays: boolean = false,
   ): Promise<void> {
     await this.jobModel.findByIdAndUpdate(jobId, { status: "running" });
 
@@ -163,11 +165,16 @@ export class PipelineService {
       "--max-videos", maxVideos.toString(), "--step", "4",
     ], "running");
 
-    await this.spawnProcess(jobId, [
-      "main.py", "--topic", topic,
-      "--step", "5", "--phase", "scrape",
-      "--max-essays", maxEssays.toString(),
-    ], "waiting_review");
+    if (skipEssays) {
+      // Bỏ qua bước 5 scrape → chuyển thẳng sang waiting_review
+      await this.jobModel.findByIdAndUpdate(jobId, { status: "waiting_review" });
+    } else {
+      await this.spawnProcess(jobId, [
+        "main.py", "--topic", topic,
+        "--step", "5", "--phase", "scrape",
+        "--max-essays", maxEssays.toString(),
+      ], "waiting_review");
+    }
   }
 
   // Dùng lại ở giai đoạn 5 (analyze) và 6 (seed)

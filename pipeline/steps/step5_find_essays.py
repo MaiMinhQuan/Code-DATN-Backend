@@ -196,6 +196,50 @@ def _fetch_listing_links(source: dict) -> list[tuple[str, str]]:
     return all_links
 
 
+_SITE_SEARCH_BASES = [
+    ("howtodoielts.com",   "https://howtodoielts.com"),
+    ("ieltsliz.com",       "https://ieltsliz.com"),
+    ("ieltsbuddy.com",     "https://www.ieltsbuddy.com"),
+    ("ieltsadvantage.com", "https://www.ieltsadvantage.com"),
+]
+
+
+def _search_wordpress(topic: str, site: str, base_url: str, max_results: int = 5) -> list[tuple[str, str]]:
+    """
+    Dùng tính năng search WordPress (?s=query) để tìm bài mẫu theo topic.
+    Không cần listing page, không cần DDG — search thẳng trên site.
+    """
+    search_url = f"{base_url}/?s={quote_plus(topic + ' IELTS writing task 2 essay')}"
+    try:
+        resp = requests.get(search_url, headers=_HEADERS, timeout=15, proxies=_PROXIES)
+        resp.raise_for_status()
+    except Exception as e:
+        print(f"      [!] WP search lỗi ({site}): {e}")
+        return []
+
+    soup = BeautifulSoup(resp.text, "lxml")
+    results = []
+
+    for selector in [
+        "h2.entry-title a", "h3.entry-title a", "h4.entry-title a",
+        ".entry-title a", "article h2 a", "article h3 a",
+        "h5.title a", ".post-title a",
+    ]:
+        links = soup.select(selector)
+        if links:
+            domain = base_url.split("//")[-1].replace("www.", "")
+            for a in links:
+                href = a.get("href", "")
+                if href and domain in href:
+                    results.append((href, site))
+                    if len(results) >= max_results:
+                        return results
+            if results:
+                break
+
+    return results
+
+
 def _search_ddg(topic: str, site: str, max_results: int = 5) -> list[tuple[str, str]]:
     """
     Tìm URL bài mẫu qua DuckDuckGo HTML search (không cần API, không bị CloudFlare).
@@ -232,8 +276,22 @@ def _find_essays_from_listing(topic: str, max_urls: int = 15) -> list[tuple[str,
     """
     results: list[tuple[str, str]] = []
 
-    # ── Pha 1: DuckDuckGo search ──────────────────────────────────────────────
-    print(f"    Tìm URL qua DuckDuckGo...")
+    # ── Pha 1: WordPress site search (?s=topic) ───────────────────────────────
+    print(f"    Tìm URL qua WordPress search...")
+    for site, base_url in _SITE_SEARCH_BASES:
+        per_site = max(2, max_urls // len(_SITE_SEARCH_BASES))
+        found = _search_wordpress(topic, site, base_url, max_results=per_site)
+        print(f"      {site}: {len(found)} URL")
+        results.extend(found)
+        if len(results) >= max_urls:
+            return results[:max_urls]
+        time.sleep(1)
+
+    if results:
+        return results[:max_urls]
+
+    # ── Pha 2: DuckDuckGo search ───────────────────────────────────────────────
+    print(f"    WP search thất bại → thử DuckDuckGo...")
     for site in _ESSAY_SITES:
         per_site = max(2, max_urls // len(_ESSAY_SITES))
         found = _search_ddg(topic, site, max_results=per_site)
@@ -246,8 +304,8 @@ def _find_essays_from_listing(topic: str, max_urls: int = 15) -> list[tuple[str,
     if results:
         return results[:max_urls]
 
-    # ── Pha 2: Fallback — scrape listing pages ────────────────────────────────
-    print(f"    DDG không tìm thấy → thử listing pages...")
+    # ── Pha 4: Fallback cuối — scrape listing pages ────────────────────────────
+    print(f"    Tất cả đều thất bại → thử listing pages...")
     keywords = _topic_keywords(topic)
     if not keywords:
         keywords = [topic.lower()]
@@ -560,9 +618,12 @@ def run_analyze(topic: str, target_band: str = "BAND_7_PLUS") -> Path:
     cand_path = Path(__file__).parent.parent / "output" / f"step5_candidates_{slug}.json"
 
     if not cand_path.exists():
-        raise FileNotFoundError(
-            f"Chưa có file candidates. Chạy --phase scrape trước.\n  {cand_path}"
-        )
+        print("  Không có file candidates (bước 5 scrape đã bị bỏ qua). Tạo output rỗng.")
+        out_path = Path(__file__).parent.parent / "output" / f"step5_{slug}.json"
+        empty_result = Step5Result(topic=topic, target_band=target_band, exam_questions=[], sample_essays=[])
+        with open(out_path, "w", encoding="utf-8") as f:
+            json.dump(asdict(empty_result), f, ensure_ascii=False, indent=2)
+        return out_path
 
     with open(cand_path, encoding="utf-8") as f:
         data = json.load(f)
