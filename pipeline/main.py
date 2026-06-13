@@ -115,6 +115,7 @@ def main():
 
         if not transcripts:
             print("  ✗ Không tìm được phụ đề cho các video. Dừng pipeline.")
+            print("  Gợi ý VPS: thêm YOUTUBE_PROXY_URL vào deploy/.env (proxy residential).")
             sys.exit(1)
 
         out2 = save_subtitles(transcripts, args.topic)
