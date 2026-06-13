@@ -45,14 +45,22 @@ def _slugify(text: str) -> str:
 
 
 def _load_mongo_uri() -> str:
+    import os
+
+    # Ưu tiên biến môi trường (Docker inject từ deploy/.env)
+    uri_from_env = os.getenv("MONGODB_URI", "").strip()
+    if uri_from_env:
+        return uri_from_env
+
+    # Fallback: đọc từ backend/.env
     env_path = Path(__file__).parent.parent.parent / ".env"
-    if not env_path.exists():
-        raise FileNotFoundError(f"Khong tim thay backend/.env: {env_path}")
-    for line in env_path.read_text(encoding="utf-8").splitlines():
-        line = line.strip()
-        if line.startswith("MONGODB_URI="):
-            return line.split("=", 1)[1].strip()
-    raise ValueError("MONGODB_URI chua duoc khai bao trong backend/.env")
+    if env_path.exists():
+        for line in env_path.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if line.startswith("MONGODB_URI="):
+                return line.split("=", 1)[1].strip()
+
+    raise ValueError("MONGODB_URI chua duoc khai bao (env var hoac backend/.env)")
 
 
 _DIFFICULTY_MAP = {"EASY": 1, "MEDIUM": 2, "HARD": 3}

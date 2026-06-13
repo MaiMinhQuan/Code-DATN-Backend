@@ -125,6 +125,13 @@ export class PipelineService {
 
   async analyze(jobId: string) {
     const job = await this.findOne(jobId);
+
+    // Nếu bỏ qua bài mẫu, không cần chạy Python — chuyển thẳng sang ready_to_seed
+    if (job.skipEssays) {
+      await this.jobModel.findByIdAndUpdate(jobId, { status: "ready_to_seed" });
+      return { started: true };
+    }
+
     await this.jobModel.findByIdAndUpdate(jobId, { status: "analyzing" });
 
     this.spawnProcess(jobId, [
