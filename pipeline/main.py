@@ -77,7 +77,6 @@ def main():
     print(f"\n{'='*60}")
     print(f"  IELTS Data Pipeline")
     print(f"  Topic  : {args.topic}")
-    print(f"  Band   : {args.band}")
     print(f"{'='*60}\n")
 
     # ── Bước 1: Tìm video ────────────────────────────────────────────────────

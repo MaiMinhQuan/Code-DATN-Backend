@@ -482,8 +482,13 @@ def run_analyze(topic: str, target_band: str = "BAND_7_PLUS") -> Path:
 
     approved = [c for c in data["candidates"] if c.get("approved")]
     if not approved:
-        print("  Không có candidate nào được approved. Mở file candidates và set approved=true.")
-        return cand_path
+        print("  Không có candidate nào được approved — bỏ qua phân tích bài mẫu.")
+        # Tạo file output rỗng để seed step không bị crash
+        out_path = Path(__file__).parent.parent / "output" / f"step5_{slug}.json"
+        empty_result = Step5Result(topic=topic, target_band=target_band, exam_questions=[], sample_essays=[])
+        with open(out_path, "w", encoding="utf-8") as f:
+            json.dump(asdict(empty_result), f, ensure_ascii=False, indent=2)
+        return out_path
 
     print(f"  {len(approved)} candidates được approved")
     print(f"  Model: {OPENROUTER_MODEL}\n")
