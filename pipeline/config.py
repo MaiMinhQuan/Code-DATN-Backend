@@ -7,6 +7,11 @@ YOUTUBE_API_KEY    = os.getenv("YOUTUBE_API_KEY", "")
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
 DEEPL_API_KEY      = os.getenv("DEEPL_API_KEY", "")
 
+# VPS/datacenter: YouTube thường chặn IP → cần proxy residential cho Bước 2
+# Ví dụ: http://user:pass@proxy.example.com:8080
+YOUTUBE_PROXY_URL   = os.getenv("YOUTUBE_PROXY_URL", "").strip()
+YOUTUBE_COOKIES_FILE = os.getenv("YOUTUBE_COOKIES_FILE", "").strip()
+
 # Model tiết kiệm, hỗ trợ tốt tiếng Việt và JSON structured output
 OPENROUTER_MODEL = os.getenv("OPENROUTER_MODEL", "google/gemini-2.0-flash-lite")
 MONGODB_URI     = os.getenv("MONGODB_URI", "mongodb://localhost:27017/ielts-writing-db")
