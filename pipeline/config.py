@@ -12,6 +12,10 @@ DEEPL_API_KEY      = os.getenv("DEEPL_API_KEY", "")
 YOUTUBE_PROXY_URL   = os.getenv("YOUTUBE_PROXY_URL", "").strip()
 YOUTUBE_COOKIES_FILE = os.getenv("YOUTUBE_COOKIES_FILE", "").strip()
 
+# Proxy cho web scraping essay (bước 5) — mặc định dùng chung với YouTube proxy
+# Có thể set riêng: HTTP_PROXY_URL=http://user:pass@proxy.example.com:8080
+HTTP_PROXY_URL = os.getenv("HTTP_PROXY_URL", YOUTUBE_PROXY_URL).strip()
+
 # Model tiết kiệm, hỗ trợ tốt tiếng Việt và JSON structured output
 OPENROUTER_MODEL = os.getenv("OPENROUTER_MODEL", "google/gemini-2.0-flash-lite-001")
 MONGODB_URI     = os.getenv("MONGODB_URI", "mongodb://localhost:27017/ielts-writing-db")

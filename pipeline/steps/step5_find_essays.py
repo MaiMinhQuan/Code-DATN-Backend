@@ -30,7 +30,10 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from bs4 import BeautifulSoup
 from openai import OpenAI
-from config import OPENROUTER_API_KEY, OPENROUTER_MODEL
+from config import OPENROUTER_API_KEY, OPENROUTER_MODEL, HTTP_PROXY_URL
+
+# Proxy dùng cho tất cả HTTP request scraping bài mẫu
+_PROXIES = {"http": HTTP_PROXY_URL, "https": HTTP_PROXY_URL} if HTTP_PROXY_URL else None
 
 
 
@@ -110,9 +113,23 @@ _LISTING_SOURCES = [
     {
         "name": "howtodoielts.com",
         "listing": "https://howtodoielts.com/category/writing-task-2/",
-        "page_tpl": None,   # toàn bộ bài nằm trên 1 trang duy nhất
+        "page_tpl": None,
         "max_pages": 1,
         "link_selectors": ["h5.title a"],
+    },
+    {
+        "name": "ieltsliz.com",
+        "listing": "https://ieltsliz.com/ielts-writing-task-2/",
+        "page_tpl": None,
+        "max_pages": 1,
+        "link_selectors": ["h2.entry-title a", "h3.entry-title a", ".entry-title a"],
+    },
+    {
+        "name": "ieltsbuddy.com",
+        "listing": "https://www.ieltsbuddy.com/ielts-essay.html",
+        "page_tpl": None,
+        "max_pages": 1,
+        "link_selectors": ["div.essay-list a", "ul.essay-list a", "a[href*='essay']"],
     },
 ]
 
@@ -141,7 +158,7 @@ def _fetch_listing_links(source: dict) -> list[tuple[str, str]]:
             break
 
         try:
-            resp = requests.get(page_url, headers=_HEADERS, timeout=15)
+            resp = requests.get(page_url, headers=_HEADERS, timeout=15, proxies=_PROXIES)
             if resp.status_code == 404:
                 break
             resp.raise_for_status()
@@ -220,46 +237,64 @@ def _extract_band_score(url: str) -> float:
     return 0.0
 
 
-def _extract_question_and_essay(soup: BeautifulSoup) -> tuple[str, str]:
+def _extract_question_and_essay(soup: BeautifulSoup, source: str = "") -> tuple[str, str]:
     """
-    Cấu trúc howtodoielts.com trong div.entry-content:
-      [promo paragraphs] → <h2.wp-block-heading> (tiêu đề bài) →
-      <p><strong> question → <p> essay body
-
-    Dùng h2 làm anchor: lấy tất cả siblings sau h2,
-    <p><strong> đầu tiên = question, <p> còn lại = essay.
+    Trích xuất (question, essay) từ trang bài mẫu.
+    Hỗ trợ cấu trúc howtodoielts.com (dùng h2 làm anchor) và
+    fallback generic cho các trang WordPress IELTS khác.
     """
-    content = soup.find("div", class_="entry-content")
+    content = (
+        soup.find("div", class_="entry-content")
+        or soup.find("article")
+        or soup.find("div", class_="post-content")
+        or soup.find("div", class_="content")
+    )
     if not content:
         return "", ""
 
-    # Tìm h2 tiêu đề bài (wp-block-heading)
+    # ── howtodoielts.com: dùng h2.wp-block-heading làm anchor ─────────────
     h2 = content.find("h2", class_="wp-block-heading")
-    if not h2:
-        return "", ""
+    if h2:
+        question_parts: list[str] = []
+        essay_parts:    list[str] = []
+        collecting_essay = False
 
-    question_parts: list[str] = []
-    essay_parts:    list[str] = []
-    collecting_essay = False
+        for tag in h2.find_next_siblings():
+            if tag.name == "h2":
+                break
+            if tag.name != "p":
+                continue
+            text = tag.get_text(strip=True)
+            if not text or text == "﻿":
+                continue
+            has_strong = bool(tag.find("strong"))
+            if not collecting_essay and has_strong:
+                question_parts.append(text)
+            else:
+                collecting_essay = True
+                if len(text.split()) >= 5:
+                    essay_parts.append(text)
 
-    for tag in h2.find_next_siblings():
-        # h2 thứ hai = bắt đầu phần vocabulary/analysis → dừng
-        if tag.name == "h2":
-            break
-        if tag.name != "p":
+        question = " ".join(question_parts)
+        essay    = "\n\n".join(essay_parts)
+        if essay and len(essay.split()) >= 180:
+            return question, essay
+
+    # ── Generic fallback: tìm đoạn văn dài nhất làm essay ────────────────
+    paragraphs = content.find_all("p")
+    question_parts = []
+    essay_parts    = []
+
+    for p in paragraphs:
+        text = p.get_text(strip=True)
+        if not text or len(text) < 20:
             continue
-        text = tag.get_text(strip=True)
-        if not text or text == "﻿":
-            continue
-
-        has_strong = bool(tag.find("strong"))
-
-        if not collecting_essay and has_strong:
+        words = text.split()
+        # Đoạn ngắn có chứa "?" thường là câu hỏi đề thi
+        if len(words) < 60 and "?" in text and not question_parts:
             question_parts.append(text)
-        else:
-            collecting_essay = True
-            if len(text.split()) >= 5:
-                essay_parts.append(text)
+        elif len(words) >= 30:
+            essay_parts.append(text)
 
     question = " ".join(question_parts)
     essay    = "\n\n".join(essay_parts)
@@ -269,7 +304,7 @@ def _extract_question_and_essay(soup: BeautifulSoup) -> tuple[str, str]:
 def _scrape_url(url: str, source: str) -> EssayCandidate | None:
     """Scrape một URL và trả về EssayCandidate hoặc None nếu thất bại."""
     try:
-        resp = requests.get(url, headers=_HEADERS, timeout=12)
+        resp = requests.get(url, headers=_HEADERS, timeout=12, proxies=_PROXIES)
         resp.raise_for_status()
         resp.encoding = resp.apparent_encoding
     except Exception as e:
@@ -278,7 +313,7 @@ def _scrape_url(url: str, source: str) -> EssayCandidate | None:
 
     soup       = BeautifulSoup(resp.text, "lxml")
     band_score = _extract_band_score(url)
-    question, essay = _extract_question_and_essay(soup)
+    question, essay = _extract_question_and_essay(soup, source)
 
     if not essay or len(essay.split()) < 180:
         print(f"      ✗ Không tìm được essay đủ dài")
