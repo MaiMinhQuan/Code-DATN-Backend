@@ -25,6 +25,7 @@ import argparse
 import requests
 from pathlib import Path
 from dataclasses import dataclass, asdict, field
+from urllib.parse import quote_plus
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
@@ -106,30 +107,36 @@ _HEADERS = {
     )
 }
 
-# Các trang IELTS có listing page để scrape theo chủ đề.
-# page_tpl: template URL trang thứ N (None = không có phân trang).
-# link_selectors: CSS selectors thử lần lượt để tìm link bài viết.
+# Các site IELTS uy tín — dùng cho DuckDuckGo search + fallback listing
+_ESSAY_SITES = [
+    "howtodoielts.com",
+    "ieltsliz.com",
+    "ieltsadvantage.com",
+    "ieltsbuddy.com",
+]
+
+# Fallback: listing pages (chỉ dùng nếu DDG thất bại)
 _LISTING_SOURCES = [
     {
         "name": "howtodoielts.com",
         "listing": "https://howtodoielts.com/category/writing-task-2/",
         "page_tpl": None,
         "max_pages": 1,
-        "link_selectors": ["h5.title a"],
+        "link_selectors": ["h5.title a", "h2.entry-title a", ".entry-title a"],
     },
     {
         "name": "ieltsliz.com",
         "listing": "https://ieltsliz.com/ielts-writing-task-2/",
         "page_tpl": None,
         "max_pages": 1,
-        "link_selectors": ["h2.entry-title a", "h3.entry-title a", ".entry-title a"],
+        "link_selectors": ["h2.entry-title a", "h3.entry-title a", ".entry-title a", "article a"],
     },
     {
         "name": "ieltsbuddy.com",
         "listing": "https://www.ieltsbuddy.com/ielts-essay.html",
         "page_tpl": None,
         "max_pages": 1,
-        "link_selectors": ["div.essay-list a", "ul.essay-list a", "a[href*='essay']"],
+        "link_selectors": ["td a", "li a", "a[href*='essay']", "a[href*='ielts']"],
     },
 ]
 
@@ -189,16 +196,61 @@ def _fetch_listing_links(source: dict) -> list[tuple[str, str]]:
     return all_links
 
 
-def _find_essays_from_listing(topic: str, max_urls: int = 15) -> list[tuple[str, str]]:
+def _search_ddg(topic: str, site: str, max_results: int = 5) -> list[tuple[str, str]]:
     """
-    Scrape listing pages của các trusted sites, lọc bài liên quan đến topic.
+    Tìm URL bài mẫu qua DuckDuckGo HTML search (không cần API, không bị CloudFlare).
     Trả về list (url, source_name).
     """
+    query = f'site:{site} IELTS "writing task 2" {topic} essay'
+    ddg_url = f"https://html.duckduckgo.com/html/?q={quote_plus(query)}"
+    try:
+        resp = requests.get(ddg_url, headers=_HEADERS, timeout=20, proxies=_PROXIES)
+        resp.raise_for_status()
+    except Exception as e:
+        print(f"      [!] DDG lỗi ({site}): {e}")
+        return []
+
+    soup = BeautifulSoup(resp.text, "lxml")
+    results = []
+    source_name = site.replace("www.", "").split(".")[0]
+
+    for a in soup.select("a.result__a"):
+        href = a.get("href", "")
+        if href and site in href and href.startswith("http"):
+            results.append((href, site))
+            if len(results) >= max_results:
+                break
+
+    return results
+
+
+def _find_essays_from_listing(topic: str, max_urls: int = 15) -> list[tuple[str, str]]:
+    """
+    Pha 1 — DuckDuckGo: tìm URL bài mẫu theo topic trực tiếp (không cần listing page).
+    Pha 2 — Fallback: scrape listing pages của các trusted sites nếu DDG thất bại.
+    Trả về list (url, source_name).
+    """
+    results: list[tuple[str, str]] = []
+
+    # ── Pha 1: DuckDuckGo search ──────────────────────────────────────────────
+    print(f"    Tìm URL qua DuckDuckGo...")
+    for site in _ESSAY_SITES:
+        per_site = max(2, max_urls // len(_ESSAY_SITES))
+        found = _search_ddg(topic, site, max_results=per_site)
+        print(f"      {site}: {len(found)} URL")
+        results.extend(found)
+        if len(results) >= max_urls:
+            return results[:max_urls]
+        time.sleep(1.5)
+
+    if results:
+        return results[:max_urls]
+
+    # ── Pha 2: Fallback — scrape listing pages ────────────────────────────────
+    print(f"    DDG không tìm thấy → thử listing pages...")
     keywords = _topic_keywords(topic)
     if not keywords:
         keywords = [topic.lower()]
-
-    results: list[tuple[str, str]] = []
 
     for source in _LISTING_SOURCES:
         print(f"    Đang duyệt {source['name']}...")
