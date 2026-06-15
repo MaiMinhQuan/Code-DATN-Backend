@@ -2,6 +2,7 @@ import { Injectable, Logger } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { GeminiGradingService } from "./services/gemini-grading.service";
 import { HuggingFaceGradingService } from "./services/huggingface-grading.service";
+import { OpenRouterGradingService } from "./services/openrouter-grading.service";
 import { IAIGradingService } from "./interfaces/ai-grading.interface";
 import { AIResultDto } from "./dto/ai-result.dto";
 import { AIProvider } from "../common/enums";
@@ -15,23 +16,30 @@ export class AIGradingService {
     private configService: ConfigService,
     private geminiService: GeminiGradingService,
     private huggingFaceService: HuggingFaceGradingService,
+    private openRouterService: OpenRouterGradingService,
   ) {
     this.initializeProvider();
   }
 
   // Đọc cấu hình `ai.provider` để khởi tạo dịch vụ chấm điểm tương ứng.
   private initializeProvider(): void {
-    const providerConfig = this.configService.get<string>("ai.provider") || "GEMINI";
+    const providerConfig = this.configService.get<string>("ai.provider") || "OPENROUTER";
 
     this.logger.log(`Initializing AI provider: ${providerConfig}`);
 
     switch (providerConfig.toUpperCase()) {
+      case AIProvider.OPENROUTER:
+        this.currentProvider = this.openRouterService;
+        break;
       case AIProvider.HUGGINGFACE:
         this.currentProvider = this.huggingFaceService;
         break;
       case AIProvider.GEMINI:
-      default:
         this.currentProvider = this.geminiService;
+        break;
+      default:
+        this.logger.warn(`Unknown provider "${providerConfig}", defaulting to OPENROUTER`);
+        this.currentProvider = this.openRouterService;
         break;
     }
   }
@@ -51,17 +59,7 @@ export class AIGradingService {
 
     const isAvailable = await this.currentProvider.isAvailable();
     if (!isAvailable) {
-      this.logger.warn(`Provider ${providerName} is not available, falling back to Gemini`);
-
-      // Thử nghiệm fallback sang Gemini nếu provider chính không khả dụng
-      if (providerName !== "GEMINI") {
-        const geminiAvailable = await this.geminiService.isAvailable();
-        if (geminiAvailable) {
-          return this.geminiService.gradeEssay(essayContent, questionPrompt);
-        }
-      }
-
-      throw new Error("No AI provider is available");
+      throw new Error(`AI provider "${providerName}" is not available — check API key and config`);
     }
 
     return this.currentProvider.gradeEssay(essayContent, questionPrompt);
@@ -85,12 +83,17 @@ export class AIGradingService {
     let newProvider: IAIGradingService;
 
     switch (provider) {
+      case AIProvider.OPENROUTER:
+        newProvider = this.openRouterService;
+        break;
       case AIProvider.HUGGINGFACE:
         newProvider = this.huggingFaceService;
         break;
       case AIProvider.GEMINI:
-      default:
         newProvider = this.geminiService;
+        break;
+      default:
+        newProvider = this.openRouterService;
         break;
     }
 
@@ -111,14 +114,16 @@ export class AIGradingService {
   - Mảng { provider: string, available: boolean } cho tất cả provider đã cấu hình.
   */
   async getProvidersStatus(): Promise<{ provider: string; available: boolean }[]> {
-    const [geminiAvailable, hfAvailable] = await Promise.all([
+    const [openRouterAvailable, geminiAvailable, hfAvailable] = await Promise.all([
+      this.openRouterService.isAvailable(),
       this.geminiService.isAvailable(),
       this.huggingFaceService.isAvailable(),
     ]);
 
     return [
-      { provider: "GEMINI",       available: geminiAvailable },
-      { provider: "HUGGINGFACE",  available: hfAvailable     },
+      { provider: "OPENROUTER",  available: openRouterAvailable },
+      { provider: "GEMINI",      available: geminiAvailable     },
+      { provider: "HUGGINGFACE", available: hfAvailable         },
     ];
   }
 }

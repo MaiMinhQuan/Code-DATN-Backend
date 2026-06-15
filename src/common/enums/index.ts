@@ -38,6 +38,7 @@ export enum AIProvider {
   GEMINI = "GEMINI",
   MISTRAL = "MISTRAL",
   HUGGINGFACE = "HUGGINGFACE",
+  OPENROUTER = "OPENROUTER",
 }
 
 export enum FlashcardSetType {
