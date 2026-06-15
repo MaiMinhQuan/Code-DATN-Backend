@@ -44,11 +44,11 @@ Return ONLY a JSON object — no markdown fences, no extra text:
   "lr_band": <float>,
   "gra_band": <float>,
   "overall_band": <float>,
-  "coaching_analysis": "<3–5 sentences of concrete feedback covering all four criteria>",
+  "coaching_analysis": "<nhận xét tổng quát 3–5 câu bằng tiếng Việt, đề cập cả 4 tiêu chí, chỉ ra điểm mạnh và điểm cần cải thiện cụ thể>",
   "errors": [
     {
       "originalText": "<verbatim substring copied exactly as it appears in the essay>",
-      "explanation": "<which criterion is affected, why this is an error, how fixing it improves the band>",
+      "explanation": "<giải thích bằng tiếng Việt: tiêu chí nào bị ảnh hưởng, tại sao đây là lỗi, sửa sẽ cải thiện band như thế nào>",
       "suggestion": "<direct replacement for originalText that corrects the issue>",
       "category": "<GRAMMAR|VOCABULARY|COHERENCE|TASK_RESPONSE|SPELLING|PUNCTUATION>",
       "severity": "<low|medium|high>"
@@ -59,7 +59,8 @@ Return ONLY a JSON object — no markdown fences, no extra text:
 Rules for errors:
 - originalText must be an exact verbatim match from the student essay (used for automated highlighting)
 - List ALL significant errors; do not pad with minor issues, do not omit to keep the list short
-- Cover issues across all criteria, not only Task Response`;
+- Cover issues across all criteria, not only Task Response
+- coaching_analysis and explanation fields MUST be written in Vietnamese`;
 
 export function buildHFGradingPrompt(questionPrompt: string, essayContent: string): string {
   return HF_GRADING_PROMPT
