@@ -60,6 +60,19 @@ export class FlashcardsController {
   }
 
   /*
+  POST /flashcard-sets/admin/lesson-set/:lessonId — admin tạo LESSON flashcard set cho một lesson
+  */
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN)
+  @Post("admin/lesson-set/:lessonId")
+  async adminCreateLessonSet(
+    @Param("lessonId") lessonId: string,
+    @Body() createSetDto: CreateFlashcardSetDto,
+  ) {
+    return this.flashcardsService.adminCreateLessonSet(lessonId, createSetDto);
+  }
+
+  /*
   GET /flashcard-sets/:id — chi tiết set + cards
   Input:
     - req.user — user từ JWT

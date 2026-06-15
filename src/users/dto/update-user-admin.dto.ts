@@ -1,5 +1,6 @@
 // DTO body PATCH /users/:id
 import { IsString, IsOptional, IsBoolean, IsEnum, MinLength, MaxLength, IsUrl } from "class-validator";
+import { Transform } from "class-transformer";
 import { UserRole } from "@/common/enums";
 
 export class UpdateUserAdminDto {
@@ -18,6 +19,7 @@ export class UpdateUserAdminDto {
   role?: UserRole;
 
   @IsOptional()
-  @IsBoolean({message: "isActive phải là true hoặc false"})
+  @Transform(({ value }) => value === "true" || value === true)
+  @IsBoolean({ message: "isActive phải là true hoặc false" })
   isActive?: boolean;
 }

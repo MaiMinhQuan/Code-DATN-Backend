@@ -145,6 +145,22 @@ export class FlashcardsService {
   /*
   Tạo flashcard set PERSONAL mới.
   */
+  async adminCreateLessonSet(lessonId: string, createSetDto: CreateFlashcardSetDto): Promise<FlashcardSet> {
+    if (!Types.ObjectId.isValid(lessonId)) throw new BadRequestException("lessonId không hợp lệ");
+
+    const existing = await this.flashcardSetModel.findOne({ lessonId: new Types.ObjectId(lessonId) }).exec();
+    if (existing) throw new BadRequestException("Lesson này đã có flashcard set");
+
+    const newSet = new this.flashcardSetModel({
+      type:        FlashcardSetType.LESSON,
+      lessonId:    new Types.ObjectId(lessonId),
+      title:       createSetDto.title,
+      description: createSetDto.description || undefined,
+    });
+
+    return newSet.save();
+  }
+
   async createSet(userId: string, createSetDto: CreateFlashcardSetDto): Promise<FlashcardSet> {
     if (!Types.ObjectId.isValid(userId)) throw new BadRequestException("userId không hợp lệ");
 

@@ -90,7 +90,14 @@ export class LessonsService {
       throw new BadRequestException("Khóa học không tồn tại hoặc đã bị xóa");
     }
 
-    const newLesson = new this.lessonModel(createLessonDto);
+    const newLesson = new this.lessonModel({
+      title: createLessonDto.title,
+      courseId: new Types.ObjectId(createLessonDto.courseId),
+      targetBand: createLessonDto.targetBand,
+      description: createLessonDto.description,
+      isPublished: createLessonDto.isPublished ?? true,
+      notesContent: createLessonDto.notesContent,
+    });
     const savedLesson = await newLesson.save();
 
     const count = await this.lessonModel.countDocuments({ courseId: new Types.ObjectId(createLessonDto.courseId) });
