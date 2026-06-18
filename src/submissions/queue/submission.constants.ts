@@ -1,6 +1,15 @@
 // Constants BullMQ queue chấm bài
 export const SUBMISSION_QUEUE_NAME = "submission-grading";
 
+/** Mốc % tiến trình chấm bài — đồng bộ với frontend/src/constants/grading-progress.ts */
+export const GRADING_PROGRESS = {
+  QUEUED:    0,
+  STARTED:   10,
+  ANALYZING: 30,
+  SAVING:    80,
+  COMPLETE:  100,
+} as const;
+
 export const SUBMISSION_JOB_NAMES = {
   GRADE_ESSAY: "grade-essay",
 } as const;

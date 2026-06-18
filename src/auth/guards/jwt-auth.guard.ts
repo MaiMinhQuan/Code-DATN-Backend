@@ -21,7 +21,7 @@ export class JwtAuthGuard extends AuthGuard("jwt") {
     - user — user đã validate
     - info — thông tin thêm từ passport
    */
-  handRequest(err: any, user: any, info: any) {
+  handleRequest(err: any, user: any, info: any) {
     if (err || !user) {
       throw err || new UnauthorizedException("Vui lòng đăng nhập để tiếp tục");
     }

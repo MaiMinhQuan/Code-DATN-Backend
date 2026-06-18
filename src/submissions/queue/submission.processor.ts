@@ -8,7 +8,7 @@ import { Submission, SubmissionDocument } from "@/schemas";
 import { AIGradingService } from "@/ai-grading/ai-grading.service";
 import { SubmissionStatus } from "@/common/enums";
 import { SubmissionsGateway } from "@/websocket/gateways/submissions.gateway";
-import { SUBMISSION_QUEUE_NAME } from "./submission.constants";
+import { SUBMISSION_QUEUE_NAME, GRADING_PROGRESS } from "./submission.constants";
 import { GradingJobData, GradingJobResult } from "./grading-job.interface";
 
 @Processor(SUBMISSION_QUEUE_NAME)
@@ -41,19 +41,19 @@ export class SubmissionProcessor extends WorkerHost {
 
       this.submissionsGateway.emitSubmissionProgress(userId, {
         submissionId,
-        progress: 10,
+        progress: GRADING_PROGRESS.STARTED,
         message: "Đang bắt đầu chấm bài...",
         timestamp: new Date(),
       });
 
-      await job.updateProgress(10);
+      await job.updateProgress(GRADING_PROGRESS.STARTED);
 
       // Emit "analysing" progress trước khi gọi AI
       this.logger.log(`[Job ${job.id}] Calling AI Grading Service...`);
 
       this.submissionsGateway.emitSubmissionProgress(userId, {
         submissionId,
-        progress: 30,
+        progress: GRADING_PROGRESS.ANALYZING,
         message: "Đang phân tích bài viết...",
         timestamp: new Date(),
       });
@@ -63,12 +63,12 @@ export class SubmissionProcessor extends WorkerHost {
       // Emit "saving" progress sau khi AI trả về
       this.submissionsGateway.emitSubmissionProgress(userId, {
         submissionId,
-        progress: 80,
+        progress: GRADING_PROGRESS.SAVING,
         message: "Đang lưu kết quả...",
         timestamp: new Date(),
       });
 
-      await job.updateProgress(80);
+      await job.updateProgress(GRADING_PROGRESS.SAVING);
 
       // Lưu kết quả AI và đánh dấu submission là COMPLETED
       await this.submissionModel.findByIdAndUpdate(submissionId, {
@@ -79,9 +79,16 @@ export class SubmissionProcessor extends WorkerHost {
         },
       });
 
-      await job.updateProgress(100);
+      await job.updateProgress(GRADING_PROGRESS.COMPLETE);
 
       this.logger.log(`[Job ${job.id}] Completed successfully. Overall band: ${aiResult.overallBand}`);
+
+      this.submissionsGateway.emitSubmissionProgress(userId, {
+        submissionId,
+        progress: GRADING_PROGRESS.COMPLETE,
+        message: "Chấm bài hoàn tất!",
+        timestamp: new Date(),
+      });
 
       // Thông báo cho client rằng chấm bài đã hoàn thành
       this.submissionsGateway.emitSubmissionStatusUpdated(userId, {
