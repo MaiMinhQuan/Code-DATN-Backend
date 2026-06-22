@@ -1,4 +1,4 @@
-/** test
+/**
  * Script xóa sạch DB, chỉ giữ lại collection users.
  * Chạy bằng:
  *   npx ts-node -r tsconfig-paths/register src/clear-db.ts
