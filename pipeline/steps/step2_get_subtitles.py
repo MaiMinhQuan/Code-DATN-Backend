@@ -29,7 +29,7 @@ from config import YOUTUBE_PROXY_URL, YOUTUBE_COOKIES_FILE
 from steps.step1_find_videos import VideoResult
 from steps.step1_find_videos import load_results as load_step1
 
-INNERTUBE_API_KEY = "AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8"
+INNERTUBE_API_KEY = "xxx"
 INNERTUBE_PLAYER_URL = f"https://www.youtube.com/youtubei/v1/player?key={INNERTUBE_API_KEY}&prettyPrint=false"
 INNERTUBE_ANDROID_UA = "com.google.android.youtube/20.10.38 (Linux; U; Android 14)"
 

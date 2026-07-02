@@ -4,7 +4,7 @@ import sys
 import requests
 
 VIDEO_ID = sys.argv[1] if len(sys.argv) > 1 else "BFpUuK1MOBU"
-INNERTUBE_KEY = "AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8"
+INNERTUBE_KEY = "xxx"
 URL = f"https://www.youtube.com/youtubei/v1/player?key={INNERTUBE_KEY}&prettyPrint=false"
 
 payload = {
