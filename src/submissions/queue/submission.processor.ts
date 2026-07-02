@@ -70,7 +70,7 @@ export class SubmissionProcessor extends WorkerHost {
 
       await job.updateProgress(GRADING_PROGRESS.SAVING);
 
-      // Lưu kết quả AI và đánh dấu submission là COMPLETED
+      //  Lưu kết quả AI và đánh dấu submission là COMPLETED
       await this.submissionModel.findByIdAndUpdate(submissionId, {
         status: SubmissionStatus.COMPLETED,
         aiResult: {
